@@ -4,6 +4,8 @@ module.exports = (sequelize) => {
   sequelize.define("movie", {
     id: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
+      
     },
     title: {
       type: DataTypes.STRING,
@@ -30,7 +32,7 @@ module.exports = (sequelize) => {
     },
     //spoken_languages
     languages: {
-      type: DataTypes.ARRAY,
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     vote_average: {
       type: DataTypes.FLOAT,

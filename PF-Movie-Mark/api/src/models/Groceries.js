@@ -4,6 +4,8 @@ module.exports = (sequelize) => {
   sequelize.define("groceries", {
     id: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
