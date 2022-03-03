@@ -2,9 +2,6 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("groceries", {
-    id: {
-      type: DataTypes.INTEGER,
-    },
     name: {
       type: DataTypes.STRING,
     },
