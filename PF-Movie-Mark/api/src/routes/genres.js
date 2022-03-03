@@ -8,29 +8,26 @@ const axios = require("axios");
 const BASE_URL = "https://api.themoviedb.org/3";
 const { Genre } = require("../db");
 
-//Obtengo géneros de pelis:
-
+// -- Géneros de pelis
 router.get('/', async (req, res, next) => {
     try {
-        const response = await  axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
-        // const response = await axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=55a8fa4c6d88b26c1c9e150c83aa784e")
+        const response = await  axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`)
         .then((response) => {
-            let allGenresApi = response.data.genres.map(genres => ({
-            id: genres.id,
-            name: genres.name
-            }));
-        allGenresApi.forEach(gen => {
-            Genre.findOrCreate({
-                where: {
-                    id: gen.id,
-                    name: gen.name
-                }
-            });
-        });true
+            let allGenresApi = response.data.genres.map(genres => 
+                ({
+                    name: genres.name
+                }));
+            allGenresApi.forEach(gen => {
+                Genre.findOrCreate({
+                    where: {
+                        name: gen.name
+                    }
+                });
+            });true
         });
 
         const allGenresFound = await Genre.findAll();
-        console.log("allGenresFound: ", allGenresFound);
+        // console.log("All genres found: ", allGenresFound);
 
         return res.status(200).send(allGenresFound); 
         
