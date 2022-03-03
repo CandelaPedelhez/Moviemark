@@ -30,7 +30,7 @@ export function getGroceries() {
   };
 }
 
-export function getMovieByName(title) {
+export function getMovieByTitle(title) {
   return async function (dispatch) {
     try {
       let json = await axios.get("" + title);
