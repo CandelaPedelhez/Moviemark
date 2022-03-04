@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
     let movieId = await getMovies();
     try {
         if(id){
-                console.log(id);
+           //console.log(id);
             let movId = movieId.filter(movieFound => movieFound.id.toString() === id);
             movId.length ? 
             res.status(200).send(movId) :

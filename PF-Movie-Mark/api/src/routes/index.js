@@ -18,7 +18,7 @@ const router = Router();
 router.use('/genres', genresRoute);
 router.use('/groceries', groceriesRoute);
 router.use('/movies', moviesRoute);
-router.use('/upcoming', upcomingRoute)
+router.use('/upcoming', upcomingRoute);
 
 
 module.exports = router;
