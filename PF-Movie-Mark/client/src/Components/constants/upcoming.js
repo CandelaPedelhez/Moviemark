@@ -24,6 +24,21 @@ export const upcoming = [
         name: "Gold",
         img: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nDF3Ryi3W8PIR1b5eXDWBMRzgTS.jpg"
     },
+    {
+        id: 6,
+        name: "The Lost City",
+        img: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/neMZH82Stu91d3iqvLdNQfqPPyl.jpg"
+    },
+    {
+        id: 7,
+        name: "The Outfit",
+        img: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ieOVuwnoFC49m7bekmdQ4AynciS.jpg"
+    },
+    {
+        id: 8,
+        name: "Outsiders",
+        img: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/n0lgoHXEFhIwYBSnFaRXeGAaRw1.jpg"
+    },
 ]
 
 export default {
