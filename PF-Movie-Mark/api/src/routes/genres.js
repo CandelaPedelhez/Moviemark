@@ -1,7 +1,5 @@
 require("dotenv").config();
 const { API_KEY } = process.env;
-// const { API } = process.env;
-
 const { Router } = require('express');
 const router = Router();
 const axios = require("axios");
@@ -15,15 +13,17 @@ router.get('/', async (req, res, next) => {
         .then((response) => {
             let allGenresApi = response.data.genres.map(genres => 
                 ({
+                    id:   genres.id,
                     name: genres.name
                 }));
             allGenresApi.forEach(gen => {
                 Genre.findOrCreate({
                     where: {
+                        id:   gen.id,
                         name: gen.name
                     }
                 });
-            });true
+            });
         });
 
         const allGenresFound = await Genre.findAll();
