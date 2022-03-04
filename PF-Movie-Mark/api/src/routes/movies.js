@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+const { Router } = require('express');
+const router = Router();
+const { getMovies } = require('../controllers/movies');
+
+router.get('/', getMovies);
+
+
+module.exports = router
+=======
 const {Router} = require("express");
 const router =  Router();
 const {Movie} = require("../db");
@@ -16,3 +26,4 @@ router.get('/', async (req, res) => {
 });
 
 module.exports = router;
+>>>>>>> 93ed76cdd9305e109f0ccf81bc34299ea5cf23c9
