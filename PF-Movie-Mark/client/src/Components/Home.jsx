@@ -5,10 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
 import { getMovies, filterMovieByGenre, getGenres } from "../Actions";
+
 import Slider from "./Slider/Slider.jsx"
 import { topRated } from "./constants/top_rated.js"
 import { upcoming } from "./constants/upcoming.js"
 import "./Home.css"
+
 
 
 export default function Home() {
@@ -36,18 +38,6 @@ export default function Home() {
       <Link to="/groceries">
         <button>Groceries</button>
       </Link>
-      <Slider />
-      {movies?.map((movie) => {
-        return (
-          <Card
-            id={movie.id}
-            title={movie.title}
-            //genres={movie.genres}
-            vote_average={movie.vote_average}
-            img={movie.img}
-          />
-        );
-      })}
       <select onChange={(e) => handleFilteredGenre(e)}>
         <option value="genre" disabled />
         <option value="All">All</option>
