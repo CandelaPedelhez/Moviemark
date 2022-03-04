@@ -34,18 +34,12 @@ export default function reducer(state = initialState, action) {
         ...state,
         movies: genreFilter,
       };
+    case "FILTER_BY_ESTRENO":
+      let allMovie = state.allMovies;
+      let latestFilter = action.payload === "All" ?
+        state.allMovies : allMovie.filter(el => el.latest)
     case "GET_GROCERIES":
       return { ...state, groceries: action.payload };
-    /*case "FILTER_BY_ESTRENO":
-      let allMovies = state.allMovies;
-      let latestFilter =
-        action.payload === "All"
-          ? state.allMovies
-          : allMovies.filter((el) => el.latest);
-      return {
-        ...state,
-        movies: latestFilter,
-      };*/
     case "GET_UPCOMING":
       return {
         ...state,
