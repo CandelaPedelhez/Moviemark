@@ -2,6 +2,7 @@ const initialState = {
   movies: [],
   allMovies: [],
   genres: [],
+  groceries: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -31,6 +32,8 @@ export default function reducer(state = initialState, action) {
         ...state,
         movies: genreFilter,
       };
+    case "GET_GROCERIES":
+      return { ...state, groceries: action.payload };
 
     default:
       return state;

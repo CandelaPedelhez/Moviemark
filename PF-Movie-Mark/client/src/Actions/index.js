@@ -12,7 +12,7 @@ export function getMovies() {
 
 export function getGenres() {
   return async function (dispatch) {
-    let json = await axios.get("");
+    let json = await axios.get("http://localhost:3001/api/genres");
     return dispatch({
       type: "GET_GENRES",
       payload: json.data,
@@ -22,7 +22,7 @@ export function getGenres() {
 
 export function getGroceries() {
   return async function (dispatch) {
-    let json = await axios.get("");
+    let json = await axios.get("http://localhost:3001/api/groceries");
     return dispatch({
       type: "GET_GROCERIES",
       payload: json.data,
@@ -36,7 +36,7 @@ export function getMovieByTitle(title) {
       let json = await axios.get("" + title);
       return dispatch({ type: "GET_TITLE_MOVIE", payload: json.data });
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
       alert("Sorry, not Movie found with that title");
     }
   };
