@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getMovieByName } from "../Actions";
+import { getMovieByTitle } from "../Actions";
 //import "./searchBar.css";
 
 export default function SearchBar() {
@@ -15,7 +15,7 @@ export default function SearchBar() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getMovieByName(title));
+    dispatch(getMovieByTitle(title));
     setTitle("");
   }
 
