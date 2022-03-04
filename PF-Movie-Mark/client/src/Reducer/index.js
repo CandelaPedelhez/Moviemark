@@ -3,6 +3,8 @@ const initialState = {
   allMovies: [],
   genres: [],
   groceries: [],
+  upcoming: [],
+  topMovies: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -34,6 +36,26 @@ export default function reducer(state = initialState, action) {
       };
     case "GET_GROCERIES":
       return { ...state, groceries: action.payload };
+    /*case "FILTER_BY_ESTRENO":
+      let allMovies = state.allMovies;
+      let latestFilter =
+        action.payload === "All"
+          ? state.allMovies
+          : allMovies.filter((el) => el.latest);
+      return {
+        ...state,
+        movies: latestFilter,
+      };*/
+    case "GET_UPCOMING":
+      return {
+        ...state,
+        upcoming: action.payload,
+      };
+    case "GET_TOP_MOVIES":
+      return {
+        ...state,
+        topMovies: action.payload,
+      };
 
     default:
       return state;
