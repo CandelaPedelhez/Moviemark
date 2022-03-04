@@ -6,27 +6,28 @@ const { groceries } = require("../controllers/groceries.js");
 
 
 router.get('/', async (req, res, next) => {
-    try {
-        groceries.forEach(g => {
-            Groceries.findOrCreate({
-                where: {
-                    id:  g.id,
-                    name: g.name,
-                    price: g.price,
-                    stock: g.stock,
-                    img:   g.img
-                }
-            });
-        });
-        const allGroceries = await Groceries.findAll();
-        return res.status(200).send(allGroceries); 
+    // try {
+    //     groceries.forEach(g => {
+    //         Groceries.findOrCreate({
+    //             where: {
+    //                 id:  g.id,
+    //                 name: g.name,
+    //                 price: g.price,
+    //                 stock: g.stock,
+    //                 img:   g.img
+    //             }
+    //         });
+    //     });
+    //     const allGroceries = await Groceries.findAll();
+    //     return res.status(200).send(allGroceries); 
         
-    } catch (error) {
-        console.log(error);
-        next(error);
+    // } catch (error) {
+    //     console.log(error);
+    //     next(error);
         
-    }
+    // }
 
+    res.send(groceries)
 });
 
 module.exports = router;
