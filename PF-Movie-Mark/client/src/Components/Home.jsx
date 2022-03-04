@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import { filterMovieByGenre } from "../Actions";
+import Slider from "./Slider/Slider.jsx"
 export default function Home() {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <div>
       <NavBar />
+      <Slider/>
       <h2>Hola soy el Home</h2>
       <h3>Si lo sabemos</h3>
       <h4>Ah ok.</h4>
@@ -35,3 +37,4 @@ export default function Home() {
     </div>
   );
 }
+
