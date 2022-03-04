@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
 import { getMovies, filterMovieByGenre, getGenres } from "../Actions";
-
 import Slider from "./Slider/Slider.jsx";
-
+// IMPLEMENTAR carrito full front para setear un estado local donde se carguen+
+//-las cosas que el cliente clickee useState();
 export default function Home() {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
@@ -30,24 +30,9 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      {/*<h1>Hola soy el Home</h1>
-      <h2>Si lo sabemos</h2>
-      <h3>Ah ok.</h3>*/}
       <Link to="/groceries">
         <button>Groceries</button>
       </Link>
-      <Slider />
-      {movies?.map((movie) => {
-        return (
-          <Card
-            id={movie.id}
-            title={movie.title}
-            //genres={movie.genres}
-            vote_average={movie.vote_average}
-            img={movie.img}
-          />
-        );
-      })}
       <select onChange={(e) => handleFilteredGenre(e)}>
         <option value="genre" disabled />
         <option value="All">All</option>
@@ -59,6 +44,19 @@ export default function Home() {
           );
         })}
       </select>
+      <Slider />
+      {movies?.map((movie) => {
+        return (
+          <Card
+            key={movie.id}
+            id={movie.id}
+            title={movie.title}
+            //genres={movie.genres}
+            vote_average={movie.vote_average}
+            img={movie.img}
+          />
+        );
+      })}
     </div>
   );
 }
