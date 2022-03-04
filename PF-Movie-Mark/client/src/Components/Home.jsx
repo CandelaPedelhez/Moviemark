@@ -5,9 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
 import { getMovies, filterMovieByGenre, getGenres } from "../Actions";
-import Slider from "./Slider/Slider.jsx";
-// IMPLEMENTAR carrito full front para setear un estado local donde se carguen+
-//-las cosas que el cliente clickee useState();
+
+import Slider from "./Slider/Slider.jsx"
+import { topRated } from "./constants/top_rated.js"
+import { upcoming } from "./constants/upcoming.js"
+import "./Home.css"
+
+
+
 export default function Home() {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
@@ -44,19 +49,31 @@ export default function Home() {
           );
         })}
       </select>
-      <Slider />
-      {movies?.map((movie) => {
-        return (
-          <Card
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            //genres={movie.genres}
-            vote_average={movie.vote_average}
-            img={movie.img}
-          />
-        );
-      })}
+      <div classname="row">
+        <h2>Top Rated</h2>
+        <div className="row__posters">
+          {topRated?.map((e) => (
+            <div>
+              {/* <h3 key={e.id}>{e.name}</h3> */}
+              <img key={e.id} src={e.img} className="row__poster" />
+            </div>
+          )
+          )}
+        </div>
+      </div>
+      <br />
+      <div classname="row">
+        <h2>Upcoming</h2>
+        <div className="row__posters">
+          {upcoming?.map((e) => (
+            <div>
+              {/* <h3 key={e.id}>{e.name}</h3> */}
+              <img src={e.img} className="row__poster" />
+            </div>
+          )
+          )}
+        </div>
+      </div>
     </div>
   );
 }
