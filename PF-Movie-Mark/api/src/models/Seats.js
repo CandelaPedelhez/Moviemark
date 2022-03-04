@@ -6,15 +6,11 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.INTEGER,
-
-        primaryKey: true,
-        allowNull: false,
-
         allowNull: false,
         primaryKey: true,
       },
-      /*letter: {
-      type: DataTypes.STRING,
+    /*letter: {
+       type: DataTypes.STRING,
     },*/
     },
     {

@@ -1,10 +1,13 @@
-const { Router } = require("express");
-const router = Router();
-const { getMovies } = require("../controllers/movies");
-const { Movie } = require("../db");
+const {Router} = require("express");
+const router =  Router();
+const {Movie} = require("../db");
+const {getMovies} = require('../controllers/movies');
 
-router.get("/", async (req, res) => {
-  try {
+
+// -- All pelis
+router.get('/', async (req, res) => {
+    try {
+
     let allMovies = await getMovies();
     return res.status(200).send(allMovies);
   } catch (error) {
