@@ -1,19 +1,30 @@
+require("dotenv").config();
+const { API_KEY } = process.env;
 const axios = require('axios');
-const { Movie } = require('../db');
+const BASE_URL = "https://api.themoviedb.org/3";
 
 const getMovies = async () => {
-    let arrayMovies = [];
+    
     try {
-        for(let i=1000; i<= 10000; i++){
-             arrayMovies.push( await axios.get(`https://api.themoviedb.org/3/movie/${i}?api_key=ac87aff06f218cb641cd64d92635da66`))
-            // arrayMovies.push(movies.data)
-        }
-        
-
-
-
-    } catch (e) {
-        console.log(e);
+    
+        let movies = await axios.get(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`);
+                let auxMovies = movies.data.results.map(movie => {
+                    return {
+                        name: movie.title,
+                        description: movie.overview,
+                        popularity: movie.popularity,
+                        release_date: movie.release_date,
+                        languages: movie.original_language,
+                        vote_average: movie.vote_average,
+                        img: 'https://image.tmdb.org/t/p/w500' + movie.backdrop_path                     
+                    }
+                    })
+               
+                console.log("Movies: ", auxMovies);
+                return auxMovies;
+     
+    } catch (error) {
+        console.log(error.message);
     }
 }
 
