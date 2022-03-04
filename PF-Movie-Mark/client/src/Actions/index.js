@@ -1,4 +1,5 @@
 import axios from "axios";
+const {API_KEY} = process.env;
 
 export function getMovies() {
   return async function (dispatch) {

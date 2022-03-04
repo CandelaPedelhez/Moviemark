@@ -34,9 +34,9 @@ export default function reducer(state = initialState, action) {
         movies: genreFilter,
       };
     case "FILTER_BY_ESTRENO":
-      let allMovies = state.allMovies;
+      let allMovie = state.allMovies;
       let latestFilter = action.payload === "All" ?
-      state.allMovies : allMovies.filter(el => el.latest)
+        state.allMovies : allMovie.filter(el => el.latest)
       return {
         ...state,
         movies: latestFilter,
