@@ -5,8 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
 import { getMovies, filterMovieByGenre, getGenres } from "../Actions";
+import Slider from "./Slider/Slider.jsx"
+import { topRated } from "./constants/top_rated.js"
+import { upcoming } from "./constants/upcoming.js"
+import "./Home.css"
 
-import Slider from "./Slider/Slider.jsx";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -30,9 +33,6 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      {/*<h1>Hola soy el Home</h1>
-      <h2>Si lo sabemos</h2>
-      <h3>Ah ok.</h3>*/}
       <Link to="/groceries">
         <button>Groceries</button>
       </Link>
@@ -59,6 +59,31 @@ export default function Home() {
           );
         })}
       </select>
+      <div classname="row">
+        <h2>Top Rated</h2>
+        <div className="row__posters">
+          {topRated?.map((e) => (
+            <div>
+              {/* <h3 key={e.id}>{e.name}</h3> */}
+              <img key={e.id} src={e.img} className="row__poster" />
+            </div>
+          )
+          )}
+        </div>
+      </div>
+      <br />
+      <div classname="row">
+        <h2>Upcoming</h2>
+        <div className="row__posters">
+          {upcoming?.map((e) => (
+            <div>
+              {/* <h3 key={e.id}>{e.name}</h3> */}
+              <img src={e.img} className="row__poster" />
+            </div>
+          )
+          )}
+        </div>
+      </div>
     </div>
   );
 }
