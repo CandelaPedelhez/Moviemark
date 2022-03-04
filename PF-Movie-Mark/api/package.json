@@ -14,11 +14,7 @@
     "npm": ">=6.14.6"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "axios": "^0.26.0",
-=======
     "axios": "^0.25.0",
->>>>>>> 93ed76cdd9305e109f0ccf81bc34299ea5cf23c9
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -28,7 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.17.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

@@ -4,13 +4,8 @@ module.exports = (sequelize) => {
   sequelize.define("movie", {
     id: {
       type: DataTypes.INTEGER,
-<<<<<<< HEAD
-      primaryKey: true,
-      
-=======
       allowNull: false,
       primaryKey: true, 
->>>>>>> 93ed76cdd9305e109f0ccf81bc34299ea5cf23c9
     },
     title: {
       type: DataTypes.STRING,
