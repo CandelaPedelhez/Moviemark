@@ -4,6 +4,7 @@ const axios = require("axios");
 const BASE_URL = "https://api.themoviedb.org/3";
 
 const getMovies = async () => {
+
   try {
     let movies = await axios.get(
       `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
@@ -20,6 +21,10 @@ const getMovies = async () => {
         img: "https://image.tmdb.org/t/p/w500" + movie.poster_path,
       };
     });
+
+    
+    
+
 
     //console.log("Movies: ", auxMovies);
     return auxMovies;
