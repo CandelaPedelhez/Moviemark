@@ -3,24 +3,19 @@ const { API_KEY } = process.env;
 const axios = require('axios');
 const BASE_URL = "https://api.themoviedb.org/3";
 
-const getMovies = async () => {
+const getUpcoming = async () => {
     
     try {
     
-        let movies = await axios.get(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`);
+        let movies = await axios.get(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`);
                 let auxMovies = movies.data.results.map(movie => {
                     return {
                         name: movie.title,
-                        description: movie.overview,
-                        popularity: movie.popularity,
-                        release_date: movie.release_date,
-                        languages: movie.original_language,
-                        vote_average: movie.vote_average,
                         img: 'https://image.tmdb.org/t/p/w500' + movie.poster_path                     
                     }
                     })
                
-                console.log("Movies: ", auxMovies);
+                
                 return auxMovies;
      
     } catch (error) {
@@ -28,4 +23,4 @@ const getMovies = async () => {
     }
 }
 
-module.exports = { getMovies }
+module.exports = { getUpcoming }
