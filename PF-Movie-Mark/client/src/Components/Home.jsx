@@ -38,6 +38,7 @@ export default function Home() {
       <Link to="/groceries">
         <button>Groceries</button>
       </Link>
+      <Slider/>
       <select onChange={(e) => handleFilteredGenre(e)}>
         <option value="genre" disabled />
         <option value="All">All</option>
