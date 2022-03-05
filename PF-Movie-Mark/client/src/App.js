@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./Components/Landing";
 import Home from "./Components/Home";
+import Groceries from "./Components/Grocerie";
 
 function App() {
   return (

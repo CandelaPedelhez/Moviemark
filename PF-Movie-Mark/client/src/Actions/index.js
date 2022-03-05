@@ -1,15 +1,88 @@
 import axios from "axios";
+const { API_KEY } = process.env;
 
-export function getGroceries(){
-    return async function(dispatch){
-        try{
-            var json = await axios.get("http://localhost:3001/groceries")
-            return dispatch({
-                type: "GET_GROCERIES",
-                payload: json.data
-            })
-        } catch(e){
-            console.log(e)
-        }
+export function getMovies() {
+  return async function (dispatch) {
+    let json = await axios.get("http://localhost:3001/api/movies");
+    return dispatch({
+      type: "GET_MOVIES",
+      payload: json.data,
+    });
+  };
+}
+
+export function getGenres() {
+  return async function (dispatch) {
+    let json = await axios.get("http://localhost:3001/api/genres");
+    return dispatch({
+      type: "GET_GENRES",
+      payload: json.data,
+    });
+  };
+}
+
+export function getGroceries() {
+  return async function (dispatch) {
+    //hacer un BASE_URL
+    let json = await axios.get("http://localhost:3001/api/groceries");
+    return dispatch({
+      type: "GET_GROCERIES",
+      payload: json.data,
+    });
+  };
+}
+
+export function getMovieByTitle(title) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get("" + title);
+      return dispatch({ type: "GET_TITLE_MOVIE", payload: json.data });
+    } catch (error) {
+      //console.log(error.message);
+      alert("Sorry, not Movie found with that title");
     }
+  };
+}
+
+export function filterMovieByGenre(genre) {
+  return { type: "FILTER_BY_GENRE", genre };
+}
+
+export function filterByEstreno(payload) {
+  return {
+    type: "FILTER_BY_ESTRENO",
+    payload,
+  };
+}
+
+export function getUpcoming() {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
+      );
+      return dispatch({
+        type: "GET_UPCOMING",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getTopMovies() {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+      );
+      return dispatch({
+        type: "GET_TOP_MOVIES",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }

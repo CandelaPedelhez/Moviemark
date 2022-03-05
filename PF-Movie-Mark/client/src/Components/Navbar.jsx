@@ -1,10 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-//import SearchBar from "./SearchBar";
-//import "./navBar.css";
+import SearchBar from "./SearchBar";
 
 export default function NavBar() {
-  const dispatch = useDispatch();
+  return (
+    <div>
+      <Link to="/home">MOVIE MARKET</Link>
+      <SearchBar />
+    </div>
+  );
 }
