@@ -44,6 +44,20 @@ export function getMovieByTitle(title) {
   };
 }
 
+export function getDetails(payload){
+  return async function(dispatch){
+      try{
+          var json = await axios.get("http://localhost:3001/api/movies" + payload)
+          return dispatch({
+              type: "GET_DETAILS",
+              payload: json.data
+          })
+      } catch(e){
+          console.log(e)
+      }
+  }
+}
+
 export function filterMovieByGenre(genre) {
   return { type: "FILTER_BY_GENRE", genre };
 }
