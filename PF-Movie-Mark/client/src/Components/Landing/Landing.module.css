@@ -1,0 +1,61 @@
+.page{
+    display:flex;
+    height:90vh;
+    justify-content: center;
+    align-items: center;
+    animation-duration: 1s;
+    animation-name: slideinpage;
+}
+
+.textland{
+    text-align: left;
+}
+
+.button{
+    border-color: transparent;
+    border-radius: 30px;
+    color:white;
+    font-family: calibri;
+    background-color: #5bc1f0;
+    height: 2em;
+    margin-bottom: 15px;
+}
+
+.button:hover{
+    background-color: #744E72;
+    cursor: pointer;
+    color:white;
+}
+
+.img{
+    width: 95%;
+    -webkit-filter: drop-shadow(1px 1px 0 #5bcdf0)
+    drop-shadow(-1px -1px 0 #5bcdf0);
+    filter: drop-shadow(1px 1px 0 #5bcdf0) 
+    drop-shadow(-1px -1px 0 #5bcdf0);
+}
+
+.img:hover{
+    -webkit-filter: drop-shadow(1px 1px 0 #5b8af0)
+    drop-shadow(-1px -1px 0 #5b8af0);
+    filter: drop-shadow(1px 1px 0 #5b8af0) 
+    drop-shadow(-1px -1px 0 #5b8af0);
+}
+
+p{
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
+
+@keyframes slideinpage{
+    from {
+      margin-top: 20%;
+      width: 100%
+    }
+  
+    to {
+      margin-top: 0%;
+      width: 100%;
+    }
+}
+
