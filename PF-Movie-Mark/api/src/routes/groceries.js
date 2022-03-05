@@ -14,7 +14,8 @@ router.get('/', async (req, res, next) => {
                     name: g.name,
                     price: g.price,
                     stock: g.stock,
-                    img:   g.img
+                    img:   g.img,
+                    description: g.description
                 }
             });
         });

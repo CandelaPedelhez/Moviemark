@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/groceries" element={<Groceries />} />
       </Routes>
     </BrowserRouter>
   );
