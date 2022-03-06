@@ -26,3 +26,4 @@ conn.sync({ force: true }).then(() => {
     console.log(`Server on port 3001`); // eslint-disable-line no-console
   });
 });
+
