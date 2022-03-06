@@ -5,9 +5,9 @@
     padding: 10px;
 }
 
-/* .row__posters::-webkit-scrollbar{
+.row__posters::-webkit-scrollbar{
     display: none;
-} */
+}
 
 .row__poster {
     display: block;
@@ -16,8 +16,19 @@
     max-height: 200px;
     transition: transform 450ms;
     margin-right: 150px;
+    cursor: pointer;
 }
 
 .row__poster:hover {
-    transform: scale(1.10)
+    transform: scale(1.15)
+}
+
+.onstream {
+    height: 6000px;
+}
+
+h2 {
+    margin-left: 0.5vh;
+    color: #F3F1F5;
+    font-family: 'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
