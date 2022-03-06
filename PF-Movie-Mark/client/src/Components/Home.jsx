@@ -49,7 +49,6 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-
       <Slider />
       <select onChange={(e) => handleFilteredGenre(e)}>
         <option value="filter by genre" disabled />
