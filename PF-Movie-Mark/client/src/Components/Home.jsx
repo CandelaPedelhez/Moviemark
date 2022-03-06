@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
@@ -41,11 +40,12 @@ export default function Home() {
 
   return (
     <div>
+      <div>
       <NavBar />
-      <Link to="/groceries">
-        <button>Groceries</button>
-      </Link>
       <Slider/>
+      </div>
+      <div>
+      <h3>Filter by genre</h3>
       <select onChange={(e) => handleFilteredGenre(e)}>
         <option value="genre" disabled />
         <option value="All">All</option>
@@ -57,6 +57,7 @@ export default function Home() {
           );
         })}
       </select>
+      </div>
       <div>        
         <h2>On Stream</h2>
       <div className="row__posters">
@@ -68,12 +69,12 @@ export default function Home() {
             //genres={movie.genres}
             // vote_average={movie.vote_average}
             img={movie.img}
-            className="row__poster"
           />
         );
       })}
       </div>
       </div>
+      <br />
       <div classname="row">
         <h2>Top Rated</h2>
         <div className="row__posters">
