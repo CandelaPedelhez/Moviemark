@@ -23,6 +23,7 @@ export function getGenres() {
 
 export function getGroceries() {
   return async function (dispatch) {
+    //hacer un BASE_URL
     let json = await axios.get("http://localhost:3001/api/groceries");
     return dispatch({
       type: "GET_GROCERIES",

@@ -9,6 +9,7 @@ import Slider from "./Slider/Slider.jsx"
 import "./Home.css"
 
 
+
 export default function Home() {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
@@ -44,7 +45,7 @@ export default function Home() {
       <Link to="/groceries">
         <button>Groceries</button>
       </Link>
-      <Slider />
+      <Slider/>
       <select onChange={(e) => handleFilteredGenre(e)}>
         <option value="genre" disabled />
         <option value="All">All</option>
