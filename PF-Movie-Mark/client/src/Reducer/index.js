@@ -5,7 +5,7 @@ const initialState = {
   groceries: [],
   upcoming: [],
   topMovies: [],
-  details: []
+  details: [],
   topRated: [],
 
 };
