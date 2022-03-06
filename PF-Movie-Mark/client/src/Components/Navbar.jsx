@@ -8,6 +8,9 @@ export default function NavBar() {
     <div>
       <Link to="/home">MOVIE MARKET</Link>
       <SearchBar />
+      <Link to="/groceries">
+        <button>Groceries</button>
+      </Link>
     </div>
   );
 }
