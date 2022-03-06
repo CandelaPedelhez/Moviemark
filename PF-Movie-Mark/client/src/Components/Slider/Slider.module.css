@@ -1,10 +1,10 @@
 .slider{
     position: relative;
-    height: 77vh;
+    height: 55vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: #7F7C82;;
 }
 
 .text{
@@ -30,7 +30,7 @@
 }
 
 .img{
-    width:1250px;
+    width:1259px;
     height:440px;
 }
 /* 1212x368 */
@@ -106,4 +106,10 @@
     font-family: calibri;
     background-color: #90B8F8;
     height: 2em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: black;
+    color:#90B8F8;
 }
