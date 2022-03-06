@@ -6,10 +6,21 @@ const {getMovies} = require('../controllers/movies');
 
 // -- All pelis
 router.get('/', async (req, res) => {
-    try {
+  const {title} = req.query;
+  let allMovies = await getMovies();
+  
+  try {
+    if(title){
+      let movieByName = await allMovies.filter(nameMovie =>
+         nameMovie.title.toLowerCase() === title.toLowerCase());
+         
+         movieByName.length ? 
+         res.status(200).send(movieByName) :
+         res.status(404).send('Sorry, Movie not found :(');
+    }else{
+      res.status(200).send(allMovies);               
+    }
 
-    let allMovies = await getMovies();
-    return res.status(200).send(allMovies);
   } catch (error) {
     console.log(error.message);
   }
