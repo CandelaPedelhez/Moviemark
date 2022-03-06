@@ -1,0 +1,56 @@
+.nav {
+    display: flex;
+    background-color: #BFA2DB;
+    padding: 15px;
+}
+
+.cart {
+    margin-top: 7px;
+    height: 25px;
+    margin-left: 3vh;
+}
+
+.cart:hover {
+    transform: scale(1.5)
+}
+
+
+.user {
+    margin-top: 7px;
+    height: 25px;
+    margin-left: 4vh;
+}
+
+.user:hover {
+    transform: scale(1.5)
+}
+
+.btn {
+    color: rgba(0, 0, 0, 0.973);
+    font-size: 2.5vh;
+    font-family: "Bebas Neue", sans-serif;
+    margin-left: 50vh;
+    margin-top: 9px;
+}
+
+.btn:hover {
+    color: whitesmoke;
+    transform: scale(1.5)
+}
+
+.btnHome {
+    color: whitesmoke;
+    font-size: 4vh;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.btnHome:hover {
+    transform: scale(1.20)
+}
+
+a {
+    color: rgb(0, 0, 0);
+  }
+  a:hover {
+     color: whitesmoke;
+  }
