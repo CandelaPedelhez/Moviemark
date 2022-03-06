@@ -1,25 +1,39 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
-import { getMovies, filterMovieByGenre, getGenres, getUpcoming, getTopRated } from "../Actions";
-import Slider from "./Slider/Slider.jsx"
-import "./Home.css"
-
-
+import Slider from "./Slider/Slider.jsx";
+import "./Home.css";
+import {
+  getMovies,
+  filterMovieByGenre,
+  getGenres,
+  getUpcoming,
+  getTopRated,
+  orderBy,
+} from "../Actions";
 
 export default function Home() {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
   //console.log("esta son las pelis", movies);
   const genres = useSelector((state) => state.genres);
+  const [order, setOrder] = useState("");
+  //const [ticket, setTicket] = useState([]);
   const upcoming = useSelector((state) => state.upcoming);
   const topRated = useSelector((state) => state.topRated);
 
   function handleFilteredGenre(e) {
     e.preventDefault();
     dispatch(filterMovieByGenre(e.target.value));
+  }
+
+  function handleSort(e) {
+    e.preventDefault();
+    dispatch(orderBy(e.target.value));
+
+    setOrder(`ordenado, ${e.target.value}`);
   }
 
   useEffect(() => {
@@ -56,6 +70,14 @@ export default function Home() {
             </option>
           );
         })}
+      </select>
+      <select onChange={(e) => handleSort(e)}>
+        <option value="order by" disabled>
+          Sort:
+        </option>
+        <option value="All">All</option>
+        <option value="Asc">Asc</option>
+        <option value="Desc">Desc</option>
       </select>
       </div>
       <div>        
