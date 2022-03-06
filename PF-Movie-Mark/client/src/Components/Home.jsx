@@ -4,11 +4,8 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
-import { getMovies, filterMovieByGenre, getGenres } from "../Actions";
-
+import { getMovies, filterMovieByGenre, getGenres, getUpcoming, getTopRated } from "../Actions";
 import Slider from "./Slider/Slider.jsx"
-import { topRated } from "./constants/top_rated.js"
-import { upcoming } from "./constants/upcoming.js"
 import "./Home.css"
 
 
@@ -18,6 +15,8 @@ export default function Home() {
   const movies = useSelector((state) => state.movies);
   //console.log("esta son las pelis", movies);
   const genres = useSelector((state) => state.genres);
+  const upcoming = useSelector((state) => state.upcoming);
+  const topRated = useSelector((state) => state.topRated);
 
   function handleFilteredGenre(e) {
     e.preventDefault();
@@ -30,6 +29,14 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getGenres());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getUpcoming());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getTopRated());
   }, []);
 
   return (
@@ -50,6 +57,23 @@ export default function Home() {
           );
         })}
       </select>
+      <div>        
+        <h2>On Stream</h2>
+      <div className="row__posters">
+      {movies?.map((movie) => {
+        return (
+          <Card
+            id={movie.id}
+            // title={movie.title}
+            //genres={movie.genres}
+            // vote_average={movie.vote_average}
+            img={movie.img}
+            className="row__poster"
+          />
+        );
+      })}
+      </div>
+      </div>
       <div classname="row">
         <h2>Top Rated</h2>
         <div className="row__posters">
@@ -63,7 +87,7 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <div classname="row">
+      <div className="row">
         <h2>Upcoming</h2>
         <div className="row__posters">
           {upcoming?.map((e) => (

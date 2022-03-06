@@ -4,7 +4,7 @@ const initialState = {
   genres: [],
   groceries: [],
   upcoming: [],
-  topMovies: [],
+  topRated: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -34,10 +34,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         movies: genreFilter,
       };
-    case "FILTER_BY_ESTRENO":
-      let allMovie = state.allMovies;
-      let latestFilter = action.payload === "All" ?
-        state.allMovies : allMovie.filter(el => el.latest)
     case "GET_GROCERIES":
       return { ...state, groceries: action.payload };
     case "GET_UPCOMING":
@@ -45,10 +41,10 @@ export default function reducer(state = initialState, action) {
         ...state,
         upcoming: action.payload,
       };
-    case "GET_TOP_MOVIES":
+    case "GET_TOP_RATED":
       return {
         ...state,
-        topMovies: action.payload,
+        topRated: action.payload,
       };
 
     default:
