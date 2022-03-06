@@ -27,7 +27,9 @@ router.get('/', async (req, res, next) => {
                       id:  g.id,
                       name: g.name,
                       price: g.price,
-                      stock: g.stock,
+                    //   stock: g.stock,
+                      description: g.description,
+                      typeGrocerie: g.type,
                       img:   g.img
                     }
                 });
