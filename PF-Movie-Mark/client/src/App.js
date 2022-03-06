@@ -3,6 +3,7 @@ import LandingPage from "./Components/Landing/Landing";
 import Home from "./Components/Home";
 import Groceries from "./Components/Groceries";
 import Details from "./Components/Details";
+import "./App.css"
 
 function App() {
   return (

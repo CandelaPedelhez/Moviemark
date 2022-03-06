@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getMovieByTitle } from "../Actions";
-//import "./searchBar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import "./SearchBar.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -11,25 +13,34 @@ export default function SearchBar() {
   function handleChange(e) {
     e.preventDefault();
     setTitle(e.target.value);
-    console.log(title);
+    //console.log(name);
   }
-
   function handleSubmit(e) {
+    if (e.key === "Enter") {
     e.preventDefault();
     dispatch(getMovieByTitle(title));
-    //setTitle("");
+    setTitle("");
   }
+}
+
+const handleClearInput = (e) => {
+  e.preventDefault();
+  setTitle("");
+};
 
   return (
-    <>
+    <div className="searchBar">
       <input
         type="text"
         placeholder="Search Movie"
         onChange={(e) => handleChange(e)}
+        className="input"
+        onKeyPress={handleSubmit}
       ></input>
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
-        Search
-      </button>
-    </>
+      {title.length === 0 ? (<button className="btnSearch"><FontAwesomeIcon icon={faSearch} />
+            </button>) : (<button type="button" onClick={(e) => handleClearInput(e)} className="btnClear">
+                <FontAwesomeIcon icon={faTimes} />
+            </button>)}
+      </div>
   );
 }

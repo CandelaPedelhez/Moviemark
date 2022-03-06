@@ -1,30 +1,39 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
 import Slider from "./Slider/Slider.jsx";
 import "./Home.css";
-import { getMovies, filterMovieByGenre, getGenres, getUpcoming, getTopRated } from "../Actions";
-
-
+import {
+  getMovies,
+  filterMovieByGenre,
+  getGenres,
+  getUpcoming,
+  getTopRated,
+  orderBy,
+} from "../Actions";
 
 export default function Home() {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
   //console.log("esta son las pelis", movies);
   const genres = useSelector((state) => state.genres);
-
-  const [ticket, setTicket] = useState([]);
-
+  const [order, setOrder] = useState("");
+  //const [ticket, setTicket] = useState([]);
   const upcoming = useSelector((state) => state.upcoming);
   const topRated = useSelector((state) => state.topRated);
-
 
   function handleFilteredGenre(e) {
     e.preventDefault();
     dispatch(filterMovieByGenre(e.target.value));
+  }
+
+  function handleSort(e) {
+    e.preventDefault();
+    dispatch(orderBy(e.target.value));
+
+    setOrder(`ordenado, ${e.target.value}`);
   }
 
   useEffect(() => {
@@ -45,13 +54,14 @@ export default function Home() {
 
   return (
     <div>
+      <div>
       <NavBar />
-      <Link to="/groceries">
-        <button>Groceries</button>
-      </Link>
-      <Slider />
+      <Slider/>
+      </div>
+      <div>
+      <h3>Filter by genre</h3>
       <select onChange={(e) => handleFilteredGenre(e)}>
-        <option value="filter by genre" disabled />
+        <option value="genre" disabled />
         <option value="All">All</option>
         {genres?.map((genre) => {
           return (
@@ -61,24 +71,15 @@ export default function Home() {
           );
         })}
       </select>
-
-      {movies?.map((movie) => {
-        return (
-          <div>
-            <Card
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              //genres={movie.genres}
-              vote_average={movie.vote_average}
-              img={movie.img}
-            />
-            <button>Add to cart</button>
-          </div>
-        );
-      })}
-      <div className="row">
-
+      <select onChange={(e) => handleSort(e)}>
+        <option value="order by" disabled>
+          Sort:
+        </option>
+        <option value="All">All</option>
+        <option value="Asc">Asc</option>
+        <option value="Desc">Desc</option>
+      </select>
+      </div>
       <div>        
         <h2>On Stream</h2>
       <div className="row__posters">
@@ -90,27 +91,22 @@ export default function Home() {
             //genres={movie.genres}
             // vote_average={movie.vote_average}
             img={movie.img}
-            className="row__poster"
           />
         );
       })}
       </div>
       </div>
+      <br />
       <div classname="row">
-
         <h2>Top Rated</h2>
         <div className="row__posters">
           {topRated?.map((e) => (
             <div>
               {/* <h3 key={e.id}>{e.name}</h3> */}
-              <img
-                key={e.id}
-                src={e.img}
-                alt="img not found"
-                className="row__poster"
-              />
+              <img key={e.id} src={e.img} className="row__poster" />
             </div>
-          ))}
+          )
+          )}
         </div>
       </div>
       <br />
@@ -120,9 +116,10 @@ export default function Home() {
           {upcoming?.map((e) => (
             <div>
               {/* <h3 key={e.id}>{e.name}</h3> */}
-              <img src={e.img} alt="img not found" className="row__poster" />
+              <img src={e.img} className="row__poster" />
             </div>
-          ))}
+          )
+          )}
         </div>
       </div>
     </div>
