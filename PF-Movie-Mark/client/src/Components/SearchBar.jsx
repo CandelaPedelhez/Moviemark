@@ -11,12 +11,13 @@ export default function SearchBar() {
   function handleChange(e) {
     e.preventDefault();
     setTitle(e.target.value);
-    //console.log(name);
+    console.log(title);
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(getMovieByTitle(title));
-    setTitle("");
+    //setTitle("");
   }
 
   return (
@@ -25,7 +26,6 @@ export default function SearchBar() {
         type="text"
         placeholder="Search Movie"
         onChange={(e) => handleChange(e)}
-        className="input-search-bar"
       ></input>
       <button type="submit" onClick={(e) => handleSubmit(e)}>
         Search

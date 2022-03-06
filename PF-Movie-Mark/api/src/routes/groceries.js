@@ -1,49 +1,28 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const router = Router();
 const { Groceries } = require("../db");
 const { groceries } = require("../controllers/groceries.js");
 
+router.get("/", async (req, res, next) => {
+  try {
+    groceries.forEach((g) => {
+      Groceries.findOrCreate({
+        where: {
+          id: g.id,
+          name: g.name,
+          price: g.price,
+          stock: g.stock,
+          img: g.img,
+        },
+      });
+    });
 
-router.get('/', async (req, res, next) => {
-<<<<<<< HEAD
-    try {
-        groceries.forEach(g => {
-            Groceries.findOrCreate({
-                where: {
-                    id:  g.id,
-                    name: g.name,
-                    price: g.price,
-                    stock: g.stock,
-                    img:   g.img,
-                    description: g.description
-                }
-            });
-        });
-=======
-    try {    
-         groceries.forEach(g => {      
-              Groceries.findOrCreate({
-                  where: {
-                      id:  g.id,
-                      name: g.name,
-                      price: g.price,
-                      stock: g.stock,
-                      img:   g.img
-                    }
-                });
-          
-             });
-        
->>>>>>> main
-        const allGroceries = await Groceries.findAll();
-        return res.status(200).send(allGroceries); 
-        
-    } catch (error) {
-        console.log(error);
-        next(error);
-        
-    }
-
+    const allGroceries = await Groceries.findAll();
+    return res.status(200).send(allGroceries);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 });
 
 module.exports = router;

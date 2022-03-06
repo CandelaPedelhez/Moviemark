@@ -13,8 +13,10 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         movies: action.payload,
+        allMovies: action.payload,
       };
     case "GET_TITLE_MOVIE":
+      //console.log(action.payload);
       return { ...state, movies: action.payload };
     case "GET_GENRES":
       return { ...state, genres: action.payload };
@@ -36,8 +38,10 @@ export default function reducer(state = initialState, action) {
       };
     case "FILTER_BY_ESTRENO":
       let allMovie = state.allMovies;
-      let latestFilter = action.payload === "All" ?
-        state.allMovies : allMovie.filter(el => el.latest)
+      let latestFilter =
+        action.payload === "All"
+          ? state.allMovies
+          : allMovie.filter((el) => el.latest);
     case "GET_GROCERIES":
       return { ...state, groceries: action.payload };
     case "GET_UPCOMING":
