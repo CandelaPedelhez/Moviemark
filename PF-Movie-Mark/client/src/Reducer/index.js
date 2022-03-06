@@ -41,41 +41,38 @@ export default function reducer(state = initialState, action) {
         movies: genreFilter,
       };
     case "ORDER_BY":
-      let sortedMovies;
-      switch (action.payload) {
-        case "Asc":
-          sortedMovies = state.movies.sort(function (a, b) {
-            if (a.title > b.title) {
-              return 1;
-            }
-            if (b.title > a.title) {
-              return -1;
-            }
-            return 0;
-          });
-          break;
-        case "Desc":
-          sortedMovies = state.movies.sort(function (a, b) {
-            if (a.title > b.title) {
-              return -1;
-            }
-            if (b.title > a.title) {
-              return 1;
-            }
-            return 0;
-          });
-          break;
-        default:
-          return (sortedMovies = state.movies);
-      }
-      return { ...state, movies: sortedMovies };
-    case "FILTER_BY_ESTRENO":
+      let aux = [...state.movies];
+      let sortedMovies =
+        action.payload === "A-Z"
+          ? aux.sort(function (a, b) {
+              if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                return 1;
+              }
+              if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return -1;
+              }
+              return 0;
+            })
+          : aux.sort(function (a, b) {
+              if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                return -1;
+              }
+              if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        movies: action.payload === "default" ? state.allMovies : sortedMovies,
+      };
+    /*case "FILTER_BY_ESTRENO":
       let allMovie = state.allMovies;
       let latestFilter =
         action.payload === "All"
           ? state.allMovies
           : allMovie.filter((el) => el.latest);
-      break;
+      break;*/
     case "GET_GROCERIES":
       return { ...state, groceries: action.payload };
     case "GET_UPCOMING":
