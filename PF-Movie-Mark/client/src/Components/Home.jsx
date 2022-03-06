@@ -80,21 +80,6 @@ export default function Home() {
         <option value="Desc">Desc</option>
       </select>
 
-      {movies?.map((movie) => {
-        return (
-          <div>
-            <Card
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              //genres={movie.genres}
-              vote_average={movie.vote_average}
-              img={movie.img}
-            />
-            <button>Add to cart</button>
-          </div>
-        );
-      })}
       <div className="row">
         <div>
           <h2>On Stream</h2>
