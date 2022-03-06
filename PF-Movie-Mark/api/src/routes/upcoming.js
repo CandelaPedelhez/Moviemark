@@ -9,7 +9,7 @@ const {getUpcoming} = require('../controllers/upcoming');
 router.get('/', async (req, res) => {
     try {
     let allMovies = await getUpcoming();
-    console.log(allMovies);
+    // console.log(allMovies);
     return res.status(200).send(allMovies)
 } catch (error) {
     console.log(error.message);

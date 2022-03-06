@@ -9,7 +9,7 @@ const {getTopRated} = require('../controllers/top_rated');
 router.get('/', async (req, res) => {
     try {
     let allMovies = await getTopRated();
-    console.log(allMovies);
+    // console.log(allMovies);
     return res.status(200).send(allMovies)
 } catch (error) {
     console.log(error.message);
