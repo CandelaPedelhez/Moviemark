@@ -1,5 +1,5 @@
 import axios from "axios";
-const { API_KEY } = process.env;
+//const { API_KEY } = process.env;
 
 export function getMovies() {
   return async function (dispatch) {
@@ -68,4 +68,8 @@ export function getTopRated() {
       payload: json.data,
     });
   };
+}
+
+export function orderBy(payload) {
+  return { type: "ORDER_BY", payload };
 }
