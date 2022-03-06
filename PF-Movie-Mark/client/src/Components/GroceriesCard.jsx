@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function GroceriesCard({ img, name, price, description }) {
+
   return (
     <div>
       <h2>{name}</h2>
@@ -10,3 +11,4 @@ export default function GroceriesCard({ img, name, price, description }) {
     </div>
   );
 }
+
