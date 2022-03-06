@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./Components/Landing/Landing";
 import Home from "./Components/Home";
 import Groceries from "./Components/Groceries";
+import "./App.css"
 
 function App() {
   return (
