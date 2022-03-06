@@ -6,6 +6,7 @@ import { getDetails } from "../Actions/index";
 import { useEffect } from "react";
 
 export default function Details() {
+
   const dispatch = useDispatch();
   const movieId = useParams();
   const myMovie = useSelector((state) => state.details);
@@ -16,36 +17,37 @@ export default function Details() {
 
   return (
     <div>
-      <h1>{myMovie.title}</h1>
-      <img src={myMovie.img} alt="img not found" />
-      <div>
-        <h3>Description</h3>
-        <p>{myMovie.description}</p>
-      </div>
-      <div>
-        <h3>Released</h3>
-        <p>{myMovie.release_date}</p>
-      </div>
-      <div>
-        <h3>Genres</h3>
-        {myMovie.genres.map((e) => (
-          <li key={e.id}>{e.name}</li>
-        ))}
-      </div>
-      <div>
-        <h3>Languages</h3>
-        {myMovie.languages.map((e) => (
-          <li>{e}</li>
-        ))}
-      </div>
-      <div>
-        <h3>Popularity</h3>
-        <p>{myMovie.popularity}</p>
-      </div>
-      <div>
-        <h3>Vote average</h3>
-        <p>{myMovie.vote_average}</p>
-      </div>
+      {
+        (myMovie.length === 0) ?
+          <div >
+            <p >Loading ...</p>
+          </div>
+          :
+          <div>
+            <h1>{myMovie[0].title}</h1>
+            <img src={myMovie[0].img} alt="img not found" />
+            <div>
+              <h3>Description</h3>
+              <p>{myMovie[0].description}</p>
+            </div>
+            <div>
+              <h3>Released</h3>
+              <p>{myMovie[0].release_date}</p>
+            </div>
+            <div>
+              <h3>Languages</h3>
+              <p>{myMovie[0].languages}</p>
+            </div>
+            <div>
+              <h3>Popularity</h3>
+              <p>{myMovie[0].popularity}</p>
+            </div>
+            <div>
+              <h3>Vote average</h3>
+              <p>{myMovie[0].vote_average}</p>
+            </div>
+          </div>
+      }
     </div>
   );
 }

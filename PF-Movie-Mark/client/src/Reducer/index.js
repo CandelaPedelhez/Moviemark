@@ -16,6 +16,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         movies: action.payload,
         allMovies: action.payload,
+        details: [],
       };
     case "GET_TITLE_MOVIE":
       //console.log(action.payload);
