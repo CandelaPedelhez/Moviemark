@@ -35,13 +35,29 @@ export function getGroceries() {
 export function getMovieByTitle(title) {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:3001/api/movies?title=" + title);
+      let json = await axios.get(
+        "http://localhost:3001/api/movies?title=" + title
+      );
       return dispatch({ type: "GET_TITLE_MOVIE", payload: json.data });
     } catch (error) {
       //console.log(error.message);
       alert("Sorry, not Movie found with that title");
     }
   };
+}
+
+export function getDetails(payload){
+  return async function(dispatch){
+      try{
+          var json = await axios.get("http://localhost:3001/api/movies" + payload)
+          return dispatch({
+              type: "GET_DETAILS",
+              payload: json.data
+          })
+      } catch(e){
+          console.log(e)
+      }
+  }
 }
 
 export function filterMovieByGenre(genre) {
