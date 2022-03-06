@@ -35,7 +35,7 @@ export function getGroceries() {
 export function getMovieByTitle(title) {
   return async function (dispatch) {
     try {
-      let json = await axios.get("" + title);
+      let json = await axios.get("http://localhost:3001/api/movies?title=" + title);
       return dispatch({ type: "GET_TITLE_MOVIE", payload: json.data });
     } catch (error) {
       //console.log(error.message);
