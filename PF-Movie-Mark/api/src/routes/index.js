@@ -7,7 +7,8 @@ const { Router } = require("express");
 const genresRoute = require('./genres.js');
 const groceriesRoute = require('./groceries.js');
 const moviesRoute = require('./movies.js');
-const upcomingRoute = require('./upcoming.js')
+const upcomingRoute = require('./upcoming.js');
+const topRatedRoute = require('./top_rated.js');
 
 
 const router = Router();
@@ -21,6 +22,7 @@ router.use('/genres', genresRoute);
 router.use('/groceries', groceriesRoute);
 router.use('/movies', moviesRoute);
 router.use('/upcoming', upcomingRoute);
+router.use('/top_rated', topRatedRoute);
 
 
 module.exports = router;
