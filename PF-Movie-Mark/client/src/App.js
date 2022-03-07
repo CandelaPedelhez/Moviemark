@@ -12,7 +12,9 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/groceries" element={<Groceries />} />
-        <Route path='/movies/:id' element={<Details />} />
+        <Route path='/movies/:id' element={<Details movies="movies"/>} />
+        <Route path='/upcoming/:id' element={<Details movies="upcoming"/>} />
+        <Route path='/toprated/:id' element={<Details movies="toprated"/>} />
       </Routes>
     </BrowserRouter>
   );

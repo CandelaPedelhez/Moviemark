@@ -85,6 +85,7 @@ export default function Home() {
       {movies?.map((movie) => {
         return (
           <Card
+            movies={"movies"}
             id={movie.id}
             // title={movie.title}
             //genres={movie.genres}
@@ -99,12 +100,15 @@ export default function Home() {
       <div classname="row">
         <h2>Top Rated</h2>
         <div className="row__posters">
-          {topRated?.map((e) => (
-            <div>
-              {/* <h3 key={e.id}>{e.name}</h3> */}
-              <img key={e.id} src={e.img} className="row__poster" />
-            </div>
-          )
+          {topRated?.map((e) => {
+            return (
+              <Card
+                movies={"topRated"}
+                id={e.id}
+                img={e.img}
+              />
+            );
+            }
           )}
         </div>
       </div>
@@ -112,12 +116,15 @@ export default function Home() {
       <div className="row">
         <h2>Upcoming</h2>
         <div className="row__posters">
-          {upcoming?.map((e) => (
-            <div>
-              {/* <h3 key={e.id}>{e.name}</h3> */}
-              <img src={e.img} className="row__poster" />
-            </div>
-          )
+          {upcoming?.map((e) => {
+            return (
+              <Card
+                movies={"upcoming"}
+                id={e.id}
+                img={e.img}
+              />
+            );
+            }
           )}
         </div>
       </div>

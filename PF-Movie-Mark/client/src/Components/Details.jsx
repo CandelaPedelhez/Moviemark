@@ -1,19 +1,31 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails } from "../Actions/index";
+import { getDetails, getTopRatedForId, getUpcomingForId } from "../Actions/index";
 import { useEffect } from "react";
 
-export default function Details() {
+export default function Details({movies}) {
 
   const dispatch = useDispatch();
   const movieId = useParams();
   const myMovie = useSelector((state) => state.details);
 
-  useEffect(() => {
-    dispatch(getDetails(movieId.id));
-  }, [dispatch]);
+  const makedispatch = () =>{
+    if(movies==="movies"){
+      dispatch(getDetails(movieId.id));
+    }
+    else if(movies==="upcoming"){
+      dispatch(getUpcomingForId(movieId.id));
+    }
+    else{
+      dispatch(getTopRatedForId(movieId.id));
+    }
+  }
+
+  useEffect(()=>{
+    makedispatch();
+  })
 
   return (
     <div>
@@ -48,6 +60,11 @@ export default function Details() {
             </div>
           </div>
       }
+      <div>
+        <Link to="/home">
+          <button>Go back!</button>
+        </Link>
+      </div>
     </div>
   );
 }

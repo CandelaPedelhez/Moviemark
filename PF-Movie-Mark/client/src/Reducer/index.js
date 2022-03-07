@@ -82,6 +82,10 @@ export default function reducer(state = initialState, action) {
         ...state,
         upcoming: action.payload,
       };
+    case "GET_TOP_RATED_ID":
+      return { ...state, details: action.payload };
+    case "GET_UPCOMING_ID": 
+      return { ...state, details: action.payload };
     case "GET_TOP_RATED":
       return {
         ...state,
