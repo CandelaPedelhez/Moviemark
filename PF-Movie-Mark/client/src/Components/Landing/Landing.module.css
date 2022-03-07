@@ -26,6 +26,15 @@
     color: #f4523b;
 }
 
+.textland h1:hover {
+    color: #f4523b;
+}
+
+.textland h2:hover {
+    text-align: center;
+    color: whitesmoke;
+}
+
 .button {
     position: relative;
     padding: 10px 40px;
@@ -47,7 +56,7 @@
     margin-top: 10vh;
    }
    
-   button:hover, button:active {
+   .button:hover, button:active {
     -webkit-transform: translate(0px,5px);
     -ms-transform: translate(0px,5px);
     transform: translate(0px,5px);
@@ -72,10 +81,14 @@
     drop-shadow(-1px -1px 0 #f4523b);
 }
 
-p{
+.p{
     margin-top: 0.5vh;
     color: whitesmoke;
     text-align: center;
+}
+
+.p:hover {
+    color: #dac934
 }
 
 

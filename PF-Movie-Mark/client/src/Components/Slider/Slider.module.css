@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #7F7C82;;
+    background-color: rgb(24, 24, 24);
 }
 
 .text{
@@ -104,12 +104,12 @@
     border-radius: 6px;
     color:black;
     font-family: calibri;
-    background-color: #90B8F8;
+    background-color: #b983ff;
     height: 2em;
     cursor: pointer;
 }
 
 .button:hover {
     background-color: black;
-    color:#90B8F8;
+    color:#b983ff;
 }

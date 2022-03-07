@@ -23,13 +23,63 @@
     transform: scale(1.15)
 }
 
-.onstream {
-    height: 6000px;
-}
-
-h2 {
-    margin-left: 0.5vh;
+.onStream {
     color: #F3F1F5;
     font-size: 4vh;
-    padding-left: 18px;
+    margin-left: 30px;
+    margin-bottom: 0;
+    margin-top: 9vh;
+}
+
+.topRated {
+    color: #F3F1F5;
+    font-size: 4vh;
+    margin-left: 30px;
+    margin-bottom: 0;
+}
+
+.upcoming {
+    color: #F3F1F5;
+    font-size: 4vh;
+    margin-left: 30px;
+    margin-bottom: 0;
+}
+
+hr {
+    color: #b983ff;
+    margin-top: -0.5vh;
+}
+
+.filters {
+    padding-top: 40px;
+    padding-left: 25px;
+}
+
+.select1 {
+    background-color: rgb(0, 0, 0);
+    border-color:#b983ff;
+    color: #b983ff;
+    border-radius: 20px;
+    font-size: 1rem;
+    width: 185px;
+    outline: none;
+}
+
+.select2 {
+    background-color: rgb(0, 0, 0);
+    border-color:#b983ff;
+    color: #b983ff;
+    border-radius: 20px;
+    font-size: 1rem;
+    width: 185px;
+    outline: none;
+    margin-left: 2vh;
+}
+
+.option {
+    color: whitesmoke;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

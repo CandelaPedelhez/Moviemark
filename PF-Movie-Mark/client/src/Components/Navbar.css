@@ -1,35 +1,44 @@
 .nav {
     display: flex;
-    background-color: #555555;
-    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 24, 24);
+    padding: 0.1px;
+    padding-top: 0;
 }
 
 .cart {
-    margin-top: 27px;
+    color: #b983ff;
+    margin-top: 1px;
     height: 25px;
     margin-left: 3vh;
+    cursor: pointer;
 }
 
 .cart:hover {
-    transform: scale(1.5)
+    transform: scale(1.5);
+    color: whitesmoke;
 }
 
 
 .user {
-    margin-top: 27px;
+    color: #b983ff;
+    margin-top: 1px;
     height: 25px;
     margin-left: 4vh;
+    cursor: pointer;
 }
 
 .user:hover {
-    transform: scale(1.5)
+    transform: scale(1.5);
+    color: whitesmoke;
 }
 
 .btn {
     color: #b983ff;
     font-size: 2.5vh;
-    margin-left: 50vh;
-    margin-top: 25px;
+    margin-left: 40vh;
+    margin-top: 18px;
 }
 
 .btn:hover {
@@ -39,8 +48,9 @@
 
 .btnHome {
     color: #b983ff;
-    font-size: 4.5vh;
-    margin-top: 1.7vh;
+    font-size: 4vh;
+    padding-top: 10px;
+    margin-bottom: 3.5vh;
 }
 
 a {
@@ -49,3 +59,22 @@ a {
   a:hover {
      color: whitesmoke;
   }
+
+.movieIcon {
+    margin-left: 5px;
+    color: whitesmoke;
+    height: 30px;
+    -webkit-filter: drop-shadow(3px 3px 0 #b983ff)
+    drop-shadow(3px 3px 0 #b983ff);
+    filter: drop-shadow(3px 3px 0 #b983ff) 
+    drop-shadow(3px 3px 0 #b983ff);
+}
+
+.movieIcon:hover {
+    color: #b983ff;
+    height: 30px;
+    -webkit-filter: drop-shadow(3px 3px 0 whitesmoke)
+    drop-shadow(3px 3px 0 whitesmoke);
+    filter: drop-shadow(3px 3px 0 whitesmoke) 
+    drop-shadow(3px 3px 0 whitesmoke);
+}

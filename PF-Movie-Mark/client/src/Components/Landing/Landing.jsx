@@ -22,11 +22,11 @@ export default function LandingPage() {
         </div>
       </div>
     </div>
-    <p>
+    <h4 className={styles.p}>
           This e-commerce was created by students of the
           full stack developer career for the Henry academy, 
-          we hope you enjoy it.
-        </p>
+          we hope you enjoy it.🚀
+        </h4>
     </>
   );
 }
