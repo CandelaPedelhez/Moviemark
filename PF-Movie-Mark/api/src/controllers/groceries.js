@@ -45,7 +45,7 @@ let groceries = [
     {
         id: 2,
         name: "Nachos Combo",
-        img: "https://static.freddysusa.com/wp-content/uploads/2016/03/FRE0582-Combo-Lockup_2_V2.png",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0GVGHYxjgiuQWQB5aomcKATt865_Hj5DoVA&usqp=CAU",
         price: 590,
         description: "Nachos with cheese + 1 large soda",
         type: "combo"
@@ -141,7 +141,7 @@ let groceries = [
     {
         id: 14,
         name: "Large coffe + cookie",
-        img: "https://scontent.frcu3-1.fna.fbcdn.net/v/t1.6435-9/60746467_2461096390568713_3225676342313877504_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=98vyoqDuGcsAX8JpFrg&_nc_ht=scontent.frcu3-1.fna&oh=00_AT__wxevpcy2Cmj9TdPgeIqbkD9no_6YqtBE8-Zd8UZ4gqw&oe=6245D039",
+        img: "https://www.publicdomainpictures.net/pictures/240000/nahled/coffee-with-cookies.jpg",
         price: 620,
         description: " 1 large coffe and 1 cookie of your choice",
         type: "coffeshop"
