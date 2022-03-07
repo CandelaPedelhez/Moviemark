@@ -4,6 +4,9 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails, getTopRatedForId, getUpcomingForId } from "../Actions/index";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import "./Details.css";
 
 export default function Details({movies}) {
 
@@ -28,7 +31,13 @@ export default function Details({movies}) {
   })
 
   return (
+    <>
     <div>
+        <Link to="/home">
+          <button className="btnBack"><FontAwesomeIcon icon={faArrowLeft} /></button>
+        </Link>
+      </div>
+    <div className="detail">
       {
         (myMovie.length === 0) ?
           <div >
@@ -38,6 +47,17 @@ export default function Details({movies}) {
           <div>
             <h1>{myMovie[0].title}</h1>
             <img src={myMovie[0].img} alt="img not found" />
+            <div>
+              <span>+16</span>
+            </div>
+            <div className="genre">
+              <h3>Action</h3>
+            </div>
+            <div className="duration">
+              <h3>Duration:</h3>
+              <b>120min</b>
+            </div>
+            <div className="div2">
             <div>
               <h3>Description</h3>
               <p>{myMovie[0].description}</p>
@@ -58,13 +78,10 @@ export default function Details({movies}) {
               <h3>Vote average</h3>
               <p>{myMovie[0].vote_average}</p>
             </div>
+            </div>
           </div>
       }
-      <div>
-        <Link to="/home">
-          <button>Go back!</button>
-        </Link>
-      </div>
     </div>
+    </>
   );
 }

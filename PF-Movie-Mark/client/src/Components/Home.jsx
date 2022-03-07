@@ -55,12 +55,12 @@ export default function Home() {
     <div>
       <div>
       <NavBar />
-      <Slider />
+      <hr color="#b983ff"></hr>
+      <Slider movies={movies}/>
       </div>
-      <div>
-      <h3>Filter by genre</h3>
-      <select onChange={(e) => handleFilteredGenre(e)}>
-        <option value="genre" disabled />
+      <div className="filters">
+      <select className="select1" onChange={(e) => handleFilteredGenre(e)}>
+        <option className="option" value="genre" disabled>Filter by genre</option>
         <option value="All">All</option>
         {genres?.map((genre) => {
           return (
@@ -70,8 +70,8 @@ export default function Home() {
           );
         })}
       </select>
-      <select onChange={(e) => handleSort(e)}>
-        <option value="order by" disabled>
+      <select className="select2" onChange={(e) => handleSort(e)}>
+        <option className="option" value="order by" disabled>
           Sort:
         </option>
         <option value="default">All</option>
@@ -80,7 +80,7 @@ export default function Home() {
       </select>
       </div>
       <div>        
-        <h2>On Stream</h2>
+        <h2 className="onStream">On Stream</h2>
       <div className="row__posters">
       {movies?.map((movie) => {
         return (
@@ -98,7 +98,7 @@ export default function Home() {
       </div>
       <br />
       <div classname="row">
-        <h2>Top Rated</h2>
+        <h2 className="topRated">Top Rated</h2>
         <div className="row__posters">
           {topRated?.map((e) => {
             return (
@@ -114,7 +114,7 @@ export default function Home() {
       </div>
       <br />
       <div className="row">
-        <h2>Upcoming</h2>
+        <h2 className="upcoming">Upcoming</h2>
         <div className="row__posters">
           {upcoming?.map((e) => {
             return (

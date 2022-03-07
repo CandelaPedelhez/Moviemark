@@ -3,7 +3,7 @@ import left from './images/left.png'
 import right from './images/next.png'
 import { useState } from 'react';
 import batman from './images/batman.jpg'
-import kimi from './images/kimi.jpg'
+import kimi from './images/kimi.jpeg'
 import scream from './images/scream.png'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ const Slider = () => {
     const [current, setCurrent] = useState(0);
     movies = movies.slice(0,3);
     const length = movies.length;
-    const imagesData = [{ image: batman }, { image: scream }, { image: kimi }]
+    const imagesData = [{ image: batman }, { image: kimi }, { image: scream }]
 
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1);

@@ -7,7 +7,6 @@ import "./SearchBar.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
-
   const [title, setTitle] = useState("");
 
   function handleChange(e) {
@@ -15,32 +14,34 @@ export default function SearchBar() {
     setTitle(e.target.value);
     //console.log(name);
   }
+
   function handleSubmit(e) {
     if (e.key === "Enter") {
-    e.preventDefault();
-    dispatch(getMovieByTitle(title));
-    setTitle("");
+      e.preventDefault();
+      dispatch(getMovieByTitle(title));
+      setTitle("");
+    }
   }
-}
 
-const handleClearInput = (e) => {
-  e.preventDefault();
-  setTitle("");
-};
+  const handleClearInput = (e) => {
+    e.preventDefault();
+    setTitle("");
+  };
 
   return (
     <div className="searchBar">
       <input
         type="text"
-        placeholder="Search Movie"
+        placeholder="Ej: 'The Godfather'"
+        value={title}
         onChange={(e) => handleChange(e)}
         className="input"
         onKeyPress={handleSubmit}
       ></input>
       {title.length === 0 ? (<button className="btnSearch"><FontAwesomeIcon icon={faSearch} />
-            </button>) : (<button type="button" onClick={(e) => handleClearInput(e)} className="btnClear">
-                <FontAwesomeIcon icon={faTimes} />
-            </button>)}
-      </div>
+      </button>) : (<button type="button" onClick={(e) => handleClearInput(e)} className="btnClear">
+        <FontAwesomeIcon icon={faTimes} />
+      </button>)}
+    </div>
   );
 }

@@ -1,58 +1,64 @@
 .searchBar {
-    display: flex;
-    font-size: 25px;
-    margin-left: 9vh;
-    margin-top: 5px;
-  }
+  display: flex;
+  font-size: 25px;
+  margin-left: 5vh;
+  margin-top: 1px;
+}
 
-  .input {
-    background-color: whitesmoke;
-    border-color: rgb(24, 24, 24);
-    height: 25px;
-    color: rgb(24, 24, 24);
-    font-size: 1rem;
-    font-weight: 300;
-    width: 25rem;
-    font-family: Georgia, 'Times New Roman', Times, serif
-  }
+.input {
+  background-color: rgb(0, 0, 0);
+  padding-left: 14px;
+  outline: none;
+  border-color:#b983ff;
+  border-radius: 20px;
+  height: 31px;
+  color: whitesmoke;
+  font-size: 1rem;
+  font-weight: 300;
+  width: 25rem;
+  font-family: 'Shippori Antique B1', sans-serif;
+}
 
-  input::placeholder {
-    color: rgb(24, 24, 24);
-  }
+input::placeholder {
+  color: #9d9d9d;
+  padding-left: 2px;
+}
 
-  .btnClear {
-    border-color: white solid 2px;
-    height: 31px;
-    margin-left: -29px;
-    border-radius: 3px;
-    border: solid 2px;
-    font-size: 1.3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: whitesmoke;
-    transition: background-color 0.25s;
-    cursor: pointer;
-    color: rgb(24, 24, 24);
-  }
+.btnClear {
+  border-radius: 25px;
+  height: 32px;
+  width: 37px;
+  margin-top: 2.5px;
+  margin-left: -40px;
+  border: solid 2px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b983ff;
+  transition: background-color 0.25s;
+  cursor: pointer;
+  color: rgb(24, 24, 24);
+}
 
-  .btnClear:hover {
-    background-color: rgb(24, 24, 24);
-    color: whitesmoke;
-  }
+.btnClear:hover {
+  background-color: whitesmoke;
+  color: #b983ff;
+}
 
 .btnSearch {
-    border-color: white solid 2px;
-    height: 31px;
-    margin-left: -33px;
-    border-radius: 3px;
-    border: solid 2px;
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: whitesmoke;
-    transition: background-color 0.25s;
-    cursor: pointer;
-    color: rgb(24, 24, 24);
-  }
+  border-radius: 15px;
+  height: 32px;
+  width: 37px;
+  margin-top: 2.5px;
+  margin-left: -40px;
+  border: solid 2px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b983ff;
+  transition: background-color 0.25s;
+  cursor: pointer;
+  color: rgb(24, 24, 24);
+}

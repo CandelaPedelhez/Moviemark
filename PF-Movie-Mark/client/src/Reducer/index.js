@@ -7,7 +7,6 @@ const initialState = {
   topMovies: [],
   details: [],
   topRated: [],
-  cart: [],
   forslider: [],
 };
 
@@ -70,13 +69,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         movies: action.payload === "default" ? state.allMovies : sortedMovies,
       };
-    /*case "FILTER_BY_ESTRENO":
-      let allMovie = state.allMovies;
-      let latestFilter =
-        action.payload === "All"
-          ? state.allMovies
-          : allMovie.filter((el) => el.latest);
-      break;*/
     case "GET_GROCERIES":
       return { ...state, groceries: action.payload };
     case "GET_UPCOMING":
