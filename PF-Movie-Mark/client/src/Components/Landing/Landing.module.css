@@ -1,51 +1,83 @@
 .page{
     display:flex;
     height:90vh;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     animation-duration: 1s;
     animation-name: slideinpage;
 }
 
 .textland{
     text-align: left;
+    padding-bottom: 31vh;
+    color: whitesmoke;
+    margin-right: 30vh;
+    margin-top: 17vh;
 }
 
-.button{
-    border-color: transparent;
-    border-radius: 30px;
-    color:white;
-    font-family: calibri;
-    background-color: #5bc1f0;
-    height: 2em;
-    margin-bottom: 15px;
+.textland h1 {
+    font-size: 7.5vh;
+    color: whitesmoke;
+    text-align: center;
 }
 
-.button:hover{
-    background-color: #744E72;
+.textland h2 {
+    text-align: center;
+    color: #f4523b;
+}
+
+.button {
+    position: relative;
+    padding: 10px 40px;
+    margin: 0px 10px 10px 0px;
+    font-family: 'Shippori Antique B1', sans-serif;
+   float: left;
+    border-radius: 3px;
+    font-size: 20px;
+    color: whitesmoke;
+    text-decoration: none;
+    background-color: #f4523b;
+    border: none;
+    border-bottom: 5px solid #230602;
+    text-shadow: 0px -2px #230602;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
     cursor: pointer;
-    color:white;
-}
+    margin-left: 80px;
+    margin-top: 10vh;
+   }
+   
+   button:hover, button:active {
+    -webkit-transform: translate(0px,5px);
+    -ms-transform: translate(0px,5px);
+    transform: translate(0px,5px);
+    border-bottom: 1px solid #f4523b;
+   }
 
 .img{
+    padding-top: 0.5vh;
     width: 95%;
-    -webkit-filter: drop-shadow(1px 1px 0 #5bcdf0)
-    drop-shadow(-1px -1px 0 #5bcdf0);
-    filter: drop-shadow(1px 1px 0 #5bcdf0) 
-    drop-shadow(-1px -1px 0 #5bcdf0);
+    -webkit-filter: drop-shadow(1px 1px 0 whitesmoke)
+    drop-shadow(-1px -1px 0 whitesmoke);
+    filter: drop-shadow(1px 1px 0 whitesmoke) 
+    drop-shadow(-1px -1px 0 whitesmoke);
+    margin-left: 10vh;
+    height: 70vh;
 }
 
 .img:hover{
-    -webkit-filter: drop-shadow(1px 1px 0 #5b8af0)
-    drop-shadow(-1px -1px 0 #5b8af0);
-    filter: drop-shadow(1px 1px 0 #5b8af0) 
-    drop-shadow(-1px -1px 0 #5b8af0);
+    -webkit-filter: drop-shadow(1px 1px 0 #f4523b)
+    drop-shadow(-1px -1px 0 #f4523b);
+    filter: drop-shadow(1px 1px 0 #f4523b) 
+    drop-shadow(-1px -1px 0 #f4523b);
 }
 
 p{
-    margin-top: 2px;
-    margin-bottom: 0px;
+    margin-top: 0.5vh;
+    color: whitesmoke;
+    text-align: center;
 }
+
 
 @keyframes slideinpage{
     from {
@@ -58,4 +90,6 @@ p{
       width: 100%;
     }
 }
+
+
 
