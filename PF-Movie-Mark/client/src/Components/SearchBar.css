@@ -1,58 +1,59 @@
 .searchBar {
-    display: flex;
-    font-size: 25px;
-    margin-left: 9vh;
-    margin-top: 5px;
-  }
+  display: flex;
+  font-size: 25px;
+  margin-left: 6vh;
+  margin-top: 22px;
+}
 
-  .input {
-    background-color: whitesmoke;
-    border-color: rgb(24, 24, 24);
-    height: 25px;
-    color: rgb(24, 24, 24);
-    font-size: 1rem;
-    font-weight: 300;
-    width: 25rem;
-    font-family: Georgia, 'Times New Roman', Times, serif
-  }
+.input {
+  background-color: whitesmoke;
+  border-color: rgb(24, 24, 24);
+  border-radius: 25px;
+  height: 25px;
+  color: rgb(24, 24, 24);
+  font-size: 1rem;
+  font-weight: 300;
+  width: 25rem;
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
 
-  input::placeholder {
-    color: rgb(24, 24, 24);
-  }
+input::placeholder {
+  color: rgb(24, 24, 24);
+}
 
-  .btnClear {
-    border-color: white solid 2px;
-    height: 31px;
-    margin-left: -29px;
-    border-radius: 3px;
-    border: solid 2px;
-    font-size: 1.3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: whitesmoke;
-    transition: background-color 0.25s;
-    cursor: pointer;
-    color: rgb(24, 24, 24);
-  }
+.btnClear {
+  border-color: white solid 2px;
+  border-radius: 25px;
+  height: 31px;
+  margin-left: -29px;
+  border-radius: 3px;
+  border: solid 2px;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  transition: background-color 0.25s;
+  cursor: pointer;
+  color: rgb(24, 24, 24);
+}
 
-  .btnClear:hover {
-    background-color: rgb(24, 24, 24);
-    color: whitesmoke;
-  }
+.btnClear:hover {
+  background-color: rgb(24, 24, 24);
+  color: whitesmoke;
+}
 
 .btnSearch {
-    border-color: white solid 2px;
-    height: 31px;
-    margin-left: -33px;
-    border-radius: 3px;
-    border: solid 2px;
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: whitesmoke;
-    transition: background-color 0.25s;
-    cursor: pointer;
-    color: rgb(24, 24, 24);
-  }
+  border-radius: 55px;
+  height: 31px;
+  margin-left: -33px;
+  border: solid 2px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  transition: background-color 0.25s;
+  cursor: pointer;
+  color: rgb(24, 24, 24);
+}
