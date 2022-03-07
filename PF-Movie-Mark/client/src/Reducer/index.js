@@ -7,6 +7,7 @@ const initialState = {
   topMovies: [],
   details: [],
   topRated: [],
+  cart: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -85,7 +86,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         topRated: action.payload,
       };
-
     default:
       return state;
   }
