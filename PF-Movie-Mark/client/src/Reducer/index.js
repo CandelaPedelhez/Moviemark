@@ -69,13 +69,6 @@ export default function reducer(state = initialState, action) {
           return (sortedMovies = state.movies);
       }
       return { ...state, movies: sortedMovies };
-    case "FILTER_BY_ESTRENO":
-      let allMovie = state.allMovies;
-      let latestFilter =
-        action.payload === "All"
-          ? state.allMovies
-          : allMovie.filter((el) => el.latest);
-      break;
     case "GET_GROCERIES":
       return { ...state, groceries: action.payload };
     case "GET_UPCOMING":
