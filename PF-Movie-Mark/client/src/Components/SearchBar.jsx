@@ -33,6 +33,7 @@ const handleClearInput = (e) => {
       <input
         type="text"
         placeholder="Search Movie"
+        value={title}
         onChange={(e) => handleChange(e)}
         className="input"
         onKeyPress={handleSubmit}
