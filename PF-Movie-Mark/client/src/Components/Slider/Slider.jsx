@@ -6,8 +6,10 @@ import batman from './images/batman.jpg'
 import kimi from './images/kimi.jpg'
 import scream from './images/scream.png'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const Slider = ({ movies }) => {
+const Slider = () => {
+    let movies = useSelector(state=>state.forslider)
     const [current, setCurrent] = useState(0);
     movies = movies.slice(0,3);
     const length = movies.length;
