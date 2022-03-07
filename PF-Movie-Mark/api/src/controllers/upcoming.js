@@ -10,8 +10,14 @@ const getUpcoming = async () => {
         let movies = await axios.get(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`);
                 let auxMovies = movies.data.results.map(movie => {
                     return {
-                        name: movie.title,
-                        img: 'https://image.tmdb.org/t/p/w500' + movie.poster_path                     
+                        id: movie.id,
+                        title: movie.title,
+                        description: movie.overview,
+                        popularity: movie.popularity,
+                        release_date: movie.release_date,
+                        languages: movie.original_language,
+                        vote_average: movie.vote_average,
+                        img: "https://image.tmdb.org/t/p/w500" + movie.poster_path,
                     }
                     })
                
