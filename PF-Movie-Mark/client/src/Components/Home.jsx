@@ -32,7 +32,6 @@ export default function Home() {
   function handleSort(e) {
     e.preventDefault();
     dispatch(orderBy(e.target.value));
-
     setOrder(`ordenado, ${e.target.value}`);
   }
 
@@ -75,9 +74,9 @@ export default function Home() {
         <option value="order by" disabled>
           Sort:
         </option>
-        <option value="All">All</option>
-        <option value="Asc">Asc</option>
-        <option value="Desc">Desc</option>
+        <option value="default">All</option>
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
       </select>
       </div>
       <div>        
