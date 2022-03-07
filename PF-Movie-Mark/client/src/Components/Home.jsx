@@ -56,7 +56,7 @@ export default function Home() {
       <div>
       <NavBar />
       <hr color="#b983ff"></hr>
-      <Slider movies={movies}/>
+      <Slider />
       </div>
       <div className="filters">
       <select className="select1" onChange={(e) => handleFilteredGenre(e)}>
