@@ -32,7 +32,6 @@ export default function Home() {
   function handleSort(e) {
     e.preventDefault();
     dispatch(orderBy(e.target.value));
-
     setOrder(`ordenado, ${e.target.value}`);
   }
 
@@ -56,7 +55,7 @@ export default function Home() {
     <div>
       <div>
       <NavBar />
-      <Slider/>
+      <Slider movies={movies}/>
       </div>
       <div>
       <h3>Filter by genre</h3>
@@ -75,9 +74,9 @@ export default function Home() {
         <option value="order by" disabled>
           Sort:
         </option>
-        <option value="All">All</option>
-        <option value="Asc">Asc</option>
-        <option value="Desc">Desc</option>
+        <option value="default">All</option>
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
       </select>
       </div>
       <div>        
@@ -86,6 +85,7 @@ export default function Home() {
       {movies?.map((movie) => {
         return (
           <Card
+            movies={"movies"}
             id={movie.id}
             // title={movie.title}
             //genres={movie.genres}
@@ -100,12 +100,15 @@ export default function Home() {
       <div classname="row">
         <h2>Top Rated</h2>
         <div className="row__posters">
-          {topRated?.map((e) => (
-            <div>
-              {/* <h3 key={e.id}>{e.name}</h3> */}
-              <img key={e.id} src={e.img} className="row__poster" />
-            </div>
-          )
+          {topRated?.map((e) => {
+            return (
+              <Card
+                movies={"topRated"}
+                id={e.id}
+                img={e.img}
+              />
+            );
+            }
           )}
         </div>
       </div>
@@ -113,12 +116,15 @@ export default function Home() {
       <div className="row">
         <h2>Upcoming</h2>
         <div className="row__posters">
-          {upcoming?.map((e) => (
-            <div>
-              {/* <h3 key={e.id}>{e.name}</h3> */}
-              <img src={e.img} className="row__poster" />
-            </div>
-          )
+          {upcoming?.map((e) => {
+            return (
+              <Card
+                movies={"upcoming"}
+                id={e.id}
+                img={e.img}
+              />
+            );
+            }
           )}
         </div>
       </div>

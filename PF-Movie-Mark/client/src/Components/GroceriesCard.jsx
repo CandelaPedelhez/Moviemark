@@ -8,6 +8,7 @@ export default function GroceriesCard({ img, name, price, description }) {
       <img alt="img not found" src={img} />
       <h3>{price}</h3>
       <h4>{description}</h4>
+      <button>Add to cart</button>
     </div>
   );
 }
