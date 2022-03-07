@@ -19,8 +19,6 @@ router.get("/", async (req, res, next) => {
                 });
           
              });
-        
-
         const allGroceries = await Groceries.findAll();
         return res.status(200).send(allGroceries); 
         

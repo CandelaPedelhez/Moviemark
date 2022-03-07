@@ -5,8 +5,14 @@ import { useEffect } from "react";
 import GroceriesCard from "./GroceriesCard";
 
 export default function Groceries() {
-  const dispatch = useDispatch();
-  const myGroceries = useSelector((state) => state.groceries);
+  const dispatch = useDispatch()
+  const myGroceries = useSelector((state) => state.groceries)
+  const combos = myGroceries.filter(e => e.typeGrocerie === "combo")
+  const popcorn = myGroceries.filter(e => e.typeGrocerie === "popcorn")
+  const snacks = myGroceries.filter(e => e.typeGrocerie === "snacks")
+  const drinks = myGroceries.filter(e => e.typeGrocerie === "drinks")
+  const sweets = myGroceries.filter(e => e.typeGrocerie === "sweets")
+  const coffeshop = myGroceries.filter(e => e.typeGrocerie === "coffeshop")
 
   useEffect(() => {
     dispatch(getGroceries());
@@ -15,79 +21,76 @@ export default function Groceries() {
   return (
     <div>
       <div>
-        <h2>Pop-corn</h2>
-        {myGroceries.map((e, index) => {
-          if (e.type === "popcorn") {
+        <h2>Combos</h2>
+        {combos.map((e, index) => 
             <div key={index}>
               <GroceriesCard
                 name={e.name}
-                image={e.image}
+                img={e.img}
                 price={e.price}
                 description={e.description}
               />
-            </div>;
-          }
-        })}
+            </div>)}
+      </div>
+      <div>
+        <h3>Pop-corn</h3>
+        {popcorn.map((e, index) => 
+            <div key={index}>
+              <GroceriesCard
+                name={e.name}
+                img={e.img}
+                price={e.price}
+                description={e.description}
+              />
+            </div>)}
       </div>
       <div>
         <h3>Snacks</h3>
-        {myGroceries.map((e, index) => {
-          if (e.type === "snacks") {
+        {snacks.map((e, index) => 
             <div key={index}>
               <GroceriesCard
                 name={e.name}
-                image={e.image}
+                img={e.img}
                 price={e.price}
                 description={e.description}
               />
-            </div>;
-          }
-        })}
+            </div>)}
       </div>
       <div>
         <h3>Drinks</h3>
-        {myGroceries.map((e, index) => {
-          if (e.type === "drinks") {
+        {drinks.map((e, index) => 
             <div key={index}>
               <GroceriesCard
                 name={e.name}
-                image={e.image}
+                img={e.img}
                 price={e.price}
                 description={e.description}
               />
-            </div>;
-          }
-        })}
+            </div>)}
       </div>
       <div>
         <h3>Sweets</h3>
-        {myGroceries.map((e, index) => {
-          if (e.type === "sweets") {
+        {sweets.map((e, index) => 
             <div key={index}>
               <GroceriesCard
                 name={e.name}
-                image={e.image}
+                img={e.img}
                 price={e.price}
                 description={e.description}
               />
-            </div>;
-          }
-        })}
+            </div>)}
       </div>
       <div>
         <h3>Coffeshop</h3>
-        {myGroceries.map((e, index) => {
-          if (e.type === "coffeshop") {
+        {coffeshop.map((e, index) => 
             <div key={index}>
               <GroceriesCard
                 name={e.name}
-                image={e.image}
+                img={e.img}
                 price={e.price}
                 description={e.description}
               />
-            </div>;
-          }
-        })}
+            </div>)}
       </div>
     </div>
   );

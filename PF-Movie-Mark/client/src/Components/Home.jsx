@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-//import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Components/Navbar";
 import Card from "./Card";
@@ -20,11 +19,8 @@ export default function Home() {
   const movies = useSelector((state) => state.movies);
   //console.log("esta son las pelis", movies);
   const genres = useSelector((state) => state.genres);
-
   const [order, setOrder] = useState("");
-
   //const [ticket, setTicket] = useState([]);
-
   const upcoming = useSelector((state) => state.upcoming);
   const topRated = useSelector((state) => state.topRated);
 
@@ -57,10 +53,14 @@ export default function Home() {
 
   return (
     <div>
+      <div>
       <NavBar />
-      <Slider />
+      <Slider movies={movies}/>
+      </div>
+      <div>
+      <h3>Filter by genre</h3>
       <select onChange={(e) => handleFilteredGenre(e)}>
-        <option value="filter by genre" disabled />
+        <option value="genre" disabled />
         <option value="All">All</option>
         {genres?.map((genre) => {
           return (
@@ -78,52 +78,47 @@ export default function Home() {
         <option value="A-Z">A-Z</option>
         <option value="Z-A">Z-A</option>
       </select>
-
+      </div>
+      <div>        
+        <h2>On Stream</h2>
+      <div className="row__posters">
+      {movies?.map((movie) => {
+        return (
+          <Card
+            id={movie.id}
+            // title={movie.title}
+            //genres={movie.genres}
+            // vote_average={movie.vote_average}
+            img={movie.img}
+          />
+        );
+      })}
+      </div>
+      </div>
+      <br />
+      <div classname="row">
+        <h2>Top Rated</h2>
+        <div className="row__posters">
+          {topRated?.map((e) => (
+            <div>
+              {/* <h3 key={e.id}>{e.name}</h3> */}
+              <img key={e.id} src={e.img} className="row__poster" />
+            </div>
+          )
+          )}
+        </div>
+      </div>
+      <br />
       <div className="row">
-        <div>
-          <h2>On Stream</h2>
-          <div className="row__posters">
-            {movies?.map((movie) => {
-              return (
-                <Card
-                  id={movie.id}
-                  // title={movie.title}
-                  //genres={movie.genres}
-                  // vote_average={movie.vote_average}
-                  img={movie.img}
-                  className="row__poster"
-                />
-              );
-            })}
-          </div>
-        </div>
-        <div classname="row">
-          <h2>Top Rated</h2>
-          <div className="row__posters">
-            {topRated?.map((e) => (
-              <div>
-                {/* <h3 key={e.id}>{e.name}</h3> */}
-                <img
-                  key={e.id}
-                  src={e.img}
-                  alt="img not found"
-                  className="row__poster"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <br />
-        <div className="row">
-          <h2>Upcoming</h2>
-          <div className="row__posters">
-            {upcoming?.map((e) => (
-              <div>
-                {/* <h3 key={e.id}>{e.name}</h3> */}
-                <img src={e.img} alt="img not found" className="row__poster" />
-              </div>
-            ))}
-          </div>
+        <h2>Upcoming</h2>
+        <div className="row__posters">
+          {upcoming?.map((e) => (
+            <div>
+              {/* <h3 key={e.id}>{e.name}</h3> */}
+              <img src={e.img} className="row__poster" />
+            </div>
+          )
+          )}
         </div>
       </div>
     </div>
