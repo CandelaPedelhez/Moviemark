@@ -55,7 +55,7 @@ export default function Home() {
     <div>
       <div>
       <NavBar />
-      <Slider/>
+      <Slider movies={movies}/>
       </div>
       <div>
       <h3>Filter by genre</h3>
@@ -121,7 +121,6 @@ export default function Home() {
           )}
         </div>
       </div>
-    </div>
     </div>
   );
 }
