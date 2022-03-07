@@ -45,7 +45,7 @@ let groceries = [
     {
         id: 2,
         name: "Nachos Combo",
-        img: "http://cinemarkplus.xtreemhost.com/wp-content/uploads/2018/12/Combinaci%C3%B3n-Nachos.png",
+        img: "https://static.freddysusa.com/wp-content/uploads/2016/03/FRE0582-Combo-Lockup_2_V2.png",
         price: 590,
         description: "Nachos with cheese + 1 large soda",
         type: "combo"

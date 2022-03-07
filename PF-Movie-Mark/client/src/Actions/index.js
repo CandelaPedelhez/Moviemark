@@ -46,18 +46,18 @@ export function getMovieByTitle(title) {
   };
 }
 
-export function getDetails(payload){
-  return async function(dispatch){
-      try{
-          var json = await axios.get("http://localhost:3001/api/movies" + payload)
-          return dispatch({
-              type: "GET_DETAILS",
-              payload: json.data
-          })
-      } catch(e){
-          console.log(e)
-      }
-  }
+export function getDetails(payload) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.get("http://localhost:3001/api/movies/" + payload);
+      return dispatch({
+        type: "GET_DETAILS",
+        payload: json.data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 }
 
 export function filterMovieByGenre(genre) {
@@ -74,11 +74,32 @@ export function getUpcoming() {
   };
 }
 
+export function getUpcomingForId(payload) {
+  return async function (dispatch) {
+    let json = await axios.get("http://localhost:3001/api/upcoming/"+payload);
+    return dispatch({
+      type: "GET_UPCOMING_ID",
+      payload: json.data,
+    });
+  };
+}
+
+
 export function getTopRated() {
   return async function (dispatch) {
     let json = await axios.get("http://localhost:3001/api/top_rated");
     return dispatch({
       type: "GET_TOP_RATED",
+      payload: json.data,
+    });
+  };
+}
+
+export function getTopRatedForId(payload) {
+  return async function (dispatch) {
+    let json = await axios.get("http://localhost:3001/api/top_rated/"+payload);
+    return dispatch({
+      type: "GET_TOP_RATED_ID",
       payload: json.data,
     });
   };
