@@ -21,9 +21,11 @@ const getMovies = async () => {
       };
     });
 
-    return auxMovies.forEach((el) => {
+    auxMovies.forEach((el) => {
       Movie.findOrCreate({ where: el });
     });
+
+    return auxMovies;
   } catch (error) {
     console.log(error.message);
   }
