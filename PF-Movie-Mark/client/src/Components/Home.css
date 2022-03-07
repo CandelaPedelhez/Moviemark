@@ -30,5 +30,6 @@
 h2 {
     margin-left: 0.5vh;
     color: #F3F1F5;
-    font-family: 'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 4vh;
+    padding-left: 18px;
 }
