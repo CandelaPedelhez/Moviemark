@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import GroceriesCard from "./GroceriesCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+// import ShoppingCart from "./ShoppingCart";
 import "./Groceries.css";
 
 export default function Groceries() {
@@ -101,6 +102,7 @@ export default function Groceries() {
               />
             </div>)}
             </div>
+            {/* <ShoppingCart/> */}
             <div>
         <Link to="/home">
           <button className="buttonBack"><FontAwesomeIcon icon={faArrowLeft} /></button>
