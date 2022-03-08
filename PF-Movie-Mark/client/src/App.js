@@ -3,6 +3,7 @@ import LandingPage from "./Components/Landing/Landing";
 import Home from "./Components/Home";
 import Groceries from "./Components/Groceries";
 import Details from "./Components/Details";
+import ShoppingCart from "./Components/ShoppingCart";
 import "./App.css"
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path='/movies/:id' element={<Details movies="movies"/>} />
         <Route path='/upcoming/:id' element={<Details movies="upcoming"/>} />
         <Route path='/toprated/:id' element={<Details movies="toprated"/>} />
+        <Route path='/cart' element={<ShoppingCart/>} />
       </Routes>
     </BrowserRouter>
   );
