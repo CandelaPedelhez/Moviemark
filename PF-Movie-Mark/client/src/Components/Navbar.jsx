@@ -18,9 +18,9 @@ export default function NavBar() {
         <h3 className="btn">Groceries</h3>
       </Link>
       <SearchBar/>
-      {/* <Link to="/"> */}
+      <Link to="/cart">
       <FontAwesomeIcon className="cart" icon={faCartShopping} />
-      {/* </Link> */}
+      </Link>
       {/* <Link to="/"> */}
       <FontAwesomeIcon className="user" icon={faUser} />
       {/* </Link> */}

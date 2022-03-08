@@ -1,0 +1,17 @@
+.box {
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0 0 1rem #960877ad inset;
+}
+
+.box2 {
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0 0 1rem #BA55D3ad inset;
+}
+
+.grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}

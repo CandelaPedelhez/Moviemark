@@ -17,7 +17,6 @@ import {
 export default function Home() {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
-  //console.log("esta son las pelis", movies);
   const genres = useSelector((state) => state.genres);
   const [order, setOrder] = useState("");
   //const [ticket, setTicket] = useState([]);
