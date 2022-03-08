@@ -7,6 +7,7 @@ const initialState = {
   topMovies: [],
   details: [],
   topRated: [],
+  forslider: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -17,6 +18,7 @@ export default function reducer(state = initialState, action) {
         movies: action.payload,
         allMovies: action.payload,
         details: [],
+        forslider: action.payload,
       };
     case "GET_TITLE_MOVIE":
       //console.log(action.payload);
