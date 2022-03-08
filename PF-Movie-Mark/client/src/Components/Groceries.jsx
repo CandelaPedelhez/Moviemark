@@ -101,6 +101,11 @@ export default function Groceries() {
               />
             </div>)}
             </div>
+            <div>
+        <Link to="/home">
+          <button className="buttonBack"><FontAwesomeIcon icon={faArrowLeft} /></button>
+        </Link>
+      </div>
     </div>
     
   );

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetails, getTopRatedForId, getUpcomingForId } from "../Actions/index";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faAdd } from "@fortawesome/free-solid-svg-icons";
 import "./Details.css";
 
 export default function Details({movies}) {
@@ -78,6 +78,7 @@ export default function Details({movies}) {
               <h3>Vote average</h3>
               <p>{myMovie[0].vote_average}</p>
             </div>
+            <button><FontAwesomeIcon icon={faAdd} />Add to cart</button>
             </div>
           </div>
       }
