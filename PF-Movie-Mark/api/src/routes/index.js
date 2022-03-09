@@ -4,12 +4,12 @@ const { Router } = require("express");
 
 
 
-const genresRoute = require('./genres.js');
+const genresRoute    = require('./genres.js');
 const groceriesRoute = require('./groceries.js');
-const moviesRoute = require('./movies.js');
-const upcomingRoute = require('./upcoming.js');
-const topRatedRoute = require('./top_rated.js');
-
+const moviesRoute    = require('./movies.js');
+const upcomingRoute  = require('./upcoming.js');
+const topRatedRoute  = require('./top_rated.js');
+const authRoute      = require('./auth.js');
 
 const router = Router();
 
@@ -17,7 +17,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 // ------ Ejemplo de req: http://localhost:3001/api/movies ------- //
-
+router.use('/user', authRoute);
 router.use('/genres', genresRoute);
 router.use('/groceries', groceriesRoute);
 router.use('/movies', moviesRoute);
