@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping, faClapperboard } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css"
+import Cart from "./Cart/index";
 // import hola from "./hola.png"
 
 export default function NavBar() {
@@ -18,9 +19,10 @@ export default function NavBar() {
         <h3 className="btn">Groceries</h3>
       </Link>
       <SearchBar/>
-      <Link to="/cart">
+      <Cart/>
+      {/* <Link to="/cart">
       <FontAwesomeIcon className="cart" icon={faCartShopping} />
-      </Link>
+      </Link> */}
       {/* <Link to="/"> */}
       <FontAwesomeIcon className="user" icon={faUser} />
       {/* </Link> */}
