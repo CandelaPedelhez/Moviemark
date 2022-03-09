@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import React, {useContext} from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails, getTopRatedForId, getUpcomingForId } from "../Actions/index";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faAdd } from "@fortawesome/free-solid-svg-icons";
+import Cart from "./Cart/index";
+import { CartContext } from '../Context/CartContext';
 import "./Details.css";
 
 export default function Details({movies}) {
@@ -13,6 +15,7 @@ export default function Details({movies}) {
   const dispatch = useDispatch();
   const movieId = useParams();
   const myMovie = useSelector((state) => state.details);
+  const {addItemToCart} = useContext(CartContext)
 
   const makedispatch = () =>{
     if(movies==="movies"){
@@ -26,9 +29,13 @@ export default function Details({movies}) {
     }
   }
 
+  const handleAdd = () => {
+      addItemToCart(myMovie[0])
+  }
+
   useEffect(()=>{
     makedispatch();
-  })
+  }, [])
 
   return (
     <>
@@ -36,6 +43,7 @@ export default function Details({movies}) {
         <Link to="/home">
           <button className="btnBack"><FontAwesomeIcon icon={faArrowLeft} /></button>
         </Link>
+        <Cart/>
       </div>
     <div className="detail">
       {
@@ -78,7 +86,7 @@ export default function Details({movies}) {
               <h3>Vote average</h3>
               <p>{myMovie[0].vote_average}</p>
             </div>
-            <button><FontAwesomeIcon icon={faAdd} />Add to cart</button>
+            <button onClick={() => handleAdd(myMovie[0])}><FontAwesomeIcon icon={faAdd} />Add to cart</button>
             </div>
           </div>
       }

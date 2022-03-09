@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import GroceriesCard from "./GroceriesCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import Cart from './Cart/index';
 // import ShoppingCart from "./ShoppingCart";
 import "./Groceries.css";
 
@@ -30,8 +31,12 @@ export default function Groceries() {
           <button className="buttonBack"><FontAwesomeIcon icon={faArrowLeft} /></button>
         </Link>
       </div>
+      <div>
+      <Cart/>
+      </div>
         <h2 className="combos">Combos</h2>
-        <div className="grid">
+        <GroceriesCard/>
+        {/* <div className="grid">
         {combos.map((e, index) => 
             <div key={index}>
               <GroceriesCard
@@ -101,7 +106,7 @@ export default function Groceries() {
                 description={e.description}
               />
             </div>)}
-            </div>
+            </div> */}
             {/* <ShoppingCart/> */}
             <div>
         <Link to="/home">
