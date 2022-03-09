@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
@@ -51,9 +51,19 @@ Groceries.belongsToMany(Ticket, { through: "groceries_tickets" });
 Ticket.belongsToMany(Groceries, { through: "groceries_tickets" });
 
 // puede ser hasOne, revisar
-//User.belongsTo(Ticket, { through: "user_tickets" });
+//User.hasOne(Ticket, { through: "user_tickets" });
 //Ticket.belongsTo(User, { through: "user_tickets" });
 
+//Relación de uno a muchos:
+User.hasMany(Ticket, {
+  foreignKey: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    name: "ticketId"
+  }
+});
+
+Ticket.belongsTo(User);
 //Seats.hasOne(Ticket, { through: "ticket_seats" });
 //Ticket.hasOne(Seats, { through: "ticket_seats" });
 
