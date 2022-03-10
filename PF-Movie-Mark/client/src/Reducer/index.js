@@ -76,14 +76,15 @@ export default function reducer(state = initialState, action) {
       };
 
     case "LOGIN_USER":
-      return {...state, users: state.users.concat(action.payload), user: action.payload, isLogged:true} 
+      return {...state, user: action.payload, isLogged:true} 
     case "CREATE_USER": 
       return {...state, users: state.users.concat(action.payload)}
     case "EMAIL_USER":
       return{...state}
     case "TOKEN_USER":
       return{...state}
-
+    case "LOGOUT_USER":
+      return{...state, isLogged:false, user:[]}
     default:
       return state;
   }

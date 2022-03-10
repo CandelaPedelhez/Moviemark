@@ -118,10 +118,10 @@ export function orderBy(payload) {
 
 export function loginUser(payload) {
   return async function(dispatch){
-    let req = await axios.post("http://localhost:3001/user/signIn/",payload)
+    let req = await axios.post("http://localhost:3001/api/user/signIn/",payload)
     return dispatch({
       type: "LOGIN_USER",
-      payload: req.data,
+      payload: req.data
     })
   }
 }
@@ -138,11 +138,16 @@ export function logoutUser(){
 
 export function createUser(payload) {
   return async function(dispatch){
-    let req = await axios.post("http://localhost:3001/api/user/signUp",payload)
-    return dispatch({
-      type: "CREATE_USER",
-      payload: req.data,
-    })
+    try{
+      let req = await axios.post("http://localhost:3001/api/user/signUp",payload)
+      return dispatch({
+        type: "CREATE_USER",
+        payload: req.data,
+      })
+    }
+    catch(e){
+      return "error";
+    }
   }
 } 
 

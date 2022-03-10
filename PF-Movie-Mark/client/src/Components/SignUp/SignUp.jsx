@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { createUser } from '../../Actions';
 import styles from './SignUp.module.css';
+import Loader from '../Loader/Loader';
 
 const SignUp = () => {
     const [input,setInput] = useState({
@@ -18,7 +19,8 @@ const SignUp = () => {
         password:false,
     })
     const [allowed,setAllowed] = useState(false);
-    
+    const [success,setSuccess] = useState(false);
+
     const history = useNavigate();
     const dispatch = useDispatch();
 
@@ -61,14 +63,14 @@ const SignUp = () => {
         if(allowed===true){
             dispatch(createUser(input))
             .then(()=>{
-                history('/login');
-                window.location.reload();
+                setSuccess(true);
                 setInput({
                     name:'',
                     lastName:'',
                     email:'',
                     password:'',
                 })
+                setTimeout( function() { window.location.href = "http://localhost:3000/login"; }, 3000 );
             })
         }
     }
@@ -83,8 +85,13 @@ const SignUp = () => {
     }
 
     return(
-        <div className={styles.page}>
-            <form onSubmit={e=>handleSubmit(e)}>
+        <div> 
+            <div className={styles.back}>
+                <button className={styles.backbtt}>Back</button>
+            </div>
+            <div className={styles.page}>
+            <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
+                <h1 className={styles.title}>Sign Up</h1>
                 <input className={styles.input}
                 value={input.name} type='text' name='name' placeholder="Name" onChange={e=>handleChange(e)}>
                 </input>
@@ -105,12 +112,11 @@ const SignUp = () => {
                     {input.name.trim()===''||
                     input.lastName.trim()===''||
                     input.email.trim()===''||
-                    input.password.trim()===''?<button disabled type="submit">Sign up</button>:<button type="submit">Sign up</button>}
+                    input.password.trim()===''?<button className={styles.buttondis} disabled type="submit">Sign up</button>:<button className={styles.button} type="submit">Sign up</button>}
                 </div>
-                <div>
-                    <p>Do you have an account?</p>
+                <div className={styles.doyoudiv}>
                     <Link to={'/login'}>
-                        <button>Login</button>
+                    <p className={styles.doyou}>Do you have an account?</p>
                     </Link>
                 </div>
     
@@ -120,7 +126,14 @@ const SignUp = () => {
                     {error.email===true && input.email.trim()!==''?<p>Email not valid</p>:<></>}
                     {error.password===true && input.password.trim()!==''?<p>Minimum eight characters, at least one letter and one number</p>:<></>}
                 </div>
+                {
+                    success===true?<p>Register success. You can login now</p>:<></>
+                }
+                {
+                     success===true?<Loader/>:<></>
+                }
             </form>
+            </div>
         </div>
     )
 }

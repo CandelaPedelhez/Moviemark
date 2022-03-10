@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping, faClapperboard } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css"
 import Cart from "../Cart/index";
+import { useSelector } from "react-redux";
 // import hola from "./hola.png"
 
 export default function NavBar() {
+  const isLogged = useSelector((state) => state.isLogged);
   return (
     <div className="nav">
       <Link to="/home" style={{ textDecoration: 'none' }}>
@@ -23,9 +25,13 @@ export default function NavBar() {
       {/* <Link to="/cart">
       <FontAwesomeIcon className="cart" icon={faCartShopping} />
       </Link> */}
-      <Link to="/login">
-      <FontAwesomeIcon className="user" icon={faUser} />
-      </Link>
+      {
+        isLogged===true?<Link to="/profile">
+        <FontAwesomeIcon className="user" icon={faUser} />
+        </Link>:<Link to="/login">
+        <FontAwesomeIcon className="user" icon={faUser} />
+        </Link>
+      }
       </div>
   );
 }
