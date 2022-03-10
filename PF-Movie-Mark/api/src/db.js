@@ -37,7 +37,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Movie, Ticket, User, Groceries, Genre, Hall } = sequelize.models;
+const { Movie, Ticket, User, Grocerie, Genre, Hall } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -47,16 +47,15 @@ Ticket.belongsToMany(Movie, { through: "movie_tickets" });
 Movie.belongsToMany(Genre, { through: "movie_genres" });
 Genre.belongsToMany(Movie, { through: "movie_genres" });
 
-Groceries.belongsToMany(Ticket, { through: "groceries_tickets" });
-Ticket.belongsToMany(Groceries, { through: "groceries_tickets" });
+Grocerie.belongsToMany(Ticket, { through: "groceries_tickets" });
+Ticket.belongsToMany(Grocerie, { through: "groceries_tickets" });
 
-<<<<<<< HEAD
-User.belongsToMany(Ticket, { through: "user_tickets" });
-Ticket.belongsTo(User, { through: "user_tickets" });
+//User.belongsToMany(Ticket, { through: "user_tickets" });
+//Ticket.belongsTo(User, { through: "user_tickets" });
 
 Ticket.belongsToMany(Hall, { through: "ticket_halls" });
 Hall.belongsToMany(Ticket, { through: "ticket_halls" });
-=======
+
 // puede ser hasOne, revisar
 //User.hasOne(Ticket, { through: "user_tickets" });
 //Ticket.belongsTo(User, { through: "user_tickets" });
@@ -66,14 +65,13 @@ User.hasMany(Ticket, {
   foreignKey: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    name: "ticketId"
-  }
+    name: "ticketId",
+  },
 });
 
 Ticket.belongsTo(User);
 //Seats.hasOne(Ticket, { through: "ticket_seats" });
 //Ticket.hasOne(Seats, { through: "ticket_seats" });
->>>>>>> 56545f96b880ae3560ce2ef6003bdc1bc1b9d0da
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
