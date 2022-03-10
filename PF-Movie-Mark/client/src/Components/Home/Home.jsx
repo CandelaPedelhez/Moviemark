@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import NavBar from "../Components/Navbar/NavBar.jsx";
-import Card from "..Card/Card.jsx";
+import NavBar from "../Navbar/Navbar";
+import Card from "../Card/Card";
 import Slider from "../Slider/Slider.jsx";
 import "./Home.css";
 import {
@@ -12,7 +12,7 @@ import {
   getUpcoming,
   getTopRated,
   orderBy,
-} from "../Actions";
+} from "../../Actions";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export default function Home() {
 
   function handleFilteredGenre(e) {
     e.preventDefault();
-    dispatch(filterMovieByGenre(e.target.value));
+    dispatch(filterMovieByGenre((e.target.value).toLowerCase()));
   }
 
   function handleSort(e) {

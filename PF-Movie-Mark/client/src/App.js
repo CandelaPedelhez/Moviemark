@@ -5,7 +5,11 @@ import Groceries from "./Components/Groceries/Groceries.jsx";
 import Details from "./Components/Details/Details.jsx";
 import Payment from "./Components/Payment";
 import { CartProvider } from './Context/CartContext';
+import Login from "./Components/Login/Login";
+import SignUp from "./Components/SignUp/SignUp";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import "./App.css"
+import Profile from "./Components/Profile/Profile";
 
 function App() {
   return (
@@ -19,6 +23,10 @@ function App() {
         <Route path='/upcoming/:id' element={<Details movies="upcoming"/>} />
         <Route path='/toprated/:id' element={<Details movies="toprated"/>} />
         <Route path='/payment' element={<Payment/>} />
+        <Route path='/login' element={<Login />}/>
+        <Route path='/register' element={<SignUp />} />
+        <Route path='/resetpassword' element={<ResetPassword />} />
+        <Route path='/account' element={<Profile />} />
       </Routes>
     </BrowserRouter>
     </CartProvider>
