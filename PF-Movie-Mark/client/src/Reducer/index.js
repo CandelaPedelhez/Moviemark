@@ -76,7 +76,10 @@ export default function reducer(state = initialState, action) {
       return {...state, users: state.users.concat(action.payload)} 
     case "CREATE_USER": 
       return {...state, users: state.users.concat(action.payload)}
-  
+    case "EMAIL_USER":
+      return{...state}
+    case "TOKEN_USER":
+      return{...state}
     default:
       return state;
   }

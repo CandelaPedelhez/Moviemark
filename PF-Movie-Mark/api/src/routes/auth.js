@@ -97,8 +97,7 @@ router.post('/forgot',(req,res)=>{
     })
     .then(user=>{
         if(!user){
-            res.status(500).json({error:"Invalid email"})
-            .redirect('/home');
+            res.status(200).send({error:'Invalid email'});
         }
         else{
             user.update({
@@ -130,7 +129,7 @@ router.post('/forgot',(req,res)=>{
                 transporter.sendMail(mailOptions,(e,success)=>{
                     e
                     ?res.status(500).send(e.message)
-                    :res.status(200).json(req.body);
+                    :res.status(200).send({success:'Done'});
                 })    
             })
             
