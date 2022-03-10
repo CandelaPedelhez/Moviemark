@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const { Movie } = require("../db");
 const { getMovies } = require("../controllers/movies");
+const { getGenres } = require("../controllers/genres");
 
 // -- All pelis
 router.get("/", async (req, res) => {
@@ -24,6 +25,37 @@ router.get("/", async (req, res) => {
     console.log(error.message);
   }
 });
+
+router.get('/filter/:genre',async (req,res)=>{
+  try{
+    const {genre} = req.params;
+    let id=null;
+    let allMovies = await getMovies();
+    let allgenres = await getGenres();
+    for(let h=0;h<allgenres.length;++h){
+      if(genre===allgenres[h].name.toLowerCase()){
+        id=allgenres[h].id;
+      }
+    }
+    if(id!==null){
+      let filtered = [];
+      for(let i=0;i<allMovies.length;++i){
+        for(let j=0;j<allMovies[i].genres.length;++j){
+          if(allMovies[i].genres[j]===id){
+              filtered.push(allMovies[i]);
+          }
+        }
+      }
+      res.status(200).send(filtered);
+    }
+    else{
+      res.status(200).send(allMovies);
+    }
+  }
+  catch(e){
+    console.log(e.message);
+  }
+})
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;

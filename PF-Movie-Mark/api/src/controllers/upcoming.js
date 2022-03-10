@@ -15,6 +15,7 @@ const getUpcoming = async () => {
                         description: movie.overview,
                         popularity: movie.popularity,
                         release_date: movie.release_date,
+                        genres: movie.genre_ids,
                         languages: movie.original_language,
                         vote_average: movie.vote_average,
                         img: "https://image.tmdb.org/t/p/w500" + movie.poster_path,

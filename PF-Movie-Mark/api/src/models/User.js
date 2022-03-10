@@ -44,6 +44,10 @@ module.exports = (sequelize) => {
       defaultValue: "user",
       allowNull: false,
     },
+    passwordResetToken: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+    },
     // authorization: {
     //   type: DataTypes.BOOLEAN,
     //   allowNull: false,

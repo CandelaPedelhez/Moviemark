@@ -25,7 +25,7 @@ export default function Home() {
 
   function handleFilteredGenre(e) {
     e.preventDefault();
-    dispatch(filterMovieByGenre(e.target.value));
+    dispatch(filterMovieByGenre((e.target.value).toLowerCase()));
   }
 
   function handleSort(e) {
