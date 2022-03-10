@@ -1,0 +1,115 @@
+.slider{
+    position: relative;
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 24, 24);
+}
+
+.text{
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    margin-bottom: 10px;
+}
+
+.texttop{
+    margin-bottom: 0px;
+    font-family: calibri;
+    color:white;
+}
+
+.title{
+    color:white;
+    font-family:calibri;
+    font-size: 20px;
+    margin-top:0px;
+    margin-bottom: 0px;
+}
+
+.img{
+    width:1259px;
+    height:440px;
+}
+/* 1212x368 */
+
+.rightarrow, .leftarrow{
+    position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    width: 3%;
+    color: white;
+    z-index:10;
+    cursor:pointer;
+    user-select: none;
+    -webkit-filter: grayscale(1) invert(1);
+    filter: grayscale(1) invert(1);
+}
+
+.rightarrow{
+    right: 32px;
+}
+
+.leftarrow{
+    left: 32px;
+}
+
+.slide{
+    opacity: 0;
+    transition-duration: 1s ease;
+}
+
+.slideact{
+    opacity: 1;
+    transition-duration: 1s;
+}
+
+.cont{
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+.poster{
+    width:50%;
+}
+
+.col1, .col2{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    float: left;
+    width: 150px;
+}
+
+.col1{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.col2{
+    text-align: left;
+}
+
+.columnadj::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.button{
+    margin-top: 1.3em;
+    border-color: transparent;
+    border-radius: 6px;
+    color:black;
+    font-family: calibri;
+    background-color: #b983ff;
+    height: 2em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: black;
+    color:#b983ff;
+}
