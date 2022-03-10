@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
     date: {
       type: DataTypes.DATE,
     },
-    groceries: {
+    userGroceries: {
       type: DataTypes.STRING,
     },
     hall: {
