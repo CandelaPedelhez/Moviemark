@@ -8,6 +8,7 @@ export const initialState = {
   details: [],
   topRated: [],
   forslider: [],
+  users: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -28,21 +29,7 @@ export default function reducer(state = initialState, action) {
     case "GET_DETAILS":
       return { ...state, details: action.payload };
     case "FILTER_BY_GENRE":
-      let allMovies = state.allMovies;
-      let genreFilter =
-        action.payload === "All"
-          ? allMovies
-          : allMovies.filter((e) =>
-              e.genres.find((el) => el.name === action.payload)
-            );
-      if (genreFilter.length <= 0) {
-        alert("Sorry, no Movie found with this genre");
-        genreFilter = allMovies;
-      }
-      return {
-        ...state,
-        movies: genreFilter,
-      };
+      return { ...state, movies: action.payload };
     case "ORDER_BY":
       let aux = [...state.movies];
       let sortedMovies =
@@ -85,6 +72,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         topRated: action.payload,
       };
+    case "LOGIN_USER":
+      return {...state, users: state.users.concat(action.payload)} 
+    case "CREATE_USER": 
+      return {...state, users: state.users.concat(action.payload)}
+  
     default:
       return state;
   }

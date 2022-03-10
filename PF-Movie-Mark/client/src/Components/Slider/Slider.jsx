@@ -5,15 +5,16 @@ import { useState } from 'react';
 import batman from './images/batman.jpg'
 import kimi from './images/kimi.jpeg'
 import scream from './images/scream.png'
+import combo from './images/combo.jpg'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Slider = () => {
     let movies = useSelector(state=>state.forslider)
     const [current, setCurrent] = useState(0);
-    movies = movies.slice(0,3);
+    movies = movies.slice(0,4);
     const length = movies.length;
-    const imagesData = [{ image: batman }, { image: kimi }, { image: scream }]
+    const imagesData = [{ image: batman }, { image: scream }, { image: kimi }, {image:combo}]
 
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1);
@@ -32,7 +33,7 @@ const Slider = () => {
                         <div className={index === current ? styles.slideact : styles.slide} key={index}>
                             {index === current ?
                                 <div className={styles.cont}>
-                                    <div className={styles.text}>
+                                    {el.id!==871799?<div className={styles.text}>
                                         <div className={styles.columnadj}>
                                             <div className={styles.col1}>
                                                 <img className={styles.poster} src={el.img} alt="poster" />
@@ -45,10 +46,14 @@ const Slider = () => {
                                                 </Link>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
+                                    </div>:<></>}
+                                    {el.id!==871799?<div>
                                         <img className={styles.img} src={imagesData[index].image} alt="slide" />
-                                    </div>
+                                    </div>:<div>
+                                        <Link to={'/groceries/'}>
+                                    <img className={styles.img} src={imagesData[index].image} alt="slide" />
+                                    </Link>
+                                    </div>}
                                 </div> : <></>}
                         </div>
                     )

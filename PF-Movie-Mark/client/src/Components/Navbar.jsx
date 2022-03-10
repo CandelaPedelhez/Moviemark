@@ -23,9 +23,9 @@ export default function NavBar() {
       {/* <Link to="/cart">
       <FontAwesomeIcon className="cart" icon={faCartShopping} />
       </Link> */}
-      {/* <Link to="/"> */}
+      <Link to="/login">
       <FontAwesomeIcon className="user" icon={faUser} />
-      {/* </Link> */}
+      </Link>
       </div>
   );
 }

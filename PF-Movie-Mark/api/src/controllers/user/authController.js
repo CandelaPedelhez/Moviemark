@@ -16,6 +16,7 @@ const signUp = async (req, res) =>{
                     email:    req.body.email.trim().toLowerCase(),
                     password: passwordEncrypted,
                     role:     "user",
+                    
                     // authorization: false,
                 }).then(user => {
                     //Cuando un usuario es creado, creo el token:
