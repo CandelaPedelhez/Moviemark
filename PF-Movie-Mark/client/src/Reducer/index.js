@@ -9,7 +9,7 @@ export const initialState = {
   topRated: [],
   forslider: [],
   users: [],
-  user: [],
+  user: {},
   isLogged:false,
 };
 
@@ -76,7 +76,12 @@ export default function reducer(state = initialState, action) {
       };
 
     case "LOGIN_USER":
-      return {...state, user: action.payload, isLogged:true} 
+      return {...state} 
+    case "SET_USER":
+      return {
+        ...state, 
+        user: { email: action.payload.email, id: action.payload.id, role: action.payload.role},
+        isLogged:  true };
     case "CREATE_USER": 
       return {...state, users: state.users.concat(action.payload)}
     case "EMAIL_USER":
@@ -84,7 +89,7 @@ export default function reducer(state = initialState, action) {
     case "TOKEN_USER":
       return{...state}
     case "LOGOUT_USER":
-      return{...state, isLogged:false, user:[]}
+      return{...state, isLogged:false, user:{}}
     default:
       return state;
   }

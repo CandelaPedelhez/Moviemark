@@ -10,6 +10,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import "./App.css"
 import Profile from "./Components/Profile/Profile";
+import EnterToken from "./Components/ResetPassword/EnterToken";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<SignUp />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
+        <Route path='/entertoken' element={<EnterToken />} />
         <Route path='/account' element={<Profile />} />
       </Routes>
     </BrowserRouter>

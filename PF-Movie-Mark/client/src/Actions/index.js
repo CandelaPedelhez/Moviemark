@@ -126,12 +126,22 @@ export function loginUser(payload) {
   }
 }
 
+export function setUser(user){
+  return async function(dispatch){
+    dispatch({
+      type:"SET_USER",
+      payload: user,
+    })
+    localStorage.setItem('userId', user.id)  
+  }
+}
+
 export function logoutUser(){
   return async function(dispatch){
-    let req = await axios.post("http://localhost:3001/api/user/logout/");
-    return dispatch({
-      type: "LOGOUT_USER",
-      payload: req.data,
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    dispatch({
+      type: "LOG_OUT_USER"
     })
   }
 }

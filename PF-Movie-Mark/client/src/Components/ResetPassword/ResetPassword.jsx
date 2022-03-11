@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { sendMail, sendToken } from '../../Actions';
+import { sendMail } from '../../Actions';
+import Loader from '../Loader/Loader';
 import styles from './ResetPassword.module.css';
 
 const ResetPassword = () => {
@@ -16,20 +17,10 @@ const ResetPassword = () => {
         bool:false,
         detail:''
     });
-    const [token,setToken] = useState({
-        id:'',
-        password:''
-    })
-    const [errorpass,setErrorPass] = useState({
-        bool:false,
-    })
-    const [invalidToken,setInvalidToken] = useState({
-        bool:false,
-    })
-    
-    const dispatch = useDispatch();
-    const history = useNavigate();
+    const [charging,setCharging] = useState(false);
 
+    const dispatch = useDispatch();
+    
     function validate_email(str){
         let pattern =  new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
         return !!pattern.test(str);
@@ -39,11 +30,6 @@ const ResetPassword = () => {
         if(ipname==="email"){
             (validate_email(ipvalue)===true)?setError({...error,email:false}):setError({...error,email:true})
         }
-    }
-
-    function validate_password(str){
-        let pattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
-        return !!pattern.test(str);
     }
 
     function handleChange(e){
@@ -57,9 +43,9 @@ const ResetPassword = () => {
 
     function handleSubmit(e){
         e.preventDefault();
+        setCharging(true);
         dispatch(sendMail(input))
         .then(res=>{
-            console.log(res);
             if(res.payload.success==='Done'){
                 setErrorEmailBack({
                     bool:false,
@@ -72,6 +58,7 @@ const ResetPassword = () => {
                     bool:true,
                     detail:'Email not registered',
                 })
+                setCharging(false);
                 setIsSent(false); 
                 setInput({
                     email:'',
@@ -79,41 +66,8 @@ const ResetPassword = () => {
             }
         })
     }
-
-    function handleChangeToken(e){
-        e.preventDefault();
-        setToken({
-            ...token,
-            [e.target.name]: e.target.value,
-        })
-        if(e.target.name==="password"){
-            if(validate_password(e.target.value)){
-                setErrorPass({
-                    bool:false,
-                })
-            }
-            else{
-                setErrorPass({
-                    bool:true,
-                })
-            }
-        }
-    }
-
-    function handleSubmitToken(e){
-        e.preventDefault();
-        if(errorpass.bool!==true){
-            dispatch(sendToken(token))
-            .then((res)=>{
-                if(res.success==="Password reset done"){
-                    history('/login');
-                    window.location.reload();
-                }
-                else{
-                    invalidToken.bool=true;
-                }
-            })
-        }
+    function redirect(){
+        window.location.href = "http://localhost:3000/entertoken"
     }
     
     return(
@@ -134,24 +88,10 @@ const ResetPassword = () => {
                 {
                     errorEmailBack.bool===true?<p className={styles.errors}>{errorEmailBack.detail}</p>:<></>
                 }
+                {   charging===true?<Loader/>:<></>}
                 {
-                    isSent===true?
-                    (<form className={styles.form} onSubmit={e=>handleSubmitToken(e)}>
-                        <p>Enter your token:</p>
-                    <input className={styles.input}
-                    value={token.id} type='number' name='id' placeholder="Token" onChange={e=>handleChangeToken(e)}>
-                    </input>
-
-                        <p>Enter your new password</p>
-                    <input className={styles.input}
-                    value={token.password} type='password' name='password' placeholder="Password" onChange={e=>handleChangeToken(e)}>
-                    </input>
-                    <button className={styles.button} type="submit">Send</button>
-                    </form>)
-                    :<></>
+                    isSent===true?redirect():<></>
                 }
-                {isSent==true && errorpass.bool===true?<p className={styles.errors}>Minimum eight characters, at least one letter and one number</p>:<></>}
-                {invalidToken.bool===true?<p className={styles.errors}>Invalid Token</p>:<></>}
             </form>
             </div>
         </div>
