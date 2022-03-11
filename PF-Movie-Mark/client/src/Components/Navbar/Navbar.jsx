@@ -3,11 +3,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faCartShopping, faClapperboard } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faClapperboard } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css"
 import Cart from "../Cart/index";
 import { useSelector } from "react-redux";
-// import hola from "./hola.png"
 
 export default function NavBar() {
   const isLogged = useSelector((state) => state.isLogged);
@@ -22,9 +21,6 @@ export default function NavBar() {
       </Link>
       <SearchBar/>
       <Cart/>
-      {/* <Link to="/cart">
-      <FontAwesomeIcon className="cart" icon={faCartShopping} />
-      </Link> */}
       {
         isLogged===true?<Link to="/profile">
         <FontAwesomeIcon className="user" icon={faUser} />
