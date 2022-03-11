@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import NavBar from "../Components/Navbar/NavBar.jsx";
-import Card from "..Card/Card.jsx";
-import Slider from "../Slider/Slider.jsx";
+import NavBar from "../Navbar/Navbar";
+import Card from "../Card/Card";
+import Slider from "../Slider/Slider";
 import "./Home.css";
 import {
   getMovies,
@@ -12,7 +12,7 @@ import {
   getUpcoming,
   getTopRated,
   orderBy,
-} from "../Actions";
+} from "../../Actions";
 
 export default function Home() {
   const dispatch = useDispatch();

@@ -72,7 +72,7 @@ export const CartProvider = ({ children }) => {
             );
         }
     };
-
+console.log("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAA",cartItems)
     return (
         <CartContext.Provider
          value={{ cartItems, addItemToCart, deleteItemToCart, clearCart }}

@@ -1,18 +1,21 @@
-// hay que traer el estado de cartItems
-import CartContext from "../../Context/CartContext"
-import { useContext } from 'react'
+import QRcode from "qrcode"
+import { useEffect, useState } from "react";
 
 let date = new Date();
 
 export default function Resumen(){
 
-    const { cartItems } = useContext(CartContext);
+    /* ACÁ NOS TRAEMOS EL ÚLTIMO TICKET GENERADO PARA EL USUARIO */
+    const [qr, setQr] = useState("");
+    useEffect(() => {
+        QRcode.toDataURL(ticket.id).then((setQr));
+    })
 
     return (
         <div>
             <div>
             <h1>Movie-Mark</h1>
-            <p>Adress: Calle sin nombre 123</p>
+            <p>Adress: 123 Fake Street</p>
             <p>Date: {date}</p>
             </div>
             <div>
@@ -31,6 +34,9 @@ export default function Resumen(){
                 <h2>Total:</h2>
                 <h2>{cartItems.total}</h2>
             </div>
+            <di>
+                <img src={qr}/>
+            </di>
 
         </div>
     );

@@ -5,6 +5,7 @@ import Groceries from "./Components/Groceries/Groceries.jsx";
 import Details from "./Components/Details/Details.jsx";
 import Payment from "./Components/Payment";
 import { CartProvider } from './Context/CartContext';
+import MyReceipts from "./Components/Receipts/MyReceipts"
 import "./App.css"
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         <Route path='/upcoming/:id' element={<Details movies="upcoming"/>} />
         <Route path='/toprated/:id' element={<Details movies="toprated"/>} />
         <Route path='/payment' element={<Payment/>} />
+        <Route path='/myReceipts' element={<MyReceipts/>} />
+        <Route path='/myReceipts:id' element={<MyReceipts/>} />
       </Routes>
     </BrowserRouter>
     </CartProvider>

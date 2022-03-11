@@ -22,7 +22,7 @@ const Cart = () => {
 
   const checkout = () => {
     if(cartItems.length > 0) {
-      navigate("/payment");
+      navigate("/payment"); /* ACÁ HAY QUE CAMBIAR A LA RUTA DE RESUMEN */
     }
   };
 
