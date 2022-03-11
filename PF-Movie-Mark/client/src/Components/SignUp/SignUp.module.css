@@ -92,3 +92,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.errors{
+    color:red;
+    font-size: 0.85em;
+}
+
+.success{
+    color:green;
+    font-size: 0.85em;
+}

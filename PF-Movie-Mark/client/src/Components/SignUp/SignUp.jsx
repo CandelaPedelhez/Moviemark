@@ -70,7 +70,7 @@ const SignUp = () => {
                     email:'',
                     password:'',
                 })
-                setTimeout( function() { window.location.href = "http://localhost:3000/login"; }, 3000 );
+                setTimeout( function() { window.location.href = "http://localhost:3000/login"; }, 2000 );
             })
         }
     }
@@ -121,13 +121,13 @@ const SignUp = () => {
                 </div>
     
                 <div>
-                    {error.name===true && input.name.trim()!==''?<p>Name not valid</p>:<></>}
-                    {error.lastName===true && input.lastName.trim()!==''?<p>Last Name not valid</p>:<></>}
-                    {error.email===true && input.email.trim()!==''?<p>Email not valid</p>:<></>}
-                    {error.password===true && input.password.trim()!==''?<p>Minimum eight characters, at least one letter and one number</p>:<></>}
+                    {error.name===true && input.name.trim()!==''?<p className={styles.errors}>Name not valid</p>:<></>}
+                    {error.lastName===true && input.lastName.trim()!==''?<p className={styles.errors}>Last Name not valid</p>:<></>}
+                    {error.email===true && input.email.trim()!==''?<p className={styles.errors}>Email not valid</p>:<></>}
+                    {error.password===true && input.password.trim()!==''?<p className={styles.errors}>Minimum eight characters, at least one letter and one number</p>:<></>}
                 </div>
                 {
-                    success===true?<p>Register success. You can login now</p>:<></>
+                    success===true?<p className={styles.success}>Register success. You can login now</p>:<></>
                 }
                 {
                      success===true?<Loader/>:<></>
