@@ -117,22 +117,26 @@ const ResetPassword = () => {
     }
     
     return(
-        <div>
-            <h1>Reset your password</h1>
-            <form onSubmit={e=>handleSubmit(e)}>
+        <div> 
+            <div className={styles.back}>
+                <button className={styles.backbtt}>Back</button>
+            </div>
+            <div className={styles.page}>
+            <h1 className={styles.title}>Reset your password</h1>
+            <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
                 <p>Please enter your email:</p>
                 <input className={styles.input}
                 value={input.email} type='text' name='email' placeholder="Email" onChange={e=>handleChange(e)}>
                 </input>
                 {
-                    error.email===true?<button disabled type="submit">Send mail</button>:<button type="submit">Send mail</button>
+                    error.email===true ||input.email.trim()===''?<button className={styles.buttondis} disabled type="submit">Send mail</button>:<button className={styles.button} type="submit">Send mail</button>
                 }
                 {
                     errorEmailBack.bool===true?<p>{errorEmailBack.detail}</p>:<></>
                 }
                 {
                     isSent===true?
-                    (<form onSubmit={e=>handleSubmitToken(e)}>
+                    (<form className={styles.form} onSubmit={e=>handleSubmitToken(e)}>
                         <p>Enter your token:</p>
                     <input className={styles.input}
                     value={token.id} type='number' name='id' placeholder="Token" onChange={e=>handleChangeToken(e)}>
@@ -142,13 +146,14 @@ const ResetPassword = () => {
                     <input className={styles.input}
                     value={token.password} type='password' name='password' placeholder="Password" onChange={e=>handleChangeToken(e)}>
                     </input>
-                    <button type="submit">Send</button>
+                    <button className={styles.button} type="submit">Send</button>
                     </form>)
                     :<></>
                 }
                 {isSent==true && errorpass.bool===true?<p>Minimum eight characters, at least one letter and one number</p>:<></>}
                 {invalidToken.bool===true?<p>Invalid Token</p>:<></>}
             </form>
+            </div>
         </div>
     )
 }

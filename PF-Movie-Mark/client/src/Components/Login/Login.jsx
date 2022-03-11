@@ -21,12 +21,11 @@ const Login = () => {
         e.preventDefault();
         dispatch(loginUser(input))
         .then(()=>{
-            history('/home');
-            window.location.reload();
-        })
-        setInput({
-            email:'',
-            password:''
+            window.location.href = "http://localhost:3000/home";
+            setInput({
+                email:'',
+                password:''
+            })
         })
     } 
 
@@ -67,9 +66,15 @@ const Login = () => {
     }
 
     return(
+        <div> 
+        <div className={styles.back}>
+            <Link to="/home">
+            <button className={styles.backbtt}>Back</button>
+            </Link>
+        </div>
         <div className={styles.page}>
+            <form className={styles.form} onSubmit={(e)=>makedispatch(e)}>
             <div className={styles.title}>Login</div>
-            <form onSubmit={(e)=>makedispatch(e)}>
                 <input className={styles.input}
                 value={input.email} type='text' name='email' placeholder="Email" onChange={e=>handleChange(e)}>
                 </input>
@@ -78,7 +83,7 @@ const Login = () => {
                 </input>
                 <div>
                     {
-                        error.email===true||error.password===true?<button disabled type="submit">Sign in</button>:<button type="submit">Sign in</button>
+                        error.email===true||error.password===true?<button className={styles.buttondis} disabled type="submit">Sign in</button>:<button className={styles.button} type="submit">Sign in</button>
                     }
                 </div>
 
@@ -92,14 +97,19 @@ const Login = () => {
                 </div>
 
                 <div className={styles.others}>
+                    <div>
                         <Link className={styles.nav_link} to='/register'>
                         Register
                         </Link>
+                    </div>
+                    <div>
                         <Link className={styles.nav_link} to='/resetpassword'>
                         Reset Password
                         </Link>
+                    </div>
                 </div>
             </form>
+            </div>
         </div>
     )
 }
