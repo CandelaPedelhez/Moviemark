@@ -7,6 +7,12 @@ const authConfig = require('../../config/auth.js');
 //Registro -- creación de usuario
 const signUp = async (req, res) =>{
     try {
+        const user = await User.findOne({
+            where:{email:req.body.email}
+        })
+        if(user){
+            return res.status(200).json({msg: "Email registered"})
+        }
         //encripto pass:
         let passwordEncrypted = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
             // if(role === "user"){

@@ -13,6 +13,19 @@
     align-items: center;
 }
 
+.back{
+    float: left;
+}
+
+.backbtt{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.backbtt:hover{
+    cursor:pointer;
+}
+
 .form{
     display: flex;
     background-color: white;
@@ -25,18 +38,18 @@
 }
 
 .title{
+    margin-top:100px;
     margin-bottom: 20px;
     font-size: 1.25em;
+    color: white;
 }
 
 .input{
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-bottom: 8px;
 }
 
 .button{
     margin-top: 8px;
-    margin-bottom: 8px;
     border-color: transparent;
     border-radius: 30px 30px 30px 30px;
     color:white;
@@ -56,17 +69,6 @@
     border-radius: 30px 30px 30px 30px;
     color:white;
     background-color: rgba(98, 0, 255, 0.171);
-}
-
-.social{
-    margin-top: 7px;
-    margin-bottom: 10px;
-}
-
-.others{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
 }
 
 .errors{

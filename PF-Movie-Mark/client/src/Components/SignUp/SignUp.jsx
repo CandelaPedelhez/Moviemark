@@ -20,6 +20,7 @@ const SignUp = () => {
     })
     const [allowed,setAllowed] = useState(false);
     const [success,setSuccess] = useState(false);
+    const [emailused,setEmailUsed] = useState(false);
 
     const history = useNavigate();
     const dispatch = useDispatch();
@@ -62,15 +63,21 @@ const SignUp = () => {
         e.preventDefault();
         if(allowed===true){
             dispatch(createUser(input))
-            .then(()=>{
-                setSuccess(true);
-                setInput({
-                    name:'',
-                    lastName:'',
-                    email:'',
-                    password:'',
-                })
-                setTimeout( function() { window.location.href = "http://localhost:3000/login"; }, 2000 );
+            .then((res)=>{
+                if(res.payload.msg ==="Email registered"){
+                    setEmailUsed(true);
+                }
+                else{
+                    setEmailUsed(false);
+                    setSuccess(true);
+                    setInput({
+                        name:'',
+                        lastName:'',
+                        email:'',
+                        password:'',
+                    })
+                    setTimeout( function() { window.location.href = "http://localhost:3000/login"; }, 2000 );
+                }
             })
         }
     }
@@ -85,10 +92,7 @@ const SignUp = () => {
     }
 
     return(
-        <div> 
-            <div className={styles.back}>
-                <button className={styles.backbtt}>Back</button>
-            </div>
+        <div>
             <div className={styles.page}>
             <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
                 <h1 className={styles.title}>Sign Up</h1>
@@ -126,6 +130,7 @@ const SignUp = () => {
                     {error.email===true && input.email.trim()!==''?<p className={styles.errors}>Email not valid</p>:<></>}
                     {error.password===true && input.password.trim()!==''?<p className={styles.errors}>Minimum eight characters, at least one letter and one number</p>:<></>}
                 </div>
+                {emailused===true?<p className={styles.errors}>Email already used</p>:<></>}
                 {
                     success===true?<p className={styles.success}>Register success. You can login now</p>:<></>
                 }

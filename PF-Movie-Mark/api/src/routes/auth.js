@@ -146,7 +146,7 @@ router.use('/reset',async (req,res)=>{
         const user = await User.findOne({
             where:{passwordResetToken:req.body.passwordResetToken}
         })
-        if(!user) res.status(200).json({error:"Token not valid"});
+        if(!user) res.status(200).send({error:"Token not valid"});
         else{
             const hash = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
             const aux = user.update({
@@ -154,10 +154,10 @@ router.use('/reset',async (req,res)=>{
                 password:hash,
                 passwordResetToken:null,
             })
-            res.status(200).json({success:"Password reset done"})
+            res.status(200).send({success:"Password reset done"})
         }
     }
-    catch(e){ res.status(200).json({error:"ERROR"})}
+    catch(e){ res.status(200).send({error:"ERROR"})}
 })
           
 

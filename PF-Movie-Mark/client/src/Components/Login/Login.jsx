@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from 'react-router-dom';
-import { loginUser } from '../../Actions';
+import { loginUser, setUser } from '../../Actions';
+import jwt from "jsonwebtoken";
 import Loader from '../Loader/Loader';
 import styles from './Login.module.css';
 
@@ -27,7 +28,6 @@ const Login = () => {
         e.preventDefault();
         dispatch(loginUser(input))
         .then((res)=>{
-            console.log(res);
             if(res.payload.msg ==="Incorrect password :("){
                 setErrorIncorrect({
                     password:true
@@ -39,6 +39,12 @@ const Login = () => {
                 });
             }
             else{
+                //ver desde aca
+                const token = res.data;
+                const user = jwt.decode(token);
+                localStorage.setItem("token", token);
+                dispatch(setUser(user));
+                //hasta aca
                 setInput({
                     email:'',
                     password:''
@@ -87,11 +93,6 @@ const Login = () => {
 
     return(
         <div> 
-        <div className={styles.back}>
-            <Link to="/home">
-            <button className={styles.backbtt}>Back</button>
-            </Link>
-        </div>
         <div className={styles.page}>
             <form className={styles.form} onSubmit={(e)=>makedispatch(e)}>
             <div className={styles.title}>Login</div>
