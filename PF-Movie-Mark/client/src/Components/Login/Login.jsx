@@ -93,11 +93,6 @@ const Login = () => {
 
     return(
         <div> 
-        <div className={styles.back}>
-            <Link to="/home">
-            <button className={styles.backbtt}>Back</button>
-            </Link>
-        </div>
         <div className={styles.page}>
             <form className={styles.form} onSubmit={(e)=>makedispatch(e)}>
             <div className={styles.title}>Login</div>

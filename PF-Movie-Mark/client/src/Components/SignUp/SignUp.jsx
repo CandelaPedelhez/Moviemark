@@ -85,10 +85,7 @@ const SignUp = () => {
     }
 
     return(
-        <div> 
-            <div className={styles.back}>
-                <button className={styles.backbtt}>Back</button>
-            </div>
+        <div>
             <div className={styles.page}>
             <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
                 <h1 className={styles.title}>Sign Up</h1>

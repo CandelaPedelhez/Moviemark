@@ -13,19 +13,6 @@
     align-items: center;
 }
 
-.back{
-    float: left;
-}
-
-.backbtt{
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-.backbtt:hover{
-    cursor:pointer;
-}
-
 .form{
     display: flex;
     background-color: white;

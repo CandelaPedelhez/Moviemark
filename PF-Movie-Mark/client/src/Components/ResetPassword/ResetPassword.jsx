@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { sendMail } from '../../Actions';
 import Loader from '../Loader/Loader';
 import styles from './ResetPassword.module.css';
@@ -72,9 +72,6 @@ const ResetPassword = () => {
     
     return(
         <div> 
-            <div className={styles.back}>
-                <button className={styles.backbtt}>Back</button>
-            </div>
             <div className={styles.page}>
             <h1 className={styles.title}>Reset your password</h1>
             <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
@@ -85,6 +82,11 @@ const ResetPassword = () => {
                 {
                     error.email===true ||input.email.trim()===''?<button className={styles.buttondis} disabled type="submit">Send mail</button>:<button className={styles.button} type="submit">Send mail</button>
                 }
+                <div className={styles.doyoudiv}>
+                    <Link to={'/login'}>
+                    <p className={styles.doyou}>Login</p>
+                    </Link>
+                </div>
                 {
                     errorEmailBack.bool===true?<p className={styles.errors}>{errorEmailBack.detail}</p>:<></>
                 }
