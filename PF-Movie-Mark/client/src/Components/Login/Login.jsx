@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../Actions';
+import Loader from '../Loader/Loader';
 import styles from './Login.module.css';
 
 const Login = () => {
@@ -13,6 +14,11 @@ const Login = () => {
         email:true,
         password:true,
     })
+    const [errorIncorrect,setErrorIncorrect] = useState({
+        password:false,
+        email:false
+    });
+    const [success,setSuccess] = useState(false);
 
     const dispatch = useDispatch();
     const history = useNavigate();
@@ -20,12 +26,26 @@ const Login = () => {
     const makedispatch = (e) => {
         e.preventDefault();
         dispatch(loginUser(input))
-        .then(()=>{
-            window.location.href = "http://localhost:3000/home";
-            setInput({
-                email:'',
-                password:''
-            })
+        .then((res)=>{
+            console.log(res);
+            if(res.payload.msg ==="Incorrect password :("){
+                setErrorIncorrect({
+                    password:true
+                });
+            }
+            else if(res.payload.msg === "Email not found :("){
+                setErrorIncorrect({
+                    email:true
+                });
+            }
+            else{
+                setInput({
+                    email:'',
+                    password:''
+                })
+                setSuccess(true);
+                setTimeout( function() { window.location.href = "http://localhost:3000/home"; }, 2000 );
+            }
         })
     } 
 
@@ -108,6 +128,11 @@ const Login = () => {
                         </Link>
                     </div>
                 </div>
+                {errorIncorrect.password===true?<p className={styles.errors}>Password Incorrect</p>:<></>}
+                {errorIncorrect.email===true?<p className={styles.errors}>Email not registered</p>:<></>}
+                {
+                     success===true?<Loader/>:<></>
+                }
             </form>
             </div>
         </div>

@@ -132,7 +132,7 @@ const ResetPassword = () => {
                     error.email===true ||input.email.trim()===''?<button className={styles.buttondis} disabled type="submit">Send mail</button>:<button className={styles.button} type="submit">Send mail</button>
                 }
                 {
-                    errorEmailBack.bool===true?<p>{errorEmailBack.detail}</p>:<></>
+                    errorEmailBack.bool===true?<p className={styles.errors}>{errorEmailBack.detail}</p>:<></>
                 }
                 {
                     isSent===true?
@@ -150,8 +150,8 @@ const ResetPassword = () => {
                     </form>)
                     :<></>
                 }
-                {isSent==true && errorpass.bool===true?<p>Minimum eight characters, at least one letter and one number</p>:<></>}
-                {invalidToken.bool===true?<p>Invalid Token</p>:<></>}
+                {isSent==true && errorpass.bool===true?<p className={styles.errors}>Minimum eight characters, at least one letter and one number</p>:<></>}
+                {invalidToken.bool===true?<p className={styles.errors}>Invalid Token</p>:<></>}
             </form>
             </div>
         </div>

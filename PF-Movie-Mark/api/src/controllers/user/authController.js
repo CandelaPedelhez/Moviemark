@@ -45,7 +45,7 @@ const signIn = async (req, res) => {
         where: {email: email}
     }).then(user => {
         if(!user){
-            res.status(404).json({msg: "Email not found :("})
+            res.status(200).json({msg: "Email not found :("})
         }else{
             //Comparo las password, la que recibo y la que estaba en la db
             if(bcrypt.compareSync(password, user.password)){
@@ -60,7 +60,7 @@ const signIn = async (req, res) => {
                 })
             }else{
                 //Msg unauthorized
-                res.status(401).json({msg: "Incorrect password :("})
+                res.status(200).json({msg: "Incorrect password :("})
             }
         }
     })

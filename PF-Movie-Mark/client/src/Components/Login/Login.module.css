@@ -81,3 +81,13 @@
     justify-content: space-between;
     align-items: flex-end;
 }
+
+.errors{
+    color:red;
+    font-size: 0.85em;
+}
+
+.success{
+    color:green;
+    font-size: 0.85em;
+}
