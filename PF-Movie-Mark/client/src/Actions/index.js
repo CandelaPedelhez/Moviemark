@@ -148,16 +148,11 @@ export function logoutUser(){
 
 export function createUser(payload) {
   return async function(dispatch){
-    try{
-      let req = await axios.post("http://localhost:3001/api/user/signUp",payload)
-      return dispatch({
-        type: "CREATE_USER",
-        payload: req.data,
-      })
-    }
-    catch(e){
-      return "error";
-    }
+    let req = await axios.post("http://localhost:3001/api/user/signUp",payload)
+    return dispatch({
+      type: "CREATE_USER",
+      payload: req.data,
+    })
   }
 } 
 

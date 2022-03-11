@@ -73,8 +73,8 @@ const ResetPassword = () => {
     return(
         <div> 
             <div className={styles.page}>
-            <h1 className={styles.title}>Reset your password</h1>
             <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
+            <h1 className={styles.title}>Reset your password</h1>
                 <p>Please enter your email:</p>
                 <input className={styles.input}
                 value={input.email} type='text' name='email' placeholder="Email" onChange={e=>handleChange(e)}>
