@@ -9,11 +9,11 @@ router.get("/", async (req, res, next) => {
     availables?.map((a) => {
       Available.findOrCreate({
         where: {
-          movie_title: a.name,
+          name: a.name,
           date: a.functions.map((e) => e.date),
           hour: a.functions.map((e) => e.hour),
           hall: a.functions.map((e) => e.hall),
-          hall_tickets: a.functions.map((e) => e.hall_tickets),
+          hall_tickets: a.functions.map((e) => e.tickets),
         },
       });
     });
