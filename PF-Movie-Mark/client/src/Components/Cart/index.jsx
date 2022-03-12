@@ -6,6 +6,17 @@ import styles from "./styles.module.scss";
 
 
 const Cart = () => {
+  //Fran
+  let token = 0;
+  if(localStorage.getItem("token")){
+      token = localStorage.getItem("token");
+  }
+
+  function login(){
+    navigate("/login");
+  }
+  //
+
   const [cartOpen, setCartOpen] = useState(false);
   const [productsLength, setProductsLength] = useState(0);
   const navigate = useNavigate()
@@ -79,7 +90,10 @@ const Cart = () => {
           )}
           <h2 className={styles.total}>Total: ${total}</h2>
           <div className={styles.btnCheckout}>
-            <button onClick={checkout}>Checkout</button>
+            {/* <button onClick={checkout}>Checkout</button> */}
+            {
+              token.length>10?<button onClick={checkout}>Checkout</button>:<button onClick={login()}>Checkout</button>
+            }
           </div>
         </div>
       )}
