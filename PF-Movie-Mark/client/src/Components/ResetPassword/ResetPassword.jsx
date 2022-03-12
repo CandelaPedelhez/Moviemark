@@ -20,6 +20,7 @@ const ResetPassword = () => {
     const [charging,setCharging] = useState(false);
 
     const dispatch = useDispatch();
+    const history = useNavigate();
     
     function validate_email(str){
         let pattern =  new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
@@ -67,7 +68,7 @@ const ResetPassword = () => {
         })
     }
     function redirect(){
-        window.location.href = "http://localhost:3000/entertoken"
+        history('/validate');
     }
     
     return(

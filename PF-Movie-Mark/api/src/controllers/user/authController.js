@@ -61,7 +61,6 @@ const signIn = async (req, res) => {
                 });
 
                 res.json({
-                    user: user,
                     token: token
                 })
             }else{

@@ -115,6 +115,7 @@ export function orderBy(payload) {
   return { type: "ORDER_BY", payload };
 }
 
+///////
 
 export function loginUser(payload) {
   return async function(dispatch){
@@ -126,20 +127,8 @@ export function loginUser(payload) {
   }
 }
 
-export function setUser(user){
-  return async function(dispatch){
-    dispatch({
-      type:"SET_USER",
-      payload: user,
-    })
-    localStorage.setItem('userId', user.id)  
-  }
-}
-
 export function logoutUser(){
   return async function(dispatch){
-    localStorage.removeItem('token')
-    localStorage.removeItem('userId')
     dispatch({
       type: "LOG_OUT_USER"
     })
