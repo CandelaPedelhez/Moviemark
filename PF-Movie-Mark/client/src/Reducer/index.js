@@ -78,12 +78,24 @@ export default function reducer(state = initialState, action) {
       };
 
     case "LOGIN_USER":
-      const token = action.payload.token;
+      if(action.payload.token){
+        const token = action.payload.token;
       const useraux = jwt.decode(token);
-      localStorage.setItem("token", token);
-      return {...state,user:useraux,loggedIn:true} 
+      const obj = useraux.user;
+      const user = {
+        id:obj.id,
+        email:obj.email,
+        name:obj.name,
+        lastName:obj.lastName,
+      }
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user)); 
+      return {...state,user:user,loggedIn:true} 
+      }
+      else{return {...state,user:{},loggedIn:false} }
     case "LOG_OUT_USER":
       localStorage.removeItem('token')
+      localStorage.removeItem('user');
       return{...state,user:{},loggedIn:false}
       
     case "CREATE_USER": 
@@ -91,6 +103,12 @@ export default function reducer(state = initialState, action) {
     case "EMAIL_USER":
       return{...state}
     case "TOKEN_USER":
+      return{...state}
+    case "CHANGE_DATA":
+      let usr = localStorage.getItem("user");
+      let aux2 = JSON.parse(usr);
+      aux2.name = action.payload.name;
+      localStorage.setItem('user', JSON.stringify(aux2));
       return{...state}
     default:
       return state;

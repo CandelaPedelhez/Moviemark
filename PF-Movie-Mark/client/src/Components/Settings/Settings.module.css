@@ -40,3 +40,17 @@
 .img{
     width:25%;
 }
+
+.button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    margin-bottom: 5px;
+}
+.button:focus {
+    border: none;
+}
+.button:hover{
+    cursor: pointer;
+    color: #b983ff;
+}

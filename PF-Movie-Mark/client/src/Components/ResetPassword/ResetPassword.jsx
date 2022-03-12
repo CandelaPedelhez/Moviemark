@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { sendMail } from '../../Actions';
+import { logoutUser, sendMail } from '../../Actions';
 import Loader from '../Loader/Loader';
 import styles from './ResetPassword.module.css';
 

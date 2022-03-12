@@ -1,26 +1,28 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Settings.module.css';
 import popcorn from './assets/popcorn.png';
-
-const user = {
-    id: 1,
-		name: "Francisco",
-		lastName: "Cedermaz",
-		email: "francedermaz@gmail.com",
-		role: "user",
-}
+import { changeData, logoutUser } from '../../Actions';
+import Loader from '../Loader/Loader';
 
 const Settings = () => {
-    //const user = useSelector(state=>state.user);
+    let aux = {name:''}
+    if(localStorage.getItem("user")){
+        aux = localStorage.getItem("user");
+        aux = JSON.parse(aux);
+    }
     const [input,setInput] = useState({
         name:'',
     })
     const [error,setError] = useState({
         name:false,
     })
-    const [changename,setChangeName] = useState(false)
+    const [changename,setChangeName] = useState(false);
+    const [logoutsuccess,setLogoutSuccess] = useState(false);
+
+    const dispatch = useDispatch();
+    const history = useNavigate();
 
     function validate_name(str){
         let pattern = new RegExp("\[A-Z\]\[a-z\]{1,}"); //CAMBIAR REGEXP.... NO deberia aceptar espacios en blanco porque rompe... El back rompe con Jose Maria!
@@ -44,11 +46,27 @@ const Settings = () => {
 
     function handleSubmit(e){
         e.preventDefault();
-
+        dispatch(changeData(
+            {id:aux.id,
+            name:input.name,
+            }));
     }
 
     function handleChangeName(){
         setChangeName(true);
+    }
+
+    function handleLogout() {
+        dispatch(logoutUser())
+        .then(()=>{
+            setLogoutSuccess(true);
+            setTimeout( function() { history('/home'); }, 2000 );
+        })
+    }
+
+    function handleChangePassword(){
+        dispatch(logoutUser());
+        history('/resetpassword')
     }
 
     return(
@@ -56,20 +74,22 @@ const Settings = () => {
             <div className={styles.account}>
             <img src={popcorn} className={styles.img}alt="img popcorn"/>
             <h1 className={styles.title}>Account Settings</h1>
-            <h2 className={styles.subtitle}>Hi {user.name}</h2>
-            <Link className={styles.nav_link} to='/resetpassword'>
-                Change my password
-            </Link>
-            <button onClick={()=>handleChangeName()}>Change my name</button>
+            <h2 className={styles.subtitle}>Hi {aux.name}</h2>
+            <button className={styles.button} onClick={()=>handleChangePassword()}>Reset my password</button>
+            {/* <button className={styles.button} onClick={()=>handleChangeName()}>Change my name</button> */}
             {
                 changename===true?<form className={styles.form} onSubmit={e=>handleSubmit(e)}>
                 <input className={styles.input}
                 value={input.name} type='text' name='name' placeholder="Name" onChange={e=>handleChange(e)}>
                 </input>
                 {
-                    error.password===true?<button className={styles.buttondis} disabled type="submit">Change</button>:<button className={styles.button} type="submit">Change</button>
+                    error.name===true?<button className={styles.buttondis} disabled type="submit">Change</button>:<button className={styles.button} type="submit">Change</button>
                 }
                 </form>:<></>
+            }
+            <button className={styles.button} onClick={()=>handleLogout()}>Logout</button>
+            {
+            logoutsuccess===true?<Loader/>:<></>
             }
             </div>
         </div>

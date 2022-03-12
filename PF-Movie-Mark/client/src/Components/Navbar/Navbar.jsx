@@ -10,7 +10,10 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
   const loggedIn = useSelector((state) => state.loggedIn);
-  const aux = localStorage.getItem("token");
+  let aux = 0;
+  if(localStorage.getItem("token")){
+    aux = localStorage.getItem("token")
+  }
   return (
     <div className="nav">
       <Link to="/home" style={{ textDecoration: 'none' }}>
