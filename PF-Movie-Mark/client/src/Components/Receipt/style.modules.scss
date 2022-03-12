@@ -1,0 +1,36 @@
+.container {
+    
+    h1 {
+        color: whitesmoke;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h2 {
+        color: whitesmoke;
+        text-align: center;
+    }
+
+    .items {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-style: dashed;
+    }
+
+    h4 {
+        color:whitesmoke;
+        font-weight: bold;
+    }
+
+    .total {
+
+        h3{
+            color: green;
+            display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+    }
+}

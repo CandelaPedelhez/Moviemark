@@ -3,8 +3,10 @@ import React, { useContext } from 'react';
 import {CartContext} from "../../Context/CartContext"
 import Cart from "../Cart/index";
 import Checkout from "../Checkout.jsx"
-
-let date = new Date();
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import "./style.modules.scss"
 
 export default function Receipt(){
 
@@ -13,32 +15,28 @@ export default function Receipt(){
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
 
     return (
-        <div>
+        <div className='container'>
             <div>
-            <h1>Movie Mark</h1>
-            <Cart/>
-            <p>Adress: Calle sin nombre 123</p>
-            {/* <p>Date: {date}</p> */}
+            <Link to="/home">
+          <button className="btnBack">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        </Link>
+        <Cart/>
+            <h1>Order details</h1>
             </div>
             <div>
             {/* <h3>Description</h3> */}
-            <h3>Price</h3>
             </div>
-            <div>
+            <div className='items'>
             {
-                   cartItems.map(e => <div><img src={e.img} width="180px" height="160px"/> <li>{e.name || e.title}</li> <li>{e.price}</li></div>
+                   cartItems.map(e => <div><img src={e.img} width="180px" height="160px"/> <h4>{e.name || e.title}</h4> <h4>Price per unity: ${e.price}</h4></div>
                    )
                 }
-                {/* {
-                   cartItems.map(e => <li>{e.name || e.title}</li>)
-                } */}
-                {/* {
-                    cartItems.map(e => <li>{e.price}</li>)
-                } */}
             </div>
-            <div>
+            <div className='total'>
                 <h2>Total:</h2>
-                <h2>${total}</h2>
+                <h3>${total}</h3>
             </div>
             <Checkout />
         </div>

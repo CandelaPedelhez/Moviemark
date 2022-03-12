@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Comprar from './Comprar'
 import axios from 'axios'
+import "./Checkout.scss"
 
 export default function Checkout() {
   const [datos, setDatos] = useState("")
@@ -15,26 +16,20 @@ export default function Checkout() {
   },[])
 
   //puedo mostrar los productos de mi carrito u orden detalle
-  const productos = [
-    {title: "Producto 1", quantity: 5, price: 10.52},
-    {title: "Producto 2", quantity: 15, price: 100.52},
-    {title: "Producto 3", quantity: 6, price: 200}
-  ]
+  // const productos = [
+  //   {title: "Producto 1", quantity: 5, price: 10.52},
+  //   {title: "Producto 2", quantity: 15, price: 100.52},
+  //   {title: "Producto 3", quantity: 6, price: 200}
+  // ]
   return (
     <div>
+      <div className='wait'>
       { !datos
         ? <p>Please wait...</p> 
         : 
        <>
-        <table>
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Amount</th>
-
-          </tr>
-        </thead>
+       
+        {/* <table>
         <tbody>
         {
         productos.map((producto, i) => {
@@ -47,10 +42,11 @@ export default function Checkout() {
             )
         })} 
         </tbody>  
-        </table>
+        </table> */}
         <Comprar data={datos}/>
         </>
       }
+      </div>
     </div>
   );
 }
