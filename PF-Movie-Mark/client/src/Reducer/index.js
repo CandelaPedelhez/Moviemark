@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 export const initialState = {
   movies: [],
   allMovies: [],
@@ -10,7 +12,7 @@ export const initialState = {
   forslider: [],
   users: [],
   user: {},
-  isLogged:false,
+  loggedIn:false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -76,20 +78,20 @@ export default function reducer(state = initialState, action) {
       };
 
     case "LOGIN_USER":
-      return {...state} 
-    case "SET_USER":
-      return {
-        ...state, 
-        user: { email: action.payload.email, id: action.payload.id, role: action.payload.role},
-        isLogged:  true };
+      const token = action.payload.token;
+      const useraux = jwt.decode(token);
+      localStorage.setItem("token", token);
+      return {...state,user:useraux,loggedIn:true} 
+    case "LOG_OUT_USER":
+      localStorage.removeItem('token')
+      return{...state,user:{},loggedIn:false}
+      
     case "CREATE_USER": 
       return {...state, users: state.users.concat(action.payload)}
     case "EMAIL_USER":
       return{...state}
     case "TOKEN_USER":
       return{...state}
-    case "LOGOUT_USER":
-      return{...state, isLogged:false, user:{}}
     default:
       return state;
   }

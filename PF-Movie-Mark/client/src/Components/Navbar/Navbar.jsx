@@ -9,7 +9,7 @@ import Cart from "../Cart/index";
 import { useSelector } from "react-redux";
 
 export default function NavBar() {
-  const isLogged = useSelector((state) => state.isLogged);
+  const loggedIn = useSelector((state) => state.loggedIn);
   return (
     <div className="nav">
       <Link to="/home" style={{ textDecoration: 'none' }}>
@@ -22,7 +22,7 @@ export default function NavBar() {
       <SearchBar/>
       <Cart/>
       {
-        isLogged===true?<Link to="/profile">
+        loggedIn===true?<Link to="/account">
         <FontAwesomeIcon className="user" icon={faUser} />
         </Link>:<Link to="/login">
         <FontAwesomeIcon className="user" icon={faUser} />
