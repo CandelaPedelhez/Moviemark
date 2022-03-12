@@ -1,4 +1,5 @@
 import { useEffect} from 'react'
+import "./Comprar.css"
 //import axios from 'axios'
 
 export default function Comprar({ productos, data }){
