@@ -58,7 +58,7 @@ router.put('/:id',(req,res)=>{
             data.update({
                 password: passwordEncrypted,
             })
-            .then(response=>{res.status(200).json(response)})
+            .then(response=>{res.status(200).json({name:req.body.name})})
             .catch(e=>{res.status(500).json({e})});
         }
     })
