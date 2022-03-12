@@ -9,8 +9,9 @@ import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import "./App.css"
-import Profile from "./Components/Profile/Profile";
+import Profile from "./Components/Settings/Settings";
 import EnterToken from "./Components/ResetPassword/EnterToken";
+import Settings from "./Components/Settings/Settings";
 
 function App() {
   return (
@@ -25,10 +26,11 @@ function App() {
         <Route path='/toprated/:id' element={<Details movies="toprated"/>} />
         <Route path='/payment' element={<Receipt/>} />
         <Route path='/login' element={<Login />}/>
-        <Route path='/register' element={<SignUp />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
-        <Route path='/entertoken' element={<EnterToken />} />
+        <Route path='/validate' element={<EnterToken />} />
         <Route path='/account' element={<Profile />} />
+        <Route path='/settings' element={<Settings />} />
       </Routes>
     </BrowserRouter>
     </CartProvider>

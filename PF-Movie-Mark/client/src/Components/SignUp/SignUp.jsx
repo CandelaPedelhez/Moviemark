@@ -76,7 +76,7 @@ const SignUp = () => {
                         email:'',
                         password:'',
                     })
-                    setTimeout( function() { window.location.href = "http://localhost:3000/login"; }, 2000 );
+                    setTimeout( function() { history('/login'); }, 2000 );
                 }
             })
         }

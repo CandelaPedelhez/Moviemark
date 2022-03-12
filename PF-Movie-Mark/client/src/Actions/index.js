@@ -115,6 +115,7 @@ export function orderBy(payload) {
   return { type: "ORDER_BY", payload };
 }
 
+///////
 
 export function loginUser(payload) {
   return async function(dispatch){
@@ -126,21 +127,9 @@ export function loginUser(payload) {
   }
 }
 
-export function setUser(user){
-  return async function(dispatch){
-    dispatch({
-      type:"SET_USER",
-      payload: user,
-    })
-    localStorage.setItem('userId', user.id)  
-  }
-}
-
 export function logoutUser(){
   return async function(dispatch){
-    localStorage.removeItem('token')
-    localStorage.removeItem('userId')
-    dispatch({
+    return dispatch({
       type: "LOG_OUT_USER"
     })
   }
@@ -172,6 +161,16 @@ export function sendToken(payload){
     return dispatch({
       type: "TOKEN_USER",
       payload: req.data,
+    })
+  }
+}
+
+export function changeData(id,payload){
+  return async function(dispatch){
+    let req = await axios.post("http://localhost:3001/api/user/"+id,payload)
+    return dispatch({
+      type: "CHANGE_DATA",
+      payload: req.data
     })
   }
 }

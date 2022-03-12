@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from 'react-router-dom';
-import { loginUser, setUser } from '../../Actions';
-import jwt from "jsonwebtoken";
+import { loginUser } from '../../Actions';
 import Loader from '../Loader/Loader';
 import styles from './Login.module.css';
 
@@ -39,18 +38,12 @@ const Login = () => {
                 });
             }
             else{
-                //ver desde aca
-                const token = res.data;
-                const user = jwt.decode(token);
-                localStorage.setItem("token", token);
-                dispatch(setUser(user));
-                //hasta aca
                 setInput({
                     email:'',
                     password:''
                 })
                 setSuccess(true);
-                setTimeout( function() { window.location.href = "http://localhost:3000/home"; }, 2000 );
+                setTimeout( function() { history('/home'); }, 2000 );
             }
         })
     } 
@@ -119,7 +112,7 @@ const Login = () => {
 
                 <div className={styles.others}>
                     <div>
-                        <Link className={styles.nav_link} to='/register'>
+                        <Link className={styles.nav_link} to='/signup'>
                         Register
                         </Link>
                     </div>

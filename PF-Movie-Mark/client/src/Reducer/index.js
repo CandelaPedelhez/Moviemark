@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 export const initialState = {
   movies: [],
   allMovies: [],
@@ -10,7 +12,7 @@ export const initialState = {
   forslider: [],
   users: [],
   user: {},
-  isLogged:false,
+  loggedIn:false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -76,20 +78,38 @@ export default function reducer(state = initialState, action) {
       };
 
     case "LOGIN_USER":
-      return {...state} 
-    case "SET_USER":
-      return {
-        ...state, 
-        user: { email: action.payload.email, id: action.payload.id, role: action.payload.role},
-        isLogged:  true };
+      if(action.payload.token){
+        const token = action.payload.token;
+      const useraux = jwt.decode(token);
+      const obj = useraux.user;
+      const user = {
+        id:obj.id,
+        email:obj.email,
+        name:obj.name,
+        lastName:obj.lastName,
+      }
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user)); 
+      return {...state,user:user,loggedIn:true} 
+      }
+      else{return {...state,user:{},loggedIn:false} }
+    case "LOG_OUT_USER":
+      localStorage.removeItem('token')
+      localStorage.removeItem('user');
+      return{...state,user:{},loggedIn:false}
+      
     case "CREATE_USER": 
       return {...state, users: state.users.concat(action.payload)}
     case "EMAIL_USER":
       return{...state}
     case "TOKEN_USER":
       return{...state}
-    case "LOGOUT_USER":
-      return{...state, isLogged:false, user:{}}
+    case "CHANGE_DATA":
+      let usr = localStorage.getItem("user");
+      let aux2 = JSON.parse(usr);
+      aux2.name = action.payload.name;
+      localStorage.setItem('user', JSON.stringify(aux2));
+      return{...state}
     default:
       return state;
   }

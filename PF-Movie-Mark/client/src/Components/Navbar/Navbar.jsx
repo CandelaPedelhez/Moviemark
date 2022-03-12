@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClapperboard } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +9,11 @@ import Cart from "../Cart/index";
 import { useSelector } from "react-redux";
 
 export default function NavBar() {
-  const isLogged = useSelector((state) => state.isLogged);
+  const loggedIn = useSelector((state) => state.loggedIn);
+  let aux = 0;
+  if(localStorage.getItem("token")){
+    aux = localStorage.getItem("token")
+  }
   return (
     <div className="nav">
       <Link to="/home" style={{ textDecoration: 'none' }}>
@@ -22,7 +26,7 @@ export default function NavBar() {
       <SearchBar/>
       <Cart/>
       {
-        isLogged===true?<Link to="/profile">
+        loggedIn===true || aux.length>10?<Link to="/account">
         <FontAwesomeIcon className="user" icon={faUser} />
         </Link>:<Link to="/login">
         <FontAwesomeIcon className="user" icon={faUser} />

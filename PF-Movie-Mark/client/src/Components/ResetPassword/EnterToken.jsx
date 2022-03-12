@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { sendToken } from '../../Actions';
 import Loader from '../Loader/Loader';
 import styles from './EnterToken.module.css';
@@ -18,6 +19,7 @@ const EnterToken = () => {
     const [done,setDone] = useState(false);
 
     const dispatch = useDispatch();
+    const history = useNavigate();
 
     function validate_password(str){
         let pattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
@@ -56,7 +58,7 @@ const EnterToken = () => {
                 setInvalidToken({
                     bool:false,
                 })
-                setTimeout( function() { window.location.href = "http://localhost:3000/login"; }, 2000 );
+                setTimeout( function() { history('/login'); }, 2000 );
             }
             else{
                 setInvalidToken({

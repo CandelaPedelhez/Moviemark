@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { sendMail } from '../../Actions';
+import { logoutUser, sendMail } from '../../Actions';
 import Loader from '../Loader/Loader';
 import styles from './ResetPassword.module.css';
 
@@ -20,6 +20,7 @@ const ResetPassword = () => {
     const [charging,setCharging] = useState(false);
 
     const dispatch = useDispatch();
+    const history = useNavigate();
     
     function validate_email(str){
         let pattern =  new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
@@ -67,7 +68,7 @@ const ResetPassword = () => {
         })
     }
     function redirect(){
-        window.location.href = "http://localhost:3000/entertoken"
+        history('/validate');
     }
     
     return(
