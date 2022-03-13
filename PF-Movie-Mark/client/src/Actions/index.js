@@ -109,4 +109,26 @@ export function orderBy(payload) {
   return { type: "ORDER_BY", payload };
 }
 
+export function getReceipt(payload){
+  return async function(dispatch){
+      try{
+          var json = await axios.get("http://localhost:3001/myReceipts/" + payload)
+          return dispatch({
+              type: "GET_RECEIPT",
+              payload: json.data
+          })
+      } catch(e){
+          console.log(e)
+      }
+  }
+}
 
+export function getMyReceipts(){
+  return async function(dispatch){
+      var json = await axios.get("http://localhost:3001/myReceipts")
+      return dispatch({
+          type: "GET_MY_RECEIPTS",
+          payload: json.data 
+      })
+  }
+}

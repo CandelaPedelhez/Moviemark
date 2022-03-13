@@ -1,20 +1,28 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReceiptsCard from "./ReceiptsCard"
 import { Link } from "react-router-dom"
+import { getMyReceipts } from "../../Actions/index"
 
 export default function MyReceipts() {
 
-const currentTickets = [] /* PARA QUE NO ROMPA, DESPUÉS HABRIA QUE TRAER LOS TICKETS DEL USUARIO ACÁ */
+    const dispatch = useDispatch();
+    const myReceipts = useSelector(state => state.myReceipts);
+
+    useEffect(() => {
+        dispatch(getMyReceipts())
+    }, [dispatch])
+
 
     return (
         <div>
             <div>
-                { (currentTickets.length > 0) ?
+                { (myReceipts.length > 0) ?
                 <div>
-                    {currentTickets.map((e, index) => (
+                    {myReceipts.map((e, index) => (
                         <div key={index}>
                             <Link to={"/myReceipts/" + e.id}>
-                                <ReceiptsCard ticket={e.ticket} />
+                                <ReceiptsCard date={e.date} id={e.id}/> {/* Que me pase el ID */}
                             </Link>
                         </div>
                     ))}

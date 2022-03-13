@@ -8,6 +8,8 @@ export const initialState = {
   details: [],
   topRated: [],
   forslider: [],
+  receipt: [],
+  myReceipts: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -33,8 +35,8 @@ export default function reducer(state = initialState, action) {
         action.payload === "All"
           ? allMovies
           : allMovies.filter((e) =>
-              e.genres.find((el) => el.name === action.payload)
-            );
+            e.genres.find((el) => el.name === action.payload)
+          );
       if (genreFilter.length <= 0) {
         alert("Sorry, no Movie found with this genre");
         genreFilter = allMovies;
@@ -48,23 +50,23 @@ export default function reducer(state = initialState, action) {
       let sortedMovies =
         action.payload === "A-Z"
           ? aux.sort(function (a, b) {
-              if (a.title.toLowerCase() > b.title.toLowerCase()) {
-                return 1;
-              }
-              if (a.title.toLowerCase() < b.title.toLowerCase()) {
-                return -1;
-              }
-              return 0;
-            })
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+              return 1;
+            }
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+              return -1;
+            }
+            return 0;
+          })
           : aux.sort(function (a, b) {
-              if (a.title.toLowerCase() > b.title.toLowerCase()) {
-                return -1;
-              }
-              if (a.title.toLowerCase() < b.title.toLowerCase()) {
-                return 1;
-              }
-              return 0;
-            });
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+              return -1;
+            }
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+              return 1;
+            }
+            return 0;
+          });
       return {
         ...state,
         movies: action.payload === "default" ? state.allMovies : sortedMovies,
@@ -78,13 +80,23 @@ export default function reducer(state = initialState, action) {
       };
     case "GET_TOP_RATED_ID":
       return { ...state, details: action.payload };
-    case "GET_UPCOMING_ID": 
+    case "GET_UPCOMING_ID":
       return { ...state, details: action.payload };
     case "GET_TOP_RATED":
       return {
         ...state,
         topRated: action.payload,
       };
+    case "GET_RECEIPT":
+      return {
+        ...state,
+        receipt: action.payload,
+      }
+    case "GET_MY_RECEIPTS":
+      return {
+        ...state,
+        myReceipts: action.payload,
+      }
     default:
       return state;
   }
