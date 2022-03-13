@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     movie_title: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     //posibilidad de generar un QR
     price: {
@@ -19,10 +19,10 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
     },
     userGroceries: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
-    hall: {
-      type: DataTypes.STRING,
-    },
+    // hall: {
+    //   type: DataTypes.STRING,
+    // },
   });
 };
