@@ -129,7 +129,7 @@ export function loginUser(payload) {
 
 export function logoutUser(){
   return async function(dispatch){
-    dispatch({
+    return dispatch({
       type: "LOG_OUT_USER"
     })
   }
@@ -161,6 +161,16 @@ export function sendToken(payload){
     return dispatch({
       type: "TOKEN_USER",
       payload: req.data,
+    })
+  }
+}
+
+export function changeData(id,payload){
+  return async function(dispatch){
+    let req = await axios.post("http://localhost:3001/api/user/"+id,payload)
+    return dispatch({
+      type: "CHANGE_DATA",
+      payload: req.data
     })
   }
 }
