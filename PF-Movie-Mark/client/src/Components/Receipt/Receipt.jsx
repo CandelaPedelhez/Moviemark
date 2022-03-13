@@ -23,6 +23,9 @@ export default function Receipt(){
           </button>
         </Link>
         <Cart/>
+            <Link to="/groceries">
+                <h2>Don't forget our groceries!</h2>
+            </Link>
             <h1>Order details</h1>
             </div>
             <div>
@@ -34,11 +37,11 @@ export default function Receipt(){
                    )
                 }
             </div>
-            <div className='total'>
+            {cartItems.length>0? <div className='total'>
                 <h2>Total:</h2>
                 <h3>${total}</h3>
-            </div>
-            <Checkout />
+                <Checkout />
+            </div> : <div></div>}
         </div>
     );
 }
