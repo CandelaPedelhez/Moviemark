@@ -37,10 +37,6 @@ router.get('/:id', async (req, res, next) => {
     res.status(200).send(results);     
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 // //Ruta para crear usuario
 // server.post('/', (req, res, next) => {
 //     User.create({
@@ -65,10 +61,6 @@ router.get('/:id', async (req, res, next) => {
 //         res.sendStatus(400)
 //     })
 // })
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 // server.get("/", (req,res, next)=>{
 //     User.findAll()
 //     .then(users =>{
@@ -76,9 +68,5 @@ router.get('/:id', async (req, res, next) => {
 //     }).catch(e => console.log(e))
 // })
 
-<<<<<<< HEAD
-module.exports = router; 
-=======
 
  module.exports = router;
->>>>>>> main
