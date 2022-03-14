@@ -20,7 +20,7 @@ let groceries = [
   {
     id: 3,
     name: "Mega Combo - for 2",
-    img: "https://images-na.ssl-images-amazon.com/images/I/519sHWblkqL._SX300_SY300_QL70_FMwebp_.jpg",
+    img: "IMGNOT",
     price: 1100,
     stock: 100,
     description: "1 popcorn bucket + 2 large sodas + 1 candy",
@@ -29,7 +29,7 @@ let groceries = [
   {
     id: 4,
     name: "Mega Combo - for 1",
-    img: "https://fox5theatre.com/wp-content/uploads/2020/03/PopcornCombo.jpg",
+    img: "https://i.imgur.com/paxGUcb.png",
     price: 760,
     stock: 100,
     description: "1 popcorn bucket + 1 large soda",
@@ -41,7 +41,7 @@ let groceries = [
     img: "https://pbs.twimg.com/media/Dq8yMgrXgAAdALk?format=jpg&name=medium",
     price: 1450,
     stock: 100,
-    description: "3 popcorn medium bags + 4 sodas + 2 candies",
+    description: "3 popcorn small buckets + 4 sodas + 2 candies",
     type: "combo",
   },
   {
@@ -50,7 +50,7 @@ let groceries = [
     img: "https://pbs.twimg.com/media/DeC0ZYwU8AABc7a?format=jpg&name=large",
     price: 2200,
     stock: 100,
-    description: "1 limited edition popcorn bucket + 1 large soda",
+    description: "1 limited edition popcorn 'Batman' bucket + 1 large soda",
     type: "combo",
   },
   {
@@ -77,7 +77,8 @@ let groceries = [
     img: "https://www.abajournal.com/images/main_images/soda_cola_straw600px.png",
     price: 400,
     stock: 100,
-    description: "Large soda of your choice",
+    description:
+      "Large soda of your choice (Seven UP, Mirinda, Common Pepsi, Zero Pepsi)",
     type: "drinks",
   },
   {
@@ -137,7 +138,7 @@ let groceries = [
   {
     id: 16,
     name: "Medium coffe + cookie",
-    img: "https://thumbs.dreamstime.com/z/chocolate-chip-cookies-homemade-baking-round-shape-medium-size-white-wooden-background-copy-space-180708831.jpg",
+    img: "",
     price: 450,
     stock: 100,
     description: " 1 medium coffe and 1 cookie of your choice",
@@ -185,7 +186,7 @@ let groceries = [
     img: "https://www.camoga.ar/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/5/0/50010004_caramelos_masticables_sugus_x700_grs_1.jpg",
     price: 190,
     stock: 100,
-    description: " 1 box of candied sugus",
+    description: " 1 box of candies Sugus",
     type: "sweets",
   },
   {

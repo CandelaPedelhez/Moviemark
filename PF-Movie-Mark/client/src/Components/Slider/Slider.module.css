@@ -29,8 +29,8 @@
 }
 
 .img{
-    width:1259px;
-    height:440px;
+    width:1200px;
+    height:500px;
 }
 /* 1212x368 */
 
@@ -111,4 +111,5 @@
 .button:hover {
     background-color: black;
     color:#b983ff;
+
 }

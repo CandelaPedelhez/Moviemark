@@ -38,7 +38,7 @@ const SignUp = () => {
     }
 
     function validate_password(str){
-        let pattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
+        let pattern = new RegExp(/^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$/);
         return !!pattern.test(str);
     }
 
@@ -152,4 +152,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp; 
+export default SignUp;

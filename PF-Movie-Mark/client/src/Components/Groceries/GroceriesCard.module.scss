@@ -16,6 +16,8 @@
         gap: 10px;
         background-color: #b983ff;
         border-style: dashed;
+        border-color: #533E85;
+        border-radius: 10px;
 
         img {
             width: 100%;
@@ -23,13 +25,17 @@
 
         p {
             font-weight: bold;
+            font-size: 15px;
             text-align: center;
         }
 
         button {
+            background-color: #533E85;
+            color: #cecece;
             border: none;
             border-radius: 3px;
             padding: 5px 10px;
+            margin-bottom: 9px;
             cursor: pointer;
         }
 
