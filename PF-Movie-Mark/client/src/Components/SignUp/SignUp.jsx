@@ -133,7 +133,6 @@ const SignUp = () => {
                     <p className={styles.doyou}>Do you have an account?</p>
                     </Link>
                 </div>
-    
                 <div>
                     {error.name===true && input.name.trim()!==''?<p className={styles.errors}>Name not valid</p>:<></>}
                     {error.lastName===true && input.lastName.trim()!==''?<p className={styles.errors}>Last Name not valid</p>:<></>}
