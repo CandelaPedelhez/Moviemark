@@ -85,7 +85,6 @@ router.get('/ticket/:idTicket', async (req, res, next) => {
 //         res.sendStatus(400)
 //     })
 // })
-
 // server.get("/", (req,res, next)=>{
 //     User.findAll()
 //     .then(users =>{

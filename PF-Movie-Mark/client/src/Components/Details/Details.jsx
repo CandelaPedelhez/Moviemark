@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails, getTopRatedForId, getUpcomingForId } from "../../Actions";
+import { getDetails, getTopRatedForId, getUpcomingForId, getAvailables } from "../../Actions";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faAdd } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +14,7 @@ export default function Details({ movies }) {
   const dispatch = useDispatch();
   const movieId = useParams();
   const myMovie = useSelector((state) => state.details);
+  const availables = useSelector((state) => state.availables);
   const { addItemToCart } = useContext(CartContext);
 
   const makedispatch = () => {
@@ -26,6 +27,10 @@ export default function Details({ movies }) {
     }
   };
 
+  useEffect(() => {
+    dispatch(getAvailables());
+  }, [dispatch])
+
   const handleAdd = () => {
     addItemToCart(myMovie[0]);
   };
@@ -33,6 +38,15 @@ export default function Details({ movies }) {
   useEffect(() => {
     makedispatch();
   }, []);
+
+
+
+  function handleSelect(e){
+    e.preventDefault();
+    ;
+}
+
+  const movie = availables.filter(e => e.name === myMovie[0].title)
 
   return (
     <>
@@ -84,9 +98,26 @@ export default function Details({ movies }) {
                 <h3>Vote average</h3>
                 <p>{myMovie[0].vote_average}</p>
               </div>
+              {
+                movie.length > 0 ? 
+                <div>
+                <select onChange={e => handleSelect(e)}>
+                  {
+                    movie.date.map(e => <option value={e}>{e}</option>) /* TODAVÍA NO FUNCIONA */
+                  }
+                </select>
+                <select onChange={e => handleSelect(e)}>
+                {
+                  movie.hour.map(e => <option value={e}>{e}</option>) /* TODAVÍA NO FUNCIONA */
+                }
+              </select>
               <button onClick={() => handleAdd(myMovie[0])}>
                 <FontAwesomeIcon icon={faAdd} /> Buy Tickets
               </button>
+              </div>
+
+                  : <p>There are not functions availables</p>
+              }
             </div>
           </div>
         )}

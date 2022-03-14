@@ -3,7 +3,6 @@ import LandingPage from "./Components/Landing/Landing";
 import Home from "./Components/Home/Home.jsx";
 import Groceries from "./Components/Groceries/Groceries.jsx";
 import Details from "./Components/Details/Details.jsx";
-import Receipt from "./Components/Receipt/Receipt.jsx";
 import { CartProvider } from './Context/CartContext';
 import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
@@ -12,6 +11,9 @@ import "./App.css"
 import Profile from "./Components/Settings/Settings";
 import EnterToken from "./Components/ResetPassword/EnterToken";
 import Settings from "./Components/Settings/Settings";
+import MyReceipts from "./Components/Receipts/MyReceipts"
+import Receipt from "./Components/Receipts/Receipt";
+import OrderSummary from "./Components/OrderSummary/OrderSummary";
 
 function App() {
   return (
@@ -24,13 +26,15 @@ function App() {
         <Route path='/movies/:id' element={<Details movies="movies"/>} />
         <Route path='/upcoming/:id' element={<Details movies="upcoming"/>} />
         <Route path='/toprated/:id' element={<Details movies="toprated"/>} />
-        <Route path='/payment' element={<Receipt/>} />
+        <Route path='/payment' element={<OrderSummary/>} />
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
         <Route path='/validate' element={<EnterToken />} />
         <Route path='/account' element={<Profile />} />
         <Route path='/settings' element={<Settings />} />
+        <Route path='/user/:id' element={<MyReceipts/>} />
+        <Route path='/ticket/:idTicket' element={<Receipt/>} /> 
       </Routes>
     </BrowserRouter>
     </CartProvider>
