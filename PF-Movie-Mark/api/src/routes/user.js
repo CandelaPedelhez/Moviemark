@@ -37,6 +37,30 @@ router.get('/:id', async (req, res, next) => {
     res.status(200).send(results);     
 });
 
+//Detail ticket byUser
+router.get('/ticket/:idTicket', async (req, res, next) => {
+    const {idTicket} = req.params;
+    idTicket.toString();
+    let tickets= [];
+
+    let userTickets  = await Ticket.findAll({where: {ticketId: idTicket}});
+    // console.log(userTickets);
+
+    if (userTickets) {
+        let ticketFound = {
+            ticketId: userTickets[0].ticketId,
+            movie_title: userTickets[0].movie_title,
+            price: userTickets[0].price,
+            date: userTickets[0].date,
+            userGroceries: userTickets[0].userGroceries,
+        };
+        tickets.push(ticketFound);
+    };
+    res.status(200).send(tickets);     
+});
+
+
+
 // //Ruta para crear usuario
 // server.post('/', (req, res, next) => {
 //     User.create({
@@ -61,7 +85,6 @@ router.get('/:id', async (req, res, next) => {
 //         res.sendStatus(400)
 //     })
 // })
-
 // server.get("/", (req,res, next)=>{
 //     User.findAll()
 //     .then(users =>{

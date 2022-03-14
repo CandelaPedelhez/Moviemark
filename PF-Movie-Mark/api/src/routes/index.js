@@ -17,7 +17,6 @@ const mercadopagoRoute = require('./mercadopago.js');
 const availablesRoute = require("./availables.js");
 
 
-
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
@@ -33,7 +32,6 @@ router.use('/product', productRoute);
 router.use('/userTicket', userRoute);
 router.use('/mercadopago', mercadopagoRoute);
 router.use("/availables", availablesRoute);
-
 
 
 module.exports = router;

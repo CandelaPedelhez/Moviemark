@@ -1,13 +1,14 @@
 import React from "react";
 import styles from './Landing.module.css';
 import { Link } from "react-router-dom";
+import gif from "./assets/popcorn.gif"
 
 export default function LandingPage() {
   return (
     <>
     <div className={styles.page}>
       <div className={styles.imgdiv}>
-        <img src="https://f.ptcdn.info/728/075/000/r40cycxtjPIKL0HI74j-o.gif" className={styles.img}alt="img popcorn"/>
+        <img src={gif} className={styles.img}alt="img popcorn"/>
       </div>
       <div className={styles.father}>
         <div className={styles.textland}>

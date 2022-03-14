@@ -102,6 +102,7 @@ const Settings = () => {
                 }
                 </form>:<></>
             }
+            <Link to="/user/:id">My Receipts</Link>
             <button className={styles.button} onClick={()=>handleLogout()}>Logout</button>
             </div>
         </div>
