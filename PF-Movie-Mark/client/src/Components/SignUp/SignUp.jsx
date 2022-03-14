@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { createUser } from '../../Actions';
 import styles from './SignUp.module.css';
 import Loader from '../Loader/Loader';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
     const [input,setInput] = useState({
@@ -93,6 +95,14 @@ const SignUp = () => {
 
     return(
         <div>
+            <div className={styles.divbtt}>
+                <Link to="/home">
+                    <button className={styles.btnBack}>
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                    </button>
+                </Link>
+            </div>
+
             <div className={styles.page}>
             <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
                 <h1 className={styles.title}>Sign Up</h1>
@@ -134,11 +144,11 @@ const SignUp = () => {
                 {
                     success===true?<p className={styles.success}>Register success. You can login now</p>:<></>
                 }
-                {
-                     success===true?<Loader/>:<></>
-                }
             </form>
             </div>
+            {
+                     success===true?<Loader/>:<></>
+                }
         </div>
     )
 }
