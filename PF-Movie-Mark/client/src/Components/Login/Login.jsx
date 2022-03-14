@@ -23,7 +23,7 @@ const Login = () => {
         email:false
     });
     const [success,setSuccess] = useState(false);
-    const { login, loginWithGoogle, loginWithGithub, resetPassword } = useAuth();
+    const { loginWithGoogle, loginWithGithub } = useAuth();
 
     const dispatch = useDispatch();
     const history = useNavigate();
@@ -81,14 +81,6 @@ const Login = () => {
         validate(e.target.name,e.target.value);
     }
 
-    const signGoogle = () => {
-        window.location.href = 'http://localhost:3000/auth/google/';
-    }
-
-    const signFacebook = () => {
-        window.location.href = 'http://localhost:3000/auth/facebook';
-    }
-
     const makedispatchgoogle = async (e) => {
         e.preventDefault();
         dispatch(loginUser(input))
@@ -104,7 +96,6 @@ const Login = () => {
         setSuccess(true);
         setTimeout( function() { history('/home'); }, 2000 );
     }
-    
 
     return(
         <div> 
