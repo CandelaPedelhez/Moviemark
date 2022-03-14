@@ -15,14 +15,16 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.FLOAT,
     },
-    date: {
-      type: DataTypes.DATE,
+
+
+      type: DataTypes.STRING,
     },
-    userGroceries: {
+
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
     // hall: {
     //   type: DataTypes.STRING,
     // },
+
   });
 };
