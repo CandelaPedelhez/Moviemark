@@ -3,6 +3,7 @@ const { API_KEY } = process.env;
 const axios = require("axios");
 const BASE_URL = "https://api.themoviedb.org/3";
 const { Movie } = require("../db");
+
 const getMovies = async () => {
   try {
     let movies = await axios.get(
@@ -15,16 +16,14 @@ const getMovies = async () => {
         description: movie.overview,
         popularity: movie.popularity,
         release_date: movie.release_date,
+        genres: movie.genre_ids,
         languages: movie.original_language,
         vote_average: movie.vote_average,
         img: "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+        price: 1000
       };
     });
-
-    auxMovies.forEach((el) => {
-      Movie.findOrCreate({ where: el });
-    });
-
+    
     return auxMovies;
   } catch (error) {
     console.log(error.message);

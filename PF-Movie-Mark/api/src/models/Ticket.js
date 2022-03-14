@@ -21,5 +21,8 @@ module.exports = (sequelize) => {
     adminGroceries: {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
+    // hall: {
+    //   type: DataTypes.STRING,
+    // },
   });
 };

@@ -1,0 +1,91 @@
+.page{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    background-color: white;
+    height:50vh;
+    width:50vh;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    margin-bottom: 20px;
+    font-size: 1.25em;
+}
+
+.input{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.button{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-color: transparent;
+    border-radius: 30px 30px 30px 30px;
+    color:white;
+    font-family: calibri;
+    background-color: #b241fd;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: rgb(218, 32, 218)
+}
+
+.buttondis{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-color: transparent;
+    border-radius: 30px 30px 30px 30px;
+    color:white;
+    background-color: rgba(98, 0, 255, 0.171);
+}
+
+.social{
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+
+.others{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.doyou{
+    font-size: 0.85em;
+}
+
+.doyoudiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.errors{
+    color:red;
+    font-size: 0.85em;
+}
+
+.success{
+    color:green;
+    font-size: 0.85em;
+}

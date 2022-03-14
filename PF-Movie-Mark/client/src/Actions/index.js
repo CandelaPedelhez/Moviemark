@@ -60,8 +60,14 @@ export function getDetails(payload) {
   };
 }
 
-export function filterMovieByGenre(genre) {
-  return { type: "FILTER_BY_GENRE", genre };
+export function filterMovieByGenre(payload) {
+  return async function(dispatch){
+    let aux = await axios.get("http://localhost:3001/api/movies/filter/"+payload);
+    return dispatch({
+      type:"FILTER_BY_GENRE",
+      payload: aux.data,
+    })
+  }
 }
 
 export function getUpcoming() {
@@ -109,6 +115,7 @@ export function orderBy(payload) {
   return { type: "ORDER_BY", payload };
 }
 
+<<<<<<< HEAD
 export function getReceipt(payload){
   return async function(dispatch){
       try{
@@ -140,5 +147,64 @@ export function getAvailables(){
           type: "GET_AVAILABLES",
           payload: json.data 
       })
+=======
+///////
+
+export function loginUser(payload) {
+  return async function(dispatch){
+    let req = await axios.post("http://localhost:3001/api/user/signIn/",payload)
+    return dispatch({
+      type: "LOGIN_USER",
+      payload: req.data
+    })
+  }
+}
+
+export function logoutUser(){
+  return async function(dispatch){
+    return dispatch({
+      type: "LOG_OUT_USER"
+    })
+  }
+}
+
+export function createUser(payload) {
+  return async function(dispatch){
+    let req = await axios.post("http://localhost:3001/api/user/signUp",payload)
+    return dispatch({
+      type: "CREATE_USER",
+      payload: req.data,
+    })
+  }
+} 
+
+export function sendMail(payload){
+  return async function(dispatch){
+    let req = await axios.post("http://localhost:3001/api/user/forgot",payload)
+    return dispatch({
+      type: "EMAIL_USER",
+      payload: req.data,
+    })
+  }
+}
+
+export function sendToken(payload){
+  return async function(dispatch){
+    let req = await axios.post("http://localhost:3001/api/user/reset",payload)
+    return dispatch({
+      type: "TOKEN_USER",
+      payload: req.data,
+    })
+  }
+}
+
+export function changeData(id,payload){
+  return async function(dispatch){
+    let req = await axios.post("http://localhost:3001/api/user/"+id,payload)
+    return dispatch({
+      type: "CHANGE_DATA",
+      payload: req.data
+    })
+>>>>>>> main
   }
 }

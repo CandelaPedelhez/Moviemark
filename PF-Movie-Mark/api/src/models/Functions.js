@@ -1,14 +1,7 @@
 const { DataTypes } = require("sequelize");
-
 module.exports = (sequelize) => {
-  sequelize.define("available", {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
-      primaryKey: true,
-    },
-    name: {
+  sequelize.define("functions", {
+    movie_title: {
       type: DataTypes.STRING,
     },
     date: {

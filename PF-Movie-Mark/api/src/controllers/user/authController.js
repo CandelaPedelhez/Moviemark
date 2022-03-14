@@ -7,6 +7,12 @@ const authConfig = require('../../config/auth.js');
 //Registro -- creación de usuario
 const signUp = async (req, res) =>{
     try {
+        const user = await User.findOne({
+            where:{email:req.body.email}
+        })
+        if(user){
+            return res.status(200).json({msg: "Email registered"})
+        }
         //encripto pass:
         let passwordEncrypted = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
             // if(role === "user"){
@@ -45,7 +51,7 @@ const signIn = async (req, res) => {
         where: {email: email}
     }).then(user => {
         if(!user){
-            res.status(404).json({msg: "Email not found :("})
+            res.status(200).json({msg: "Email not found :("})
         }else{
             //Comparo las password, la que recibo y la que estaba en la db
             if(bcrypt.compareSync(password, user.password)){
@@ -55,12 +61,11 @@ const signIn = async (req, res) => {
                 });
 
                 res.json({
-                    user: user,
                     token: token
                 })
             }else{
                 //Msg unauthorized
-                res.status(401).json({msg: "Incorrect password :("})
+                res.status(200).json({msg: "Incorrect password :("})
             }
         }
     })

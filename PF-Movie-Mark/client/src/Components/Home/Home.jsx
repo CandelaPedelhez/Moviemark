@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../Navbar/Navbar";
-import Card from "../Card/Card";
-import Slider from "../Slider/Slider";
+import Card from "../Card/Card.jsx";
+import Slider from "../Slider/Slider.jsx";
 import "./Home.css";
 import {
   getMovies,
@@ -25,7 +25,7 @@ export default function Home() {
 
   function handleFilteredGenre(e) {
     e.preventDefault();
-    dispatch(filterMovieByGenre(e.target.value));
+    dispatch(filterMovieByGenre((e.target.value).toLowerCase()));
   }
 
   function handleSort(e) {
@@ -53,62 +53,57 @@ export default function Home() {
   return (
     <div>
       <div>
-      <NavBar />
-      <hr color="#b983ff"></hr>
-      <Slider />
+        <NavBar />
+        <hr color="#b983ff"></hr>
+        <Slider />
       </div>
       <div className="filters">
-      <select className="select1" onChange={(e) => handleFilteredGenre(e)}>
-        <option className="option" value="genre" disabled>Filter by genre</option>
-        <option value="All">All</option>
-        {genres?.map((genre) => {
-          return (
-            <option key={genre.id} value={genre.name}>
-              {genre.name}
-            </option>
-          );
-        })}
-      </select>
-      <select className="select2" onChange={(e) => handleSort(e)}>
-        <option className="option" value="order by" disabled>
-          Sort:
-        </option>
-        <option value="default">All</option>
-        <option value="A-Z">A-Z</option>
-        <option value="Z-A">Z-A</option>
-      </select>
+        <select className="select1" onChange={(e) => handleFilteredGenre(e)}>
+          <option className="option" value="genre" disabled>
+            Filter by genre
+          </option>
+          <option value="All">All</option>
+          {genres?.map((genre) => {
+            return (
+              <option key={genre.id} value={genre.name}>
+                {genre.name}
+              </option>
+            );
+          })}
+        </select>
+        <select className="select2" onChange={(e) => handleSort(e)}>
+          <option className="option" value="order by" disabled>
+            Sort:
+          </option>
+          <option value="default">All</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
+        </select>
       </div>
-      <div>        
+      <div>
         <h2 className="onStream">On Stream</h2>
-      <div className="row__posters">
-      {movies?.map((movie) => {
-        return (
-          <Card
-            movies={"movies"}
-            id={movie.id}
-            // title={movie.title}
-            //genres={movie.genres}
-            // vote_average={movie.vote_average}
-            img={movie.img}
-          />
-        );
-      })}
-      </div>
+        <div className="row__posters">
+          {movies?.map((movie) => {
+            return (
+              <Card
+                movies={"movies"}
+                id={movie.id}
+                // title={movie.title}
+                //genres={movie.genres}
+                // vote_average={movie.vote_average}
+                img={movie.img}
+              />
+            );
+          })}
+        </div>
       </div>
       <br />
       <div classname="row">
         <h2 className="topRated">Top Rated</h2>
         <div className="row__posters">
           {topRated?.map((e) => {
-            return (
-              <Card
-                movies={"topRated"}
-                id={e.id}
-                img={e.img}
-              />
-            );
-            }
-          )}
+            return <Card movies={"topRated"} id={e.id} img={e.img} />;
+          })}
         </div>
       </div>
       <br />
@@ -116,15 +111,8 @@ export default function Home() {
         <h2 className="upcoming">Upcoming</h2>
         <div className="row__posters">
           {upcoming?.map((e) => {
-            return (
-              <Card
-                movies={"upcoming"}
-                id={e.id}
-                img={e.img}
-              />
-            );
-            }
-          )}
+            return <Card movies={"upcoming"} id={e.id} img={e.img} />;
+          })}
         </div>
       </div>
     </div>

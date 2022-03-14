@@ -6,7 +6,7 @@ import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import styles from "./GroceriesCard.module.scss";
 
 export default function GroceriesCard() {
-  const {addItemToCart} = useContext(CartContext)
+  const { addItemToCart } = useContext(CartContext);
 
   return (
     <div className={styles.productsContainer}>
@@ -16,16 +16,17 @@ export default function GroceriesCard() {
       <h4>{description}</h4> */}
       {ProductsData.map((product, i) => (
         <div key={i} className={styles.product}>
-          <img src={product.img} alt={product.name}/>
+          <img src={product.img} alt={product.name} />
           <div>
             <p>
               {product.name} - ${product.price}
             </p>
-            </div>
-      <button onClick={() => addItemToCart(product)}><FontAwesomeIcon icon={faAdd} /></button>
-    </div>
-    ))}
+          </div>
+          <button onClick={() => addItemToCart(product)}>
+            <FontAwesomeIcon icon={faAdd} />
+          </button>
+        </div>
+      ))}
     </div>
   );
 }
-
