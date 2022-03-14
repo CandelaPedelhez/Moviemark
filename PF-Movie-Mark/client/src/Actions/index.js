@@ -61,10 +61,10 @@ export function getDetails(payload) {
 }
 
 export function filterMovieByGenre(payload) {
-  return async function(dispatch){
-    let aux = await axios.get("http://localhost:3001/api/movies/filter/"+payload);
+  return async function (dispatch) {
+    let aux = await axios.get("http://localhost:3001/api/movies/filter/" + payload);
     return dispatch({
-      type:"FILTER_BY_GENRE",
+      type: "FILTER_BY_GENRE",
       payload: aux.data,
     })
   }
@@ -82,7 +82,7 @@ export function getUpcoming() {
 
 export function getUpcomingForId(payload) {
   return async function (dispatch) {
-    let json = await axios.get("http://localhost:3001/api/upcoming/"+payload);
+    let json = await axios.get("http://localhost:3001/api/upcoming/" + payload);
     return dispatch({
       type: "GET_UPCOMING_ID",
       payload: json.data,
@@ -103,7 +103,7 @@ export function getTopRated() {
 
 export function getTopRatedForId(payload) {
   return async function (dispatch) {
-    let json = await axios.get("http://localhost:3001/api/top_rated/"+payload);
+    let json = await axios.get("http://localhost:3001/api/top_rated/" + payload);
     return dispatch({
       type: "GET_TOP_RATED_ID",
       payload: json.data,
@@ -115,44 +115,10 @@ export function orderBy(payload) {
   return { type: "ORDER_BY", payload };
 }
 
-<<<<<<< HEAD
-export function getReceipt(payload){
-  return async function(dispatch){
-      try{
-          var json = await axios.get("http://localhost:3001/myReceipts/" + payload)
-          return dispatch({
-              type: "GET_RECEIPT",
-              payload: json.data
-          })
-      } catch(e){
-          console.log(e)
-      }
-  }
-}
-
-export function getMyReceipts(){
-  return async function(dispatch){
-      var json = await axios.get("http://localhost:3001/myReceipts")
-      return dispatch({
-          type: "GET_MY_RECEIPTS",
-          payload: json.data 
-      })
-  }
-}
-
-export function getAvailables(){
-  return async function(dispatch){
-      var json = await axios.get("http://localhost:3001/availables")
-      return dispatch({
-          type: "GET_AVAILABLES",
-          payload: json.data 
-      })
-=======
-///////
 
 export function loginUser(payload) {
-  return async function(dispatch){
-    let req = await axios.post("http://localhost:3001/api/user/signIn/",payload)
+  return async function (dispatch) {
+    let req = await axios.post("http://localhost:3001/api/user/signIn/", payload)
     return dispatch({
       type: "LOGIN_USER",
       payload: req.data
@@ -160,8 +126,8 @@ export function loginUser(payload) {
   }
 }
 
-export function logoutUser(){
-  return async function(dispatch){
+export function logoutUser() {
+  return async function (dispatch) {
     return dispatch({
       type: "LOG_OUT_USER"
     })
@@ -169,18 +135,18 @@ export function logoutUser(){
 }
 
 export function createUser(payload) {
-  return async function(dispatch){
-    let req = await axios.post("http://localhost:3001/api/user/signUp",payload)
+  return async function (dispatch) {
+    let req = await axios.post("http://localhost:3001/api/user/signUp", payload)
     return dispatch({
       type: "CREATE_USER",
       payload: req.data,
     })
   }
-} 
+}
 
-export function sendMail(payload){
-  return async function(dispatch){
-    let req = await axios.post("http://localhost:3001/api/user/forgot",payload)
+export function sendMail(payload) {
+  return async function (dispatch) {
+    let req = await axios.post("http://localhost:3001/api/user/forgot", payload)
     return dispatch({
       type: "EMAIL_USER",
       payload: req.data,
@@ -188,9 +154,9 @@ export function sendMail(payload){
   }
 }
 
-export function sendToken(payload){
-  return async function(dispatch){
-    let req = await axios.post("http://localhost:3001/api/user/reset",payload)
+export function sendToken(payload) {
+  return async function (dispatch) {
+    let req = await axios.post("http://localhost:3001/api/user/reset", payload)
     return dispatch({
       type: "TOKEN_USER",
       payload: req.data,
@@ -198,13 +164,46 @@ export function sendToken(payload){
   }
 }
 
-export function changeData(id,payload){
-  return async function(dispatch){
-    let req = await axios.post("http://localhost:3001/api/user/"+id,payload)
+export function changeData(id, payload) {
+  return async function (dispatch) {
+    let req = await axios.post("http://localhost:3001/api/user/" + id, payload)
     return dispatch({
       type: "CHANGE_DATA",
       payload: req.data
     })
->>>>>>> main
+  }
+}
+
+export function getReceipt(payload) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.get("http://localhost:3001/ticket/" + payload)
+      return dispatch({
+        type: "GET_RECEIPT",
+        payload: json.data
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
+export function getMyReceipts(payload) {
+  return async function (dispatch) {
+    var json = await axios.get("http://localhost:3001/user/" + payload)
+    return dispatch({
+      type: "GET_MY_RECEIPTS",
+      payload: json.data
+    })
+  }
+}
+
+export function getAvailables() {
+  return async function (dispatch) {
+    var json = await axios.get("http://localhost:3001/availables")
+    return dispatch({
+      type: "GET_AVAILABLES",
+      payload: json.data
+    })
   }
 }

@@ -1,5 +1,6 @@
 import QRcode from "qrcode"
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getReceipt } from "../../Actions/index"
 import DocuPDF from "./PDF";
