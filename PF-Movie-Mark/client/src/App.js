@@ -12,10 +12,12 @@ import "./App.css"
 import Profile from "./Components/Settings/Settings";
 import EnterToken from "./Components/ResetPassword/EnterToken";
 import Settings from "./Components/Settings/Settings";
+import { AuthProvider } from "./Context/authContext";
 
 function App() {
   return (
     <CartProvider>
+      <AuthProvider>
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
@@ -33,6 +35,7 @@ function App() {
         <Route path='/settings' element={<Settings />} />
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
     </CartProvider>
   );
 }

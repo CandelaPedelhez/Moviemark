@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux"
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../Actions';
 import Loader from '../Loader/Loader';
+import { useAuth } from "../../Context/authContext"
 import styles from './Login.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
 
 const Login = () => {
     const [input,setInput] = useState({
@@ -21,6 +23,7 @@ const Login = () => {
         email:false
     });
     const [success,setSuccess] = useState(false);
+    const { login, loginWithGoogle, loginWithGithub, resetPassword } = useAuth();
 
     const dispatch = useDispatch();
     const history = useNavigate();
@@ -86,6 +89,23 @@ const Login = () => {
         window.location.href = 'http://localhost:3000/auth/facebook';
     }
 
+    const makedispatchgoogle = async (e) => {
+        e.preventDefault();
+        dispatch(loginUser(input))
+        await loginWithGoogle()
+        setSuccess(true);
+        setTimeout( function() { history('/home'); }, 2000 );
+    }
+
+    const makedispatchgithub = async (e) => {
+        e.preventDefault();
+        dispatch(loginUser(input))
+        await loginWithGithub()
+        setSuccess(true);
+        setTimeout( function() { history('/home'); }, 2000 );
+    }
+    
+
     return(
         <div> 
 
@@ -112,14 +132,26 @@ const Login = () => {
                     }
                 </div>
 
-                {/* <div className={styles.social}>
-                    <button className={styles.google} onClick={signGoogle}>
+                <div className={styles.social}>
+                {/* <button className={styles.google} onClick={() => handleOnClick(googleProvider)}>
 						google
 					</button>
-					<button className={styles.facebook} onClick={signFacebook}>
+					<button className={styles.facebook} onClick={() => handleOnClick(facebookProvider)}>
 						facebook
-					</button>
-                </div> */}
+					</button> */}
+                    <button
+        onClick={(e)=>makedispatchgoogle(e)}
+        className={styles.button}
+      >
+        Google login
+      </button>
+      <button
+        onClick={(e)=>makedispatchgithub(e)}
+        className={styles.button}
+      >
+        Github login
+      </button>
+                </div>
 
                 <div className={styles.others}>
                     <div>
