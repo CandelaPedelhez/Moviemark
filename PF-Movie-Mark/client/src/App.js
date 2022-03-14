@@ -11,6 +11,7 @@ import "./App.css"
 import Profile from "./Components/Settings/Settings";
 import EnterToken from "./Components/ResetPassword/EnterToken";
 import Settings from "./Components/Settings/Settings";
+import { AuthProvider } from "./Context/authContext";
 import MyReceipts from "./Components/Receipts/MyReceipts"
 import Receipt from "./Components/Receipts/Receipt";
 import OrderSummary from "./Components/OrderSummary/OrderSummary";
@@ -18,6 +19,7 @@ import OrderSummary from "./Components/OrderSummary/OrderSummary";
 function App() {
   return (
     <CartProvider>
+      <AuthProvider>
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
@@ -37,6 +39,7 @@ function App() {
         <Route path='/ticket/:idTicket' element={<Receipt/>} /> 
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
     </CartProvider>
   );
 }

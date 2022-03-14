@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.1",
     "@testing-library/user-event": "^12.2.2",
+    "firebase": "^9.6.8",
     "axios": "^0.26.1",
     "qrcode": "^1.5.0",
     "jsonwebtoken": "^8.5.1",
