@@ -1,20 +1,18 @@
 const { DataTypes } = require("sequelize");
+
 module.exports = (sequelize) => {
-  sequelize.define("functions", {
-    movie_title: {
+  sequelize.define("funcion", {
+    date: {
       type: DataTypes.STRING,
     },
-    date: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
     hour: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
     },
     hall: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
     },
-    hall_tickets: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+    hallTickets: {
+      type: DataTypes.STRING,
     },
   });
 };

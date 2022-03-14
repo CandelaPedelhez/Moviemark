@@ -1,25 +1,54 @@
 const { Router } = require("express");
 const router = Router();
-const { Available } = require("../db");
+const { Available, Funcion } = require("../db");
 const { availables } = require("../controllers/availables.js");
+//const { getFunctions } = require("../controllers/functions.js");
 
 router.get("/", async (req, res, next) => {
   //console.log("holis:", availables);
+
   try {
-    availables?.map((a) => {
+    availables.map((a) =>
       Available.findOrCreate({
         where: {
           name: a.name,
-          date: a.functions.map((e) => e.date),
-          hour: a.functions.map((e) => e.hour),
-          hall: a.functions.map((e) => e.hall),
-          hall_tickets: a.functions.map((e) => e.tickets),
         },
+      })
+    );
+
+    const allAvailables = await Available.findAll({
+      include: {
+        model: Funcion,
+        attributes: ["date", "hour", "hall", "hallTickets"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+
+    availables.map(async (e) => {
+      let availableMovie = await Available.findOne({
+        where: {
+          name: e.name,
+        },
+      });
+      e.funciones.map(async (r) => {
+        let [funcionMovie, created] = await Funcion.findOrCreate({
+          where: {
+            date: r.date,
+            hour: r.hour,
+            hall: r.hall,
+            hallTickets: r.tickets,
+          },
+        });
+        //console.log("funciones:", funcionMovie);
+        availableMovie.addFuncion(funcionMovie);
       });
     });
 
-    const allAvailables = await Available.findAll();
-    return res.status(200).send(allAvailables);
+    //getFunctions();
+
+    res.status(200).send(allAvailables);
   } catch (error) {
     console.log(error);
     //next(error);

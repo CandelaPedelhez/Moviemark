@@ -1,15 +1,15 @@
 let availables = [
   {
     name: "The Batman",
-    functions: [
+    funciones: [
       {
-        date: "Jueves 17/3",
-        hour: "19:30",
+        date: "Jueves 17 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Sábado 19/3",
+        date: "Sábado 19 3",
         hour: "21",
         hall: "1",
         tickets: "48",
@@ -18,15 +18,15 @@ let availables = [
   },
   {
     name: "Scream",
-    functions: [
+    funciones: [
       {
-        date: "Miércoles 16/3",
+        date: "Miércoles 16 3",
         hour: "22",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Viernes 18/3",
+        date: "Viernes 18 3",
         hour: "21",
         hall: "1",
         tickets: "48",
@@ -35,16 +35,16 @@ let availables = [
   },
   {
     name: "Kimi",
-    functions: [
+    funciones: [
       {
-        date: "Martes 15/3",
+        date: "Martes 15 3",
         hour: "22",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Domingo 20/3",
-        hour: "19:30",
+        date: "Domingo 20 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
@@ -52,16 +52,16 @@ let availables = [
   },
   {
     name: "Nightmare Alley",
-    functions: [
+    funciones: [
       {
-        date: "Jueves 17/3",
+        date: "Jueves 17 3",
         hour: "22",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Miércoles 23/3",
-        hour: "19:30",
+        date: "Miércoles 23 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
@@ -69,15 +69,15 @@ let availables = [
   },
   {
     name: "My Hero Academia: World Heroes' Mission",
-    functions: [
+    funciones: [
       {
-        date: "Martes 15/3",
-        hour: "19:30",
+        date: "Martes 15 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Lunes 21/3",
+        date: "Lunes 21 3",
         hour: "21",
         hall: "1",
         tickets: "48",
@@ -86,15 +86,15 @@ let availables = [
   },
   {
     name: "Pursuit",
-    functions: [
+    funciones: [
       {
-        date: "Martes 15/3",
+        date: "Martes 15 3",
         hour: "21",
         hall: "1",
         tickets: "48",
       },
       {
-        date: "Domingo 20/3",
+        date: "Domingo 20 3",
         hour: "22",
         hall: "2",
         tickets: "48",
@@ -103,16 +103,16 @@ let availables = [
   },
   {
     name: "Hotel Transylvania: Transformania",
-    functions: [
+    funciones: [
       {
-        date: "Martes 15/3",
-        hour: "18:30",
+        date: "Martes 15 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
       {
-        date: "Domingo 20/3",
-        hour: "18:30",
+        date: "Domingo 20 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
@@ -120,15 +120,15 @@ let availables = [
   },
   {
     name: "The Requin",
-    functions: [
+    funciones: [
       {
-        date: "Sábado 19/3",
+        date: "Sábado 19 3",
         hour: "22",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Miércoles 23/3",
+        date: "Miércoles 23 3",
         hour: "21",
         hall: "1",
         tickets: "48",
@@ -137,16 +137,16 @@ let availables = [
   },
   {
     name: "Sing 2",
-    functions: [
+    funciones: [
       {
-        date: "Miércoles 16/3",
-        hour: "18:30",
+        date: "Miércoles 16 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
       {
-        date: "Sábado 19/3",
-        hour: "18:30",
+        date: "Sábado 19 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
@@ -154,15 +154,15 @@ let availables = [
   },
   {
     name: "Uncharted",
-    functions: [
+    funciones: [
       {
-        date: "Martes 16/3",
-        hour: "19:30",
+        date: "Martes 16 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Jueves 24/3",
+        date: "Jueves 24 3",
         hour: "22",
         hall: "2",
         tickets: "48",
@@ -171,16 +171,16 @@ let availables = [
   },
   {
     name: "Marry Me",
-    functions: [
+    funciones: [
       {
-        date: "Viernes 18/3",
-        hour: "18:30",
+        date: "Viernes 18 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
       {
-        date: "Lunes 21/3",
-        hour: "19:30",
+        date: "Lunes 21 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
@@ -188,15 +188,15 @@ let availables = [
   },
   {
     name: "The Hunting",
-    functions: [
+    funciones: [
       {
-        date: "Miércoles 16/3",
+        date: "Miércoles 16 3",
         hour: "21",
         hall: "1",
         tickets: "48",
       },
       {
-        date: "Lunes 21/3",
+        date: "Lunes 21 3",
         hour: "22",
         hall: "2",
         tickets: "48",
@@ -205,15 +205,15 @@ let availables = [
   },
   {
     name: "Resident Evil: Welcome to Raccoon City",
-    functions: [
+    funciones: [
       {
-        date: "Jueves 17/3",
+        date: "Jueves 17 3",
         hour: "21",
         hall: "1",
         tickets: "48",
       },
       {
-        date: "Domingo 20/3",
+        date: "Domingo 20 3",
         hour: "21",
         hall: "1",
         tickets: "48",
@@ -222,16 +222,16 @@ let availables = [
   },
   {
     name: "The 355",
-    functions: [
+    funciones: [
       {
-        date: "Viernes 18/3",
-        hour: "19:30",
+        date: "Viernes 18 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Martes 22/3",
-        hour: "18:30",
+        date: "Martes 22 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
@@ -239,16 +239,16 @@ let availables = [
   },
   {
     name: "Clifford the Big Red Dog",
-    functions: [
+    funciones: [
       {
-        date: "Jueves 17/3",
-        hour: "18:30",
+        date: "Jueves 17 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
       {
-        date: "Miércoles 23/3",
-        hour: "18:30",
+        date: "Miércoles 23 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
@@ -256,15 +256,15 @@ let availables = [
   },
   {
     name: "One Shot",
-    functions: [
+    funciones: [
       {
-        date: "Sábado 19/3",
-        hour: "19:30",
+        date: "Sábado 19 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Martes 22/3",
+        date: "Martes 22 3",
         hour: "21",
         hall: "1",
         tickets: "48",
@@ -273,15 +273,15 @@ let availables = [
   },
   {
     name: "Moonfall",
-    functions: [
+    funciones: [
       {
-        date: "Martes 22/3",
-        hour: "19:30",
+        date: "Martes 22 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Jueves 24/3",
+        date: "Jueves 24 3",
         hour: "21",
         hall: "1",
         tickets: "48",
@@ -290,16 +290,16 @@ let availables = [
   },
   {
     name: "Wrath of Man",
-    functions: [
+    funciones: [
       {
-        date: "Miércoles 23/3",
+        date: "Miércoles 23 3",
         hour: "22",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Jueves 24/3",
-        hour: "19:30",
+        date: "Jueves 24 3",
+        hour: "19",
         hall: "2",
         tickets: "48",
       },
@@ -307,15 +307,15 @@ let availables = [
   },
   {
     name: "Halloween Kills",
-    functions: [
+    funciones: [
       {
-        date: "Viernes 18/3",
+        date: "Viernes 18 3",
         hour: "22",
         hall: "2",
         tickets: "48",
       },
       {
-        date: "Martes 22/3",
+        date: "Martes 22 3",
         hour: "22",
         hall: "2",
         tickets: "48",
@@ -324,16 +324,16 @@ let availables = [
   },
   {
     name: "The Sky Is Everywhere",
-    functions: [
+    funciones: [
       {
-        date: "Lunes 21/3",
-        hour: "18:30",
+        date: "Lunes 21 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },
       {
-        date: "Jueves 24/3",
-        hour: "18:30",
+        date: "Jueves 24 3",
+        hour: "18",
         hall: "1",
         tickets: "48",
       },

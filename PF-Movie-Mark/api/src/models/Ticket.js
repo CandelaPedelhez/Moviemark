@@ -13,16 +13,7 @@ module.exports = (sequelize) => {
     },
     //posibilidad de generar un QR
     price: {
-      type: DataTypes.FLOAT, /* ACÁ TENEMOS QUE GUARDAR EL TOTAL */
+      type: DataTypes.FLOAT,
     },
-    date: {
-      type: DataTypes.DATE,
-    },
-    adminGroceries: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-    // hall: {
-    //   type: DataTypes.STRING,
-    // },
   });
 };
