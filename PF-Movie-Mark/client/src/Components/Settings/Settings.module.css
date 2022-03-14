@@ -1,17 +1,12 @@
 .page{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100vh;
-    width: 100%;
-    z-index: 10000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 50%;
+    text-align: center;
 }
+
 
 .account{
     display: flex;
@@ -53,4 +48,27 @@
 .button:hover{
     cursor: pointer;
     color: #b983ff;
+}
+
+.btnBack {
+    margin-left: 4vh;
+    margin-top: 18px;
+    padding: 8px 12px;
+    font-family: 'Shippori Antique B1', sans-serif;
+    border-radius: 3px;
+    font-size: 20px;
+    color: whitesmoke;
+    text-decoration: none;
+    background-color: #b983ff;
+    border: none;
+    border-bottom: 5px solid #230602;
+    text-shadow: 0px -2px #230602;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+
+.btnBack:hover {
+    color: #b983ff;
+    background-color: whitesmoke;
 }

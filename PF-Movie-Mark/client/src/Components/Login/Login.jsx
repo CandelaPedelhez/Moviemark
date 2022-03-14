@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../Actions';
 import Loader from '../Loader/Loader';
 import styles from './Login.module.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
     const [input,setInput] = useState({
@@ -86,6 +88,15 @@ const Login = () => {
 
     return(
         <div> 
+
+            <div className={styles.divbtt}>
+                <Link to="/home">
+                    <button className={styles.btnBack}>
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                    </button>
+                </Link>
+            </div>
+
         <div className={styles.page}>
             <form className={styles.form} onSubmit={(e)=>makedispatch(e)}>
             <div className={styles.title}>Login</div>
@@ -101,14 +112,14 @@ const Login = () => {
                     }
                 </div>
 
-                <div className={styles.social}>
+                {/* <div className={styles.social}>
                     <button className={styles.google} onClick={signGoogle}>
 						google
 					</button>
 					<button className={styles.facebook} onClick={signFacebook}>
 						facebook
 					</button>
-                </div>
+                </div> */}
 
                 <div className={styles.others}>
                     <div>
@@ -124,11 +135,11 @@ const Login = () => {
                 </div>
                 {errorIncorrect.password===true?<p className={styles.errors}>Password Incorrect</p>:<></>}
                 {errorIncorrect.email===true?<p className={styles.errors}>Email not registered</p>:<></>}
-                {
-                     success===true?<Loader/>:<></>
-                }
             </form>
             </div>
+            {
+                     success===true?<Loader/>:<></>
+                }
         </div>
     )
 }
