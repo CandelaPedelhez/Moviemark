@@ -1,25 +1,21 @@
 import React, { useContext, useState, useEffect } from 'react';
 import {useNavigate} from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { CartContext } from "../../Context/CartContext";
 import ItemCart from '../ItemCart';
 import styles from "./styles.module.scss";
 
 
 const Cart = () => {
-  //Fran
   let token = 0;
   if(localStorage.getItem("token")){
       token = localStorage.getItem("token");
   }
 
-  function login(){
-    navigate("/login");
-  }
-  //
-
   const [cartOpen, setCartOpen] = useState(false);
   const [productsLength, setProductsLength] = useState(0);
   const navigate = useNavigate()
+  const dispatch = useDispatch();
 
   const { cartItems } = useContext(CartContext);
 
@@ -32,10 +28,12 @@ const Cart = () => {
   const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
 
   const checkout = () => {
-    if(cartItems.length > 0) {
+    if(token.length > 10) {
       navigate("/payment");
+    } else {
+      navigate("/login")
     }
-  };
+    }
 
   return (
     <div className={styles.cartContainer}>
@@ -90,10 +88,11 @@ const Cart = () => {
           )}
           <h2 className={styles.total}>Total: ${total}</h2>
           <div className={styles.btnCheckout}>
-            {/* <button onClick={checkout}>Checkout</button> */}
-            {
-              token.length>10?<button onClick={checkout}>Checkout</button>:<button onClick={login()}>Checkout</button>
-            }
+              {
+              cartItems.length === 0?<button onClick={checkout} disabled>Checkout</button> 
+              : 
+              <button onClick={checkout}>Checkout</button>
+              }
           </div>
         </div>
       )}
