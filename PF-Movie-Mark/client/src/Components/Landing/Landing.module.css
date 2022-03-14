@@ -66,10 +66,10 @@
 .img{
     padding-top: 0.5vh;
     width: 95%;
-    -webkit-filter: drop-shadow(1px 1px 0 whitesmoke)
-    drop-shadow(-1px -1px 0 whitesmoke);
-    filter: drop-shadow(1px 1px 0 whitesmoke) 
-    drop-shadow(-1px -1px 0 whitesmoke);
+    -webkit-filter: drop-shadow(1px 1px 0 rgb(0, 0, 0))
+    drop-shadow(-1px -1px 0 rgb(0, 0, 0));
+    filter: drop-shadow(1px 1px 0 rgb(0, 0, 0)) 
+    drop-shadow(-1px -1px 0 rgb(0, 0, 0));
     margin-left: 10vh;
     height: 70vh;
 }
