@@ -1,24 +1,26 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("ticket", {
+  sequelize.define("available", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
-    movie_title: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-    //posibilidad de generar un QR
-    price: {
-      type: DataTypes.FLOAT, /* ACÁ TENEMOS QUE GUARDAR EL TOTAL */
+    name: {
+      type: DataTypes.STRING,
     },
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
-    adminGroceries: {
+    hour: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    hall: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    hall_tickets: {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
   });
