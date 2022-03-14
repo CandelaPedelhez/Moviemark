@@ -72,7 +72,7 @@ const ResetPassword = () => {
     }
     
     return(
-        <div> 
+        <div>
             <div className={styles.page}>
             <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
             <h1 className={styles.title}>Reset your password</h1>
@@ -91,12 +91,12 @@ const ResetPassword = () => {
                 {
                     errorEmailBack.bool===true?<p className={styles.errors}>{errorEmailBack.detail}</p>:<></>
                 }
-                {   charging===true?<Loader/>:<></>}
                 {
                     isSent===true?redirect():<></>
                 }
             </form>
             </div>
+            {   charging===true?<Loader/>:<></>}
         </div>
     )
 }
