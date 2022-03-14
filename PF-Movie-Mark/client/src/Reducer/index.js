@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 export const initialState = {
   movies: [],
   allMovies: [],
@@ -8,8 +10,12 @@ export const initialState = {
   details: [],
   topRated: [],
   forslider: [],
+  users: [],
+  user: {},
   receipt: [],
-  myReceipts: []
+  myReceipts: [],
+  availables: [],
+  loggedIn: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -30,21 +36,7 @@ export default function reducer(state = initialState, action) {
     case "GET_DETAILS":
       return { ...state, details: action.payload };
     case "FILTER_BY_GENRE":
-      let allMovies = state.allMovies;
-      let genreFilter =
-        action.payload === "All"
-          ? allMovies
-          : allMovies.filter((e) =>
-            e.genres.find((el) => el.name === action.payload)
-          );
-      if (genreFilter.length <= 0) {
-        alert("Sorry, no Movie found with this genre");
-        genreFilter = allMovies;
-      }
-      return {
-        ...state,
-        movies: genreFilter,
-      };
+      return { ...state, movies: action.payload };
     case "ORDER_BY":
       let aux = [...state.movies];
       let sortedMovies =
@@ -87,6 +79,40 @@ export default function reducer(state = initialState, action) {
         ...state,
         topRated: action.payload,
       };
+
+    case "LOGIN_USER":
+      if (action.payload.token) {
+        const token = action.payload.token;
+        const useraux = jwt.decode(token);
+        const obj = useraux.user;
+        const user = {
+          id: obj.id,
+          email: obj.email,
+          name: obj.name,
+          lastName: obj.lastName,
+        }
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        return { ...state, user: user, loggedIn: true }
+      }
+      else { return { ...state, user: {}, loggedIn: false } }
+    case "LOG_OUT_USER":
+      localStorage.removeItem('token')
+      localStorage.removeItem('user');
+      return { ...state, user: {}, loggedIn: false }
+
+    case "CREATE_USER":
+      return { ...state, users: state.users.concat(action.payload) }
+    case "EMAIL_USER":
+      return { ...state }
+    case "TOKEN_USER":
+      return { ...state }
+    case "CHANGE_DATA":
+      let usr = localStorage.getItem("user");
+      let aux2 = JSON.parse(usr);
+      aux2.name = action.payload.name;
+      localStorage.setItem('user', JSON.stringify(aux2));
+      return { ...state }
     case "GET_RECEIPT":
       return {
         ...state,
@@ -96,6 +122,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         myReceipts: action.payload,
+      }
+      case "GET_AVAILABLES":
+      return {
+        ...state,
+        availables: action.payload,
       }
     default:
       return state;

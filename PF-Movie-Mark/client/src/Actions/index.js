@@ -132,3 +132,13 @@ export function getMyReceipts(){
       })
   }
 }
+
+export function getAvailables(){
+  return async function(dispatch){
+      var json = await axios.get("http://localhost:3001/availables")
+      return dispatch({
+          type: "GET_AVAILABLES",
+          payload: json.data 
+      })
+  }
+}
