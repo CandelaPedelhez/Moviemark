@@ -5,6 +5,8 @@ import styles from './Settings.module.css';
 import popcorn from './assets/popcorn.png';
 import { changeData, logoutUser } from '../../Actions';
 import Loader from '../Loader/Loader';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Settings = () => {
     let aux = {name:''}
@@ -70,6 +72,19 @@ const Settings = () => {
     }
 
     return(
+        <div>
+
+            <div className={styles.divbtt}>
+                <Link to="/home">
+                    <button className={styles.btnBack}>
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                    </button>
+                </Link>
+            </div>
+
+
+
+
         <div className={styles.page}>
             <div className={styles.account}>
             <img src={popcorn} className={styles.img}alt="img popcorn"/>
@@ -88,10 +103,11 @@ const Settings = () => {
                 </form>:<></>
             }
             <button className={styles.button} onClick={()=>handleLogout()}>Logout</button>
-            {
+            </div>
+        </div>
+        {
             logoutsuccess===true?<Loader/>:<></>
             }
-            </div>
         </div>
     )
 }

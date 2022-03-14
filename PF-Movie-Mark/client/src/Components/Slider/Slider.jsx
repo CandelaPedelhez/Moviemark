@@ -10,9 +10,23 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Slider = () => {
-    let movies = useSelector(state=>state.forslider)
+    let films = useSelector(state=>state.forslider)
     const [current, setCurrent] = useState(0);
-    movies = movies.slice(0,4);
+    //movies = movies.slice(0,4);
+    let movies = [];
+    for(let i=0;i<films.length;++i){
+        if(films[i].title==="Kimi"){
+            movies.push(films[i]);
+        }
+        else if(films[i].title==="The Batman"){
+            movies.push(films[i]);
+        }
+        else if(films[i].title==="Scream"){
+            movies.push(films[i]);
+        }
+    }
+    movies.push({id:768744});
+    console.log(movies);
     const length = movies.length;
     const imagesData = [{ image: batman }, { image: scream }, { image: kimi }, {image:combo}]
 

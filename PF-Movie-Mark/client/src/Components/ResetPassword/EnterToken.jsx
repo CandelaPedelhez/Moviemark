@@ -82,13 +82,13 @@ const EnterToken = () => {
                     {errorpass.bool===true||token.id.trim()===''||token.password===''?<button disabled className={styles.buttondis} type="submit">Send</button>:<button className={styles.button} type="submit">Send</button>}
                     {errorpass.bool===true?<p className={styles.errors}>Minimum eight characters, at least one letter and one number</p>:<></>}
                     {invalidToken.bool===true?<p className={styles.errors}>Invalid Token</p>:<></>}
-                    {
-                done===true?(<Loader/>):<></>
-            }
                         {
                 done===true?<p className={styles.success}>Password changed. You can login now</p>:<></>
             }
             </form>
+            {
+                done===true?(<Loader/>):<></>
+            }
         </div>
     )
 }
