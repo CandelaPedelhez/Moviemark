@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { CartContext } from "../../Context/CartContext";
-import { ProductsData } from "../../Data/ProductsData";
+import React, {useContext} from "react";
+import { CartContext } from '../../Context/CartContext';
+import { ProductsData } from '../../Data/ProductsData';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import styles from "./GroceriesCard.module.scss";
