@@ -28,7 +28,7 @@ const Slider = () => {
     movies.push({id:768744});
     console.log(movies);
     const length = movies.length;
-    const imagesData = [{ image: batman }, { image: kimi }, { image: scream }, {image:combo}]
+    const imagesData = [{ image: batman }, { image: scream }, { image: kimi }, {image:combo}]
 
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1);
