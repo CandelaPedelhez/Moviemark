@@ -15,16 +15,5 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.FLOAT,
     },
-
-
-      type: DataTypes.STRING,
-    },
-
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-    // hall: {
-    //   type: DataTypes.STRING,
-    // },
-
   });
 };
