@@ -2,12 +2,19 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("movie", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
       //preguntar por el unique
     },
-
+    /*adult: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },*/
     //backdrop_path
     img: {
       type: DataTypes.STRING,
@@ -29,5 +36,11 @@ module.exports = (sequelize) => {
     vote_average: {
       type: DataTypes.FLOAT,
     },
+    price: {
+      type: DataTypes.DECIMAL,
+    },
+    movGenres: {
+      type: DataTypes.ARRAY(DataTypes.STRING)
+    }
   });
 };
