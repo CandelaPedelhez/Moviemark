@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   sequelize.define("grocerie", {
+    //id innecesary
     name: {
       type: DataTypes.STRING,
     },
