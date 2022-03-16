@@ -5,6 +5,7 @@ const { getMovies } = require("../controllers/movies");
 const { getGenres } = require("../controllers/genres");
 
 // -- All pelis
+
 router.get("/", async (req, res) => {
   const { title } = req.query;
   let allMovies = await getMovies();
@@ -18,9 +19,9 @@ router.get("/", async (req, res) => {
       movieByName.length
         ? res.status(200).send(movieByName)
         : res.status(404).send("Sorry, Movie not found :(");
-    } else {
+      } 
       res.status(200).send(allMovies);
-    }
+  
   } catch (error) {
     console.log(error.message);
   }
