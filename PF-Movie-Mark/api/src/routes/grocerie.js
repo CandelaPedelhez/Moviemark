@@ -4,6 +4,7 @@ const { Grocerie } = require("../db");
 
 router.post("/", async (req, res, next) => {
   const { name, price, stock, description, typeGrocerie, img } = req.body;
+  //console.log
 
   try {
     var creatingGrocerie = await Grocerie.findOrCreate({
