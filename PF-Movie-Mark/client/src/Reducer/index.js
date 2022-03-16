@@ -79,7 +79,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         topRated: action.payload,
       };
-
+    //User
     case "LOGIN_USER":
       if(action.payload.token){
         const token = action.payload.token;
@@ -90,6 +90,7 @@ export default function reducer(state = initialState, action) {
         email:obj.email,
         name:obj.name,
         lastName:obj.lastName,
+        role:obj.role,
       }
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user)); 
@@ -100,9 +101,8 @@ export default function reducer(state = initialState, action) {
       localStorage.removeItem('token')
       localStorage.removeItem('user');
       return{...state,user:{},loggedIn:false}
-      
     case "CREATE_USER": 
-      return {...state, users: state.users.concat(action.payload)}
+      return {...state}
     case "EMAIL_USER":
       return{...state}
     case "TOKEN_USER":
@@ -113,6 +113,7 @@ export default function reducer(state = initialState, action) {
       aux2.name = action.payload.name;
       localStorage.setItem('user', JSON.stringify(aux2));
       return { ...state }
+    //
     case "GET_RECEIPT":
       return {
         ...state,
@@ -123,11 +124,18 @@ export default function reducer(state = initialState, action) {
         ...state,
         myReceipts: action.payload,
       }
-      case "GET_AVAILABLES":
+    case "GET_AVAILABLES":
       return {
         ...state,
         availables: action.payload,
       }
+    //Admin
+    case "MAKE_ADMIN":
+      return{...state}
+    case "GET_USERS":
+      return{...state,users:action.payload}
+    case "DELETE_USER":
+      return{...state}
     default:
       return state;
   }

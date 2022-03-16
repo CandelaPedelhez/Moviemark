@@ -1,0 +1,29 @@
+.page{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 50%;
+    text-align: center;
+}
+
+
+.account{
+    display: flex;
+    background-color: white;
+    height:50vh;
+    width:50vh;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.title{
+    font-size: 1.25em;
+}
+
+.subtitle{
+    font-size: 1em;
+}
