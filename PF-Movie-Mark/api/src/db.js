@@ -66,13 +66,7 @@ Hall.belongsToMany(Ticket, { through: "ticket_halls" });
 //Ticket.belongsTo(User, { through: "user_tickets" });
 
 //Relación de uno a muchos:
-User.hasMany(Ticket, {
-  foreignKey: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    name: "ticketId",
-  },
-});
+User.hasMany(Ticket);
 
 Ticket.belongsTo(User);
 //Seats.hasOne(Ticket, { through: "ticket_seats" });
