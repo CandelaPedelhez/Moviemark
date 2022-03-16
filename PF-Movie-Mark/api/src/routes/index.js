@@ -17,11 +17,14 @@ const productRoute = require("./product.js");
 const userRoute = require("./user");
 const mercadopagoRoute = require("./mercadopago.js");
 const availablesRoute = require("./availables.js");
+const routeReview = require("./review.js");
+
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
 // ------ Ejemplo de req: http://localhost:3001/api/movies ------- //
+
 router.use("/user", authRoute);
 router.use("/genres", genresRoute);
 router.use("/groceries", groceriesRoute);
@@ -35,5 +38,6 @@ router.use("/product", productRoute);
 router.use("/userTicket", userRoute);
 router.use("/mercadopago", mercadopagoRoute);
 router.use("/availables", availablesRoute);
+router.use('/addReview', routeReview);
 
 module.exports = router;
