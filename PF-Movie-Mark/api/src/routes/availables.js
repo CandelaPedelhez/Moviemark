@@ -41,12 +41,10 @@ router.get("/", async (req, res, next) => {
             hallTickets: r.tickets,
           },
         });
-        //console.log("funciones:", funcionMovie);
+
         availableMovie.addFuncion(funcionMovie);
       });
     });
-
-    //getFunctions();
 
     res.status(200).send(allAvailables);
   } catch (error) {
