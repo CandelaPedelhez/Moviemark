@@ -8,6 +8,7 @@ const genresRoute = require("./genres.js");
 const groceriesRoute = require("./groceries.js");
 const grocerieRoute = require("./grocerie.js");
 const moviesRoute = require("./movies.js");
+const movieRoute = require("./movie.js");
 const upcomingRoute = require("./upcoming.js");
 const topRatedRoute = require("./top_rated.js");
 const authRoute = require("./auth.js");
@@ -17,6 +18,7 @@ const userRoute = require("./user");
 const mercadopagoRoute = require("./mercadopago.js");
 const availablesRoute = require("./availables.js");
 const routeReview = require("./review.js");
+
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -28,6 +30,7 @@ router.use("/genres", genresRoute);
 router.use("/groceries", groceriesRoute);
 router.use("/grocerie", grocerieRoute);
 router.use("/movies", moviesRoute);
+router.use("/movie", movieRoute);
 router.use("/upcoming", upcomingRoute);
 router.use("/top_rated", topRatedRoute);
 router.use("/order", orderRoute);
@@ -36,6 +39,5 @@ router.use("/userTicket", userRoute);
 router.use("/mercadopago", mercadopagoRoute);
 router.use("/availables", availablesRoute);
 router.use('/addReview', routeReview);
-
 
 module.exports = router;

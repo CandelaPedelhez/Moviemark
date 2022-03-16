@@ -32,6 +32,7 @@ const getMovies = async (req, res) => {
 
 
 
+
   } catch (error) {
     console.log(error.message);
   }

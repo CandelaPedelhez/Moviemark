@@ -27,36 +27,34 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/filter/:genre',async (req,res)=>{
-  try{
-    const {genre} = req.params;
-    let id=null;
+router.get("/filter/:genre", async (req, res) => {
+  try {
+    const { genre } = req.params;
+    let id = null;
     let allMovies = await getMovies();
     let allgenres = await getGenres();
-    for(let h=0;h<allgenres.length;++h){
-      if(genre===allgenres[h].name.toLowerCase()){
-        id=allgenres[h].id;
+    for (let h = 0; h < allgenres.length; ++h) {
+      if (genre === allgenres[h].name.toLowerCase()) {
+        id = allgenres[h].id;
       }
     }
-    if(id!==null){
+    if (id !== null) {
       let filtered = [];
-      for(let i=0;i<allMovies.length;++i){
-        for(let j=0;j<allMovies[i].genres.length;++j){
-          if(allMovies[i].genres[j]===id){
-              filtered.push(allMovies[i]);
+      for (let i = 0; i < allMovies.length; ++i) {
+        for (let j = 0; j < allMovies[i].genres.length; ++j) {
+          if (allMovies[i].genres[j] === id) {
+            filtered.push(allMovies[i]);
           }
         }
       }
       res.status(200).send(filtered);
-    }
-    else{
+    } else {
       res.status(200).send(allMovies);
     }
-  }
-  catch(e){
+  } catch (e) {
     console.log(e.message);
   }
-})
+});
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
