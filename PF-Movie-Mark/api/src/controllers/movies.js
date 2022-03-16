@@ -20,10 +20,10 @@ const getMovies = async () => {
         languages: movie.original_language,
         vote_average: movie.vote_average,
         img: "https://image.tmdb.org/t/p/w500" + movie.poster_path,
-        price: 1000
+        price: 1000,
       };
     });
-    
+
     return auxMovies;
   } catch (error) {
     console.log(error.message);
