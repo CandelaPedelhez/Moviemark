@@ -9,7 +9,6 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./style.modules.scss"
 
 export default function Receipt(){
-
     const { cartItems } = useContext(CartContext);
 
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);

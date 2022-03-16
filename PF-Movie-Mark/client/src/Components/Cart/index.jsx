@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import {useNavigate} from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { CartContext } from "../../Context/CartContext";
 import ItemCart from '../ItemCart';
 import styles from "./styles.module.scss";
@@ -15,7 +14,6 @@ const Cart = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [productsLength, setProductsLength] = useState(0);
   const navigate = useNavigate()
-  const dispatch = useDispatch();
 
   const { cartItems } = useContext(CartContext);
 
