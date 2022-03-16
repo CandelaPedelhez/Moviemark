@@ -29,5 +29,11 @@ module.exports = (sequelize) => {
     vote_average: {
       type: DataTypes.FLOAT,
     },
+    price: {
+      type: DataTypes.DECIMAL,
+    },
+    movGenres: {
+      type: DataTypes.ARRAY(DataTypes.STRING)
+    }
   });
 };
