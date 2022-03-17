@@ -48,7 +48,7 @@ const Login = () => {
                     password:''
                 })
                 setSuccess(true);
-                setTimeout( function() { history('/home'); }, 2000 );
+                setTimeout( function() { history('/home'); }, 1600 );
             }
         })
     } 
@@ -86,7 +86,7 @@ const Login = () => {
         dispatch(loginUser(input))
         await loginWithGoogle()
         setSuccess(true);
-        setTimeout( function() { history('/home'); }, 2000 );
+        setTimeout( function() { history('/home'); }, 1600 );
     }
 
     const makedispatchgithub = async (e) => {
@@ -94,7 +94,7 @@ const Login = () => {
         dispatch(loginUser(input))
         await loginWithGithub()
         setSuccess(true);
-        setTimeout( function() { history('/home'); }, 2000 );
+        setTimeout( function() { history('/home'); }, 1600 );
     }
 
     return(

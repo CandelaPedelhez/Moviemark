@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { Movie } = require("../db");
+const { Movie, Genre} = require("../db");
 const { getMovies } = require("../controllers/movies");
 const { getGenres } = require("../controllers/genres");
 
@@ -9,7 +9,6 @@ const { getGenres } = require("../controllers/genres");
 router.get("/", async (req, res) => {
   const { title } = req.query;
   let allMovies = await getMovies();
-
   try {
     if (title) {
       let movieByName = await allMovies.filter(
@@ -30,19 +29,19 @@ router.get("/", async (req, res) => {
 router.get("/filter/:genre", async (req, res) => {
   try {
     const { genre } = req.params;
-    let id = null;
-    let allMovies = await getMovies();
     let allgenres = await getGenres();
+    let allMovies = await getMovies();
+    let id = -1;
     for (let h = 0; h < allgenres.length; ++h) {
-      if (genre === allgenres[h].name.toLowerCase()) {
-        id = allgenres[h].id;
+      if(genre===allgenres[h].name.toLowerCase()){
+        id=allgenres[h].id;
       }
     }
-    if (id !== null) {
+    if(id!==-1){
       let filtered = [];
       for (let i = 0; i < allMovies.length; ++i) {
-        for (let j = 0; j < allMovies[i].genres.length; ++j) {
-          if (allMovies[i].genres[j] === id) {
+        for (let j = 0; j < allMovies[i].movGenres.length; ++j) {
+          if (parseInt(allMovies[i].movGenres[j]) === id) {
             filtered.push(allMovies[i]);
           }
         }

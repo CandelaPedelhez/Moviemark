@@ -8,13 +8,14 @@ import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import "./App.css"
-import Profile from "./Components/Settings/Settings";
 import EnterToken from "./Components/ResetPassword/EnterToken";
 import Settings from "./Components/Settings/Settings";
 import { AuthProvider } from "./Context/authContext";
 import MyReceipts from "./Components/Receipts/MyReceipts"
 import Receipt from "./Components/Receipts/Receipt";
 import OrderSummary from "./Components/OrderSummary/OrderSummary";
+import Admin from "./Components/Admin/Admin";
+import SubmitFilm from "./Components/Admin/Submitfilms";
 
 function App() {
   return (
@@ -33,10 +34,11 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
         <Route path='/validate' element={<EnterToken />} />
-        <Route path='/account' element={<Profile />} />
-        <Route path='/settings' element={<Settings />} />
+        <Route path='/account' element={<Settings />} />
         <Route path='/user/:id' element={<MyReceipts/>} />
         <Route path='/ticket/:idTicket' element={<Receipt/>} /> 
+        <Route path='/admin' element={<Admin/>} /> 
+        <Route path='/admin/submit' element={<SubmitFilm/>} />
       </Routes>
     </BrowserRouter>
     </AuthProvider>
