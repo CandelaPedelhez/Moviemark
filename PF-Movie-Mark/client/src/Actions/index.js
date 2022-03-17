@@ -209,8 +209,6 @@ export function getAvailables() {
   }
 }
 
-<<<<<<< HEAD
-=======
 //Admin
 export function getAllUsers(){
   return async function (dispatch){
@@ -263,4 +261,13 @@ export function deleteUser(payload){
     })
   }
 }
->>>>>>> 682497807c481df681c57d023c8502c4766787f2
+
+export function postFilm(payload){
+  return async function (dispatch){
+    let json = await axios.post("http://localhost:3001/api/movie/",payload)
+    return dispatch({
+        type: "POST_FILM",
+        payload: json.data
+    })
+  }
+}

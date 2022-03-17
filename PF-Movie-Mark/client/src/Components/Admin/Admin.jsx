@@ -175,7 +175,7 @@ const Admin = () => {
                 </div>
 
                 <div>
-                    <p className={styles.subtitle}>Delete Admins</p>
+                    <p className={styles.subtitle}>Quit Admins</p>
                     <select className={styles.select} onChange={e=>handleSelectQuitAdmin(e)}>
                     <option value="" selected disabled hidden>Choose one user</option>
                             {
@@ -202,6 +202,11 @@ const Admin = () => {
                     <button className={styles.button} onClick={()=>SubmitDelete()}>Submit</button>
                     {errorDelete===true?<p className={styles.error}>Please select one user</p>:<></>}
                     {successDelete===true?<p className={styles.success}>Success</p>:<></>}
+                </div>
+                <div>
+                    <Link className={styles.nav_link} to='/resetpassword'>
+                        Reset Password
+                    </Link>
                 </div>
                 <button className={styles.button} onClick={()=>handleLogout()}>Logout</button>
             </div>
