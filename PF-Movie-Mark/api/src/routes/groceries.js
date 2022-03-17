@@ -5,11 +5,10 @@ const { groceries } = require("../controllers/groceries.js");
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log(groceries)
+    console.log(groceries);
     groceries.forEach((g) => {
       Grocerie.findOrCreate({
         where: {
-          //id: g.id,
           name: g.name,
           price: g.price,
           /* stock: g.stock, */ /* Para que no rompa, en controller de groceries está comentado stock */
