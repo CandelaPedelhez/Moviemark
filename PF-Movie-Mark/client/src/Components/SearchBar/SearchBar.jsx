@@ -36,7 +36,7 @@ export default function SearchBar() {
         value={title}
         onChange={(e) => handleChange(e)}
         className="input"
-        onKeyPress={handleSubmit}
+        onKeyPress={e=>handleSubmit(e)}
       ></input>
       {title.length === 0 ? (<button className="btnSearch"><FontAwesomeIcon icon={faSearch} />
       </button>) : (<button type="button" onClick={(e) => handleClearInput(e)} className="btnClear">
