@@ -200,7 +200,8 @@ export function getMyReceipts(payload) {
 
 export function getAvailables() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/availables")
+    var json = await axios.get("http://localhost:3001/api/availables")
+    /* console.log("HOLAAAAAAAAAAAAAAAAAAAAAa", json) */
     return dispatch({
       type: "GET_AVAILABLES",
       payload: json.data
@@ -208,6 +209,8 @@ export function getAvailables() {
   }
 }
 
+<<<<<<< HEAD
+=======
 //Admin
 export function getAllUsers(){
   return async function (dispatch){
@@ -260,3 +263,4 @@ export function deleteUser(payload){
     })
   }
 }
+>>>>>>> 682497807c481df681c57d023c8502c4766787f2
