@@ -5,7 +5,6 @@ const { groceries } = require("../controllers/groceries.js");
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log(groceries)
     groceries.forEach((g) => {
       Grocerie.findOrCreate({
         where: {

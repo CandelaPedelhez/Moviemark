@@ -18,6 +18,7 @@ const userRoute = require("./user");
 const mercadopagoRoute = require("./mercadopago.js");
 const availablesRoute = require("./availables.js");
 const routeReview = require("./review.js");
+const routeTicket = require("./ticket.js");
 
 
 // Configurar los routers
@@ -39,5 +40,6 @@ router.use("/userTicket", userRoute);
 router.use("/mercadopago", mercadopagoRoute);
 router.use("/availables", availablesRoute);
 router.use('/addReview', routeReview);
+router.use("/ticket", routeTicket);
 
 module.exports = router;
