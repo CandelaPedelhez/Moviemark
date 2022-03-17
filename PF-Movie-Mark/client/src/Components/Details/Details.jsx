@@ -14,9 +14,10 @@ export default function Details({ movies }) {
   const dispatch = useDispatch();
   const movieId = useParams();
   const myMovie = useSelector((state) => state.details);
-  const availables = useSelector((state) => state.availables);
+  const availables = useSelector((state) => state.availables)
   const { addItemToCart } = useContext(CartContext);
-
+  
+  
   const makedispatch = () => {
     if (movies === "movies") {
       dispatch(getDetails(movieId.id));
@@ -26,28 +27,52 @@ export default function Details({ movies }) {
       dispatch(getTopRatedForId(movieId.id));
     }
   };
+  
 
-  useEffect(() => {
-    dispatch(getAvailables());
-  }, [dispatch])
+  let movieFunctions = []
+  
+  if(availables.length > 0 && myMovie.length > 0){
+    function myMovieFunction(){
+      movieFunctions = availables.filter(e => e.name === myMovie[0].title)
+    } myMovieFunction()
+  }
+  
 
+  
+  let funcion = []
+  
+  function handleSelect(r){
+    r.preventDefault();
+    console.log("TARGET", r.target.value)
+    funcion = movieFunctions[0].funcions.filter(e => e.date === r.target.value)
+    console.log(funcion)
+  }
+  
   const handleAdd = () => {
-    addItemToCart(myMovie[0]);
+    const movieFunction = myMovie.map(e => {
+      return{
+        id: e.id,
+        title: e.title,
+        description: e.description,
+        genres: e.genres,
+        img: e.img,
+        price: e.price,
+        function: funcion
+      }
+    })
+    addItemToCart(movieFunction);
+    console.log(movieFunction)
   };
 
+  
   useEffect(() => {
     makedispatch();
   }, []);
-
-
-
-  function handleSelect(e){
-    e.preventDefault();
-    ;
-}
-
-  const movie = availables.filter(e => e.name === myMovie[0].title)
-
+  
+  useEffect(() => {
+    dispatch(getAvailables());
+  }, [dispatch])
+  
   return (
     <>
       <div>
@@ -102,19 +127,16 @@ export default function Details({ movies }) {
                 <p>{myMovie[0].vote_average}</p>
               </div>
               {
-                movie.length > 0 ? 
+                (movieFunctions.length > 0) ? 
                 <div>
-                <select onChange={e => handleSelect(e)}>
+                  <h3>Functions availables:</h3>
+                <select onChange={r => handleSelect(r)}>
+                  <option value="">Availables</option>
                   {
-                    movie.date.map(e => <option value={e}>{e}</option>) /* TODAVÍA NO FUNCIONA */
+                    movieFunctions[0].funcions.map(e => <option value={e.date}>{e.date} at {e.hour}hs</option>) /* TODAVÍA NO FUNCIONA */
                   }
                 </select>
-                <select onChange={e => handleSelect(e)}>
-                {
-                  movie.hour.map(e => <option value={e}>{e}</option>) /* TODAVÍA NO FUNCIONA */
-                }
-              </select>
-              <button onClick={() => handleAdd(myMovie[0])}>
+              <button onClick={() => handleAdd()}>
                 <FontAwesomeIcon icon={faAdd} /> Buy Tickets
               </button>
               </div>

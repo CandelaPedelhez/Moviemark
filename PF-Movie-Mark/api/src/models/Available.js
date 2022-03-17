@@ -5,5 +5,17 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
     },
+    date: {
+      type: DataTypes.STRING,
+    },
+    hour: {
+      type: DataTypes.STRING,
+    },
+    hall: {
+      type: DataTypes.STRING,
+    },
+    hallTickets: {
+      type: DataTypes.STRING,
+    },
   });
 };
