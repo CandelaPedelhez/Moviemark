@@ -10,8 +10,10 @@ export const initialState = {
   details: [],
   topRated: [],
   forslider: [],
-  users: [],
-  user: {},
+  users: [], //all users and admins
+  user: {}, //current user
+  normalusers: [], //only users
+  admins: [], //admins
   receipt: [],
   myReceipts: [],
   availables: [],
@@ -132,8 +134,12 @@ export default function reducer(state = initialState, action) {
     //Admin
     case "MAKE_ADMIN":
       return{...state}
-    case "GET_USERS":
+    case "GET_ALL_USERS":
       return{...state,users:action.payload}
+    case "GET_USERS":
+      return{...state,normalusers:action.payload}
+    case "GET_ADMINS":
+      return{...state,admins:action.payload}
     case "DELETE_USER":
       return{...state}
     default:

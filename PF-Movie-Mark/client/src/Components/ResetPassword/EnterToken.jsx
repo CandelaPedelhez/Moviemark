@@ -58,7 +58,7 @@ const EnterToken = () => {
                 setInvalidToken({
                     bool:false,
                 })
-                setTimeout( function() { history('/login'); }, 2000 );
+                setTimeout( function() { history('/login'); }, 1600 );
             }
             else{
                 setInvalidToken({

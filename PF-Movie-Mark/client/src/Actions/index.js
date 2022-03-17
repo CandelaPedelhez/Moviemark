@@ -209,9 +209,19 @@ export function getAvailables() {
 }
 
 //Admin
-export function getUsers(){
+export function getAllUsers(){
   return async function (dispatch){
     var json = await axios.get("http://localhost:3001/api/user/")
+    return dispatch({
+      type: "GET_ALL_USERS",
+      payload: json.data
+    })
+  }
+}
+
+export function getUsers(){
+  return async function (dispatch){
+    var json = await axios.get("http://localhost:3001/api/user/users")
     return dispatch({
       type: "GET_USERS",
       payload: json.data
@@ -219,7 +229,17 @@ export function getUsers(){
   }
 }
 
-export function makeAdmin(payload){
+export function getAdmins(){
+  return async function (dispatch){
+    var json = await axios.get("http://localhost:3001/api/user/admins")
+    return dispatch({
+      type: "GET_ADMINS",
+      payload: json.data
+    })
+  }
+}
+
+export function makeOrQuitAdmin(payload){
   return async function (dispatch){
     let obj={role:payload.role}
     var json = await axios.put("http://localhost:3001/api/user/roleadmin/"+payload.id,obj)
