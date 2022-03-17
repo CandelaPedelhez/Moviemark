@@ -11,7 +11,7 @@ router.post("/", async (req, res, next) => {
       where: {
         name,
         price,
-        stock,
+        //stock,
         description,
         typeGrocerie,
         img,
