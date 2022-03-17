@@ -260,3 +260,13 @@ export function deleteUser(payload){
     })
   }
 }
+
+export function postFilm(payload){
+  return async function (dispatch){
+    let json = await axios.post("http://localhost:3001/api/movie/",payload)
+    return dispatch({
+        type: "POST_FILM",
+        payload: json.data
+    })
+  }
+}

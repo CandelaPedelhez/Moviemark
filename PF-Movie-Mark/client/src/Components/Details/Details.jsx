@@ -66,7 +66,10 @@ export default function Details({ movies }) {
         ) : (
           <div>
             <h1>{myMovie[0].title}</h1>
-            <img src={myMovie[0].img} alt="img not found" />
+            <img src={myMovie[0].img} onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/9556d16312333.5691dd2255721.jpg";
+          }} />
             <div>
               <span>+16</span>
             </div>

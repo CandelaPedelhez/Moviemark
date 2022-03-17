@@ -142,6 +142,8 @@ export default function reducer(state = initialState, action) {
       return{...state,admins:action.payload}
     case "DELETE_USER":
       return{...state}
+    case "POST_FILM":
+      return{...state}
     default:
       return state;
   }
