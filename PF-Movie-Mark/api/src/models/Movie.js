@@ -40,6 +40,7 @@ module.exports = (sequelize) => {
       type: DataTypes.DECIMAL,
     },
     movGenres: {
+
       type: DataTypes.ARRAY(DataTypes.STRING)
     }
   });
