@@ -10,8 +10,10 @@ export const initialState = {
   details: [],
   topRated: [],
   forslider: [],
-  users: [],
-  user: {},
+  users: [], //all users and admins
+  user: {}, //current user
+  normalusers: [], //only users
+  admins: [], //admins
   receipt: [],
   myReceipts: [],
   availables: [],
@@ -79,10 +81,23 @@ export default function reducer(state = initialState, action) {
         ...state,
         topRated: action.payload,
       };
-
+    //User
     case "LOGIN_USER":
-      if(action.payload.token){
+      if (action.payload.token) {
         const token = action.payload.token;
+<<<<<<< HEAD
+        const useraux = jwt.decode(token);
+        const obj = useraux.user;
+        const user = {
+          id: obj.id,
+          email: obj.email,
+          name: obj.name,
+          lastName: obj.lastName,
+        }
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        return { ...state, user: user, loggedIn: true }
+=======
       const useraux = jwt.decode(token);
       const obj = useraux.user;
       const user = {
@@ -90,29 +105,34 @@ export default function reducer(state = initialState, action) {
         email:obj.email,
         name:obj.name,
         lastName:obj.lastName,
+        role:obj.role,
+>>>>>>> 682497807c481df681c57d023c8502c4766787f2
       }
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user)); 
-      return {...state,user:user,loggedIn:true} 
-      }
-      else{return {...state,user:{},loggedIn:false} }
+      else { return { ...state, user: {}, loggedIn: false } }
     case "LOG_OUT_USER":
       localStorage.removeItem('token')
       localStorage.removeItem('user');
+<<<<<<< HEAD
+      return { ...state, user: {}, loggedIn: false }
+
+    case "CREATE_USER":
+      return { ...state, users: state.users.concat(action.payload) }
+=======
       return{...state,user:{},loggedIn:false}
-      
     case "CREATE_USER": 
-      return {...state, users: state.users.concat(action.payload)}
+      return {...state}
+>>>>>>> 682497807c481df681c57d023c8502c4766787f2
     case "EMAIL_USER":
-      return{...state}
+      return { ...state }
     case "TOKEN_USER":
-      return{...state}
+      return { ...state }
     case "CHANGE_DATA":
       let usr = localStorage.getItem("user");
       let aux2 = JSON.parse(usr);
       aux2.name = action.payload.name;
       localStorage.setItem('user', JSON.stringify(aux2));
       return { ...state }
+    //
     case "GET_RECEIPT":
       return {
         ...state,
@@ -123,11 +143,24 @@ export default function reducer(state = initialState, action) {
         ...state,
         myReceipts: action.payload,
       }
-      case "GET_AVAILABLES":
+    case "GET_AVAILABLES":
       return {
         ...state,
         availables: action.payload,
       }
+    //Admin
+    case "MAKE_ADMIN":
+      return{...state}
+    case "GET_ALL_USERS":
+      return{...state,users:action.payload}
+    case "GET_USERS":
+      return{...state,normalusers:action.payload}
+    case "GET_ADMINS":
+      return{...state,admins:action.payload}
+    case "DELETE_USER":
+      return{...state}
+    case "POST_FILM":
+      return{...state}
     default:
       return state;
   }

@@ -93,7 +93,7 @@ const SignUp = () => {
           });
           setTimeout(function () {
             history("/login");
-          }, 2000);
+          }, 1600);
         }
       });
     }
