@@ -52,8 +52,11 @@ Genre.belongsToMany(Movie, { through: "movie_genres" });
 Grocerie.belongsToMany(Ticket, { through: "groceries_tickets" });
 Ticket.belongsToMany(Grocerie, { through: "groceries_tickets" });
 
+/* Movie.belongsToMany(Ticket, { through: "movies_tickets" });
+Ticket.belongsToMany(Movie, { through: "movies_tickets" }); */
+
 Available.belongsToMany(Ticket, { through: "availables_tickets" });
-Ticket.belongsTo(Available, { through: "availables_tickets" });
+Ticket.belongsToMany(Available, { through: "availables_tickets" });
 
 Available.belongsToMany(Funcion, { through: "available_functions" });
 Funcion.belongsToMany(Available, { through: "available_functions" });
@@ -66,13 +69,7 @@ Hall.belongsToMany(Ticket, { through: "ticket_halls" });
 //Ticket.belongsTo(User, { through: "user_tickets" });
 
 //Relación de uno a muchos:
-User.hasMany(Ticket, {
-  foreignKey: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    name: "ticketId",
-  },
-});
+User.hasMany(Ticket);
 
 Ticket.belongsTo(User);
 //Seats.hasOne(Ticket, { through: "ticket_seats" });
