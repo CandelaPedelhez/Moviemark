@@ -36,7 +36,7 @@ function App() {
         <Route path='/account' element={<Profile />} />
         <Route path='/settings' element={<Settings />} />
         <Route path='/user/:id' element={<MyReceipts/>} />
-        <Route path='/ticket/:idTicket' element={<Receipt/>} /> 
+        <Route path='/ticket' element={<Receipt/>} /> 
       </Routes>
     </BrowserRouter>
     </AuthProvider>
