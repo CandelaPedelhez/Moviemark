@@ -1,14 +1,14 @@
 const { Router } = require("express");
 const router = Router();
-const { Movie } = require("../db");
+const { Movie, Genre} = require("../db");
 const { getMovies } = require("../controllers/movies");
 const { getGenres } = require("../controllers/genres");
 
 // -- All pelis
+
 router.get("/", async (req, res) => {
   const { title } = req.query;
   let allMovies = await getMovies();
-
   try {
     if (title) {
       let movieByName = await allMovies.filter(
@@ -18,44 +18,42 @@ router.get("/", async (req, res) => {
       movieByName.length
         ? res.status(200).send(movieByName)
         : res.status(404).send("Sorry, Movie not found :(");
-    } else {
+      } 
       res.status(200).send(allMovies);
-    }
+  
   } catch (error) {
     console.log(error.message);
   }
 });
 
-router.get('/filter/:genre',async (req,res)=>{
-  try{
-    const {genre} = req.params;
-    let id=null;
-    let allMovies = await getMovies();
+router.get("/filter/:genre", async (req, res) => {
+  try {
+    const { genre } = req.params;
     let allgenres = await getGenres();
-    for(let h=0;h<allgenres.length;++h){
+    let allMovies = await getMovies();
+    let id = -1;
+    for (let h = 0; h < allgenres.length; ++h) {
       if(genre===allgenres[h].name.toLowerCase()){
         id=allgenres[h].id;
       }
     }
-    if(id!==null){
+    if(id!==-1){
       let filtered = [];
-      for(let i=0;i<allMovies.length;++i){
-        for(let j=0;j<allMovies[i].genres.length;++j){
-          if(allMovies[i].genres[j]===id){
-              filtered.push(allMovies[i]);
+      for (let i = 0; i < allMovies.length; ++i) {
+        for (let j = 0; j < allMovies[i].movGenres.length; ++j) {
+          if (parseInt(allMovies[i].movGenres[j]) === id) {
+            filtered.push(allMovies[i]);
           }
         }
       }
       res.status(200).send(filtered);
-    }
-    else{
+    } else {
       res.status(200).send(allMovies);
     }
-  }
-  catch(e){
+  } catch (e) {
     console.log(e.message);
   }
-})
+});
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;

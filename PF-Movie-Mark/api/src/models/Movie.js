@@ -38,6 +38,9 @@ module.exports = (sequelize) => {
     },
     price: {
       type: DataTypes.DECIMAL,
+    },
+    movGenres: {
+      type: DataTypes.ARRAY(DataTypes.STRING)
     }
   });
 };
