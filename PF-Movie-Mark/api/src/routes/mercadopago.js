@@ -96,14 +96,14 @@ server.get("/pagos", (req, res)=>{
     .then((_) => {
       console.info('redirect success')
       
-      return res.redirect('http://localhost:3000')
+      return res.redirect('http://localhost:3001')
     }).catch((err) =>{
       console.error('error al salvar', err)
-      return res.redirect(`http://localhost:3000/?error=${err}&where=al+salvar`)
+      return res.redirect(`http://localhost:3001/?error=${err}&where=al+salvar`)
     })
   }).catch(err =>{
     console.error('error al buscar', err)
-    return res.redirect(`http://localhost:3000/?error=${err}&where=al+buscar`)
+    return res.redirect(`http://localhost:3001/?error=${err}&where=al+buscar`)
   })
 
 
