@@ -6,6 +6,7 @@ const addProductCart = async (req, res) => {
 
   /* Nos fijamos si tenemos el producto */
   const estaEnProducts = await Product.findOne({where:{ name: name }});
+  console.log(estaEnProducts)
 
   /* Nos fijamos si todos los campos vienen con info */
   const noEstaVacio = name !== "" && img !== "" && price !== "" && id !== null;
