@@ -16,6 +16,7 @@ import Receipt from "./Components/Receipts/Receipt";
 import OrderSummary from "./Components/OrderSummary/OrderSummary";
 import Admin from "./Components/Admin/Admin";
 import SubmitFilm from "./Components/Admin/Submitfilms";
+import SubmitGroceries from "./Components/Admin/SubmitGroceries";
 
 function App() {
   return (
@@ -38,7 +39,8 @@ function App() {
         <Route path='/user/:id' element={<MyReceipts/>} />
         <Route path='/ticket/:idTicket' element={<Receipt/>} /> 
         <Route path='/admin' element={<Admin/>} /> 
-        <Route path='/admin/submit' element={<SubmitFilm/>} />
+        <Route path='/admin/manage/films' element={<SubmitFilm/>} />
+        <Route path='/admin/manage/groceries' element={<SubmitGroceries/>} />
       </Routes>
     </BrowserRouter>
     </AuthProvider>
