@@ -6,6 +6,12 @@ import Loader from '../Loader/Loader';
 import styles from './ResetPassword.module.css';
 
 const ResetPassword = () => {
+    let aux = {name:''}
+    if(localStorage.getItem("user")){
+        aux = localStorage.getItem("user");
+        aux = JSON.parse(aux);
+    }
+
     const [input,setInput] = useState({
         email:''
     })
@@ -84,9 +90,9 @@ const ResetPassword = () => {
                     error.email===true ||input.email.trim()===''?<button className={styles.buttondis} disabled type="submit">Send mail</button>:<button className={styles.button} type="submit">Send mail</button>
                 }
                 <div className={styles.doyoudiv}>
-                    <Link to={'/login'}>
+                    {!aux.id?<Link to={'/login'}>
                     <p className={styles.doyou}>Login</p>
-                    </Link>
+                    </Link>:<></>}
                 </div>
                 {
                     errorEmailBack.bool===true?<p className={styles.errors}>{errorEmailBack.detail}</p>:<></>

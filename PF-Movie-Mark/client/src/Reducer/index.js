@@ -96,10 +96,23 @@ export default function reducer(state = initialState, action) {
         };
       } else {
         return { ...state, user: {}, loggedIn: false };
+
+        }
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        return { ...state, user: user, loggedIn: true }
+
+
       }
     case "LOG_OUT_USER":
+
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+
+      localStorage.removeItem('token')
+      localStorage.removeItem('user');
+      return { ...state, user: {}, loggedIn: false }
+
 
       return { ...state, user: {}, loggedIn: false };
 
@@ -108,7 +121,8 @@ export default function reducer(state = initialState, action) {
 
       return { ...state, user: {}, loggedIn: false };
     case "CREATE_USER":
-      return { ...state };
+
+      return { ...state, users: state.users.concat(action.payload) }
 
     case "EMAIL_USER":
       return { ...state };
@@ -148,7 +162,11 @@ export default function reducer(state = initialState, action) {
     case "DELETE_USER":
       return { ...state };
     case "POST_FILM":
-      return { ...state };
+
+      return{...state}
+    case "POST_GROCERIE":
+      return{...state}
+
     default:
       return state;
   }

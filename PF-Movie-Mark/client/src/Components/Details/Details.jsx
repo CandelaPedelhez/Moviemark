@@ -17,6 +17,7 @@ export default function Details({ movies }) {
   const availables = useSelector((state) => state.availables)
   const { addItemToCart } = useContext(CartContext);
   
+  console.log("MYMOVIE", myMovie)
   
   const makedispatch = () => {
     if (movies === "movies") {
@@ -37,15 +38,15 @@ export default function Details({ movies }) {
     } myMovieFunction()
   }
   
-
+console.log("PRIMERO",movieFunctions)
   
   let funcion = []
   
   function handleSelect(r){
     r.preventDefault();
     console.log("TARGET", r.target.value)
-    funcion = movieFunctions[0].funcions.filter(e => e.date === r.target.value)
-    console.log(funcion)
+    funcion = movieFunctions.filter(e => e.date === r.target.value)
+    console.log("SEGUNDO",funcion)
   }
   
   const handleAdd = () => {
@@ -91,10 +92,7 @@ export default function Details({ movies }) {
         ) : (
           <div>
             <h1>{myMovie[0].title}</h1>
-            <img src={myMovie[0].img} onError={({ currentTarget }) => {
-          currentTarget.onerror = null;
-          currentTarget.src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/9556d16312333.5691dd2255721.jpg";
-          }} />
+            <img src={myMovie[0].img} alt="img not found" />
             <div>
               <span>+16</span>
             </div>
@@ -133,7 +131,7 @@ export default function Details({ movies }) {
                 <select onChange={r => handleSelect(r)}>
                   <option value="">Availables</option>
                   {
-                    movieFunctions[0].funcions.map(e => <option value={e.date}>{e.date} at {e.hour}hs</option>) /* TODAVÍA NO FUNCIONA */
+                    movieFunctions.map(e => <option value={e.date}>{e.date} at {e.hour}hs</option>)
                   }
                 </select>
               <button onClick={() => handleAdd()}>
