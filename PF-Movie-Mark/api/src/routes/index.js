@@ -20,7 +20,6 @@ const availablesRoute = require("./availables.js");
 const routeReview = require("./review.js");
 const routeTicket = require("./ticket.js");
 
-
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
