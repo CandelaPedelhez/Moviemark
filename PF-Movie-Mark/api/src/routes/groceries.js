@@ -2,34 +2,50 @@ const { Router } = require("express");
 const router = Router();
 const { Grocerie } = require("../db");
 
-
-router.get('/getAll', async(req, res, next) => {
+router.get("/getAll", async (req, res, next) => {
   try {
     let allGroceries = await Grocerie.findAll();
     return res.status(200).send(allGroceries);
-    
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 });
 
-router.put('/gro/:id', async (req, res, next) => {
+router.put("/gro/:id", async (req, res, next) => {
   Grocerie.findByPk(req.params.id)
-  .then(dataTicket => {
-    dataTicket.update({
-      price: req.body.price
-    }, {
-        where: {
-            id: req.params.id
-         }
-      })
-      .then(response => {
-      res.status(200).json(response)      
+    .then((dataTicket) => {
+      dataTicket
+        .update(
+          {
+            price: req.body.price,
+          },
+          {
+            where: {
+              id: req.params.id,
+            },
+          }
+        )
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
     })
     .catch((error) => res.status(500).json(error));
-  })
-  .catch((error) => res.status(500).json(error));
 });
 
+router.detele("/deleteGrocerie", (req, res, next) => {
+  Grocerie.findByPk(req.params.id)
+    .then((selectedGrocerie) => {
+      selectedGrocerie
+        .destroy({
+          where: {
+            id: req.params.id,
+          },
+        })
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
+    })
+    .catch((error) => res.status(500).json(error));
+});
 
 module.exports = router;

@@ -25,6 +25,7 @@ const {groceries} = require("./src/controllers/groceries.js");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
+
  groceries.forEach((g) => {
       Grocerie.findOrCreate({
         where: {
@@ -37,6 +38,7 @@ conn.sync({ force: true }).then(() => {
         },
       });
     });  
+
 
   server.listen(3001, () => {
     console.log(`Server on port 3001`); // eslint-disable-line no-console

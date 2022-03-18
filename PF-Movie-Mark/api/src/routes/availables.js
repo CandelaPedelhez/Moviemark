@@ -15,11 +15,11 @@ router.get("/", async (req, res, next) => {
           date: a.date,
           hour: a.hour,
           hall: a.hall,
-          hallTickets: a.tickets
+          hallTickets: a.tickets,
         },
       })
     );
-    const allAvailables = await Available.findAll()
+    const allAvailables = await Available.findAll();
     res.status(200).send(allAvailables);
   } catch (error) {
     console.log(error);
@@ -27,6 +27,5 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-
-
 module.exports = router;
+
