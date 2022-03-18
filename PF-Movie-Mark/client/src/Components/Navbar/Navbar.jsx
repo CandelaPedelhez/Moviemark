@@ -9,10 +9,10 @@ import Cart from "../Cart/index";
 import { useSelector } from "react-redux";
 
 export default function NavBar() {
-  const loggedIn = useSelector((state) => state.loggedIn);
-  let aux = 0;
-  if (localStorage.getItem("token")) {
-    aux = localStorage.getItem("token");
+  let aux = {name:''}
+  if(localStorage.getItem("user")){
+      aux = localStorage.getItem("user");
+      aux = JSON.parse(aux);
   }
   return (
     <div className="nav">
@@ -25,15 +25,15 @@ export default function NavBar() {
       </Link>
       <SearchBar />
       <Cart />
-      {loggedIn === true || aux.length > 10 ? (
-        <Link to="/account">
-          <FontAwesomeIcon className="user" icon={faUser} />
+      {
+        !aux.id?<Link to="/login">
+        <FontAwesomeIcon className="user" icon={faUser} />
+        </Link>:aux.role==='admin'?<Link to="/admin">
+        <FontAwesomeIcon className="user" icon={faUser} />
+        </Link>:<Link to="/account">
+        <FontAwesomeIcon className="user" icon={faUser} />
         </Link>
-      ) : (
-        <Link to="/login">
-          <FontAwesomeIcon className="user" icon={faUser} />
-        </Link>
-      )}
+      }
     </div>
   );
 }

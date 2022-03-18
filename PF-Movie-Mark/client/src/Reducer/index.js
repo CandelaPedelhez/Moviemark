@@ -92,6 +92,7 @@ export default function reducer(state = initialState, action) {
           email: obj.email,
           name: obj.name,
           lastName: obj.lastName,
+          role: obj.role,
         }
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
