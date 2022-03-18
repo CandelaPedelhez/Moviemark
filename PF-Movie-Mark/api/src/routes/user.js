@@ -7,7 +7,7 @@ router.get('/:id', async (req, res, next) => {
     const {id} = req.params;
     let userTi = [];
     let tickets= [];
-    //Obtengo user por id:
+    //Obtengo user por id: 
     let user  = await User.findOne({ where: { id: id} });
     let userTickets  = await Ticket.findAll({where: {userId: id}});
     //  console.log(userTickets);

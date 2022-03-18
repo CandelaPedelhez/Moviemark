@@ -2,7 +2,6 @@ require("dotenv").config();
 const { Sequelize, DataTypes } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const Functions = require("./models/Functions");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 const sequelize = new Sequelize(
@@ -38,7 +37,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Movie, Ticket, User, Grocerie, Genre, Hall, Available, Funcion } =
+const { Movie, Ticket, User, Grocerie, Genre, Hall, Available } =
   sequelize.models;
 
 // Aca vendrian las relaciones
@@ -52,11 +51,12 @@ Genre.belongsToMany(Movie, { through: "movie_genres" });
 Grocerie.belongsToMany(Ticket, { through: "groceries_tickets" });
 Ticket.belongsToMany(Grocerie, { through: "groceries_tickets" });
 
-Available.belongsToMany(Ticket, { through: "availables_tickets" });
-Ticket.belongsTo(Available, { through: "availables_tickets" });
+/* Movie.belongsToMany(Ticket, { through: "movies_tickets" });
+Ticket.belongsToMany(Movie, { through: "movies_tickets" }); */
 
-Available.belongsToMany(Funcion, { through: "available_functions" });
-Funcion.belongsToMany(Available, { through: "available_functions" });
+Available.belongsToMany(Ticket, { through: "availables_tickets" });
+Ticket.belongsToMany(Available, { through: "availables_tickets" });
+
 
 Ticket.belongsToMany(Hall, { through: "ticket_halls" });
 Hall.belongsToMany(Ticket, { through: "ticket_halls" });

@@ -200,7 +200,8 @@ export function getMyReceipts(payload) {
 
 export function getAvailables() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/availables")
+    var json = await axios.get("http://localhost:3001/api/availables")
+    /* console.log("HOLAAAAAAAAAAAAAAAAAAAAAa", json) */
     return dispatch({
       type: "GET_AVAILABLES",
       payload: json.data
