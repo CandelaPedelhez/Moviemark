@@ -9,6 +9,7 @@ const { getGenres } = require("../controllers/genres");
 router.get("/", async (req, res) => {
   const { title } = req.query;
   let allMovies = await getMovies();
+  if(allMovies.length<1) allMovies = await getMovies();
   try {
     if (title) {
       let movieByName = await allMovies.filter(
