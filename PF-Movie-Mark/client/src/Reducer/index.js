@@ -44,23 +44,23 @@ export default function reducer(state = initialState, action) {
       let sortedMovies =
         action.payload === "A-Z"
           ? aux.sort(function (a, b) {
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return 1;
-            }
-            if (a.title.toLowerCase() < b.title.toLowerCase()) {
-              return -1;
-            }
-            return 0;
-          })
+              if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                return 1;
+              }
+              if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return -1;
+              }
+              return 0;
+            })
           : aux.sort(function (a, b) {
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return -1;
-            }
-            if (a.title.toLowerCase() < b.title.toLowerCase()) {
-              return 1;
-            }
-            return 0;
-          });
+              if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                return -1;
+              }
+              if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return 1;
+              }
+              return 0;
+            });
       return {
         ...state,
         movies: action.payload === "default" ? state.allMovies : sortedMovies,
@@ -87,67 +87,75 @@ export default function reducer(state = initialState, action) {
         const token = action.payload.token;
         const useraux = jwt.decode(token);
         const obj = useraux.user;
+
         const user = {
           id: obj.id,
           email: obj.email,
           name: obj.name,
           lastName: obj.lastName,
-        }
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        return { ...state, user: user, loggedIn: true }
+          role: obj.role,
+        };
 
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        return { ...state, user: user, loggedIn: true };
+      } else {
+        return { ...state, user: {}, loggedIn: false };
       }
-      else { return { ...state, user: {}, loggedIn: false } }
-    case "LOG_OUT_USER":
-      localStorage.removeItem('token')
-      localStorage.removeItem('user');
-      return { ...state, user: {}, loggedIn: false }
 
+    case "LOG_OUT_USER":
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      return { ...state, user: {}, loggedIn: false };
     case "CREATE_USER":
-      return { ...state, users: state.users.concat(action.payload) }
+      return { ...state, users: state.users.concat(action.payload) };
 
     case "EMAIL_USER":
-      return { ...state }
+      return { ...state };
     case "TOKEN_USER":
-      return { ...state }
+      return { ...state };
     case "CHANGE_DATA":
       let usr = localStorage.getItem("user");
       let aux2 = JSON.parse(usr);
       aux2.name = action.payload.name;
-      localStorage.setItem('user', JSON.stringify(aux2));
-      return { ...state }
-    //
+      localStorage.setItem("user", JSON.stringify(aux2));
+      return { ...state };
+
     case "GET_RECEIPT":
       return {
         ...state,
         receipt: action.payload,
-      }
+      };
     case "GET_MY_RECEIPTS":
       return {
         ...state,
         myReceipts: action.payload,
-      }
+      };
     case "GET_AVAILABLES":
       return {
         ...state,
         availables: action.payload,
-      }
+      };
     //Admin
     case "MAKE_ADMIN":
-      return{...state}
+      return { ...state };
     case "GET_ALL_USERS":
-      return{...state,users:action.payload}
+      return { ...state, users: action.payload };
     case "GET_USERS":
-      return{...state,normalusers:action.payload}
+      return { ...state, normalusers: action.payload };
     case "GET_ADMINS":
-      return{...state,admins:action.payload}
+      return { ...state, admins: action.payload };
     case "DELETE_USER":
-      return{...state}
+      return { ...state };
     case "POST_FILM":
-      return{...state}
+      return { ...state };
     case "POST_GROCERIE":
-      return{...state}
+      return { ...state };
+
     default:
       return state;
   }
