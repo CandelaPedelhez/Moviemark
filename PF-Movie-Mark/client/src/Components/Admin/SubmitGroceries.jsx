@@ -57,7 +57,7 @@ const SubmitGroceries = () => {
                 stock:input.stock,
                 description:input.description,
                 typeGrocerie:input.typeGrocerie,
-                img:"https://i.pinimg.com/originals/89/1e/05/891e050323cd925cfb48eec7edb74507.png",
+                img:"https://drawinghowtos.com/wp-content/uploads/2020/02/candy-colored.jpg",
             }))
             .then(()=>{
                 emptyinput();
@@ -123,7 +123,7 @@ const SubmitGroceries = () => {
                         <input className={styles.input}
                         value={input.stock} type='number' name='stock' placeholder="Stock" min='1' max='999' onChange={e=>handleChange(e)} required>
                         </input>
-                        {errorImg===true?<button className={styles.bttn} type="submit">Add</button>:<button className={styles.bttn} disabled type="submit">Add</button>}
+                        {errorImg!==true?<button className={styles.bttn} type="submit">Add</button>:<button className={styles.bttn} disabled type="submit">Add</button>}
                         {errorImg===true?<p>Url not valid</p>:<></>}
                     </form>
                 </div>
