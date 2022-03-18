@@ -8,7 +8,6 @@ router.get("/", async (req, res, next) => {
     groceries.forEach((g) => {
       Grocerie.findOrCreate({
         where: {
-          //id: g.id,
           name: g.name,
           price: g.price,
           /* stock: g.stock, */ /* Para que no rompa, en controller de groceries está comentado stock */
