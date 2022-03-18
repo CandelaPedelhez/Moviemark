@@ -11,7 +11,7 @@ const {signUp, signIn} = require('../controllers/user/authController');
 router.post('/signUp', signUp);
 router.post('/signIn', signIn);
 
-//Get users:
+//Get ALL users:
 router.get("/", async (req,res)=>{
     User.findAll()
     .then(data=>{
@@ -19,6 +19,47 @@ router.get("/", async (req,res)=>{
     })
     .catch(e=>{return e;})
 });
+
+//Get only normal users:
+router.get("/users", async (req,res)=>{
+    User.findAll({
+        where:{role:"user"}
+    })
+    .then(data=>{
+        res.json(data);
+    })
+    .catch(e=>{return e;})
+});
+//Get only admins:
+router.get("/admins", async (req,res)=>{
+    User.findAll({
+        where:{role:"admin"}
+    })
+    .then(data=>{
+        res.json(data);
+    })
+    .catch(e=>{return e;})
+});
+
+//Eliminar usuario
+router.delete("/:id",async (req,res)=>{
+    User.destroy({
+        where: {
+            id:req.params.id,
+        }
+    })
+    .then(function(deletedRecord) {
+        if(deletedRecord===1){
+            res.status(200).json({message:"Deleted successfully"});          
+        }
+        else{
+            res.status(404).json({message:"Not found"})
+        }
+    })
+    .catch(function(error){
+        res.status(500).json(error);
+    });
+})
 
 // GET /api/user/:id
 // Trae un usuario por id

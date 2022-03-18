@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
+import error from './images/error.jpg';
 
 export default function Card({ movies, id, title, img, genres, vote_average }) {
   return (
@@ -8,7 +9,10 @@ export default function Card({ movies, id, title, img, genres, vote_average }) {
       {
         movies==="movies"?<Link to={`/movies/${id}`}>
         <h1>{title}</h1>
-        <img className="card "src={img} alt="img not found" style={{ width: "180px", height: "280px"}} />
+        <img className="card "src={img} onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/9556d16312333.5691dd2255721.jpg";
+          }} style={{ width: "180px", height: "280px"}} />
       </Link>:<></>
       }
       {
