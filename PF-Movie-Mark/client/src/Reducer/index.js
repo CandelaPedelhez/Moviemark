@@ -146,6 +146,8 @@ export default function reducer(state = initialState, action) {
       return{...state}
     case "POST_FILM":
       return{...state}
+    case "POST_GROCERIE":
+      return{...state}
     default:
       return state;
   }

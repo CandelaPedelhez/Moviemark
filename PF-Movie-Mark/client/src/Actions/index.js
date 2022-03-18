@@ -271,3 +271,13 @@ export function postFilm(payload){
     })
   }
 }
+
+export function postGrocerie(payload){
+  return async function (dispatch){
+    let json = await axios.post("http://localhost:3001/api/grocerie/",payload)
+    return dispatch({
+        type: "POST_GROCERIE",
+        payload: json.data
+    })
+  }
+}

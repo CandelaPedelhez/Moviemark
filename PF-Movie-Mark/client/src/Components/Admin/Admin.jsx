@@ -48,7 +48,10 @@ const Admin = () => {
     const history = useNavigate();
 
     function SubmitFilm(){
-        history('/admin/submit')
+        history('/admin/manage/films')
+    }
+    function SubmitGroceries(){
+        history('/admin/manage/groceries')
     }
 
     // Give admin
@@ -128,7 +131,7 @@ const Admin = () => {
         setCharging(true);
         dispatch(logoutUser())
         .then(()=>{
-            setTimeout( function() { history('/home'); }, 2000 );
+            setTimeout( function() { history('/home'); }, 2000 )
         })
     }
 
@@ -158,7 +161,8 @@ const Admin = () => {
             <div className={styles.account}>
                 <h1 className={styles.title}>Admin</h1>
                 <h2 className={styles.hi}>Hi {currentuser.name}</h2>
-                <button onClick={()=>SubmitFilm()}>Submit films</button>
+                <button onClick={()=>SubmitFilm()}>Manage films</button>
+                <button onClick={()=>SubmitGroceries()}>Manage groceries</button>
                 <div>
                     <p className={styles.subtitle}>Make Admins</p>
                     <select className={styles.select} onChange={e=>handleSelectAdmin(e)}>
