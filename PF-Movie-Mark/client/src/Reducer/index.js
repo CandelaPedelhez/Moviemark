@@ -85,7 +85,6 @@ export default function reducer(state = initialState, action) {
     case "LOGIN_USER":
       if (action.payload.token) {
         const token = action.payload.token;
-<<<<<<< HEAD
         const useraux = jwt.decode(token);
         const obj = useraux.user;
         const user = {
@@ -97,31 +96,17 @@ export default function reducer(state = initialState, action) {
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
         return { ...state, user: user, loggedIn: true }
-=======
-      const useraux = jwt.decode(token);
-      const obj = useraux.user;
-      const user = {
-        id:obj.id,
-        email:obj.email,
-        name:obj.name,
-        lastName:obj.lastName,
-        role:obj.role,
->>>>>>> 682497807c481df681c57d023c8502c4766787f2
+
       }
       else { return { ...state, user: {}, loggedIn: false } }
     case "LOG_OUT_USER":
       localStorage.removeItem('token')
       localStorage.removeItem('user');
-<<<<<<< HEAD
       return { ...state, user: {}, loggedIn: false }
 
     case "CREATE_USER":
       return { ...state, users: state.users.concat(action.payload) }
-=======
-      return{...state,user:{},loggedIn:false}
-    case "CREATE_USER": 
-      return {...state}
->>>>>>> 682497807c481df681c57d023c8502c4766787f2
+
     case "EMAIL_USER":
       return { ...state }
     case "TOKEN_USER":
