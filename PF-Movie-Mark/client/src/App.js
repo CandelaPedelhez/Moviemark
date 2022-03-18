@@ -17,6 +17,7 @@ import OrderSummary from "./Components/OrderSummary/OrderSummary";
 import Admin from "./Components/Admin/Admin";
 import SubmitFilm from "./Components/Admin/Submitfilms";
 import SubmitGroceries from "./Components/Admin/SubmitGroceries";
+import Products from "./Components/Products/index"
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/groceries" element={<Groceries />} />
+        <Route  path="/products" element={<Products />} />
         <Route path='/movies/:id' element={<Details movies="movies"/>} />
         <Route path='/upcoming/:id' element={<Details movies="upcoming"/>} />
         <Route path='/toprated/:id' element={<Details movies="toprated"/>} />

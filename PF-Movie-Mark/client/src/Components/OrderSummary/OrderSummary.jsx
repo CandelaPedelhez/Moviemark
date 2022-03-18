@@ -1,6 +1,6 @@
 // hay que traer el estado de cartItems
 import React, { useContext } from 'react';
-import {CartContext} from "../../Context/CartContext"
+import CartContext from "../../Context/CartContext"
 import Cart from "../Cart/index";
 import Checkout from "../Checkout.jsx"
 import { Link } from "react-router-dom";
