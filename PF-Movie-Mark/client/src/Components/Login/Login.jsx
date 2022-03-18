@@ -83,7 +83,7 @@ const Login = () => {
 
     const makedispatchgoogle = async (e) => {
         e.preventDefault();
-        dispatch(loginUser(input))
+        dispatch(loginUser(loginWithGoogle))
         await loginWithGoogle()
         setSuccess(true);
         setTimeout( function() { history('/home'); }, 2000 );
@@ -91,7 +91,7 @@ const Login = () => {
 
     const makedispatchgithub = async (e) => {
         e.preventDefault();
-        dispatch(loginUser(input))
+        dispatch(loginUser(loginWithGithub))
         await loginWithGithub()
         setSuccess(true);
         setTimeout( function() { history('/home'); }, 2000 );

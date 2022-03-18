@@ -43,4 +43,4 @@ export default function Receipt(){
             </div> : <div></div>}
         </div>
     );
-}
+};
