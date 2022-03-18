@@ -13,6 +13,13 @@ export default function NavBar() {
   let aux = 0;
   if (localStorage.getItem("token")) {
     aux = localStorage.getItem("token");
+
+  }
+  let currentuser = { name: "" };
+  if (localStorage.getItem("user")) {
+    currentuser = localStorage.getItem("user");
+    currentuser = JSON.parse(currentuser);
+
   }
   return (
     <div className="nav">
@@ -25,12 +32,25 @@ export default function NavBar() {
       </Link>
       <SearchBar />
       <Cart />
+
+      {!currentuser.id ? (
+        <Link to="/login">
+          <FontAwesomeIcon className="user" icon={faUser} />
+        </Link>
+      ) : currentuser.role === "admin" ? (
+        <Link to="/admin">
+          <FontAwesomeIcon className="user" icon={faUser} />
+        </Link>
+      ) : (
+        <Link to="/account">
+
       {loggedIn === true || aux.length > 10 ? (
         <Link to="/account">
           <FontAwesomeIcon className="user" icon={faUser} />
         </Link>
       ) : (
         <Link to="/login">
+
           <FontAwesomeIcon className="user" icon={faUser} />
         </Link>
       )}
