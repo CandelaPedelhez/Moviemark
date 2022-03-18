@@ -24,7 +24,10 @@ export default function GroceriesCard() {
       <h4>{description}</h4> */}
       {myGroceries.map((product, i) => (
         <div key={i} className={styles.product}>
-          <img src={product.img} alt={product.name} />
+          <img src={product.img} onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src="https://thumbs.dreamstime.com/b/candy-doodle-icon-vector-cute-candy-doodle-icon-vector-cute-hand-draw-drawing-black-sweet-mine-141118775.jpg";
+          }} />
           <div>
             <p>
               {product.name} - ${product.price}
