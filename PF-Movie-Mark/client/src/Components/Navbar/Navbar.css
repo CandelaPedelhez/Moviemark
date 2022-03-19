@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(24, 24, 24);
-    padding: 0.1px;
+    padding: 10px;
     padding-top: 0;
 }
 
@@ -47,8 +47,6 @@
 }
 
 .btnHome {
-    color: #b983ff;
-    font-size: 4vh;
     padding-top: 10px;
     margin-bottom: 3.5vh;
 }
@@ -60,7 +58,7 @@ a {
      color: whitesmoke;
   }
 
-.movieIcon {
+/*.movieIcon {
     margin-left: 5px;
     color: whitesmoke;
     height: 30px;
@@ -77,4 +75,4 @@ a {
     drop-shadow(3px 3px 0 whitesmoke);
     filter: drop-shadow(3px 3px 0 whitesmoke) 
     drop-shadow(3px 3px 0 whitesmoke);
-}
+}*/

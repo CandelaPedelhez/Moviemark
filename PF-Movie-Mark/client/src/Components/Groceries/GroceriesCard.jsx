@@ -1,12 +1,20 @@
 import React, {useContext} from "react";
-import { CartContext } from '../../Context/CartContext';
-import { ProductsData } from '../../Data/ProductsData';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import CartContext from '../../Context/CartContext';
+import { getGroceries } from "../../Actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import styles from "./GroceriesCard.module.scss";
 
 export default function GroceriesCard() {
-  const { addItemToCart } = useContext(CartContext);
+  const dispatch = useDispatch()
+  const { addItemToCart, products } = useContext(CartContext);
+  const myGroceries = useSelector((state) => state.groceries)
+
+  useEffect(() => {
+    dispatch(getGroceries());
+  }, [dispatch]);
 
   return (
     <div className={styles.productsContainer}>
@@ -14,17 +22,24 @@ export default function GroceriesCard() {
       <img alt="img not found" src={img} width="100px" height="100px" />
       <h3>${price}</h3>
       <h4>{description}</h4> */}
-      {ProductsData.map((product, i) => (
+      {myGroceries.map((product, i) => (
         <div key={i} className={styles.product}>
-          <img src={product.img} alt={product.name} />
+          <img src={product.img} onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src="https://thumbs.dreamstime.com/b/candy-doodle-icon-vector-cute-candy-doodle-icon-vector-cute-hand-draw-drawing-black-sweet-mine-141118775.jpg";
+          }} />
           <div>
             <p>
               {product.name} - ${product.price}
             </p>
           </div>
-          <button onClick={() => addItemToCart(product)}>
-            <FontAwesomeIcon icon={faAdd} />
-          </button>
+          {!product.inCart ? (
+              <button onClick={() => addItemToCart(product)}>
+                Add to Cart
+              </button>
+            ) : (
+              <button>En el carrito</button>
+            )}
         </div>
       ))}
     </div>

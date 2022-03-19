@@ -15,16 +15,13 @@ const Slider = () => {
   //movies = movies.slice(0,4);
   let movies = [];
   for (let i = 0; i < films.length; ++i)
-    if (films[i].title === "The Batman")
-      movies.push(films[i]);
+    if (films[i].title === "The Batman") movies.push(films[i]);
 
   for (let i = 0; i < films.length; ++i)
-    if (films[i].title === "Scream")
-      movies.push(films[i]);
+    if (films[i].title === "Scream") movies.push(films[i]);
 
   for (let i = 0; i < films.length; ++i)
-    if (films[i].title === "Kimi")
-      movies.push(films[i]);
+    if (films[i].title === "Kimi") movies.push(films[i]);
 
   movies.push({ id: 768744 });
   const length = movies.length;

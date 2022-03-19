@@ -24,7 +24,7 @@ export function getGenres() {
 export function getGroceries() {
   return async function (dispatch) {
     //hacer un BASE_URL
-    let json = await axios.get("http://localhost:3001/api/groceries");
+    let json = await axios.get("http://localhost:3001/api/groceries/getAll");
     return dispatch({
       type: "GET_GROCERIES",
       payload: json.data,
@@ -201,7 +201,6 @@ export function getMyReceipts(payload) {
 export function getAvailables() {
   return async function (dispatch) {
     var json = await axios.get("http://localhost:3001/api/availables")
-    /* console.log("HOLAAAAAAAAAAAAAAAAAAAAAa", json) */
     return dispatch({
       type: "GET_AVAILABLES",
       payload: json.data
@@ -210,8 +209,8 @@ export function getAvailables() {
 }
 
 //Admin
-export function getAllUsers(){
-  return async function (dispatch){
+export function getAllUsers() {
+  return async function (dispatch) {
     var json = await axios.get("http://localhost:3001/api/user/")
     return dispatch({
       type: "GET_ALL_USERS",
@@ -220,8 +219,8 @@ export function getAllUsers(){
   }
 }
 
-export function getUsers(){
-  return async function (dispatch){
+export function getUsers() {
+  return async function (dispatch) {
     var json = await axios.get("http://localhost:3001/api/user/users")
     return dispatch({
       type: "GET_USERS",
@@ -230,8 +229,8 @@ export function getUsers(){
   }
 }
 
-export function getAdmins(){
-  return async function (dispatch){
+export function getAdmins() {
+  return async function (dispatch) {
     var json = await axios.get("http://localhost:3001/api/user/admins")
     return dispatch({
       type: "GET_ADMINS",
@@ -240,10 +239,10 @@ export function getAdmins(){
   }
 }
 
-export function makeOrQuitAdmin(payload){
-  return async function (dispatch){
-    let obj={role:payload.role}
-    var json = await axios.put("http://localhost:3001/api/user/roleadmin/"+payload.id,obj)
+export function makeOrQuitAdmin(payload) {
+  return async function (dispatch) {
+    let obj = { role: payload.role }
+    var json = await axios.put("http://localhost:3001/api/user/roleadmin/" + payload.id, obj)
     console.log(json);
     return dispatch({
       type: "MAKE_ADMIN",
@@ -252,9 +251,9 @@ export function makeOrQuitAdmin(payload){
   }
 }
 
-export function deleteUser(payload){
-  return async function (dispatch){
-    var json = await axios.delete("http://localhost:3001/api/user/"+payload);
+export function deleteUser(payload) {
+  return async function (dispatch) {
+    var json = await axios.delete("http://localhost:3001/api/user/" + payload);
     return dispatch({
       type: "DELETE_USER",
       payload: json.data
@@ -262,16 +261,47 @@ export function deleteUser(payload){
   }
 }
 
-export function postAvailable(payload){
-  return async function(){
-      try{
-          var json = await axios.post("http://localhost:3001/api/available", payload)
-          return {
-              type: "POST_AVAILABLE",
-              json
-          }
-      } catch(e){
-          console.log(e)
+export function postAvailable(payload) {
+  return async function () {
+    try {
+      var json = await axios.post("http://localhost:3001/api/available", payload)
+      return {
+        type: "POST_AVAILABLE",
+        json
       }
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
+
+export function postFilm(payload) {
+  return async function (dispatch) {
+    let json = await axios.post("http://localhost:3001/api/movie/", payload)
+    return dispatch({
+      type: "POST_FILM",
+      payload: json.data
+    })
+  }
+}
+
+export function postGrocerie(payload) {
+  return async function (dispatch) {
+    let json = await axios.post("http://localhost:3001/api/grocerie/", payload)
+    return dispatch({
+      type: "POST_GROCERIE",
+      payload: json.data
+    })
+  }
+}
+
+export function updateGroceries(payload) {
+  return async function (dispatch) {
+    let json = await axios.put("http://localhost:3001/api/groceries/update", payload)
+    return dispatch({
+      type: "UPDATE_GROCERIE",
+      payload: json.data
+    })
+  }
+}
+

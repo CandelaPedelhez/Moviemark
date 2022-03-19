@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faAdd } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/index";
-import { CartContext } from "../../Context/CartContext";
+import CartContext from "../../Context/CartContext";
 import "./Details.css";
 
 export default function Details({ movies }) {

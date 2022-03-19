@@ -4,37 +4,36 @@ import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClapperboard } from "@fortawesome/free-solid-svg-icons";
-import "./Navbar.css"
+import "./Navbar.css";
 import Cart from "../Cart/index";
 import { useSelector } from "react-redux";
 
 export default function NavBar() {
-  let currentuser = {name:''}
+  let aux = {name:''}
   if(localStorage.getItem("user")){
-      currentuser = localStorage.getItem("user");
-      currentuser = JSON.parse(currentuser);
+      aux = localStorage.getItem("user");
+      aux = JSON.parse(aux);
   }
-
   return (
     <div className="nav">
-      <Link to="/home" style={{ textDecoration: 'none' }}>
-      <h1 className="btnHome">MOVIEMARK</h1>
-        </Link>
-        <FontAwesomeIcon className="movieIcon" icon={faClapperboard} />
-      <Link to="/groceries" style={{ textDecoration: 'none' }}>
+      <Link to="/home" style={{ textDecoration: "none" }}>
+        <img src="https://i.imgur.com/INE654E.png" alt="logo in process" />
+      </Link>
+      {/* <FontAwesomeIcon className="movieIcon" icon={faClapperboard} />*/}
+      <Link to="/groceries" style={{ textDecoration: "none" }}>
         <h3 className="btn">Groceries</h3>
       </Link>
-      <SearchBar/>
-      <Cart/>
+      <SearchBar />
+      <Cart />
       {
-        !currentuser.id?<Link to="/login">
+        !aux.id?<Link to="/login">
         <FontAwesomeIcon className="user" icon={faUser} />
-        </Link>:currentuser.role==='admin'?<Link to="/admin">
+        </Link>:aux.role==='admin'?<Link to="/admin">
         <FontAwesomeIcon className="user" icon={faUser} />
         </Link>:<Link to="/account">
         <FontAwesomeIcon className="user" icon={faUser} />
         </Link>
       }
-      </div>
+    </div>
   );
 }

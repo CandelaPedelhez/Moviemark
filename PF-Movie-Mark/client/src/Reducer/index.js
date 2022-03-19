@@ -94,6 +94,10 @@ export default function reducer(state = initialState, action) {
           lastName: obj.lastName,
           role: obj.role,
         }
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        return { ...state, user: user, loggedIn: true }
+
       }
       else { return { ...state, user: {}, loggedIn: false } }
 
@@ -102,46 +106,51 @@ export default function reducer(state = initialState, action) {
       localStorage.removeItem('user');
       return { ...state, user: {}, loggedIn: false }
     case "CREATE_USER":
-      return { ...state }
+      return { ...state };
     case "EMAIL_USER":
-      return { ...state }
+      return { ...state };
     case "TOKEN_USER":
-      return { ...state }
+      return { ...state };
     case "CHANGE_DATA":
       let usr = localStorage.getItem("user");
       let aux2 = JSON.parse(usr);
       aux2.name = action.payload.name;
-      localStorage.setItem('user', JSON.stringify(aux2));
-      return { ...state }
-    //
+      localStorage.setItem("user", JSON.stringify(aux2));
+      return { ...state };
     case "GET_RECEIPT":
       return {
         ...state,
         receipt: action.payload,
-      }
+      };
     case "GET_MY_RECEIPTS":
       return {
         ...state,
         myReceipts: action.payload,
-      }
+      };
     case "GET_AVAILABLES":
       return {
         ...state,
         availables: action.payload,
-      }
+      };
     //Admin
     case "MAKE_ADMIN":
-      return { ...state }
+      return { ...state };
     case "GET_ALL_USERS":
-      return { ...state, users: action.payload }
+      return { ...state, users: action.payload };
     case "GET_USERS":
-      return { ...state, normalusers: action.payload }
+      return { ...state, normalusers: action.payload };
     case "GET_ADMINS":
-      return { ...state, admins: action.payload }
+      return { ...state, admins: action.payload };
     case "DELETE_USER":
-      return { ...state }
-      case "POST_AVAILABLE":
-        return { ...state}
+      return { ...state };
+    case "POST_FILM":
+      return { ...state };
+    case "POST_GROCERIE":
+      return { ...state };
+    case "POST_AVAILABLE":
+      return { ...state };
+    case "UPDATE_GROCERIE":
+      return { ...state };
     default:
       return state;
   }

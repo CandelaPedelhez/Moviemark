@@ -48,7 +48,10 @@ const Admin = () => {
     const history = useNavigate();
 
     function SubmitFilm(){
-        history('/admin/submit')
+        history('/admin/manage/films')
+    }
+    function SubmitGroceries(){
+        history('/admin/manage/groceries')
     }
 
     // Give admin
@@ -128,7 +131,7 @@ const Admin = () => {
         setCharging(true);
         dispatch(logoutUser())
         .then(()=>{
-            setTimeout( function() { history('/home'); }, 2000 );
+            setTimeout( function() { history('/home'); }, 2000 )
         })
     }
 
@@ -158,7 +161,8 @@ const Admin = () => {
             <div className={styles.account}>
                 <h1 className={styles.title}>Admin</h1>
                 <h2 className={styles.hi}>Hi {currentuser.name}</h2>
-                <button onClick={()=>SubmitFilm()}>Submit films</button>
+                <button onClick={()=>SubmitFilm()}>Manage films</button>
+                <button onClick={()=>SubmitGroceries()}>Manage groceries</button>
                 <div>
                     <p className={styles.subtitle}>Make Admins</p>
                     <select className={styles.select} onChange={e=>handleSelectAdmin(e)}>
@@ -175,7 +179,7 @@ const Admin = () => {
                 </div>
 
                 <div>
-                    <p className={styles.subtitle}>Delete Admins</p>
+                    <p className={styles.subtitle}>Quit Admins</p>
                     <select className={styles.select} onChange={e=>handleSelectQuitAdmin(e)}>
                     <option value="" selected disabled hidden>Choose one user</option>
                             {
@@ -202,6 +206,11 @@ const Admin = () => {
                     <button className={styles.button} onClick={()=>SubmitDelete()}>Submit</button>
                     {errorDelete===true?<p className={styles.error}>Please select one user</p>:<></>}
                     {successDelete===true?<p className={styles.success}>Success</p>:<></>}
+                </div>
+                <div>
+                    <Link className={styles.nav_link} to='/resetpassword'>
+                        Reset Password
+                    </Link>
                 </div>
                 <button className={styles.button} onClick={()=>handleLogout()}>Logout</button>
             </div>
