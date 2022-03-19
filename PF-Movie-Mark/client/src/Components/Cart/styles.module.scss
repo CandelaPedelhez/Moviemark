@@ -124,6 +124,7 @@
     display: flex;
     justify-content: flex-end;
     font-family: Roboto;
+    z-index: 1;
   
     .buttonCartContainer {
       position: absolute;
@@ -213,3 +214,23 @@
     border-radius: 20px;
   }
   
+  .btnCheckout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 6px;
+    margin-right: 6px;
+
+    button {
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #b882ff;;
+    font-weight: bold;
+    }
+
+    button:hover {
+        background-color: #b882ff6e;
+    }
+}

@@ -32,6 +32,8 @@
 
 import React, { useContext } from "react";
 import CartContext from "../../Context/CartContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdd, faMinus, faX } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
 
 export const ItemCart = ({ item }) => {
@@ -49,13 +51,13 @@ export const ItemCart = ({ item }) => {
           <p>{item.name}</p>
           <div className={styles.buttons}>
             <button onClick={() => increaseAmount(item.id, amount)}>
-              +
+            <FontAwesomeIcon icon={faAdd}/>
             </button>
             <button onClick={() => decreaseAmount(item.id, amount)}>
-              -
+            <FontAwesomeIcon  icon={faMinus}/>
             </button>
             <button onClick={() => editItemToCart(item.id, amount)}>
-              CLEAN
+            <FontAwesomeIcon  icon={faX}/>
             </button>
           </div>
         </div>

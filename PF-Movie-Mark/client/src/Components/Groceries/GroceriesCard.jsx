@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import CartContext from '../../Context/CartContext';
 import { getGroceries } from "../../Actions";
+import Cart from "../Cart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import styles from "./GroceriesCard.module.scss";
@@ -10,7 +11,6 @@ import styles from "./GroceriesCard.module.scss";
 export default function GroceriesCard() {
   const dispatch = useDispatch()
   const { addItemToCart, products } = useContext(CartContext);
-  const myGroceries = useSelector((state) => state.groceries)
 
   useEffect(() => {
     dispatch(getGroceries());
@@ -22,7 +22,7 @@ export default function GroceriesCard() {
       <img alt="img not found" src={img} width="100px" height="100px" />
       <h3>${price}</h3>
       <h4>{description}</h4> */}
-      {myGroceries.map((product, i) => (
+      {products && products.map((product, i) => (
         <div key={i} className={styles.product}>
           <img src={product.img} alt={product.name} />
           <div>

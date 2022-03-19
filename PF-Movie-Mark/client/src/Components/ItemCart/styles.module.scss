@@ -110,11 +110,12 @@
              button {
                  border: none;
                  cursor: pointer;
-                 font-size: 12px;
-                 padding: 3px 5px;
+                 font-size: 16px;
+                 padding: 1px 5px;
+                 margin-bottom: 8px;
                  border-radius: 5px;
                  font-weight: bold;
-                 color: #222222;
+                 color: #684c8b;
              }
         }
       }
@@ -124,6 +125,7 @@
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-end;
+          margin-top: 5px;
   
           div {
               background-color: #FB3939;
