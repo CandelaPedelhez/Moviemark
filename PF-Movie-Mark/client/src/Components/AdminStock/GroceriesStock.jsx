@@ -48,7 +48,6 @@ export default function AdminStock() {
                 price: 0,
                 stock: 0,
             });
-            /* navigate("/home"); */
         } else {
             e.preventDefault();
             alert("You should check grocerie and price fields!");
