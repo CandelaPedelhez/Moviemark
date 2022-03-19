@@ -21,6 +21,7 @@ import SubmitGroceries from "./Components/Admin/SubmitGroceries";
 import Products from "./Components/Products/index"
 import Page404 from "./Components/Page404/Page404";
 import GroceriesStock from "./Components/AdminStock/GroceriesStock"
+import DeleteAvailable from "./Components/AdminStock/DeleteAvailable"
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path='/admin/manage/groceries' element={<SubmitGroceries />} />
             <Route path="*" element={<Page404 />} />
             <Route path='groceries/update' element={<GroceriesStock />} />
+            <Route path='/availables/deleteAvailable' element={<DeleteAvailable />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

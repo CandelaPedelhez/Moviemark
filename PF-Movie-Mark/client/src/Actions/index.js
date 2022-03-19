@@ -305,3 +305,13 @@ export function updateGroceries(payload) {
   }
 }
 
+export function deleteAvailable(payload) {
+  return async function (dispatch) {
+    var json = await axios.delete("http://localhost:3001/api/availables/deleteAvailable" + payload);
+    return dispatch({
+      type: "DELETE_AVAILABLE",
+      payload: json.data
+    })
+  }
+}
+

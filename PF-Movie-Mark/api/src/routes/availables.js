@@ -23,5 +23,23 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.delete("/deleteAvailable", (req, res, next) => {
+let { id } = req.body
+  Grocerie.findOne( {where: {id : id} } )
+    .then((selectedGrocerie) => {
+      selectedGrocerie
+        .destroy({
+          where: {
+            id: id,
+          },
+        })
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
+    })
+    .catch((error) => res.status(500).json(error));
+});
+
 module.exports = router;
 

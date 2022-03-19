@@ -151,6 +151,8 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "UPDATE_GROCERIE":
       return { ...state };
+      case "DELETE_AVAILABLE":
+      return { ...state };
     default:
       return state;
   }

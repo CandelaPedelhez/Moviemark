@@ -11,7 +11,7 @@ router.get("/getAll", async (req, res, next) => {
 
 router.put("/update", async (req, res, next) => {
   let { id, price, stock } = req.body
-  console.log(id)
+
   Grocerie.findOne( {where: {id : id} } )
     .then((dataTicket) => {
       dataTicket
