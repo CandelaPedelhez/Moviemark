@@ -31,7 +31,7 @@ router.put("/gro/:id", async (req, res, next) => {
     .catch((error) => res.status(500).json(error));
 });
 
-router.detele("/deleteGrocerie", (req, res, next) => {
+router.delete("/deleteGrocerie", (req, res, next) => {
   Grocerie.findByPk(req.params.id)
     .then((selectedGrocerie) => {
       selectedGrocerie
