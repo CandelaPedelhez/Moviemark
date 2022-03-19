@@ -209,8 +209,6 @@ export function getAvailables() {
   }
 }
 
-<<<<<<< HEAD
-=======
 //Admin
 export function getAllUsers(){
   return async function (dispatch){
@@ -263,4 +261,17 @@ export function deleteUser(payload){
     })
   }
 }
->>>>>>> 682497807c481df681c57d023c8502c4766787f2
+
+export function postAvailable(payload){
+  return async function(){
+      try{
+          var json = await axios.post("http://localhost:3001/api/available", payload)
+          return {
+              type: "POST_AVAILABLE",
+              json
+          }
+      } catch(e){
+          console.log(e)
+      }
+  }
+}

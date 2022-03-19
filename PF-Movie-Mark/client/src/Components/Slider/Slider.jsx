@@ -27,10 +27,6 @@ const Slider = () => {
       movies.push(films[i]);
 
   movies.push({ id: 768744 });
-<<<<<<< HEAD
-  /* console.log(movies); */
-=======
->>>>>>> 682497807c481df681c57d023c8502c4766787f2
   const length = movies.length;
   const imagesData = [
     { image: batman },

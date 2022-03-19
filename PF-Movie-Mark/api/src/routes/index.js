@@ -17,6 +17,7 @@ const productRoute = require("./product.js");
 const userRoute = require("./user");
 const mercadopagoRoute = require("./mercadopago.js");
 const availablesRoute = require("./availables.js");
+const availableRoute = require("./available.js")
 const routeReview = require("./review.js");
 
 
@@ -38,6 +39,7 @@ router.use("/product", productRoute);
 router.use("/userTicket", userRoute);
 router.use("/mercadopago", mercadopagoRoute);
 router.use("/availables", availablesRoute);
+router.use("/available", availableRoute)
 router.use('/addReview', routeReview);
 
 module.exports = router;

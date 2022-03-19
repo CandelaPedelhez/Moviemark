@@ -17,6 +17,7 @@ export default function Details({ movies }) {
   const availables = useSelector((state) => state.availables)
   const { addItemToCart } = useContext(CartContext);
   
+  console.log("MYMOVIE", myMovie)
   
   const makedispatch = () => {
     if (movies === "movies") {
@@ -37,15 +38,15 @@ export default function Details({ movies }) {
     } myMovieFunction()
   }
   
-
+console.log("PRIMERO",movieFunctions)
   
   let funcion = []
   
   function handleSelect(r){
     r.preventDefault();
     console.log("TARGET", r.target.value)
-    funcion = movieFunctions[0].funcions.filter(e => e.date === r.target.value)
-    console.log(funcion)
+    funcion = movieFunctions.filter(e => e.date === r.target.value)
+    console.log("SEGUNDO",funcion)
   }
   
   const handleAdd = () => {
@@ -130,7 +131,7 @@ export default function Details({ movies }) {
                 <select onChange={r => handleSelect(r)}>
                   <option value="">Availables</option>
                   {
-                    movieFunctions[0].funcions.map(e => <option value={e.date}>{e.date} at {e.hour}hs</option>) /* TODAVÍA NO FUNCIONA */
+                    movieFunctions.map(e => <option value={e.date}>{e.date.split("-").reverse().join("/")} at {e.hour}hs</option>)
                   }
                 </select>
               <button onClick={() => handleAdd()}>
