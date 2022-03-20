@@ -24,6 +24,7 @@ export default function AdminStock() {
     }
 
     function handleSubmit(e){
+        console.log("IDDDDDDD", input)
         e.preventDefault();
         dispatch(deleteAvailable(input));
     }

@@ -24,10 +24,11 @@ router.get("/", async (req, res, next) => {
 });
 
 router.delete("/deleteAvailable", (req, res, next) => {
-let { id } = req.body
-  Grocerie.findOne( {where: {id : id} } )
-    .then((selectedGrocerie) => {
-      selectedGrocerie
+let {id} = req.body
+
+  Available.findByPk(id)
+    .then((selectedAvailable) => {
+      selectedAvailable
         .destroy({
           where: {
             id: id,

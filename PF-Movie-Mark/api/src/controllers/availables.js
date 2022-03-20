@@ -271,14 +271,7 @@ let availables = [
     hour: "18:30",
     hall: "1",
     tickets: "48",
-  },
-  {
-    name: "The Sky Is Everywhere",
-    date: "2022-04-03",
-    hour: "18:30",
-    hall: "1",
-    tickets: "48",
-  },
+  }
 ];
 
 module.exports = { availables };

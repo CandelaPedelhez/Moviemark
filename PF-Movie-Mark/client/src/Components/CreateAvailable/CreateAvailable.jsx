@@ -2,28 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { getMovies, getAvailables, postAvailable } from "../../Actions";
 import { useDispatch, useSelector } from "react-redux";
- 
-/* NO FUNCIONA EL ERROR */
 
-function validate(input) {
-    let errors = {};
-    if (input.date.length === 0) {
-        errors.date = "All functions are taken, please select another day"
-    }
-    if (!input.description) {
-        errors.description = "A description is required"
-    }
-    if (input.rating > 5) {
-        errors.rating = "The rating is up to 5"
-    }
-    return errors
-}
+/* NO FUNCIONA EL ERROR */
 
 export default function CreateAvailable() {
     const dispatch = useDispatch();
     const movies = useSelector((state) => state.movies);
     const availables = useSelector((state) => state.availables)
-    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         dispatch(getMovies());
@@ -37,14 +22,23 @@ export default function CreateAvailable() {
     console.log("MOVIES", movies)
 
     const horarioFunciones = ["18:30", "19:30", "21", "22"]
-    let horariosAvailables = false
-    let horarios = []
+    let horarios = horarioFunciones
+    let error = ""
+
+
+    function handleHalls(){
+        setInput({
+            ...input,
+            hall: e.target.value
+        })
+    }
+
 
     const [input, setInput] = useState({
         name: "",
         date: "",
         hour: "",
-        hall: null,
+        hall: "",
         hallTickets: 48,
     })
 
@@ -58,30 +52,23 @@ export default function CreateAvailable() {
 
     function handleDate(e) {
         if (availables.map(r => r.date === e.target.value)) {
+            error = ""
             console.log("INPUT", input.date)
             let movieSameDate = availables.filter(r => r.date === e.target.value);
             console.log("MOVIES IN THE SAME DATE", movieSameDate)
 
             if (movieSameDate.length === 4) {
-                setErrors(validate({
-                    ...input,
-                    [e.target.name]: ""
-                }))
-                console.log("ERROR", errors)
-
+                error = "All functions taken, try with another Date"
+                console.log(error)
             }
 
-            if(movieSameDate.length < 4){
-                horariosAvailables = true
-                console.log("HORARIOS AVAILABLES TRUE OR FALSE", horariosAvailables)
-                if(movieSameDate.length === 0){
-                    horarios = horarioFunciones
-                    console.log("HORARIOS", horarios)
-                } else{
-                    horarios = horarioFunciones.filter(r => movieSameDate.includes(r.hour))
-                    console.log("FINNNNNDD", horarios)
+            if (movieSameDate.length < 4) {
+                error = ""
+                for (let i = 0; i < movieSameDate.length; i++) {
+                    horarios = horarios.filter(e => e !== movieSameDate[i].hour)
                 }
-                
+                console.log("FINNNNNDD", horarios)
+
                 setInput({
                     ...input,
                     date: e.target.value
@@ -101,8 +88,8 @@ export default function CreateAvailable() {
 
 
     function handleSubmit(e) {
-        if (input.name && input.date && input.hour && input.hall !== null) {
-            console.log("ESTES ES EL INPUT", input)
+        console.log("FINAL", input)
+        if (input.name && input.date && input.hour && input.hall) {
             e.preventDefault();
             dispatch(postAvailable(input));
             alert("Function created");
@@ -113,75 +100,73 @@ export default function CreateAvailable() {
                 hall: null,
                 hallTickets: 48,
             });
-        } else {
-            e.preventDefault();
-            alert("You should check name, date and hour fields!");
-        }
+    } else {
+        e.preventDefault();
+        alert("You should check name, date and hour fields!");
     }
+}
 
 
-    return (
-        <div >
-            <h1>Add a function</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
+return (
+    <div >
+        <h1>Add a function</h1>
+        <form onSubmit={(e) => handleSubmit(e)}>
+            <div>
                 <div>
-                    <div>
-                        <label>Movie:</label>
-                        <select onChange={e => handleSelectMovie(e)}>
-                            <option>Choose</option>
-                            {movies?.map((movie) => { /* ACÁ QUE ME TRAIGA SOLO LA DE ONSTREAM ? */
-                                return <option value={movie.title}>{movie.title}</option>
-                            })
-                            }
-                        </select>
-                    </div>
-                    <div>
-                        <label>Choose a date</label>
-                        <input value={input.date} type="date" name="date"
-                            min="2022-03-18" onChange={e => handleDate(e)}>
-                        </input>
-                        {
-                            input.date.length > 0 ?
-                                <div>
-                                    {errors.date > 0 ?
-                                        <p>All functions taken, try with another Date</p> :
-                                        <div>
-                                            <div>
-                                                <label>Select hour</label>
-                                                <select onChange={e => handleSelectHour(e)} name="hour">
-                                                    <option>Select hour</option>
-                                                    {
-                                                        (horariosAvailables === true) ?
-                                                            horariosAvailables.map(e => <option value={e} name="hour">{e}</option>) :
-                                                            horarioFunciones.map(e => <option value={e} name="hour">{e}</option>)
-                                                    }
-                                                </select>
-                                            </div>
-                                            <div>
-                                                {
-                                                    (input.hour === "") ?
-                                                        <div></div> :
-                                                        (input.hour === "18:30" || input.hour === "21") ?
-                                                            <div>
-                                                                <label>Hall:</label>
-                                                                <h3>1</h3>
-                                                            </div>
-                                                            :
-                                                            <div>
-                                                                <label>Hall:</label>
-                                                                <h3>2</h3>
-                                                            </div>
-                                                }
-                                            </div>
-                                        </div>
-                                    }
-                                </div> : <div></div>
+                    <label>Movie:</label>
+                    <select onChange={e => handleSelectMovie(e)}>
+                        <option>Choose</option>
+                        {movies?.map((movie) => {
+                            return <option value={movie.title}>{movie.title}</option>
+                        })
                         }
-                    </div>
+                    </select>
                 </div>
-                <button type="submit">Add function</button>
-            </form>
-        </div>
+                <div>
+                    <label>Choose a date</label>
+                    <input value={input.date} type="date" name="date"
+                        min="2022-03-18" onChange={e => handleDate(e)}>
+                    </input>
+                    {
+                        input.date ?
+                            <div>
+                                {error.length > 0 ?
+                                    <p>All functions taken, try with another Date</p> :
+                                    <div>
+                                        <div>
+                                            <label>Select hour</label>
+                                            <select onChange={e => handleSelectHour(e)} name="hour">
+                                                <option>Select hour</option>
+                                                {
+                                                    horarios.map(e => <option value={e} name="hour">{e}</option>)
+                                                }
+                                            </select>
+                                        </div>
+                                        <div>
+                                            {
+                                                (input.hour === "") ?
+                                                    <div></div> :
+                                                    (input.hour === "18:30" || input.hour === "21") ?
+                                                        <div>
+                                                            <label>Hall:</label>
+                                                            <h3>1</h3>
+                                                        </div>
+                                                        :
+                                                        <div>
+                                                            <label>Hall:</label>
+                                                            <h3>2</h3>
+                                                        </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div> : <div></div>
+                    }
+                </div>
+            </div>
+            <button type="submit">Add function</button>
+        </form>
+    </div>
 
-    )
+)
 }
