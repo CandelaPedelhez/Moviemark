@@ -194,6 +194,7 @@ router.use('/reset',async (req,res)=>{
                 ...user,
                 password:hash,
                 passwordResetToken:null,
+                allowed:true,
             })
             res.status(200).send({success:"Password reset done"})
         }
@@ -289,6 +290,17 @@ router.post('/newsletter',async (req,res)=>{
     res.status(200).send({success:'Done'});
 })
 
-          
+//Revocar password de user desde admin (beta)
+router.put('/revoke/:id',(req,res)=>{
+    User.findByPk(req.params.id)
+    .then(data=>{
+        data.update({
+            allowed: false,
+        })
+        .then(response=>{res.status(200).json(response)})
+        .catch(e=>{res.status(500).json({e})});
+    })
+    .catch(e=>res.status(500).json({e}))
+})
 
 module.exports = router;
