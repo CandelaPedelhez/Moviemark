@@ -18,7 +18,7 @@ const getMovies = async (req, res) => {
         let created = await createMovie(movie.id,
           movie.title,movie.overview,movie.popularity,
           movie.release_date,movie.original_language,movie.genre_ids,
-          movie.vote_average,"https://image.tmdb.org/t/p/w500" + movie.poster_path,1000)
+          movie.vote_average, "https://image.tmdb.org/t/p/w500" + movie.poster_path,1000)
         let movGenres = movie.genre_ids;
         let genresdb = await Genre.findAll({
           where:{id:movGenres}

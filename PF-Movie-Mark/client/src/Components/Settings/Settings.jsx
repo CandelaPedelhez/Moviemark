@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Settings.module.css';
 import popcorn from './assets/popcorn.png';
-import { changeData, logoutUser } from '../../Actions';
+import { changeData, logoutUser} from '../../Actions';
 import Loader from '../Loader/Loader';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Settings = () => {
+    
     let aux = {name:''}
     if(localStorage.getItem("user")){
         aux = localStorage.getItem("user");
@@ -69,6 +70,10 @@ const Settings = () => {
     function handleChangePassword(){
         dispatch(logoutUser());
         history('/resetpassword')
+    }
+
+    function handleCleanCart(){
+        dispatch()
     }
 
     return(

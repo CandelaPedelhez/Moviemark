@@ -9,17 +9,20 @@ router.get("/getAll", async (req, res, next) => {
   } catch (error) {}
 });
 
-router.put("/gro/:id", async (req, res, next) => {
-  Grocerie.findByPk(req.params.id)
+router.put("/update", async (req, res, next) => {
+  let { id, price, stock } = req.body
+
+  Grocerie.findOne( {where: {id : id} } )
     .then((dataTicket) => {
       dataTicket
         .update(
           {
-            price: req.body.price,
+            price: price,
+            stock: stock
           },
           {
             where: {
-              id: req.params.id,
+              id: id,
             },
           }
         )
@@ -51,3 +54,25 @@ router.delete("/deleteGrocerie/:id", (req, res, next) => {
 });
 
 module.exports = router;
+
+/* router.put("/gro/:id", async (req, res, next) => {
+  Grocerie.findByPk(req.params.id)
+    .then((dataTicket) => {
+      dataTicket
+        .update(
+          {
+            price: req.body.price,
+          },
+          {
+            where: {
+              id: req.params.id,
+            },
+          }
+        )
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
+    })
+    .catch((error) => res.status(500).json(error));
+}); */
