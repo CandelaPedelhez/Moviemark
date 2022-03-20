@@ -155,6 +155,8 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "DELETE_AVAILABLE":
       return { ...state };
+    case "REVOKE_ACCESS":
+      return { ...state };
     default:
       return state;
   }
