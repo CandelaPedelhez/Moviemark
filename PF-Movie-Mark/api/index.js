@@ -24,7 +24,7 @@ const {groceries} = require("./src/controllers/groceries.js");
 
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
 
  groceries.forEach((g) => {
       Grocerie.findOrCreate({
