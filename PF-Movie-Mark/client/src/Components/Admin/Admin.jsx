@@ -53,6 +53,9 @@ const Admin = () => {
     function SubmitGroceries(){
         history('/admin/manage/groceries')
     }
+    function Newsletter(){
+        history('/admin/newsletter')
+    }
 
     // Give admin
 
@@ -163,6 +166,7 @@ const Admin = () => {
                 <h2 className={styles.hi}>Hi {currentuser.name}</h2>
                 <button onClick={()=>SubmitFilm()}>Manage films</button>
                 <button onClick={()=>SubmitGroceries()}>Manage groceries</button>
+                <button onClick={()=>Newsletter()}>Newsletter</button>
                 <div>
                     <p className={styles.subtitle}>Make Admins</p>
                     <select className={styles.select} onChange={e=>handleSelectAdmin(e)}>

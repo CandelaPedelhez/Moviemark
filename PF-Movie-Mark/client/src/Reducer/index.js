@@ -146,7 +146,8 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "POST_GROCERIE":
       return { ...state };
-
+    case "NEWSLETTER":
+      return {...state};
     default:
       return state;
   }
