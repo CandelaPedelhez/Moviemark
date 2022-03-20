@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../Actions';
+import { createUser } from "../../Actions";
 import Loader from '../Loader/Loader';
 import { useAuth } from "../../Context/authContext"
 import styles from './Login.module.css';
@@ -83,23 +84,22 @@ const Login = () => {
 
     const makedispatchgoogle = async (e) => {
         e.preventDefault();
-        dispatch(loginUser(loginWithGoogle))
-        await loginWithGoogle()
+        dispatch(createUser(input));
+        await loginWithGoogle();
         setSuccess(true);
         setTimeout( function() { history('/home'); }, 1600 );
     }
 
     const makedispatchgithub = async (e) => {
         e.preventDefault();
-        dispatch(loginUser(loginWithGithub))
-        await loginWithGithub()
+        dispatch(createUser(loginWithGithub));
+        await loginWithGithub();
         setSuccess(true);
         setTimeout( function() { history('/home'); }, 1600 );
     }
 
     return(
         <div> 
-
             <div className={styles.divbtt}>
                 <Link to="/home">
                     <button className={styles.btnBack}>
