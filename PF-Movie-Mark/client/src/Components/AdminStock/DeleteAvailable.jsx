@@ -1,6 +1,7 @@
 import React from "react";
-import { useEffect , useState} from "react";
-import { getAvailables , deleteAvailable } from "../../Actions/index";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { getAvailables } from "../../Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function AdminStock() {
@@ -23,22 +24,30 @@ export default function AdminStock() {
         })
     }
 
-    function handleSubmit(e){
-        console.log("IDDDDDDD", input)
+    function handleSubmit(e) {
         e.preventDefault();
-        dispatch(deleteAvailable(input));
+        if (input.id) {
+            return (
+                axios.delete(`http://localhost:3001/api/availables/deleteAvailable/${input.id}`)
+                    .then((res) => {
+                        alert("Function deleted successfully") /* ACÁ HAY QUE VER A DÓNDE LO MANDA DESPUÉS */
+                    })
+                    .catch((e) => {
+                        alert("Couldn't delete function!") 
+                    }))
+        }
     }
 
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
-            <select onChange={e => handleSelectAvailable(e)}>
-                <option value={0}>Select function</option>
-                {
-                    availables.map(e => <option value={e.id}>{e.name}:  {e.date} at {e.hour}</option>)
-                }
-            </select>
-            <button type="submit">Delete function</button>
+                <select onChange={e => handleSelectAvailable(e)}>
+                    <option value={0}>Select function</option>
+                    {
+                        availables.map(e => <option value={e.id}>{e.name}:  {e.date} at {e.hour}</option>)
+                    }
+                </select>
+                <button type="submit">Delete function</button>
             </form>
         </div>
     )

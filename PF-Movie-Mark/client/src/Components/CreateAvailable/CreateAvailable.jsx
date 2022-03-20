@@ -10,6 +10,9 @@ export default function CreateAvailable() {
     const movies = useSelector((state) => state.movies);
     const availables = useSelector((state) => state.availables)
 
+    const [hours, setHours] = useState(["18:30", "19:30", "21", "22"])
+    const[error, setError] = useState(false)
+
     useEffect(() => {
         dispatch(getMovies());
     }, []);
@@ -23,16 +26,6 @@ export default function CreateAvailable() {
 
     const horarioFunciones = ["18:30", "19:30", "21", "22"]
     let horarios = horarioFunciones
-    let error = ""
-
-
-    function handleHalls(){
-        setInput({
-            ...input,
-            hall: e.target.value
-        })
-    }
-
 
     const [input, setInput] = useState({
         name: "",
@@ -52,23 +45,22 @@ export default function CreateAvailable() {
 
     function handleDate(e) {
         if (availables.map(r => r.date === e.target.value)) {
-            error = ""
             console.log("INPUT", input.date)
             let movieSameDate = availables.filter(r => r.date === e.target.value);
             console.log("MOVIES IN THE SAME DATE", movieSameDate)
 
             if (movieSameDate.length === 4) {
-                error = "All functions taken, try with another Date"
-                console.log(error)
+                setError(true)
             }
 
             if (movieSameDate.length < 4) {
-                error = ""
+                setError(false)
                 for (let i = 0; i < movieSameDate.length; i++) {
                     horarios = horarios.filter(e => e !== movieSameDate[i].hour)
                 }
-                console.log("FINNNNNDD", horarios)
-
+                setHours([horarios])
+                console.log("SETTTTTTTTTTTTTTTTTTT", hours)
+                
                 setInput({
                     ...input,
                     date: e.target.value
@@ -85,11 +77,18 @@ export default function CreateAvailable() {
             hour: e.target.value
         })
     }
-
+    
+    function handleSelectHall(e) {
+        e.preventDefault();
+        setInput({
+            ...input,
+            hall: e.target.value
+        })
+    }
 
     function handleSubmit(e) {
-        console.log("FINAL", input)
-        if (input.name && input.date && input.hour && input.hall) {
+        console.log("HOLAAAAAAAAAAAAAAAA", input)
+        if (input.name && input.date && input.hour) {
             e.preventDefault();
             dispatch(postAvailable(input));
             alert("Function created");
@@ -97,7 +96,7 @@ export default function CreateAvailable() {
                 name: "",
                 date: "",
                 hour: "",
-                hall: null,
+                hall: "",
                 hallTickets: 48,
             });
     } else {
@@ -130,7 +129,7 @@ return (
                     {
                         input.date ?
                             <div>
-                                {error.length > 0 ?
+                                {error === true ? 
                                     <p>All functions taken, try with another Date</p> :
                                     <div>
                                         <div>
@@ -138,7 +137,7 @@ return (
                                             <select onChange={e => handleSelectHour(e)} name="hour">
                                                 <option>Select hour</option>
                                                 {
-                                                    horarios.map(e => <option value={e} name="hour">{e}</option>)
+                                                    hours[0].map(e => <option value={e} name="hour">{e}</option>)
                                                 }
                                             </select>
                                         </div>
@@ -147,15 +146,15 @@ return (
                                                 (input.hour === "") ?
                                                     <div></div> :
                                                     (input.hour === "18:30" || input.hour === "21") ?
-                                                        <div>
-                                                            <label>Hall:</label>
-                                                            <h3>1</h3>
-                                                        </div>
+                                                        <select onChange={e => handleSelectHall(e)}>
+                                                            <option>Hall:</option>
+                                                            <option value={1}>1</option>
+                                                        </select>
                                                         :
-                                                        <div>
-                                                            <label>Hall:</label>
-                                                            <h3>2</h3>
-                                                        </div>
+                                                        <select onChange={e => handleSelectHall(e)}>
+                                                            <option>Hall:</option>
+                                                            <option value={2}>2</option>
+                                                        </select>
                                             }
                                         </div>
                                     </div>
