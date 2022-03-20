@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { deleteUser, getAdmins, getAllUsers, getUsers, logoutUser, makeOrQuitAdmin } from '../../Actions';
+import { deleteUser, getAdmins, getAllUsers, getUsers, logoutUser, makeOrQuitAdmin, revokePass } from '../../Actions';
 import styles from './Admin.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -127,6 +127,32 @@ const Admin = () => {
             setErrorDelete(true);
         }
     }
+    
+    //Reset user's password
+    const [userForReset,setUserForReset] = useState(-1);
+    const [errorReset,setErrorReset] = useState(false);
+    const [successReset,setSuccessReset] = useState(false);
+
+    function handleSelectReset(e){
+        setUserForReset(e.target.value);
+    }
+
+    function SubmitReset(e){
+        if(userForReset!=-1){
+            setErrorReset(false);
+            setCharging(true);
+            dispatch(revokePass(userForReset))
+            .then(()=>{
+                setCharging(false);
+                setSuccessReset(true);
+                refreshPage();
+            })
+        }
+        else{
+            setErrorReset(true);
+        }
+    }
+    
 
     //
 
@@ -211,6 +237,22 @@ const Admin = () => {
                     {errorDelete===true?<p className={styles.error}>Please select one user</p>:<></>}
                     {successDelete===true?<p className={styles.success}>Success</p>:<></>}
                 </div>
+
+                <div>
+                    <p className={styles.subtitle}>Reset user's password</p>
+                    <select className={styles.select} onChange={e=>handleSelectReset(e)}>
+                    <option value="" selected disabled hidden>Choose one user</option>
+                            {
+                                users.map(el=>{
+                                    return <option key={el.id} value={el.id}>{el.email}</option>
+                                })
+                            }
+                    </select>
+                    <button className={styles.button} onClick={()=>SubmitReset()}>Submit</button>
+                    {errorReset===true?<p className={styles.error}>Please select one user</p>:<></>}
+                    {successReset===true?<p className={styles.success}>Success</p>:<></>}
+                </div>
+
                 <div>
                     <Link className={styles.nav_link} to='/resetpassword'>
                         Reset Password
