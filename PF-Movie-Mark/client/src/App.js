@@ -23,6 +23,7 @@ import Page404 from "./Components/Page404/Page404";
 import GroceriesStock from "./Components/AdminStock/GroceriesStock"
 import DeleteAvailable from "./Components/AdminStock/DeleteAvailable"
 
+
 function App() {
   return (
     <CartProvider>

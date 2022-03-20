@@ -1,4 +1,4 @@
-const { Order_detail , Order} = require('../db.js');
+const { Order_detail , Order, Cart} = require('../db.js');
 
 const {
     ACCESS_TOKEN,
@@ -9,16 +9,21 @@ const server = require('express').Router();
 const mercadopago = require ('mercadopago');
 const { route } = require('./order');
 
-server.get("/", (req, res, next)=>{
+server.get("/", async (req, res, next)=>{
   //const id_orden = req.query.id 
+  const id_orden= 1;
 
-  const id_orden= 1
-  // cargamos el carrido de la bd
-  const carrito = [
-    {title: "Producto 1", quantity: 5, price: 10.52},
-    {title: "Producto 2", quantity: 15, price: 100.52},
-    {title: "Producto 3", quantity: 6, price: 200}
-  ]
+
+  let productsCart = await Cart.findAll();
+  console.log("AAAAA",productsCart)
+
+  const carrito = productsCart.map(e => {
+    return{
+      name: e.name,
+      amount: e.amount,
+      price: e.price,
+    }
+  })
   // Agrega credenciales
 mercadopago.configure({
     access_token: ACCESS_TOKEN
@@ -26,9 +31,9 @@ mercadopago.configure({
   
   console.info('ml configured')
   const items_ml = carrito.map(i => ({
-    title: i.title,
-    unit_price: i.price,
-    quantity: i.quantity,
+    title: i.name,
+    unit_price: parseInt(i.price),
+    quantity: i.amount,
   }))
   // console.info('carrito', items_ml)
   // Crea un objeto de preferencia

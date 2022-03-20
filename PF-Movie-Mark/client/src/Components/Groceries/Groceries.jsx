@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getGroceries } from "../../Actions";
 import { useEffect } from "react";
 import GroceriesCard from "./GroceriesCard";
+import CartContext from "../../Context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Cart from '../Cart';
@@ -19,6 +20,10 @@ export default function Groceries() {
   const drinks = myGroceries.filter(e => e.typeGrocerie === "drinks")
   const sweets = myGroceries.filter(e => e.typeGrocerie === "sweets")
   const coffeshop = myGroceries.filter(e => e.typeGrocerie === "coffeshop")
+  const { addItemToCart, products } = useContext(CartContext);
+
+
+  // const { addItemToCart, products } = useContext(CartContext);
 
   useEffect(() => {
     dispatch(getGroceries());

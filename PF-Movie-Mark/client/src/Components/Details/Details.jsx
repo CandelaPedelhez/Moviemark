@@ -49,21 +49,21 @@ console.log("PRIMERO",movieFunctions)
     console.log("SEGUNDO",funcion)
   }
   
-  const handleAdd = () => {
-    const movieFunction = myMovie.map(e => {
-      return{
-        id: e.id,
-        title: e.title,
-        description: e.description,
-        genres: e.genres,
-        img: e.img,
-        price: e.price,
-        function: funcion
-      }
-    })
-    addItemToCart(movieFunction);
-    console.log(movieFunction)
-  };
+  // const handleAdd = () => {
+  //   const movieFunction = myMovie.map(e => {
+  //     return{
+  //       id: e.id,
+  //       title: e.title,
+  //       description: e.description,
+  //       genres: e.genres,
+  //       img: e.img,
+  //       price: e.price,
+  //       function: funcion
+  //     }
+  //   })
+  //   addItemToCart(movieFunction);
+  //   console.log(movieFunction)
+  // };
 
   
   useEffect(() => {
@@ -90,7 +90,7 @@ console.log("PRIMERO",movieFunctions)
             <p>Loading ...</p>
           </div>
         ) : (
-          <div>
+          <div className="title">
             <h1>{myMovie[0].title}</h1>
             <img src={myMovie[0].img} alt="img not found" />
             <div>
@@ -100,8 +100,7 @@ console.log("PRIMERO",movieFunctions)
               <h3>Action</h3>
             </div>
             <div className="duration">
-              <h3>Duration:</h3>
-              <b>120min</b>
+              <h3>120min</h3>
             </div>
             <div className="div2">
               <div>
@@ -134,7 +133,7 @@ console.log("PRIMERO",movieFunctions)
                     movieFunctions.map(e => <option value={e.date}>{e.date.split("-").reverse().join("/")} at {e.hour}hs</option>)
                   }
                 </select>
-              <button onClick={() => handleAdd()}>
+              <button>
                 <FontAwesomeIcon icon={faAdd} /> Buy Tickets
               </button>
               </div>
