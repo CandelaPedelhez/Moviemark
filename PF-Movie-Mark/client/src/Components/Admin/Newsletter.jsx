@@ -92,7 +92,11 @@ const Newsletter = () => {
                             {input.id?.map(t=>(
                             <div className={styles.opt}>
                                 <div>
-                                    <p className={styles.titleopt}>{t}</p>
+                                    {
+                                        movies.map(el=>{
+                                            return el.id===parseInt(t)?<p className={styles.titleopt}>{el.title}</p>:<></>
+                                        })
+                                    }
                                 </div>
                                 <div>
                                     <button className={styles.bttx} onClick={e=>handleDelete(e,t)}>x</button>
