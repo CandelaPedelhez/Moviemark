@@ -315,3 +315,12 @@ export function deleteAvailable(payload) {
   }
 }
 
+export function sendNewsletter(payload){
+  return async function (dispatch) {
+    let req = await axios.post("http://localhost:3001/api/user/newsletter/", payload)
+    return dispatch({
+      type: "NEWSLETTER",
+      payload: req.data,
+    })
+  }
+}
