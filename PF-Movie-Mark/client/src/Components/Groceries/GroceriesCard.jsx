@@ -42,3 +42,4 @@ export default function GroceriesCard() {
     </div>
   );
 }
+

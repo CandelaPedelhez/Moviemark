@@ -25,7 +25,7 @@ const getMovies = async (req, res) => {
         })
         created.addGenre(genresdb);
       }
-    });
+    })
     const allMoviesFound = await Movie.findAll();
     return allMoviesFound;
   } catch (error) {

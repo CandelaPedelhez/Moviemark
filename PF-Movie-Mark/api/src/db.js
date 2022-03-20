@@ -65,6 +65,7 @@ Hall.belongsToMany(Ticket, { through: "ticket_halls" });
 Cart.belongsToMany(Product, {through: "Cart_Product"});
 Product.belongsToMany(Cart, {through: "Product_Cart"});
 
+
 Cart.belongsToMany(Movie, {through: "Cart_Movie"});
 Movie.belongsToMany(Cart, {through: "Movie_Cart"});
 

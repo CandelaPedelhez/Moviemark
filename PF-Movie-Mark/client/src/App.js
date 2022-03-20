@@ -18,6 +18,8 @@ import Admin from "./Components/Admin/Admin";
 import SubmitFilm from "./Components/Admin/Submitfilms";
 import SubmitGroceries from "./Components/Admin/SubmitGroceries";
 import Products from "./Components/Products/index"
+import Page404 from "./Components/Page404/Page404";
+
 
 function App() {
   return (
@@ -43,6 +45,7 @@ function App() {
         <Route path='/admin' element={<Admin/>} /> 
         <Route path='/admin/manage/films' element={<SubmitFilm/>} />
         <Route path='/admin/manage/groceries' element={<SubmitGroceries/>} />
+        <Route path="*" element={<Page404/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>
