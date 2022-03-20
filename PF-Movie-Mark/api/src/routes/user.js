@@ -4,7 +4,8 @@ const { User, Ticket } = require('../db.js');
 
 //Ticket-users:
 router.get('/:id', async (req, res, next) => {
-    const {id} = req.params;
+    const id = req.params.id;
+    console.log("HOLA", id)
     let userTi = [];
     let tickets= [];
     //Obtengo user por id: 
