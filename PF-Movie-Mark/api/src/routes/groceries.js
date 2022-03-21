@@ -7,8 +7,10 @@ router.get("/getAll", async (req, res, next) => {
   try {
     let allGroceries = await Grocerie.findAll();
     return res.status(200).send(allGroceries);
-  } catch (error) { }
-});
+  } catch (error) {
+    res.status(500).send(eror.message);
+  };
+
 
 router.put("/update", async (req, res, next) => {
   let { id, price, stock } = req.body
@@ -35,9 +37,7 @@ router.put("/update", async (req, res, next) => {
     .catch((error) => res.status(500).json(error));
 });
 
-
 router.delete("/deleteGrocerie/:id", (req, res, next) => {
-
   Grocerie.findByPk(req.params.id)
     .then((selectedGrocerie) => {
       selectedGrocerie

@@ -2,21 +2,11 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("movie", {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
       //preguntar por el unique
     },
-    /*adult: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },*/
     //backdrop_path
     img: {
       type: DataTypes.STRING,
@@ -41,8 +31,9 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.DECIMAL,
     },
-    movGenres: {
-      type: DataTypes.ARRAY(DataTypes.STRING)
+    movie_genre: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+
     },
   });
 };

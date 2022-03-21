@@ -19,13 +19,40 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
-const {Grocerie} = require("./src/db");
-const {groceries} = require("./src/controllers/groceries.js");
-
-
+const { Grocerie, Movie, Ticket } = require("./src/db");
+const { moviesdb } = require("./src/controllers/moviesdb.js");
+const { groceries } = require("./src/controllers/groceries.js");
+//console.log("las movies son estas:", moviesdb);
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   groceries.forEach((g) => {
+
+  moviesdb.forEach((m) =>
+    Movie.findOrCreate({
+      where: {
+        title: m.title,
+        description: m.description,
+        popularity: m.popularity,
+        release_date: m.release_date,
+        languages: m.languages,
+        movie_genre: m.movie_genre.map((e) => e),
+        img: m.img,
+        vote_average: m.vote_average,
+        price: m.price,
+      },
+    })
+  );
+
+  moviesdb.forEach((m) =>
+    Ticket.findOrCreate({
+      where: {
+        name: m.title,
+        img: m.img,
+        price: m.price,
+      },
+    })
+  );
+
       Grocerie.findOrCreate({
         where: {
           name: g.name,
@@ -36,6 +63,7 @@ conn.sync({ force: true }).then(() => {
         },
       });
     });  
+
   server.listen(3001, () => {
     console.log(`Server on port 3001`); 
   });
