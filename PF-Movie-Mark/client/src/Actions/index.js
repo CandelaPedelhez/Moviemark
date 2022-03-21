@@ -353,7 +353,6 @@ export function revokePass(payload){
     })
   }
 }
-<<<<<<< HEAD
 
 export const getUserCred = () => {
   return async (dispatch) => {
@@ -372,5 +371,3 @@ export const loginGoogle = (userData) => async (dispatch) => {
     payload: data
   });
 }
-=======
->>>>>>> f6d328a9704e79bbb2d5493f54bafa1ad6dc09ca
