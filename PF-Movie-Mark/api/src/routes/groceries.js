@@ -12,8 +12,36 @@ router.get("/getAll", async (req, res, next) => {
   }
 });
 
-router.put("/update", async (req, res, next) => {
-  let { id, price, stock } = req.body;
+//Ruta para actualizar stock:
+router.put("/updateStock/:id", async (req, res, next) => {
+  const { id } = req.params;
+  let { stock } = req.body;
+
+  Grocerie.findOne({ where: { id: id } })
+    .then((dataTicket) => {
+      dataTicket
+        .update(
+          {
+            stock: stock,
+          },
+          {
+            where: {
+              id: id,
+            },
+          }
+        )
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
+    })
+    .catch((error) => res.status(500).json(error));
+});
+
+//Ruta para actualizar precio:
+router.put("/updatePrice/:id", async (req, res, next) => {
+  const { id } = req.params;
+  let { price } = req.body;
 
   Grocerie.findOne({ where: { id: id } })
     .then((dataTicket) => {
@@ -21,7 +49,6 @@ router.put("/update", async (req, res, next) => {
         .update(
           {
             price: price,
-            stock: stock,
           },
           {
             where: {
