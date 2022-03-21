@@ -1,0 +1,59 @@
+.content{
+    display: flex;
+    flex-direction: column;;
+    justify-content: center;
+    height:100vh;
+    align-items: center;
+    background-image: url("https://i.pinimg.com/originals/8a/5d/3f/8a5d3f47fa14af73a3d905f4c320e8a4.jpg");
+}
+
+.title{
+    margin-top:0px;
+    font-size: 5rem;
+    font-weight: 500;
+    color: white;
+    -webkit-text-stroke: 1px black;
+    margin-bottom: 0px;
+}
+
+.subtitle{
+    margin-top: 0px;
+    color: white;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+.textone{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color:white;
+    opacity: 0.5;
+}
+
+.texttwo{
+    margin-top: 0px;
+    color:white;
+    opacity: 0.5;
+}
+
+.button {
+    position: relative;
+    padding: 10px 40px;
+    margin: 0px 10px 10px 0px;
+    font-family: 'Shippori Antique B1', sans-serif;
+    float: left;
+    border-radius: 3px;
+    font-size: 20px;
+    color: whitesmoke;
+    text-decoration: none;
+    background-color: #3b5df4c0;
+    border: none;
+    border-bottom: 5px solid #020423;
+    text-shadow: 0px -2px #020423;
+    cursor: pointer;
+    margin-top: 10vh;
+   }
+   
+   .button:hover, button:active {
+    border-bottom: 1px solid #3b9bf4;
+   }

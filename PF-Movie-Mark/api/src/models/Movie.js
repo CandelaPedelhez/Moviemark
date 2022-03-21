@@ -33,6 +33,7 @@ module.exports = (sequelize) => {
     },
     movie_genre: {
       type: DataTypes.ARRAY(DataTypes.STRING),
+
     },
   });
 };
