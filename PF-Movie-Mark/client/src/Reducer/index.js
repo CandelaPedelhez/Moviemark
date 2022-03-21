@@ -150,7 +150,6 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "POST_GROCERIE":
       return { ...state };
-<<<<<<< HEAD
     
     case "GET_CREDENTIALS":
       return {
@@ -164,7 +163,6 @@ export default function reducer(state = initialState, action) {
       userGoogleData: [...state, userGoogleData, action.payload]
     }
 
-=======
     case "NEWSLETTER":
       return {...state};
     case "POST_AVAILABLE":
@@ -178,7 +176,6 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "REVOKE_ACCESS":
       return { ...state };
->>>>>>> f6d328a9704e79bbb2d5493f54bafa1ad6dc09ca
     default:
       return state;
   }
