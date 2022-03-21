@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const { Grocerie } = require("../db");
-const {getAdmin} = require('../controllers/admin/getAdmins.js');
+const { getAdmin } = require("../controllers/admin/getAdmins.js");
 
 router.get("/getAll", async (req, res, next) => {
   try {
@@ -9,11 +9,11 @@ router.get("/getAll", async (req, res, next) => {
     return res.status(200).send(allGroceries);
   } catch (error) {
     res.status(500).send(eror.message);
-  };
-
+  }
+});
 
 router.put("/update", async (req, res, next) => {
-  let { id, price, stock } = req.body
+  let { id, price, stock } = req.body;
 
   Grocerie.findOne({ where: { id: id } })
     .then((dataTicket) => {
@@ -21,7 +21,7 @@ router.put("/update", async (req, res, next) => {
         .update(
           {
             price: price,
-            stock: stock
+            stock: stock,
           },
           {
             where: {
