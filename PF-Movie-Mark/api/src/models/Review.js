@@ -2,14 +2,23 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("review", {
-    username: {
-      type: DataTypes.STRING
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
-    description: {
+    useReview: {
       type: DataTypes.TEXT,
     },
     score: {
       type: DataTypes.ENUM('1', '2', '3', '4', '5'),
+      allowNull: false
     },
-  },{timestamps: false});
+    isCreatedReview: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    }
+  });
 };
