@@ -324,3 +324,13 @@ export function sendNewsletter(payload){
     })
   }
 }
+
+export function revokePass(payload){
+  return async function (dispatch){
+    let req = await axios.put("http://localhost:3001/api/user/revoke/"+ payload)
+    return dispatch({
+      type: "REVOKE_ACCESS",
+      payload: req.data,
+    })
+  }
+}
