@@ -18,9 +18,7 @@ const postReview = async (req, res) => {
                     id: userId
                 }
             });
-
             // console.log("User found: ", userFound);
-
             if(!userFound){
                 return res.status(404).send({message: "User not found :("})
             }
@@ -44,9 +42,7 @@ const postReview = async (req, res) => {
                             userId: userId,
                             isCreatedReview: true                    
                     });
-
                     // console.log("Review de peli: ", createReview);
-
                     res.status(200).send({createReview, message: "Succesfully created :)"});                           
                 } catch (error) {
                     res.status(404).send(error);                    
