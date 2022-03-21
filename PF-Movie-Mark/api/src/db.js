@@ -65,12 +65,47 @@ Hall.belongsToMany(Ticket, { through: "ticket_halls" });
 Cart.belongsToMany(Product, {through: "Cart_Product"});
 Product.belongsToMany(Cart, {through: "Product_Cart"});
 
+User.hasMany(Review, {
+  foreignKey: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    name: "FKuserId"
+  }
+});
+Review.belongsTo(User);
+
+Movie.hasMany(Review, {
+  foreignKey: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    name: "FKmovieId"
+  }
+});
+Review.belongsTo(Movie);
 
 Cart.belongsToMany(Movie, {through: "Cart_Movie"});
 Movie.belongsToMany(Cart, {through: "Movie_Cart"});
 
+// Review.belongsTo(User);
+// User.hasMany(Review)
+
+User.hasMany(Review, {
+  foreignKey: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    name: "FKuserId"
+  }
+});
 Review.belongsTo(User);
-User.hasMany(Review)
+
+Movie.hasMany(Review, {
+  foreignKey: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    name: "FKmovieId"
+  }
+});
+Review.belongsTo(Movie);
 
 // puede ser hasOne, revisar
 //User.hasOne(Ticket, { through: "user_tickets" });

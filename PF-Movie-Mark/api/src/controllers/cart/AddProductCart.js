@@ -1,6 +1,5 @@
 const {Cart,Product} = require("../../db.js");
 
-
 const addProductCart = async (req, res) => {
   const { name, img, price, id } = req.body;
 
