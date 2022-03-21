@@ -7,20 +7,23 @@ router.get("/getAll", async (req, res, next) => {
   try {
     let allGroceries = await Grocerie.findAll();
     return res.status(200).send(allGroceries);
-  } catch (error) {}
+  } catch (error) { }
 });
 
-router.put("/gro/:id",getAdmin, async (req, res, next) => {
-  Grocerie.findByPk(req.params.id)
+router.put("/update", async (req, res, next) => {
+  let { id, price, stock } = req.body
+
+  Grocerie.findOne({ where: { id: id } })
     .then((dataTicket) => {
       dataTicket
         .update(
           {
-            price: req.body.price,
+            price: price,
+            stock: stock
           },
           {
             where: {
-              id: req.params.id,
+              id: id,
             },
           }
         )

@@ -21,6 +21,8 @@ const signUp = async (req, res) =>{
                     email:    req.body.email.trim().toLowerCase(),
                     password: passwordEncrypted,
                     role:     "user",
+                    allowed: "true",
+                    // authorization: false,
                 }).then(user => {
                     let token = jwt.sign({user: user}, JWT_SECRET, {
                         expiresIn: JWT_EXPIRES_IN
@@ -50,8 +52,12 @@ const signIn = async (req, res) => {
             res.status(200).json({msg: "Email not found :("})
         }else{
             if(bcrypt.compareSync(password, user.password)){
-                let token = jwt.sign({user: user}, JWT_SECRET, {
-                    expiresIn:JWT_EXPIRES_IN
+                if(user.allowed===false){
+                    return res.status(200).json({msg: "Revoke"})
+                }
+                //Creo el token:
+                let token = jwt.sign({user: user}, authConfig.secret, {
+                    expiresIn: authConfig.expires
                 });
                 res.json({
                     token: token

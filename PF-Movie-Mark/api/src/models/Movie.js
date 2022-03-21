@@ -43,6 +43,6 @@ module.exports = (sequelize) => {
     },
     movGenres: {
       type: DataTypes.ARRAY(DataTypes.STRING)
-    }
+    },
   });
 };

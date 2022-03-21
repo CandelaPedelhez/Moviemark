@@ -5,12 +5,13 @@ const {postReview} = require('../controllers/reviews/review.js');
 
 
 router.post("/", async (req, res) => {
-  let { useReview, score } = req.body;
+  let { username, description, score } = req.body;
   try {
     let newReview = await Review.findOrCreate({
       where: {
-        useReview,
-        score,
+        username,
+        description,
+        score
       },
     });
 

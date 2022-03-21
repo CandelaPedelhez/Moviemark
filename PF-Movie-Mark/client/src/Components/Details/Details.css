@@ -1,6 +1,5 @@
 .detail {
     display: flex;
-    margin-top: 2vh;
 }
 
 .detail h1 {
@@ -10,7 +9,6 @@
     color: whitesmoke;
     font-size: 4vh;
     margin-right: -30vh;
-    margin-bottom: -8vh
 }
 
 .detail span {
@@ -19,10 +17,12 @@
     line-height: 55px;
     font-size: 22px;
     margin-left: 6vh;
+    margin-top: 50vh;
 }
 
 .detail h3 {
     color: #b983ff;
+    margin-left: -85vh;
 }
 
 .detail p {
@@ -42,17 +42,17 @@
 
 .div2 {
     margin-left: 65vh;
-    margin-top: -90vh;
+    margin-top: -75vh;
 }
 
 .duration {
-    margin-left: 32vh;
-    margin-top: -6vh;
+    margin-left: 7vh;
+    margin-top: -9vh;
 }
 
 .genre {
-    margin-left: 17vh;
-    margin-top: -9vh;
+    margin-right: 25vh;
+    margin-top: -11vh;
 }
 
 .btnBack {

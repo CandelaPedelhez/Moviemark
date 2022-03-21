@@ -48,5 +48,15 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       defaultValue: null,
     },
+    // authorization: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: false
+    // }
+    allowed:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    }
   });
 };

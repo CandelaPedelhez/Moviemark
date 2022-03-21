@@ -23,5 +23,47 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.delete("/deleteAvailable/:id", (req, res, next) => {
+
+  Available.findByPk(req.params.id)
+    .then((selectedAvailable) => {
+      selectedAvailable
+        .destroy({
+          where: {
+            id: req.params.id,
+          },
+        })
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
+    })
+    .catch((error) => res.status(500).json(error));
+});
+
+router.put("/update", async (req, res, next) => {
+  let { id , hallTickets } = req.body
+
+  Available.findOne({ where: { id: id } })
+    .then((dataAvailable) => {
+      dataAvailable
+        .update(
+          {
+            hallTickets: hallTickets
+          },
+          {
+            where: {
+              id: id,
+            },
+          }
+        )
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
+    })
+    .catch((error) => res.status(500).json(error));
+});
+
 module.exports = router;
 

@@ -35,7 +35,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    dispatch(getMovies());
+    dispatch(getMovies(movies));
   }, []);
 
   useEffect(() => {

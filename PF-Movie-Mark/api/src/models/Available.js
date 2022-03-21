@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     hallTickets: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
   });
 };
