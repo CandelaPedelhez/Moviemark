@@ -20,9 +20,9 @@ import SubmitFilm from "./Components/Admin/Submitfilms";
 import SubmitGroceries from "./Components/Admin/SubmitGroceries";
 import Products from "./Components/Products/index"
 import Page404 from "./Components/Page404/Page404";
+import Newsletter from "./Components/Admin/Newsletter";
 import GroceriesStock from "./Components/AdminStock/GroceriesStock"
 import DeleteAvailable from "./Components/AdminStock/DeleteAvailable"
-
 
 function App() {
   return (
@@ -47,9 +47,9 @@ function App() {
             <Route path='/ticket/:idTicket' element={<Receipt />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/available' element={<CreateAvailable />} />
-            {/* <Route path='/admin/submit' element={<Submitfilms/>} />  */}
             <Route path='/admin/manage/films' element={<SubmitFilm />} />
             <Route path='/admin/manage/groceries' element={<SubmitGroceries />} />
+            <Route path='/admin/newsletter' element={<Newsletter/>}/>
             <Route path="*" element={<Page404 />} />
             <Route path='groceries/update' element={<GroceriesStock />} />
             <Route path='/availables/deleteAvailable' element={<DeleteAvailable />} />

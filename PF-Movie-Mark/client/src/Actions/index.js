@@ -310,6 +310,15 @@ export function getReviews() {
     var json = await axios.get("http://localhost:3001/api/reviews")
     return dispatch({
       type: "GET_REVIEWS",
+    })
+  }
+}
+
+export function deleteAvailable(payload) {
+  return async function (dispatch) {
+    var json = await axios.delete("http://localhost:3001/api/availables/deleteAvailable" + payload);
+    return dispatch({
+      type: "DELETE_AVAILABLE",
       payload: json.data
     })
   }
@@ -321,6 +330,26 @@ export function postReview(payload) {
     return dispatch({
       type: "POST_REVIEW",
       payload: json.data
+    })
+  }
+}
+
+export function sendNewsletter(payload){
+  return async function (dispatch) {
+    let req = await axios.post("http://localhost:3001/api/user/newsletter/", payload)
+    return dispatch({
+      type: "NEWSLETTER",
+      payload: req.data,
+    })
+  }
+}
+
+export function revokePass(payload){
+  return async function (dispatch){
+    let req = await axios.put("http://localhost:3001/api/user/revoke/"+ payload)
+    return dispatch({
+      type: "REVOKE_ACCESS",
+      payload: req.data,
     })
   }
 }

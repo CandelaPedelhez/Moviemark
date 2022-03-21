@@ -148,6 +148,8 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "POST_GROCERIE":
       return { ...state };
+    case "NEWSLETTER":
+      return {...state};
     case "POST_AVAILABLE":
       return { ...state };
     case "UPDATE_GROCERIE":
@@ -155,6 +157,9 @@ export default function reducer(state = initialState, action) {
     case "GET_REVIEWS":
       return { ...state, reviews: action.payload };
     case "POST_REVIEW":
+    case "DELETE_AVAILABLE":
+      return { ...state };
+    case "REVOKE_ACCESS":
       return { ...state };
     default:
       return state;
