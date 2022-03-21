@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const { Grocerie } = require("../db");
+const {getAdmin} = require('../controllers/admin/getAdmins.js');
 
 router.get("/getAll", async (req, res, next) => {
   try {

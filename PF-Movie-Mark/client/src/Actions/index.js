@@ -353,3 +353,24 @@ export function revokePass(payload){
     })
   }
 }
+<<<<<<< HEAD
+
+export const getUserCred = () => {
+  return async (dispatch) => {
+    const cred = JSON.parse(localStorage.getItem("userCredentials"));
+    dispatch({
+      type: "GET_CREDENTIALS",
+      payload: cred
+    })
+  }
+}
+
+export const loginGoogle = (userData) => async (dispatch) => {
+  const data = await axios.post('http://localhost:3001/api/user/loginGoogle', userData);
+  return dispatch({
+    type: "LOGIN_GOOGLE",
+    payload: data
+  });
+}
+=======
+>>>>>>> f6d328a9704e79bbb2d5493f54bafa1ad6dc09ca

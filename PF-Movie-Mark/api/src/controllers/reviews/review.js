@@ -8,7 +8,7 @@ const postReview = async (req, res) => {
                     id: movieId
                 }
             })
-            console.log("Movie found: ", movieFound)
+            // console.log("Movie found: ", movieFound);
             if(!movieFound){
                 return res.status(404).send({message: "Movie not found :("});
             }

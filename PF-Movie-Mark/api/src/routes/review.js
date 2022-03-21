@@ -1,7 +1,8 @@
 const { Router } = require("express");
 const router = Router();
-const { Review } = require("../db");
+const { Review} = require("../db");
 const {postReview} = require('../controllers/reviews/review.js');
+
 
 //Create review: 
 router.post('/create', postReview);
@@ -36,5 +37,7 @@ router.get('/getReviewId/:id', async (req, res, next) => {
     console.log(error.message);    
   }
 });
+
+router.post('/create', postReview);
 
 module.exports = router;
