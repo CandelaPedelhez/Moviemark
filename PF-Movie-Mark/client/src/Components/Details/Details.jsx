@@ -2,12 +2,13 @@
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails, getTopRatedForId, getUpcomingForId, getAvailables } from "../../Actions";
+import { getDetails, getTopRatedForId, getUpcomingForId, getAvailables, getReviews } from "../../Actions";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faAdd } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/index";
 import CartContext from "../../Context/CartContext";
+import CardReview from "./CardReview";
 import "./Details.css";
 
 export default function Details({ movies }) {
@@ -15,10 +16,13 @@ export default function Details({ movies }) {
   const movieId = useParams();
   const myMovie = useSelector((state) => state.details);
   const availables = useSelector((state) => state.availables)
+  const loggedIn = useSelector((state) => state.loggedIn)
+  const reviews = useSelector((state) => state.reviews)
   const { addItemToCart } = useContext(CartContext);
-  
-  console.log("MYMOVIE", myMovie)
-  
+
+  let userSawMovie = true /* ACA TENEMOS QUE TRAERNOS LOS TICKETS DEL USUARIO Y COMPARARLO CON EL TITULO DE LA PELICULA */
+
+
   const makedispatch = () => {
     if (movies === "movies") {
       dispatch(getDetails(movieId.id));
@@ -28,27 +32,22 @@ export default function Details({ movies }) {
       dispatch(getTopRatedForId(movieId.id));
     }
   };
-  
 
   let movieFunctions = []
-  
-  if(availables.length > 0 && myMovie.length > 0){
-    function myMovieFunction(){
+
+  if (availables.length > 0 && myMovie.length > 0) {
+    function myMovieFunction() {
       movieFunctions = availables.filter(e => e.name === myMovie[0].title)
     } myMovieFunction()
   }
-  
-console.log("PRIMERO",movieFunctions)
-  
+
   let funcion = []
-  
-  function handleSelect(r){
+
+  function handleSelect(r) {
     r.preventDefault();
-    console.log("TARGET", r.target.value)
     funcion = movieFunctions.filter(e => e.date === r.target.value)
-    console.log("SEGUNDO",funcion)
   }
-  
+
   // const handleAdd = () => {
   //   const movieFunction = myMovie.map(e => {
   //     return{
@@ -65,15 +64,19 @@ console.log("PRIMERO",movieFunctions)
   //   console.log(movieFunction)
   // };
 
-  
+
   useEffect(() => {
     makedispatch();
   }, []);
-  
+
   useEffect(() => {
     dispatch(getAvailables());
   }, [dispatch])
-  
+
+  useEffect(() => {
+    dispatch(getReviews());
+  }, [dispatch])
+
   return (
     <>
       <div>
@@ -124,21 +127,62 @@ console.log("PRIMERO",movieFunctions)
                 <p>{myMovie[0].vote_average}</p>
               </div>
               {
-                (movieFunctions.length > 0) ? 
-                <div>
-                  <h3>Functions availables:</h3>
-                <select onChange={r => handleSelect(r)}>
-                  <option value="">Availables</option>
-                  {
-                    movieFunctions.map(e => <option value={e.date}>{e.date.split("-").reverse().join("/")} at {e.hour}hs</option>)
-                  }
-                </select>
-              <button>
-                <FontAwesomeIcon icon={faAdd} /> Buy Tickets
-              </button>
-              </div>
+                (movieFunctions.length > 0) ?
+                  <div>
+                    <h3>Functions availables:</h3>
+                    <select onChange={r => handleSelect(r)}>
+                      <option value="">Availables</option>
+                      {
+                        movieFunctions.map(e => <option value={e.date}>{e.date.split("-").reverse().join("/")} at {e.hour}hs</option>)
+                      }
+                    </select>
+                    <button>
+                      <FontAwesomeIcon icon={faAdd} /> Buy Tickets
+                    </button>
+                  </div>
 
                   : <p>There are not functions availables</p>
+              }
+            </div>
+            <div>
+              {loggedIn === true && userSawMovie === true ?
+                <div>
+                  <form>
+                    <label>Did you enjoy the movie? Let us know!</label>
+                    <input placeholder="Your name"/>
+                    <input placeholder="The movie was..."/>
+                    <button type="submit">Submit review</button>
+                  </form>
+                  <div>
+                    {
+                      reviews ?
+                        reviews.map(e => (
+                          <div>
+                            <CardReview
+                              username={e.username}
+                              description={e.description}
+                              score={e.score}
+                            />
+                          </div>
+                        )) : <div></div>
+                    }
+                  </div>
+                </div>
+                :
+                <div>
+                  {
+                    reviews ?
+                      reviews.map(e => (
+                        <div>
+                          <CardReview
+                            username={e.username}
+                            description={e.description}
+                            score={e.score}
+                          />
+                        </div>
+                      )) : <div></div>
+                  }
+                </div>
               }
             </div>
           </div>

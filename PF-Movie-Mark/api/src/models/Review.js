@@ -2,7 +2,10 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("review", {
-    useReview: {
+    username: {
+      type: DataTypes.STRING
+    },
+    description: {
       type: DataTypes.TEXT,
     },
     score: {

@@ -305,11 +305,30 @@ export function updateGroceries(payload) {
   }
 }
 
+export function getReviews() {
+  return async function (dispatch) {
+    var json = await axios.get("http://localhost:3001/api/reviews")
+    return dispatch({
+      type: "GET_REVIEWS",
+    })
+  }
+}
+
 export function deleteAvailable(payload) {
   return async function (dispatch) {
     var json = await axios.delete("http://localhost:3001/api/availables/deleteAvailable" + payload);
     return dispatch({
       type: "DELETE_AVAILABLE",
+      payload: json.data
+    })
+  }
+}
+
+export function postReview(payload) {
+  return async function (dispatch) {
+    let json = await axios.post("http://localhost:3001/api/addReview", payload)
+    return dispatch({
+      type: "POST_REVIEW",
       payload: json.data
     })
   }
