@@ -53,5 +53,10 @@ module.exports = (sequelize) => {
     //   allowNull: false,
     //   defaultValue: false
     // }
+    allowed:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    }
   });
 };

@@ -12,7 +12,6 @@ export default function Receipt() {
     const dispatch = useDispatch();
     const receiptID = useParams();
     const myReceipt = useSelector((state) => state.receipt);
-    
 
     useEffect(() => {
         dispatch(getReceipt(receiptID.id));

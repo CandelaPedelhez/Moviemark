@@ -10,3 +10,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*::selection {
+  background: #6358dc;
+  color: whitesmoke;
+}
