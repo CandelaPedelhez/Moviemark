@@ -28,12 +28,15 @@ module.exports = (sequelize) => {
     vote_average: {
       type: DataTypes.FLOAT,
     },
+    trailer: {
+      type: DataTypes.STRING,
+    },
+
     price: {
       type: DataTypes.DECIMAL,
     },
     movie_genre: {
       type: DataTypes.ARRAY(DataTypes.STRING),
-
     },
   });
 };

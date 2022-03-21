@@ -4,8 +4,6 @@ const { Movie, Genre } = require("../db");
 const { getGenres } = require("../controllers/genres");
 const { moviesdb } = require("../controllers/moviesdb");
 
-// -- All pelis
-
 router.get("/", async (req, res) => {
   const { title } = req.query;
 
@@ -29,7 +27,9 @@ router.get("/", async (req, res) => {
 
 router.get("/filter/:genre", async (req, res) => {
   const { genre } = req.params;
-  const getAllMoviesByGenre =  moviesdb.filter((e) => e.movie_genre.includes(genre));
+  const getAllMoviesByGenre = moviesdb.filter((e) =>
+    e.movie_genre.includes(genre)
+  );
   res.status(200).send(getAllMoviesByGenre);
 });
 
