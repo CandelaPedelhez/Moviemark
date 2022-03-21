@@ -63,12 +63,11 @@ const Settings = () => {
         dispatch(logoutUser())
         .then(()=>{
             setLogoutSuccess(true);
-            setTimeout( function() { history('/home'); }, 2000 );
+            setTimeout( function() { window.location.href ='http://localhost:3000/home'; }, 2000 );
         })
     }
 
     function handleChangePassword(){
-        dispatch(logoutUser());
         history('/resetpassword')
     }
 
