@@ -2,9 +2,10 @@ require("dotenv").config();
 const {User} = require('../../db.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const authConfig = require('../../config/auth.js');
+const {JWT_SECRET, 
+      JWT_EXPIRES_IN,
+      JWT_ROUNDS} = process.env;
 
-//Registro -- creación de usuario
 const signUp = async (req, res) =>{
     try {
         const user = await User.findOne({
@@ -13,20 +14,16 @@ const signUp = async (req, res) =>{
         if(user){
             return res.status(200).json({msg: "Email registered"})
         }
-        //encripto pass:
-        let passwordEncrypted = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
-            // if(role === "user"){
+        let passwordEncrypted = bcrypt.hashSync(req.body.password, Number.parseInt(JWT_ROUNDS));
                 await User.create({
                     name:     req.body.name, 
                     lastName: req.body.lastName,
                     email:    req.body.email.trim().toLowerCase(),
                     password: passwordEncrypted,
                     role:     "user",
-                    // authorization: false,
                 }).then(user => {
-                    //Cuando un usuario es creado, creo el token:
-                    let token = jwt.sign({user: user}, authConfig.secret, {
-                        expiresIn: authConfig.expires
+                    let token = jwt.sign({user: user}, JWT_SECRET, {
+                        expiresIn: JWT_EXPIRES_IN
                     });
 
                     res.json({ 
@@ -45,26 +42,21 @@ const signUp = async (req, res) =>{
 //Login:
 const signIn = async (req, res) => {
     let {email, password} = req.body;
-
-    //Busco el email del user:
+    
     await User.findOne({
         where: {email: email}
     }).then(user => {
         if(!user){
             res.status(200).json({msg: "Email not found :("})
         }else{
-            //Comparo las password, la que recibo y la que estaba en la db
             if(bcrypt.compareSync(password, user.password)){
-                //Creo el token:
-                let token = jwt.sign({user: user}, authConfig.secret, {
-                    expiresIn: authConfig.expires
+                let token = jwt.sign({user: user}, JWT_SECRET, {
+                    expiresIn:JWT_EXPIRES_IN
                 });
-
                 res.json({
                     token: token
                 })
             }else{
-                //Msg unauthorized
                 res.status(200).json({msg: "Incorrect password :("})
             }
         }
@@ -72,12 +64,29 @@ const signIn = async (req, res) => {
 
 };//END SIGNIN
 
-// GET /api/user
-// Obtener todos los usuarios
+const loginGoogle = async (req, res, next) => {
+    const {name, lastName, email} = req.body;
+    try {
+        let user = await User.findOne({
+            where: {email}
+        });
 
+        if(!user){
+            user  = await User.create({
+                name: name, 
+                lastName: lastName,
+                email: email
+            });
+        }
 
+        res.status(200).send(user);
+    } catch (error) {
+        console.log(error.message);        
+    }
+};
 
 module.exports = {
     signIn,
-    signUp
+    signUp,
+    loginGoogle
 }

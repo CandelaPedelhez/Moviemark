@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const router = Router();
-const { Review } = require("../db");
+const { Review} = require("../db");
+const {postReview} = require('../controllers/reviews/review.js');
+
 
 router.post("/", async (req, res) => {
   let { useReview, score } = req.body;
@@ -17,5 +19,7 @@ router.post("/", async (req, res) => {
     console.log(error.message);
   }
 });
+
+router.post('/create', postReview);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const { Grocerie } = require("../db");
+const {getAdmin} = require('../controllers/admin/getAdmins.js');
 
 router.get("/getAll", async (req, res, next) => {
   try {
@@ -9,7 +10,7 @@ router.get("/getAll", async (req, res, next) => {
   } catch (error) {}
 });
 
-router.put("/gro/:id", async (req, res, next) => {
+router.put("/gro/:id",getAdmin, async (req, res, next) => {
   Grocerie.findByPk(req.params.id)
     .then((dataTicket) => {
       dataTicket

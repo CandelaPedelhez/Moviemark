@@ -20,7 +20,7 @@ const availablesRoute = require("./availables.js");
 const routeReview = require("./review.js");
 const routeTicket = require("./ticket.js");
 const routeCart = require("./cart.js");
-
+const routeAdmin = require("./admin.js");
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
@@ -42,5 +42,5 @@ router.use("/availables", availablesRoute);
 router.use('/addReview', routeReview);
 router.use("/ticket", routeTicket);
 router.use("/cart", routeCart);
-
+router.use("/admin", routeAdmin);
 module.exports = router;

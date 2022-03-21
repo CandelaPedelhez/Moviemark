@@ -4,9 +4,8 @@ const router = Router();
 const {User} = require('../db');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
-const authConfig = require('../config/auth.js');
-const {signUp, signIn} = require('../controllers/user/authController');
-
+const {signUp, signIn, loginGoogle} = require('../controllers/user/authController.js');
+const {getAdmin} = require('../controllers/admin/getAdmins.js');
 
 router.post('/signUp', signUp);
 router.post('/signIn', signIn);
@@ -42,7 +41,7 @@ router.get("/admins", async (req,res)=>{
 });
 
 //Eliminar usuario
-router.delete("/:id",async (req,res)=>{
+router.delete("/:id",getAdmin, async (req,res)=>{
     User.destroy({
         where: {
             id:req.params.id,
@@ -63,8 +62,9 @@ router.delete("/:id",async (req,res)=>{
 
 // GET /api/user/:id
 // Trae un usuario por id
-router.get('/:id',(req,res)=>{
-    User.findByPk(req.params.id)
+//primero el ID del user, luego el del admin
+router.get('/:id/:id', getAdmin, async (req,res)=>{
+    await User.findByPk(req.params.id)
     .then(data=>res.status(200).json(data))
     .catch(e=>res.status(500).send({error:'Error'}))
 });
@@ -199,7 +199,23 @@ router.use('/reset',async (req,res)=>{
         }
     }
     catch(e){ res.status(200).send({error:"ERROR"})}
-})
+});
+
+router.post('/logout', async(req, res) => {
+    try{
+        let randomNumberToAppend = toString(Math.floor((Math.random() * 1000) + 1));
+        let randomIndex = Math.floor((Math.random() * 10) + 1);
+        let hashedRandomNumberToAppend = await bcrypt.hash(randomNumberToAppend, 10);
+    
+        req.token = req.token + hashedRandomNumberToAppend;
+        return res.status(200).json('logout');
+    }catch(err){
+        return res.status(500).json(err.message);
+    }
+});
+
+router.post('/loginGoogle', loginGoogle);
+
           
 
 module.exports = router;
