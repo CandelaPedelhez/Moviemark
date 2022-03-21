@@ -17,6 +17,7 @@ export const initialState = {
   receipt: [],
   myReceipts: [],
   availables: [],
+  reviews: [],
   loggedIn: false,
 };
 
@@ -150,6 +151,10 @@ export default function reducer(state = initialState, action) {
     case "POST_AVAILABLE":
       return { ...state };
     case "UPDATE_GROCERIE":
+      return { ...state };
+    case "GET_REVIEWS":
+      return { ...state, reviews: action.payload };
+    case "POST_REVIEW":
       return { ...state };
     default:
       return state;
