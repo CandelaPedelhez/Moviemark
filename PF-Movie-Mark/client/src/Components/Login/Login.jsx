@@ -57,7 +57,7 @@ const Login = () => {
                     password:''
                 })
                 setSuccess(true);
-                setTimeout( function() { history('/home'); }, 1600 );
+                setTimeout( function() { window.location.href ='http://localhost:3000/home'; }, 1600 );
             }
         })
     } 
