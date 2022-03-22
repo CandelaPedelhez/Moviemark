@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 
 const SubmitGroceries = () => {
     const [input,setInput] = useState({
+        id: '',
         name:'',
         price:'',
         stock:'',
@@ -52,6 +53,7 @@ const SubmitGroceries = () => {
         e.preventDefault();
         if(input.img===''){
             dispatch(postGrocerie({
+                id: input.id,
                 name:input.name,
                 price:input.price,
                 stock:input.stock,
@@ -66,6 +68,7 @@ const SubmitGroceries = () => {
         else{
             if(errorImg===false){
                 dispatch(postGrocerie({
+                    id: input.id,
                     name:input.name,
                     price:input.price,
                     stock:input.stock,
@@ -83,6 +86,7 @@ const SubmitGroceries = () => {
     
     function emptyinput(){
         setInput({
+            id: "",
             name:'',
             price:'',
             stock:'',
@@ -105,6 +109,9 @@ const SubmitGroceries = () => {
                 <div>
                     <form className={styles.form} onSubmit={e=>handleSubmit(e)}>
                     <h1 className={styles.title}>Add grocerie</h1>
+                    <input className={styles.input}
+                        value={input.id} type='text' name='id' placeholder="Id" onChange={e=>handleChange(e)}>
+                        </input>
                         <input className={styles.input}
                         value={input.name} type='text' name='name' placeholder="Name" onChange={e=>handleChange(e)} required>
                         </input>

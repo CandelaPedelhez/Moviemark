@@ -31,7 +31,8 @@ const Cart = () => {
 
     const checkout = () => {
     if(token.length > 10) {
-      navigate("/payment");
+      // navigate("/payment");
+      window.location.href = 'http://localhost:3000/payment'
     } else {
       navigate("/login")
     }

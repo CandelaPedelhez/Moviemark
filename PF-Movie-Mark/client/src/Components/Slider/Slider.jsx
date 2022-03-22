@@ -24,8 +24,6 @@ const Slider = () => {
     if (films[i].title === "Kimi") movies.push(films[i]);
 
   movies.push({ id: 768744 });
-  /* console.log(movies); */
-
   const length = movies.length;
   const imagesData = [
     { image: batman },

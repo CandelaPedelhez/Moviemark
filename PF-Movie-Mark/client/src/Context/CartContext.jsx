@@ -83,14 +83,29 @@
 // };
 
 import { createContext, useEffect, useState } from "react";
+
 import axios from "axios";
 
 /* Creamos el context, se le puede pasar un valor inicial */
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+            try {
+                const productsInLocalStorage = localStorage.getItem("cartProducts");
+                return productsInLocalStorage ? JSON.parse(productsInLocalStorage) : [];
+            } catch (error) {
+                return [];
+            }
+        });
   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("cartProducts", JSON.stringify(cartItems))
+}, [cartItems]);
+
+
+console.log("cart",localStorage.getItem('cartProducts'))
 
   const getProducts = async () => {
     await axios
@@ -112,7 +127,6 @@ export const CartProvider = ({ children }) => {
 
   const addItemToCart = async (product) => {
     const { name, img, price } = product;
-
     await axios.post("http://localhost:3001/api/cart/products-cart", { name, img, price });
 
     getProducts();
@@ -131,10 +145,20 @@ export const CartProvider = ({ children }) => {
     //     })
     //     .then(({ data }) => console.log(data));
      }
+  
 
     getProducts();
     getProductsCart();
   };
+
+  const cleanCart = async () => {
+    await axios
+        .delete('http://localhost:3001/api/cart/cart-delete/')
+        .then(({ data }) => setCartItems(data.productsCart));
+        getProducts();
+        getProductsCart();
+    }
+     
 
   const increaseAmount = async (id, amount) => {
     if(id) {
@@ -143,6 +167,7 @@ export const CartProvider = ({ children }) => {
         amount
       })
       .then(({ data }) => console.log(data));
+      window.location.reload(false);
     }
     getProducts();
     getProductsCart();
@@ -154,6 +179,7 @@ export const CartProvider = ({ children }) => {
         amount
       })
       .then(({data}) => console.log(data))
+      window.location.reload(false);
     }
     getProducts();
     getProductsCart();
@@ -162,7 +188,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, products, addItemToCart, editItemToCart, increaseAmount, decreaseAmount }}
+      value={{ cartItems, products, addItemToCart, editItemToCart, increaseAmount, decreaseAmount, cleanCart }}
     >
       {children}
     </CartContext.Provider>

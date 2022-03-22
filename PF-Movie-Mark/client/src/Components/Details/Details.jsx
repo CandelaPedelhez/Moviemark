@@ -130,7 +130,7 @@ console.log("PRIMERO",movieFunctions)
                 <select onChange={r => handleSelect(r)}>
                   <option value="">Availables</option>
                   {
-                    movieFunctions.map(e => <option value={e.date}>{e.date} at {e.hour}hs</option>)
+                    movieFunctions.map(e => <option value={e.date}>{e.date.split("-").reverse().join("/")} at {e.hour}hs</option>)
                   }
                 </select>
               <button>
