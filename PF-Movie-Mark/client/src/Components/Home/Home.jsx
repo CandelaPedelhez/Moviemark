@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import NavBar from "../Navbar/Navbar";
 import Card from "../Card/Card.jsx";
 import Slider from "../Slider/Slider.jsx";
@@ -25,7 +26,7 @@ export default function Home() {
 
   function handleFilteredGenre(e) {
     e.preventDefault();
-    dispatch(filterMovieByGenre((e.target.value).toLowerCase()));
+    dispatch(filterMovieByGenre(e.target.value.toLowerCase()));
   }
 
   function handleSort(e) {
@@ -111,9 +112,16 @@ export default function Home() {
         <h2 className="upcoming">Upcoming</h2>
         <div className="row__posters">
           {upcoming?.map((e) => {
-            return <Card movies={"upcoming"} id={e.id} img={e.img} />;
+            return (
+              <Card key={e.id} movies={"upcoming"} id={e.id} img={e.img} />
+            );
           })}
         </div>
+      </div>
+      <div>
+        <Link to="/aboutUs">
+          <button>About us</button>
+        </Link>
       </div>
     </div>
   );

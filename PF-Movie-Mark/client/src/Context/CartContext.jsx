@@ -88,6 +88,14 @@ import axios from "axios";
 /* Creamos el context, se le puede pasar un valor inicial */
 const CartContext = createContext();
 
+let u = localStorage.getItem("user");
+console.log("User del localStorage: ", u);
+// console.log(typeof(u))
+let userObj = JSON.parse(u);
+// console.log("Obj de user: ",userObj)
+// console.log("ID del obj user: ", userObj.id);
+let userId = userObj.id;
+
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([]);
@@ -113,7 +121,11 @@ export const CartProvider = ({ children }) => {
   const addItemToCart = async (product) => {
     const { name, img, price } = product;
 
-    await axios.post("http://localhost:3001/api/cart/products-cart", { name, img, price });
+    await axios.post(`http://localhost:3001/api/cart/products-cart/${userId}`, {
+      name,
+      img,
+      price,
+    });
 
     getProducts();
     getProductsCart();
@@ -122,47 +134,54 @@ export const CartProvider = ({ children }) => {
   const editItemToCart = async (id, query, amount) => {
     if (id) {
       await axios
-        .delete(`http://localhost:3001/api/cart/products-cart/${id}?query=del` )
+        .delete(`http://localhost:3001/api/cart/products-cart/${id}?query=del`)
         .then(({ data }) => console.log(data));
-    // } else {
-    //   await axios
-    //     .put(`http://localhost:3001/products-cart/${id}?query=add`, {
-    //       amount,
-    //     })
-    //     .then(({ data }) => console.log(data));
-     }
+      // } else {
+      //   await axios
+      //     .put(`http://localhost:3001/products-cart/${id}?query=add`, {
+      //       amount,
+      //     })
+      //     .then(({ data }) => console.log(data));
+    }
 
     getProducts();
     getProductsCart();
   };
 
   const increaseAmount = async (id, amount) => {
-    if(id) {
-    await axios
-      .put(`http://localhost:3001/api/cart/products-cart/${id}?query=add`, {
-        amount
-      })
-      .then(({ data }) => console.log(data));
+    if (id) {
+      await axios
+        .put(`http://localhost:3001/api/cart/products-cart/${id}?query=add`, {
+          amount,
+        })
+        .then(({ data }) => console.log(data));
     }
     getProducts();
     getProductsCart();
-  }
+  };
 
   const decreaseAmount = async (id, amount) => {
-    if(id) {
-      await axios.put(`http://localhost:3001/api/cart/products-cart/${id}?query=dec`, {
-        amount
-      })
-      .then(({data}) => console.log(data))
+    if (id) {
+      await axios
+        .put(`http://localhost:3001/api/cart/products-cart/${id}?query=dec`, {
+          amount,
+        })
+        .then(({ data }) => console.log(data));
     }
     getProducts();
     getProductsCart();
-  }
-
+  };
 
   return (
     <CartContext.Provider
-      value={{ cartItems, products, addItemToCart, editItemToCart, increaseAmount, decreaseAmount }}
+      value={{
+        cartItems,
+        products,
+        addItemToCart,
+        editItemToCart,
+        increaseAmount,
+        decreaseAmount,
+      }}
     >
       {children}
     </CartContext.Provider>
