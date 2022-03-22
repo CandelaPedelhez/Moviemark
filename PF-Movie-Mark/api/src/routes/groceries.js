@@ -1,15 +1,41 @@
 const { Router } = require("express");
 const router = Router();
+const { Product } = require("../db");
 const { Grocerie } = require("../db");
 const { getAdmin } = require("../controllers/admin/getAdmins.js");
 
 router.get("/getAll", async (req, res, next) => {
   try {
-    let allGroceries = await Grocerie.findAll();
+    let allGroceries = await Product.findAll();
     return res.status(200).send(allGroceries);
   } catch (error) {
     res.status(500).send(eror.message);
   }
+});
+
+router.put("/update", async (req, res, next) => {
+  let { id, price, stock } = req.body
+
+  Product.findOne( {where: {id : id} } )
+  .then((dataTicket) => {
+      dataTicket
+        .update(
+          {
+            price: price,
+            stock: stock
+          },
+          {
+            where: {
+              id: id,
+            },
+          }
+        )
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
+    })
+    .catch((error) => res.status(500).json(error));
 });
 
 //Ruta para actualizar stock:
@@ -18,6 +44,7 @@ router.put("/updateStock/:id", async (req, res, next) => {
   let { stock } = req.body;
 
   Grocerie.findOne({ where: { id: id } })
+
     .then((dataTicket) => {
       dataTicket
         .update(
@@ -64,8 +91,11 @@ router.put("/updatePrice/:id", async (req, res, next) => {
     .catch((error) => res.status(500).json(error));
 });
 
+
+
 router.delete("/deleteGrocerie/:id", (req, res, next) => {
-  Grocerie.findByPk(req.params.id)
+    Product.findByPk(req.params.id)
+//   Grocerie.findByPk(req.params.id)
     .then((selectedGrocerie) => {
       selectedGrocerie
         .destroy({
@@ -82,3 +112,25 @@ router.delete("/deleteGrocerie/:id", (req, res, next) => {
 });
 
 module.exports = router;
+
+/* router.put("/gro/:id", async (req, res, next) => {
+  Grocerie.findByPk(req.params.id)
+    .then((dataTicket) => {
+      dataTicket
+        .update(
+          {
+            price: req.body.price,
+          },
+          {
+            where: {
+              id: req.params.id,
+            },
+          }
+        )
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((error) => res.status(500).json(error));
+    })
+    .catch((error) => res.status(500).json(error));
+}); */

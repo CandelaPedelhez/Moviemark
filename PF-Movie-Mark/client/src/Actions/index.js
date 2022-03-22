@@ -302,24 +302,21 @@ export function postFilm(payload) {
   };
 }
 
+// export function postGrocerie(payload) {
+//   return async function (dispatch) {
+//     let json = await axios.post("http://localhost:3001/api/grocerie/", payload)
+//     return dispatch({
+//       type: "POST_GROCERIE",
+//       payload: json.data
+//     })
+//   }
+// }
+
 export function postGrocerie(payload) {
   return async function (dispatch) {
-    let json = await axios.post("http://localhost:3001/api/grocerie/", payload);
+    let json = await axios.post("http://localhost:3001/api/product/", payload);
     return dispatch({
       type: "POST_GROCERIE",
-      payload: json.data,
-    });
-  };
-}
-
-export function updateGroceries(payload) {
-  return async function (dispatch) {
-    let json = await axios.put(
-      "http://localhost:3001/api/groceries/update",
-      payload
-    );
-    return dispatch({
-      type: "UPDATE_GROCERIE",
       payload: json.data,
     });
   };
@@ -390,6 +387,29 @@ export const getUserCred = () => {
     });
   };
 };
+
+export function updateGroceries(payload) {
+  return async function (dispatch) {
+    let json = await axios.put(
+      "http://localhost:3001/api/groceries/update",
+      payload
+    );
+    return dispatch({
+      type: "UPDATE_GROCERIE",
+      payload: json.data,
+    });
+  };
+}
+
+// export function deleteAvailable(payload) {
+//   return async function (dispatch) {
+//     var json = await axios.delete("http://localhost:3001/api/availables/deleteAvailable" + payload);
+//     return dispatch({
+//       type: "DELETE_AVAILABLE",
+//       payload: json.data
+//     })
+//   }
+// }
 
 export const loginGoogle = (userData) => async (dispatch) => {
   const data = await axios.post(

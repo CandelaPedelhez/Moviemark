@@ -23,6 +23,16 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+
+// router.delete("/deleteAvailable", (req, res, next) => {
+// let { id } = req.body
+//   Grocerie.findOne( {where: {id : id} } )
+//     .then((selectedGrocerie) => {
+//       selectedGrocerie
+//         .destroy({
+//           where: {
+//             id: id,
+
 router.delete("/deleteAvailable/:id", (req, res, next) => {
 
   Available.findByPk(req.params.id)
@@ -40,6 +50,7 @@ router.delete("/deleteAvailable/:id", (req, res, next) => {
     })
     .catch((error) => res.status(500).json(error));
 });
+
 
 router.put("/update", async (req, res, next) => {
   let { id , hallTickets } = req.body

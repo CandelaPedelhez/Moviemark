@@ -31,8 +31,9 @@ const addProductCart = async (req, res) => {
       { where: { id: estaEnProducts.dataValues.id } }
     )
       .then((product) => {
-        const { id } = req.params;
-        Cart.create({ name, img, price, amount: 1, userId: id });
+        // const {userId} = req.body;
+        // console.log(userId)
+        Cart.create({ name, img, price, amount: 1 });
         // console.log("El producto fue agregado al carrito"),
         res.json({
           product,

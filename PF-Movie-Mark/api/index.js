@@ -19,7 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
-const { Grocerie, Movie, Ticket } = require("./src/db");
+const { Grocerie, Movie, Ticket, Product } = require("./src/db");
 const { moviesdb } = require("./src/controllers/moviesdb.js");
 const { groceries } = require("./src/controllers/groceries.js");
 //console.log("las movies son estas:", moviesdb);
@@ -53,12 +53,13 @@ conn.sync({ force: true }).then(() => {
       })
     );
 
-    Grocerie.findOrCreate({
+    Product.findOrCreate({
       where: {
         name: g.name,
         price: g.price,
         description: g.description,
-        typeGrocerie: g.type,
+        stock: g.stock,
+        typeGrocerie: g.typeGrocerie,
         img: g.img,
       },
     });

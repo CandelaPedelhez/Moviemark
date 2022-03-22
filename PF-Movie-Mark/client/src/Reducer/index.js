@@ -107,6 +107,7 @@ export default function reducer(state = initialState, action) {
     case "LOG_OUT_USER":
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+      localStorage.removeItem("cartProducts");
       return { ...state, user: {}, loggedIn: false };
     case "CREATE_USER":
       return { ...state };
@@ -150,25 +151,23 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "POST_GROCERIE":
       return { ...state };
-
-    /*case "GET_CREDENTIALS":
+    case "GET_CREDENTIALS":
       return {
         ...state,
         userCredentials: action.payload,
       };
-*/
-    /*case "LOGIN_GOOGLE": 
-    return {
-      ...state,
-      userGoogleData: [...state, userGoogleData, action.payload]
-    }*/
-
+    case "LOGIN_GOOGLE":
+      return {
+        ...state,
+        userGoogleData: { ...state, userGoogleData: action.payload },
+      };
     case "NEWSLETTER":
       return { ...state };
     case "POST_AVAILABLE":
       return { ...state };
     case "UPDATE_GROCERIE":
       return { ...state };
+    case "DELETE_AVAILABLE":
     case "GET_REVIEWS":
       return { ...state, reviews: action.payload };
     case "POST_REVIEW":

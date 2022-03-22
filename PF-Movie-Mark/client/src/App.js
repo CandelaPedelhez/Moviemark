@@ -23,7 +23,6 @@ import Page404 from "./Components/Page404/Page404";
 import Newsletter from "./Components/Admin/Newsletter";
 import GroceriesStock from "./Components/AdminStock/GroceriesStock";
 import DeleteAvailable from "./Components/AdminStock/DeleteAvailable";
-import AboutUs from "./Components/Extras/AboutUs";
 
 function App() {
   let user = { name: "" };
@@ -138,7 +137,6 @@ function App() {
               path="/availables/deleteAvailable"
               element={<DeleteAvailable />}
             />
-            <Route path="/aboutUs" element={<AboutUs />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
@@ -147,3 +145,5 @@ function App() {
 }
 
 export default App;
+
+//<Route path="/aboutUs" element={<AboutUs />} />
