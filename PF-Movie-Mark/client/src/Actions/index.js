@@ -302,13 +302,6 @@ export function postGrocerie(payload) {
     return dispatch({
       type: "POST_GROCERIE",
       payload: json.data
-
-export function updateGroceries(payload) {
-  return async function (dispatch) {
-    let json = await axios.put("http://localhost:3001/api/groceries/update", payload)
-    return dispatch({
-      type: "UPDATE_GROCERIE",
-      payload: json.data
     })
   }
 }
