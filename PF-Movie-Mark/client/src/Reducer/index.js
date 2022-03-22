@@ -151,17 +151,17 @@ export default function reducer(state = initialState, action) {
     case "POST_GROCERIE":
       return { ...state };
     
-    case "GET_CREDENTIALS":
-      return {
-        ...state,
-        userCredentials: action.payload
-      }
+    // case "GET_CREDENTIALS":
+    //   return {
+    //     ...state,
+    //     userCredentials: action.payload
+    //   }
     
-    case "LOGIN_GOOGLE": 
-    return {
-      ...state,
-      userGoogleData: [...state, userGoogleData, action.payload]
-    }
+    // case "LOGIN_GOOGLE": 
+    // return {
+    //   ...state,
+    //   userGoogleData: [...state, userGoogleData, action.payload]
+    // }
 
     case "NEWSLETTER":
       return {...state};
