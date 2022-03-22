@@ -1,3 +1,4 @@
+
 import React, {useContext} from "react";
 import { useState, useEffect } from "react";
 import { getGroceries, updateGroceries } from "../../Actions/index";
@@ -9,6 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 export default function AdminStock() {
     const dispatch = useDispatch();
     const { products } = useContext(CartContext);
+//     const groceries = useSelector((state) => state.groceries);
+
+//     useEffect(() => {
+//         dispatch(getGroceries());
+//     }, [dispatch])
 
 
 
@@ -37,7 +43,9 @@ export default function AdminStock() {
     }
 
     function handleSubmit(e) {
-        if (input.id && input.price || input.stock) {
+
+//         if (input.id && input.price || input.stock) {
+        if (input.id && input.price && input.stock) {
             e.preventDefault();
             dispatch(updateGroceries(input));
             alert("Grocerie updated");
@@ -60,6 +68,7 @@ export default function AdminStock() {
                     <option value={0}>Select grocerie</option>
                         {
                             products.map(e => <option value={e.id}>{e.name}</option>)
+//                             groceries.map(e => <option value={e.id}>{e.name}</option>)
                         }
                     </select>
                 </div>

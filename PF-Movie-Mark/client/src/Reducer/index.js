@@ -17,7 +17,10 @@ export const initialState = {
   receipt: [],
   myReceipts: [],
   availables: [],
+  reviews: [],
   loggedIn: false,
+  userGoogleData: [],
+  userCredentials: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -148,11 +151,29 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "POST_GROCERIE":
       return { ...state };
+    case "GET_CREDENTIALS":
+      return {
+        ...state,
+        userCredentials: action.payload
+      }
+    case "LOGIN_GOOGLE": 
+    return {
+      ...state,
+      userGoogleData: [...state, userGoogleData, action.payload]
+    }
+    case "NEWSLETTER":
+      return {...state};
     case "POST_AVAILABLE":
       return { ...state };
     case "UPDATE_GROCERIE":
       return { ...state };
       case "DELETE_AVAILABLE":
+    case "GET_REVIEWS":
+      return { ...state, reviews: action.payload };
+    case "POST_REVIEW":
+    case "DELETE_AVAILABLE":
+      return { ...state };
+    case "REVOKE_ACCESS":
       return { ...state };
     default:
       return state;

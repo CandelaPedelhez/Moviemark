@@ -10,13 +10,12 @@ router.get('/:id', async (req, res, next) => {
     where: {'userId': id},
   });
   console.log("Rs en ticket: ",rs)
-
 });
 
 
 
 //Setear cantidad de tickets:
-router.put('/updateTicket/:id', async (req, res, next) => {
+router.put('/updateTicket/:id',async (req, res, next) => {
     Ticket.findByPk(req.params.id)
     .then(dataTicket => {
       dataTicket.update({
