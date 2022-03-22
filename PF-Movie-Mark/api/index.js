@@ -53,12 +53,13 @@ conn.sync({ force: true }).then(() => {
       })
     );
 
-    Grocerie.findOrCreate({
+    Product.findOrCreate({
       where: {
         name: g.name,
         price: g.price,
         description: g.description,
-        typeGrocerie: g.type,
+        stock: g.stock,
+        typeGrocerie: g.typeGrocerie,
         img: g.img,
       },
     });

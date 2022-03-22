@@ -107,6 +107,7 @@ export default function reducer(state = initialState, action) {
     case "LOG_OUT_USER":
       localStorage.removeItem('token')
       localStorage.removeItem('user');
+      localStorage.removeItem('cartProducts');
       return { ...state, user: {}, loggedIn: false }
     case "CREATE_USER":
       return { ...state };
@@ -169,6 +170,7 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "UPDATE_GROCERIE":
       return { ...state };
+      case "DELETE_AVAILABLE":
     case "GET_REVIEWS":
       return { ...state, reviews: action.payload };
     case "POST_REVIEW":

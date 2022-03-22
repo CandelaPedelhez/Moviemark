@@ -38,7 +38,9 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
+
 const { Movie, Ticket, User, Grocerie, Genre, Hall, Available, Cart, Product, Order , Review} = sequelize.models;
+
 
 
 // Aca vendrian las relaciones
@@ -59,11 +61,11 @@ Available.belongsToMany(Ticket, { through: "availables_tickets" });
 Ticket.belongsToMany(Available, { through: "availables_tickets" });
 
 
-Ticket.belongsToMany(Hall, { through: "ticket_halls" });
-Hall.belongsToMany(Ticket, { through: "ticket_halls" });
+// Ticket.belongsToMany(Hall, { through: "ticket_halls" });
+// Hall.belongsToMany(Ticket, { through: "ticket_halls" });
 
-Cart.belongsToMany(Product, {through: "Cart_Product"});
-Product.belongsToMany(Cart, {through: "Product_Cart"});
+// Cart.belongsToMany(Product, {through: "Cart_Product"});
+// Product.belongsToMany(Cart, {through: "Product_Cart"});
 
 User.hasMany(Review, {
   foreignKey: {
@@ -83,8 +85,8 @@ Movie.hasMany(Review, {
 });
 Review.belongsTo(Movie);
 
-Cart.belongsToMany(Movie, {through: "Cart_Movie"});
-Movie.belongsToMany(Cart, {through: "Movie_Cart"});
+// Cart.belongsToMany(Movie, {through: "Cart_Movie"});
+// Movie.belongsToMany(Cart, {through: "Movie_Cart"});
 
 // Review.belongsTo(User);
 // User.hasMany(Review)
@@ -115,6 +117,12 @@ Review.belongsTo(Movie);
 User.hasMany(Ticket);
 
 Ticket.belongsTo(User);
+
+User.hasOne(Cart);
+Cart.belongsTo(User);
+
+// Order.belongsTo(Cart);
+// Cart.hasOne(Order);
 //Seats.hasOne(Ticket, { through: "ticket_seats" });
 //Ticket.hasOne(Seats, { through: "ticket_seats" });
 

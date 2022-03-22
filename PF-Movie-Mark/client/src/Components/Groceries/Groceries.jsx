@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Cart from '../Cart';
 // import ShoppingCart from "./ShoppingCart";
-import "./Groceries.css";
+import "./Groceries.css"
+import styles from "./GroceriesCard.module.scss";
 
 export default function Groceries() {
   const dispatch = useDispatch()
@@ -20,7 +21,8 @@ export default function Groceries() {
   const drinks = myGroceries.filter(e => e.typeGrocerie === "drinks")
   const sweets = myGroceries.filter(e => e.typeGrocerie === "sweets")
   const coffeshop = myGroceries.filter(e => e.typeGrocerie === "coffeshop")
-  const { addItemToCart, products } = useContext(CartContext);
+  const { products, addItemToCart } = useContext(CartContext);
+  console.log(products)
 
 
   // const { addItemToCart, products } = useContext(CartContext);
@@ -37,88 +39,40 @@ export default function Groceries() {
         </Link>
       </div>
       <div>
-      <Cart/>
+        <Cart />
       </div>
-        <h2 className="combos">Combos</h2>
-        <GroceriesCard/>
-        {/* <div className="grid">
-        {combos.map((e, index) => 
-            <div key={index}>
-              <GroceriesCard
-                name={e.name}
-                img={e.img}
-                price={e.price}
-                description={e.description}
-              />
-            </div>)}
-            </div>
-        <h3 className="combos">Pop-corn</h3>
-        <div className="grid">
-        {popcorn.map((e, index) => 
-            <div key={index}>
-              <GroceriesCard
-                name={e.name}
-                img={e.img}
-                price={e.price}
-                description={e.description}
-              />
-            </div>)}
-            </div>
-        <h3 className="combos">Snacks</h3>
-        <div className="grid">
-        {snacks.map((e, index) => 
-            <div key={index}>
-              <GroceriesCard
-                name={e.name}
-                img={e.img}
-                price={e.price}
-                description={e.description}
-              />
-            </div>)}
-            </div>
-        <h3 className="combos">Drinks</h3>
-        <div className="grid">
-        {drinks.map((e, index) => 
-            <div key={index}>
-              <GroceriesCard
-                name={e.name}
-                img={e.img}
-                price={e.price}
-                description={e.description}
-              />
-            </div>)}
-            </div>
-        <h3 className="combos">Sweets</h3>
-        <div className="grid">
-        {sweets.map((e, index) => 
-            <div key={index}>
-              <GroceriesCard
-                name={e.name}
-                img={e.img}
-                price={e.price}
-                description={e.description}
-              />
-            </div>)}
-            </div>
-        <h3 className="combos">Coffeshop</h3>
-        <div className="grid">
-        {coffeshop.map((e, index) => 
-            <div key={index}>
-              <GroceriesCard
-                name={e.name}
-                img={e.img}
-                price={e.price}
-                description={e.description}
-              />
-            </div>)}
-            </div> */}
-            {/* <ShoppingCart/> */}
-            <div>
+      <div className={styles.productsContainer}>
+        <h2 className="featured">Deal of the day</h2>
+        {
+        products && products.map((e) => (
+          e.typeGrocerie === "offer" ?
+            <div className={styles.product}>
+              <img src={e.img}/>
+              <div>
+            <p>
+              {e.name} - ${e.price}
+            </p>
+          </div>
+          {!e.inCart ? (
+              <button onClick={() => addItemToCart(e)}>
+                Add to Cart
+              </button>
+            ) : (
+              <button>En el carrito</button>
+            )}
+                </div>
+           : <div></div>
+        ))
+        }
+      </div>
+      <h4 className="combos">Combos</h4>
+      <GroceriesCard />
+      <div>
         <Link to="/home">
           <button className="buttonBack"><FontAwesomeIcon icon={faArrowLeft} /></button>
         </Link>
       </div>
     </div>
-    
+
   );
 }
