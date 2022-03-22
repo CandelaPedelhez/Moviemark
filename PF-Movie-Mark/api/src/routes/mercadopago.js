@@ -11,6 +11,7 @@ const { route } = require('./order');
 
 server.get("/", async (req, res, next)=>{
   //const id_orden = req.query.id 
+  
   const id_orden= 1;
 
 
@@ -41,9 +42,9 @@ mercadopago.configure({
     items: items_ml,
     external_reference : `${id_orden}`, //`${new Date().valueOf()}`,
     back_urls: {
-      success: 'http://localhost:3000/home',
+      success: 'http://localhost:3000/user:id',
       failure: 'http://localhost:3000/home',
-      pending: 'http://localhost:3000/home',
+      pending: 'http://localhost:3000/user:id',
     }
   };
   console.info('preference:', preference)

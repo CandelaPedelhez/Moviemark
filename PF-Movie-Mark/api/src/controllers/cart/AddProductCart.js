@@ -31,7 +31,9 @@ Product.update(
   { where: { id: estaEnProducts.dataValues.id} }
 )
 .then((product) => {
-  Cart.create({ name, img, price, amount: 1 });
+  // const {userId} = req.body;
+  // console.log(userId)
+  Cart.create({ name, img, price, amount: 1});
   // console.log("El producto fue agregado al carrito"),
       res.json({
         product,
