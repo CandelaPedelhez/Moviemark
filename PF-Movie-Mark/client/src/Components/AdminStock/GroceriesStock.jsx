@@ -1,17 +1,21 @@
-import React from "react";
+
+import React, {useContext} from "react";
 import { useState, useEffect } from "react";
 import { getGroceries, updateGroceries } from "../../Actions/index";
+import CartContext from '../../Context/CartContext';
 import { useDispatch, useSelector } from "react-redux";
 
 /* HAY QUE FIJARSE SI CON LA GROCERIE DIRECTAMENTE CARGADA EN LA DB SE ACTUALIZA BIEN */
 
 export default function AdminStock() {
     const dispatch = useDispatch();
-    const groceries = useSelector((state) => state.groceries);
+    const { products } = useContext(CartContext);
+//     const groceries = useSelector((state) => state.groceries);
 
-    useEffect(() => {
-        dispatch(getGroceries());
-    }, [dispatch])
+//     useEffect(() => {
+//         dispatch(getGroceries());
+//     }, [dispatch])
+
 
 
     const [input, setInput] = useState({
@@ -39,6 +43,8 @@ export default function AdminStock() {
     }
 
     function handleSubmit(e) {
+
+//         if (input.id && input.price || input.stock) {
         if (input.id && input.price && input.stock) {
             e.preventDefault();
             dispatch(updateGroceries(input));
@@ -61,7 +67,8 @@ export default function AdminStock() {
                     <select onChange={e => handleSelectGrocerie(e)}>
                     <option value={0}>Select grocerie</option>
                         {
-                            groceries.map(e => <option value={e.id}>{e.name}</option>)
+                            products.map(e => <option value={e.id}>{e.name}</option>)
+//                             groceries.map(e => <option value={e.id}>{e.name}</option>)
                         }
                     </select>
                 </div>

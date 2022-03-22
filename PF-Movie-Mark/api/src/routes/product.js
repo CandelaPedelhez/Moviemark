@@ -3,7 +3,7 @@ const { Product } = require('../db');
 
 //Ruta para crear nuevo producto
 server.post('/', (req, res, next) => {
-    if(!req.body.name || !req.body.description || !req.body.price || !req.body.stock || !req.body.img) { 
+    if(!req.body.name || !req.body.description || !req.body.typeGrocerie || !req.body.price || !req.body.stock || !req.body.img) { 
         res.status(400).send('Cuidado! no se permiten campos indefinidos')
     } else { 
         Product.create({
@@ -11,6 +11,7 @@ server.post('/', (req, res, next) => {
             description: req.body.description,
             price: req.body.price,
             stock: req.body.stock,
+            typeGrocerie: req.body.typeGrocerie,
             img: req.body.img
         })
         .then((prod) => {

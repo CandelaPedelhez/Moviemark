@@ -1,17 +1,17 @@
 const { Router } = require("express");
 const router = Router();
-const { Grocerie } = require("../db");
+const { Product } = require("../db");
 
 router.post("/", async (req, res, next) => {
   const { name, price, stock, description, typeGrocerie, img } = req.body;
   //console.log
 
   try {
-    var creatingGrocerie = await Grocerie.findOrCreate({
+    var creatingGrocerie = await Product.findOrCreate({
       where: {
         name,
         price,
-        //stock,
+        stock,
         description,
         typeGrocerie,
         img,

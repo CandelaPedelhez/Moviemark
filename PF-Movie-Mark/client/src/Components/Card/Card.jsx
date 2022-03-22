@@ -12,7 +12,7 @@ export default function Card({ movies, id, title, img, genres, vote_average }) {
         <img className="card "src={img} onError={({ currentTarget }) => {
           currentTarget.onerror = null;
           currentTarget.src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/9556d16312333.5691dd2255721.jpg";
-          }} style={{ width: "180px", height: "280px"}} />
+          }} style={{ width: "240px", height: "340px"}} />
       </Link>:<></>
       }
       {
