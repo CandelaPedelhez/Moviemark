@@ -19,7 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
-const { Grocerie, Movie, Ticket } = require("./src/db");
+const { Grocerie, Movie, Ticket, Product } = require("./src/db");
 const { moviesdb } = require("./src/controllers/moviesdb.js");
 const { groceries } = require("./src/controllers/groceries.js");
 //console.log("las movies son estas:", moviesdb);
