@@ -15,14 +15,14 @@ import MyReceipts from "./Components/Receipts/MyReceipts"
 import Receipt from "./Components/Receipts/Receipt";
 import OrderSummary from "./Components/OrderSummary/OrderSummary";
 import Admin from "./Components/Admin/Admin";
-import CreateAvailable from "./Components/CreateAvailable/CreateAvailable";
+import CreateAvailable from "./Components/Admin/CreateAvailable";
 import SubmitFilm from "./Components/Admin/Submitfilms";
 import SubmitGroceries from "./Components/Admin/SubmitGroceries";
 import Products from "./Components/Products/index"
 import Page404 from "./Components/Page404/Page404";
 import Newsletter from "./Components/Admin/Newsletter";
-import GroceriesStock from "./Components/AdminStock/GroceriesStock"
-import DeleteAvailable from "./Components/AdminStock/DeleteAvailable"
+import GroceriesStock from "./Components/Admin/GroceriesStock"
+import DeleteAvailable from "./Components/Admin/DeleteAvailable"
 
 function App() {
   return (

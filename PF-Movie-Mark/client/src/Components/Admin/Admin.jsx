@@ -50,6 +50,15 @@ const Admin = () => {
     function SubmitFilm(){
         history('/admin/manage/films')
     }
+    function DeleteAvailable(){
+        history('/availables/deleteAvailable')
+    }
+    function AddAvailable(){
+        history('/available')
+    }
+    function StockGroceries(){
+        history('groceries/update')
+    }
     function SubmitGroceries(){
         history('/admin/manage/groceries')
     }
@@ -190,8 +199,11 @@ const Admin = () => {
             <div className={styles.account}>
                 <h1 className={styles.title}>Admin</h1>
                 <h2 className={styles.hi}>Hi {currentuser.name}</h2>
-                <button onClick={()=>SubmitFilm()}>Manage films</button>
-                <button onClick={()=>SubmitGroceries()}>Manage groceries</button>
+                <button onClick={()=>SubmitFilm()}>Add films</button>
+                <button onClick={()=>DeleteAvailable()}>Delete function</button>
+                <button onClick={()=>AddAvailable()}>Add function</button>
+                <button onClick={()=>SubmitGroceries()}>Add groceries</button>
+                <button onClick={()=>StockGroceries()}>Manage stock groceries</button>
                 <button onClick={()=>Newsletter()}>Newsletter</button>
                 <div>
                     <p className={styles.subtitle}>Make Admins</p>
