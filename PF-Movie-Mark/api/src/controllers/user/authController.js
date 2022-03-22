@@ -56,8 +56,8 @@ const signIn = async (req, res) => {
                     return res.status(200).json({msg: "Revoke"})
                 }
                 //Creo el token:
-                let token = jwt.sign({user: user}, authConfig.secret, {
-                    expiresIn: authConfig.expires
+                let token = jwt.sign({user: user}, JWT_SECRET, {
+                    expiresIn: JWT_EXPIRES_IN
                 });
                 res.json({
                     token: token
