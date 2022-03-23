@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
-import styles from "./SearchBar.module.css";
+import styles from "./SearchBar.module.scss";
 
 export default function SearchBar({ placeholder, data }) {
   const movies = useSelector((state) => state.movies);

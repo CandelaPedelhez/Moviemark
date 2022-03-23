@@ -5,6 +5,8 @@ let availables = [
     hour: "19:30",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
+    price: 1000,
   },
   {
     name: "The Batman",
@@ -12,6 +14,8 @@ let availables = [
     hour: "21",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
+    price: 1000,
   },
   {
     name: "Scream",
@@ -19,6 +23,8 @@ let availables = [
     hour: "22",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/kZNHR1upJKF3eTzdgl5V8s8a4C3.jpg",
+    price: 1000,
   },
   {
     name: "Scream",
@@ -26,6 +32,8 @@ let availables = [
     hour: "21",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/kZNHR1upJKF3eTzdgl5V8s8a4C3.jpg",
+    price: 1000,
   },
   {
     name: "Kimi",
@@ -33,6 +41,8 @@ let availables = [
     hour: "22",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/okNgwtxIWzGsNlR3GsOS0i0Qgbn.jpg",
+    price: 1000,
   },
   {
     name: "Kimi",
@@ -40,6 +50,8 @@ let availables = [
     hour: "19:30",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/okNgwtxIWzGsNlR3GsOS0i0Qgbn.jpg",
+    price: 1000,
   },
   {
     name: "Nightmare Alley",
@@ -47,6 +59,8 @@ let availables = [
     hour: "22",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/vfn1feL0V9HNSXuLLpaxAW8O6LO.jpg",
+    price: 1000,
   },
   {
     name: "Nightmare Alley",
@@ -54,41 +68,18 @@ let availables = [
     hour: "19:30",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/vfn1feL0V9HNSXuLLpaxAW8O6LO.jpg",
+    price: 1000,
   },
-  {
-    name: "My Hero Academia: World Heroes' Mission",
-    date: "2022-04-01",
-    hour: "19:30",
-    hall: "2",
-    tickets: 48,
-  },
-  {
-    name: "My Hero Academia: World Heroes' Mission",
-    date: "2022-03-29",
-    hour: "21",
-    hall: "1",
-    tickets: 48,
-  },
-  {
-    name: "Pursuit",
-    date: "2022-04-01",
-    hour: "21",
-    hall: "1",
-    tickets: 48,
-  },
-  {
-    name: "Pursuit",
-    date: "2022-03-28",
-    hour: "22",
-    hall: "2",
-    tickets: 48,
-  },
+
   {
     name: "Hotel Transylvania: Transformania",
     date: "2022-04-01",
     hour: "18:30",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/teCy1egGQa0y8ULJvlrDHQKnxBL.jpg",
+    price: 1000,
   },
   {
     name: "Hotel Transylvania: Transformania",
@@ -96,27 +87,18 @@ let availables = [
     hour: "18:30",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/teCy1egGQa0y8ULJvlrDHQKnxBL.jpg",
+    price: 1000,
   },
-  {
-    name: "The Requin",
-    date: "2022-03-27",
-    hour: "22",
-    hall: "2",
-    tickets: 48,
-  },
-  {
-    name: "The Requin",
-    date: "2022-03-31",
-    hour: "21",
-    hall: "1",
-    tickets: 48,
-  },
+
   {
     name: "Sing 2",
     date: "2022-04-02",
     hour: "18:30",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/aWeKITRFbbwY8txG5uCj4rMCfSP.jpg",
+    price: 1000,
   },
   {
     name: "Sing 2",
@@ -124,6 +106,8 @@ let availables = [
     hour: "18:30",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/aWeKITRFbbwY8txG5uCj4rMCfSP.jpg",
+    price: 1000,
   },
   {
     name: "Uncharted",
@@ -131,6 +115,8 @@ let availables = [
     hour: "19:30",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+    price: 1000,
   },
   {
     name: "Uncharted",
@@ -138,6 +124,8 @@ let availables = [
     hour: "22",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+    price: 1000,
   },
   {
     name: "Marry Me",
@@ -145,6 +133,8 @@ let availables = [
     hour: "18:30",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/ko1JVbGj4bT8IhCWqjBQ6ZtF2t.jpg",
+    price: 1000,
   },
   {
     name: "Marry Me",
@@ -152,27 +142,17 @@ let availables = [
     hour: "19:30",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/ko1JVbGj4bT8IhCWqjBQ6ZtF2t.jpg",
+    price: 1000,
   },
-  {
-    name: "The Hunting",
-    date: "2022-04-03",
-    hour: "21",
-    hall: "1",
-    tickets: 48,
-  },
-  {
-    name: "The Hunting",
-    date: "2022-03-29",
-    hour: "22",
-    hall: "2",
-    tickets: 48,
-  },
+
   {
     name: "Resident Evil: Welcome to Raccoon City",
     date: "2022-03-25",
     hour: "21",
     hall: "1",
     tickets: 48,
+    price: 1000,
   },
   {
     name: "Resident Evil: Welcome to Raccoon City",
@@ -180,27 +160,17 @@ let availables = [
     hour: "21",
     hall: "1",
     tickets: 48,
+    price: 1000,
   },
-  {
-    name: "The 355",
-    date: "2022-03-26",
-    hour: "19:30",
-    hall: "2",
-    tickets: 48,
-  },
-  {
-    name: "The 355",
-    date: "2022-03-30",
-    hour: "18:30",
-    hall: "1",
-    tickets: 48,
-  },
+
   {
     name: "Clifford the Big Red Dog",
     date: "2022-03-25",
     hour: "18:30",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/oifhfVhUcuDjE61V5bS5dfShQrm.jpg",
+    price: 1000,
   },
   {
     name: "Clifford the Big Red Dog",
@@ -208,27 +178,18 @@ let availables = [
     hour: "18:30",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/oifhfVhUcuDjE61V5bS5dfShQrm.jpg",
+    price: 1000,
   },
-  {
-    name: "One Shot",
-    date: "2022-03-27",
-    hour: "19:30",
-    hall: "2",
-    tickets: 48,
-  },
-  {
-    name: "One Shot",
-    date: "2022-03-30",
-    hour: "21",
-    hall: "1",
-    tickets: 48,
-  },
+
   {
     name: "Moonfall",
     date: "2022-03-30",
     hour: "19:30",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/odVv1sqVs0KxBXiA8bhIBlPgalx.jpg",
+    price: 1000,
   },
   {
     name: "Moonfall",
@@ -236,6 +197,8 @@ let availables = [
     hour: "21",
     hall: "1",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/odVv1sqVs0KxBXiA8bhIBlPgalx.jpg",
+    price: 1000,
   },
   {
     name: "Wrath of Man",
@@ -243,6 +206,8 @@ let availables = [
     hour: "22",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/M7SUK85sKjaStg4TKhlAVyGlz3.jpg",
+    price: 1000,
   },
   {
     name: "Wrath of Man",
@@ -250,28 +215,119 @@ let availables = [
     hour: "19:30",
     hall: "2",
     tickets: 48,
+    img: "https://image.tmdb.org/t/p/w500/M7SUK85sKjaStg4TKhlAVyGlz3.jpg",
+    price: 1000,
   },
-  {
-    name: "Halloween Kills",
-    date: "2022-03-26",
-    hour: "22",
-    hall: "2",
-    tickets: 48,
-  },
-  {
-    name: "Halloween Kills",
-    date: "2022-03-30",
-    hour: "22",
-    hall: "2",
-    tickets: 48,
-  },
-  {
-    name: "The Sky Is Everywhere",
-    date: "2022-03-29",
-    hour: "18:30",
-    hall: "1",
-    tickets: 48,
-  }
 ];
 
 module.exports = { availables };
+
+/*{
+  name: "My Hero Academia: World Heroes' Mission",
+  date: "2022-04-01",
+  hour: "19:30",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "My Hero Academia: World Heroes' Mission",
+  date: "2022-03-29",
+  hour: "21",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "Pursuit",
+  date: "2022-04-01",
+  hour: "21",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "Pursuit",
+  date: "2022-03-28",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "The Requin",
+  date: "2022-03-27",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "The Requin",
+  date: "2022-03-31",
+  hour: "21",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "Halloween Kills",
+  date: "2022-03-26",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "Halloween Kills",
+  date: "2022-03-30",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "The Sky Is Everywhere",
+  date: "2022-03-29",
+  hour: "18:30",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "The 355",
+  date: "2022-03-26",
+  hour: "19:30",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "The 355",
+  date: "2022-03-30",
+  hour: "18:30",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "The Hunting",
+  date: "2022-04-03",
+  hour: "21",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "The Hunting",
+  date: "2022-03-29",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},*/
