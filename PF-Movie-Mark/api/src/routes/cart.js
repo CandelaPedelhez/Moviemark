@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const router = Router();
 const controllers = require("../controllers/cart");
 const cleanCart = require('../controllers/cart/CleanCart');
@@ -6,9 +6,8 @@ const cleanCart = require('../controllers/cart/CleanCart');
 router.get("/products", controllers.getProducts);
 router.get("/products-cart", controllers.getProductsCart);
 
-
 /* POST */
-router.post("/products-cart", controllers.addProductCart);
+router.post("/products-cart/:id", controllers.addProductCart);
 router.post("/products-cart", controllers.addMovieCart);
 
 /* PUT */

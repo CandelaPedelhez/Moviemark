@@ -89,23 +89,30 @@ import axios from "axios";
 /* Creamos el context, se le puede pasar un valor inicial */
 const CartContext = createContext();
 
+let u = localStorage.getItem("user");
+console.log("User del localStorage: ", u);
+// console.log(typeof(u))
+let userObj = JSON.parse(u);
+// console.log("Obj de user: ",userObj)
+// console.log("ID del obj user: ", userObj.id);
+let userId = userObj.id;
+
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(() => {
-            try {
-                const productsInLocalStorage = localStorage.getItem("cartProducts");
-                return productsInLocalStorage ? JSON.parse(productsInLocalStorage) : [];
-            } catch (error) {
-                return [];
-            }
-        });
+    try {
+      const productsInLocalStorage = localStorage.getItem("cartProducts");
+      return productsInLocalStorage ? JSON.parse(productsInLocalStorage) : [];
+    } catch (error) {
+      return [];
+    }
+  });
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("cartProducts", JSON.stringify(cartItems))
-}, [cartItems]);
+    localStorage.setItem("cartProducts", JSON.stringify(cartItems));
+  }, [cartItems]);
 
-
-console.log("cart",localStorage.getItem('cartProducts'))
+  console.log("cart", localStorage.getItem("cartProducts"));
 
   const getProducts = async () => {
     await axios
@@ -127,7 +134,11 @@ console.log("cart",localStorage.getItem('cartProducts'))
 
   const addItemToCart = async (product) => {
     const { name, img, price } = product;
-    await axios.post("http://localhost:3001/api/cart/products-cart", { name, img, price });
+    await axios.post("http://localhost:3001/api/cart/products-cart", {
+      name,
+      img,
+      price,
+    });
 
     getProducts();
     getProductsCart();
@@ -136,16 +147,15 @@ console.log("cart",localStorage.getItem('cartProducts'))
   const editItemToCart = async (id, query, amount) => {
     if (id) {
       await axios
-        .delete(`http://localhost:3001/api/cart/products-cart/${id}?query=del` )
+        .delete(`http://localhost:3001/api/cart/products-cart/${id}?query=del`)
         .then(({ data }) => console.log(data));
-    // } else {
-    //   await axios
-    //     .put(`http://localhost:3001/products-cart/${id}?query=add`, {
-    //       amount,
-    //     })
-    //     .then(({ data }) => console.log(data));
-     }
-  
+      // } else {
+      //   await axios
+      //     .put(`http://localhost:3001/products-cart/${id}?query=add`, {
+      //       amount,
+      //     })
+      //     .then(({ data }) => console.log(data));
+    }
 
     getProducts();
     getProductsCart();
@@ -153,42 +163,49 @@ console.log("cart",localStorage.getItem('cartProducts'))
 
   const cleanCart = async () => {
     await axios
-        .delete('http://localhost:3001/api/cart/cart-delete/')
-        .then(({ data }) => setCartItems(data.productsCart));
-        getProducts();
-        getProductsCart();
-    }
-     
+      .delete("http://localhost:3001/api/cart/cart-delete/")
+      .then(({ data }) => setCartItems(data.productsCart));
+    getProducts();
+    getProductsCart();
+  };
 
   const increaseAmount = async (id, amount) => {
-    if(id) {
-    await axios
-      .put(`http://localhost:3001/api/cart/products-cart/${id}?query=add`, {
-        amount
-      })
-      .then(({ data }) => console.log(data));
+    if (id) {
+      await axios
+        .put(`http://localhost:3001/api/cart/products-cart/${id}?query=add`, {
+          amount,
+        })
+        .then(({ data }) => console.log(data));
       window.location.reload(false);
     }
     getProducts();
     getProductsCart();
-  }
+  };
 
   const decreaseAmount = async (id, amount) => {
-    if(id) {
-      await axios.put(`http://localhost:3001/api/cart/products-cart/${id}?query=dec`, {
-        amount
-      })
-      .then(({data}) => console.log(data))
+    if (id) {
+      await axios
+        .put(`http://localhost:3001/api/cart/products-cart/${id}?query=dec`, {
+          amount,
+        })
+        .then(({ data }) => console.log(data));
       window.location.reload(false);
     }
     getProducts();
     getProductsCart();
-  }
-
+  };
 
   return (
     <CartContext.Provider
-      value={{ cartItems, products, addItemToCart, editItemToCart, increaseAmount, decreaseAmount, cleanCart }}
+      value={{
+        cartItems,
+        products,
+        addItemToCart,
+        editItemToCart,
+        increaseAmount,
+        decreaseAmount,
+        cleanCart,
+      }}
     >
       {children}
     </CartContext.Provider>
