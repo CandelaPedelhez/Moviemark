@@ -156,7 +156,7 @@ console.log("IIIIIIIIIIDDDDDDD",userId)
     getProducts();
     getProductsCart();
   };
-
+  }
   const editItemToCart = async (id, query, amount) => {
     if (id) {
       await axios
@@ -207,7 +207,7 @@ console.log("IIIIIIIIIIDDDDDDD",userId)
     getProducts();
     getProductsCart();
   };
-
+  
   return (
     <CartContext.Provider
       value={{
@@ -223,7 +223,7 @@ console.log("IIIIIIIIIIDDDDDDD",userId)
       {children}
     </CartContext.Provider>
   );
-};
+;
 }
 
 export default CartContext;
