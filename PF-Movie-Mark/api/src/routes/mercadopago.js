@@ -46,6 +46,7 @@ mercadopago.configure({
   let preference = {
     items: items_ml,
     external_reference : `${id_orden[0].dataValues.id}`, //`${new Date().valueOf()}`,
+    // return res.redirect(`http://localhost:3000/larutaquequieras`)
     back_urls: {
       success: 'http://localhost:3001/api/statusMp',
       failure: 'http://localhost:3001/api/statusMp',

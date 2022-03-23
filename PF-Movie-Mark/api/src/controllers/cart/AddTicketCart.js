@@ -1,12 +1,12 @@
-const {Cart,Product, Order} = require("../../db.js");
+const {Cart,Ticket, Order} = require("../../db.js");
 
 
-const addProductCart = async (req, res) => {
+const addTicketCart = async (req, res) => {
   const { name, img, price, id } = req.body;
 
   /* Nos fijamos si tenemos el producto */
-  const estaEnProducts = await Product.findOne({where:{ name: name }});
-  console.log(estaEnProducts)
+  const estaEnTickets = await Ticket.findOne({where:{ name: name }});
+  
 
   /* Nos fijamos si todos los campos vienen con info */
   const noEstaVacio = name !== "" && img !== "" && price !== "" && id !== null;
@@ -15,9 +15,9 @@ const addProductCart = async (req, res) => {
   const estaEnElCarrito = await Cart.findOne({where:{ name: name }});
 
   /* Si no tenemos el producto */
-  if (!estaEnProducts) {
+  if (!estaEnTickets) {
     res.status(400).json({
-      mensaje: "Este producto no se encuentra en nuestra base de datos",
+      mensaje: "Este ticket no se encuentra en nuestra base de datos",
     });
 
     /* Si nos envian algo y no esta en el carrito lo agregamos */
@@ -26,23 +26,24 @@ const addProductCart = async (req, res) => {
 
     /* Y actualizamos la prop inCart: true en nuestros productos */
     const {userId} = req.params;
+    console.log("ADDDDDDD",estaEnTickets)
     console.log("ID",userId)
     let orden = await Order.findOrCreate({where: {status: 'carrito'}, defaults: {userId: userId},})
     console.log("orden", orden[0].dataValues.id)
 
 
-Product.update(
+Ticket.update(
   { inCart: true},
-  { where: { id: estaEnProducts.dataValues.id} }
+  { where: { id: estaEnTickets.dataValues.id} }
 )
-.then((product) => {
+.then((ticket) => {
   // const {userId} = req.body;
   // console.log(userId)
 
   Cart.create({ name, img, price, amount: 1, orderId: orden[0].dataValues.id});
   // console.log("El producto fue agregado al carrito"),
       res.json({
-        product,
+        ticket,
       });
     })
     .catch((error) => console.error(error));
@@ -51,9 +52,9 @@ Product.update(
   } if (estaEnElCarrito) {
     // console.log("El producto ya esta en el carrito")
   res.status(400).json({
-    mensaje: "El producto ya esta en el carrito",
+    mensaje: "El ticket ya esta en el carrito",
   });
 }
   }
   
-module.exports = addProductCart;
+module.exports = addTicketCart;

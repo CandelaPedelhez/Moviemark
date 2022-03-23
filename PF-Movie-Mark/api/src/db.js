@@ -45,8 +45,9 @@ const { Movie, Ticket, User, Grocerie, Genre, Hall, Available, Cart, Product, Or
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Movie.belongsToMany(Ticket, { through: "movie_tickets" });
-Ticket.belongsToMany(Movie, { through: "movie_tickets" });
+// Movie.belongsToMany(Ticket, { through: "movie_tickets" });
+// Ticket.belongsToMany(Movie, { through: "movie_tickets" });
+
 
 Movie.belongsToMany(Genre, { through: "movie_genres" });
 Genre.belongsToMany(Movie, { through: "movie_genres" });
@@ -123,6 +124,9 @@ Order.belongsTo(User)
 
 Order.hasMany(Cart);
 Cart.belongsTo(Order);
+
+
+
 
 //Seats.hasOne(Ticket, { through: "ticket_seats" });
 //Ticket.hasOne(Seats, { through: "ticket_seats" });

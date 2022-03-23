@@ -2,11 +2,10 @@ require("dotenv").config();
 const { User, Order, Cart } = require('../../db.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {JWT_SECRET, 
-      JWT_EXPIRES_IN,
-      JWT_ROUNDS} = process.env;
+const authConfig = require('../../config/auth.js');
 
-const signUp = async (req, res) =>{
+//Registro -- creación de usuario
+const signUp = async (req, res) => {
     try {
         const user = await User.findOne({
             where: { email: req.body.email }
@@ -14,19 +13,21 @@ const signUp = async (req, res) =>{
         if (user) {
             return res.status(200).json({ msg: "Email registered" })
         }
-        let passwordEncrypted = bcrypt.hashSync(req.body.password, Number.parseInt(JWT_ROUNDS));
-                await User.create({
-                    name:     req.body.name, 
-                    lastName: req.body.lastName,
-                    email:    req.body.email.trim().toLowerCase(),
-                    password: passwordEncrypted,
-                    role:     "user",
-                    allowed: "true",
-                    // authorization: false,
-                }).then(user => {
-                    let token = jwt.sign({user: user}, JWT_SECRET, {
-                        expiresIn: JWT_EXPIRES_IN
-                    });
+        //encripto pass:
+        let passwordEncrypted = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
+        // if(role === "user"){
+        await User.create({
+            name: req.body.name,
+            lastName: req.body.lastName,
+            email: req.body.email.trim().toLowerCase(),
+            password: passwordEncrypted,
+            role: "user",
+            // authorization: false,
+        }).then(user => {
+            //Cuando un usuario es creado, creo el token:
+            let token = jwt.sign({ user: user }, authConfig.secret, {
+                expiresIn: authConfig.expires
+            });
 
             res.json({
                 user: user,
@@ -43,56 +44,59 @@ const signUp = async (req, res) =>{
 
 //Login:
 const signIn = async (req, res) => {
-    let {email, password} = req.body;
-    
+    let { email, password } = req.body;
+
+    //Busco el email del user:
     await User.findOne({
-        where: {email: email}
-    }).then(user => {
-        if(!user){
-            res.status(200).json({msg: "Email not found :("})
-        }else{
-            if(bcrypt.compareSync(password, user.password)){
-                if(user.allowed===false){
-                    return res.status(200).json({msg: "Revoke"})
-                }
+        where: { email: email }
+    }).then(async (user) => {
+        if (!user) {
+            res.status(200).json({ msg: "Email not found :(" })
+        } else {
+            //Comparo las password, la que recibo y la que estaba en la db
+            if (bcrypt.compareSync(password, user.password)) {
                 //Creo el token:
-                let token = jwt.sign({user: user}, JWT_SECRET, {
-                    expiresIn: JWT_EXPIRES_IN
+                let token = jwt.sign({ user: user }, authConfig.secret, {
+                    expiresIn: authConfig.expires
                 });
+
                 res.json({
                     token: token
                 })
-            }else{
-                res.status(200).json({msg: "Incorrect password :("})
+                // let cart = await Cart.findAll()
+                // if(cart) {
+                console.log("USSSSSSSSSSSSSSSSSSSSSSSSSER",user)
+                let orden = await Order.findOne({where: {status: 'carrito'}},{defaults: { userId: user.dataValues.id }})
+                Order.update({
+                    userId: user.dataValues.id
+                }, {
+                    where: {userId: null}
+                })
+                console.log("orden", orden)
+                let updateCart = await Cart.findAll({ where: { orderId: null } })
+                if (updateCart.length) {
+                    Cart.update({
+                        orderId: orden.dataValues.id
+                    }, {
+                        where: { orderId: null }
+                    })
+                }
+            }
+             else {
+                //Msg unauthorized
+                res.status(200).json({ msg: "Incorrect password :(" })
             }
         }
     })
 
 };//END SIGNIN
 
-const loginGoogle = async (req, res, next) => {
-    const {name, lastName, email} = req.body;
-    try {
-        let user = await User.findOne({
-            where: {email}
-        });
+// GET /api/user
+// Obtener todos los usuarios
 
-        if(!user){
-            user  = await User.create({
-                name: name, 
-                lastName: lastName,
-                email: email
-            });
-        }
 
-        res.status(200).send(user);
-    } catch (error) {
-        console.log(error.message);        
-    }
-};
 
 module.exports = {
     signIn,
-    signUp,
-    loginGoogle
+    signUp
 }
