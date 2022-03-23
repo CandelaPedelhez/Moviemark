@@ -88,13 +88,21 @@ import axios from "axios";
 /* Creamos el context, se le puede pasar un valor inicial */
 const CartContext = createContext();
 
-let u = localStorage.getItem("user");
-console.log("User del localStorage: ", u);
+// Agregue esto porque rompia. Sino cambiar por lo de abajo.
+let userId = -1;
+if(localStorage.getItem("user")){
+  let u = localStorage.getItem("user");
+  let userObj = JSON.parse(u);
+  userId = userObj.id;
+}
+
+// let u = localStorage.getItem("user");
+// console.log("User del localStorage: ", u);
 // console.log(typeof(u))
-let userObj = JSON.parse(u);
+// let userObj = JSON.parse(u);
 // console.log("Obj de user: ",userObj)
 // console.log("ID del obj user: ", userObj.id);
-let userId = userObj.id;
+// let userId = userObj.id;
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(() => {
