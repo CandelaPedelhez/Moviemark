@@ -21,6 +21,8 @@ const availableRoute = require("./available.js")
 const routeReview = require("./review.js");
 const routeTicket = require("./ticket.js");
 const routeCart = require("./cart.js");
+const statusMp = require("./statusMp");
+const allOrders = require("./allOrders.js")
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -39,6 +41,8 @@ router.use("/order", orderRoute);
 router.use("/product", productRoute);
 router.use("/userTicket", userRoute);
 router.use("/mercadopago", mercadopagoRoute);
+router.use("/statusMp", statusMp);
+router.use("/allOrders", allOrders);
 router.use("/availables", availablesRoute);
 router.use("/available", availableRoute)
 router.use('/addReview', routeReview);

@@ -49,6 +49,7 @@ const Login = () => {
                     password:''
                 })
                 setSuccess(true);
+                window.location.reload(false);
                 setTimeout( function() { history('/home'); }, 1600 );
             }
         })

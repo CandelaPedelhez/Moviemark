@@ -83,7 +83,6 @@
 // };
 
 import { createContext, useEffect, useState } from "react";
-
 import axios from "axios";
 
 /* Creamos el context, se le puede pasar un valor inicial */
@@ -99,6 +98,10 @@ export const CartProvider = ({ children }) => {
             }
         });
   const [products, setProducts] = useState([]);
+  let token = 0;
+  if(localStorage.getItem("token")){
+      token = localStorage.getItem("token");
+  }
 
   useEffect(() => {
     localStorage.setItem("cartProducts", JSON.stringify(cartItems))
@@ -126,9 +129,22 @@ console.log("cart",localStorage.getItem('cartProducts'))
   }, []);
 
   const addItemToCart = async (product) => {
+    console.log("TOKENNNNs",token)
+    if(token.length > 10) {
+    let u = localStorage.getItem("user");
+// console.log("User del localStorage: ", u);
+// console.log(typeof(u))
+let userObj = JSON.parse(u);
+// console.log("Obj de user: ",userObj)
+// console.log("ID del obj user: ", userObj.id);
+let userId = userObj.id;
+console.log("IIIIIIIIIIDDDDDDD",userId)
     const { name, img, price } = product;
-    await axios.post("http://localhost:3001/api/cart/products-cart", { name, img, price });
-
+    await axios.post(`http://localhost:3001/api/cart/products-cart/${userId}`, { name, img, price });
+    } else {
+      const { name, img, price } = product;
+    await axios.post(`http://localhost:3001/api/cart/products-cart/`, { name, img, price });
+    }
     getProducts();
     getProductsCart();
   };
