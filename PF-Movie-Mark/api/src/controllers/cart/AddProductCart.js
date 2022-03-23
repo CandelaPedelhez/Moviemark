@@ -25,6 +25,11 @@ const addProductCart = async (req, res) => {
     // const newProductInCart = new Cart({ name, img, price, amount: 1 });
 
     /* Y actualizamos la prop inCart: true en nuestros productos */
+    const {userId} = req.params;
+    console.log("ID",userId)
+    let orden = await Order.findOrCreate({where: {status: 'carrito'}, defaults: {userId: userId},})
+    console.log("orden", orden[0].dataValues.id)
+
 
     Product.update(
       { inCart: true },
