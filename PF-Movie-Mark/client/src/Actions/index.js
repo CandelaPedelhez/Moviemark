@@ -398,19 +398,6 @@ export const getUserCred = () => {
   };
 };
 
-export function updateGroceries(payload) {
-  return async function (dispatch) {
-    let json = await axios.put(
-      "http://localhost:3001/api/groceries/update",
-      payload
-    );
-    return dispatch({
-      type: "UPDATE_GROCERIE",
-      payload: json.data,
-    });
-  };
-}
-
 // export function deleteAvailable(payload) {
 //   return async function (dispatch) {
 //     var json = await axios.delete("http://localhost:3001/api/availables/deleteAvailable" + payload);
