@@ -1,0 +1,38 @@
+.aboutfather {
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 100px;
+
+}
+
+.about {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 26px;
+}
+
+.text {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 10px;
+    
+}
+
+
+
+.item {
+    background-color: #b983ff;
+    text-align: center;
+    font-size: 23px;
+    height: 40vh;
+    width: 35vh;
+    border-radius: 25px;
+    margin-right: 50px;
+}
+
+.buttonAbout {
+    
+      color: #b983ff;
+       
+}

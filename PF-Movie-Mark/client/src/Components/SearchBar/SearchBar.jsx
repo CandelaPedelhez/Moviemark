@@ -1,3 +1,70 @@
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import SearchIcon from "@material-ui/icons/Search";
+import CloseIcon from "@material-ui/icons/Close";
+import styles from "./SearchBar.module.css";
+
+export default function SearchBar({ placeholder, data }) {
+  const movies = useSelector((state) => state.movies);
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter = movies.filter((value) => {
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
+    if (searchWord === "") {
+      setFilteredData("");
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
+
+  return (
+    <div className={styles.search}>
+      <div className={styles.searchInputs}>
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={wordEntered}
+          onChange={handleFilter}
+        />
+        <div className={styles.searchIcon}>
+          {wordEntered.length === 0 ? (
+            <SearchIcon />
+          ) : (
+            <CloseIcon id={styles.clearBtn} onClick={clearInput} />
+          )}
+        </div>
+      </div>
+      {filteredData.length !== 0 && (
+        <div className={styles.dataResult}>
+          {filteredData.slice(0, 5).map((value, key) => {
+            return (
+              <a
+                className={styles.dataItem}
+                rel="noreferrer"
+                href={`/movies/${value.id}`}
+                target="_blank"
+              >
+                <p>{value.title}</p>
+                {/* <img src={value.img} style={{ width: "60px", height: "40px", marginRight: "8px"}}/> */}
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 // import { getMovieByTitle } from "../../Actions";
@@ -45,62 +112,3 @@
 //     </div>
 //   );
 // }
-
-import React, {useState} from 'react';
-import { useSelector } from 'react-redux';
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
-import "./SearchBar.css";
-
-export default function SearchBar ({placeholder, data}) {
-  const movies = useSelector((state) => state.movies)
-  const [filteredData, setFilteredData] = useState([]);
-  const [wordEntered, setWordEntered] = useState("");
-
-  const handleFilter = (event) => {
-    const searchWord = event.target.value
-    setWordEntered(searchWord)
-    const newFilter = movies.filter((value) => {
-      return value.title.toLowerCase().includes(searchWord.toLowerCase());
-    });
-    if(searchWord === "") {
-      setFilteredData("")
-    } else {
-    setFilteredData(newFilter);
-  }}
-
-  const clearInput = () => {
-    setFilteredData([]);
-    setWordEntered("");
-  }
-
-  return (
-    <div className='search'>
-        <div className='searchInputs'>
-          <input type="text" 
-          placeholder={placeholder} 
-          value={wordEntered} 
-          onChange={handleFilter}
-          />
-          <div className='searchIcon'>
-            {wordEntered.length === 0 ? (<SearchIcon/>) 
-            : (<CloseIcon id="clearBtn" onClick={clearInput}/>
-            )}
-            </div>
-        </div>
-        { filteredData.length != 0 && (
-        <div className='dataResult'>
-          {
-            filteredData.slice(0, 5).map((value, key) => {
-              return (<a className='dataItem' href={`/movies/${value.id}`} target="_blank">
-                <p>{value.title}</p>
-                {/* <img src={value.img} style={{ width: "60px", height: "40px", marginRight: "8px"}}/> */}
-                </a>
-                )
-            })
-          }
-        </div>
-        )}
-    </div>
-  )
-}

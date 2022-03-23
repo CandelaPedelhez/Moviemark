@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import NavBar from "../Navbar/Navbar";
 import Card from "../Card/Card.jsx";
 import Slider from "../Slider/Slider.jsx";
-import "./Home.css";
+import styles from "./Home.module.css";
 import {
   getMovies,
   filterMovieByGenre,
@@ -25,7 +26,7 @@ export default function Home() {
 
   function handleFilteredGenre(e) {
     e.preventDefault();
-    dispatch(filterMovieByGenre((e.target.value).toLowerCase()));
+    dispatch(filterMovieByGenre(e.target.value));
   }
 
   function handleSort(e) {
@@ -57,9 +58,12 @@ export default function Home() {
         <hr color="#b983ff"></hr>
         <Slider />
       </div>
-      <div className="filters">
-        <select className="select1" onChange={(e) => handleFilteredGenre(e)}>
-          <option className="option" value="genre" disabled>
+      <div className={styles.filters}>
+        <select
+          className={styles.select1}
+          onChange={(e) => handleFilteredGenre(e)}
+        >
+          <option className={styles.option} value="genre" disabled>
             Filter by genre
           </option>
           <option value="All">All</option>
@@ -71,8 +75,8 @@ export default function Home() {
             );
           })}
         </select>
-        <select className="select2" onChange={(e) => handleSort(e)}>
-          <option className="option" value="order by" disabled>
+        <select className={styles.select2} onChange={(e) => handleSort(e)}>
+          <option className={styles.option} value="order by" disabled>
             Sort:
           </option>
           <option value="default">All</option>
@@ -81,8 +85,8 @@ export default function Home() {
         </select>
       </div>
       <div>
-        <h2 className="onStream">On Stream</h2>
-        <div className="row__posters">
+        <h2 className={styles.onStream}>On Stream</h2>
+        <div className={styles.row__posters}>
           {movies?.map((movie) => {
             return (
               <Card
@@ -98,22 +102,29 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <div classname="row">
-        <h2 className="topRated">Top Rated</h2>
-        <div className="row__posters">
+      <div classname={styles.row}>
+        <h2 className={styles.topRated}>Top Rated</h2>
+        <div className={styles.row__posters}>
           {topRated?.map((e) => {
             return <Card movies={"topRated"} id={e.id} img={e.img} />;
           })}
         </div>
       </div>
       <br />
-      <div className="row">
-        <h2 className="upcoming">Upcoming</h2>
-        <div className="row__posters">
+      <div className={styles.row}>
+        <h2 className={styles.upcoming}>Upcoming</h2>
+        <div className={styles.row__posters}>
           {upcoming?.map((e) => {
-            return <Card movies={"upcoming"} id={e.id} img={e.img} />;
+            return (
+              <Card key={e.id} movies={"upcoming"} id={e.id} img={e.img} />
+            );
           })}
         </div>
+      </div>
+      <div className={styles.button_about}>
+        <Link to="/aboutUs">
+          <button>About us</button>
+        </Link>
       </div>
     </div>
   );
