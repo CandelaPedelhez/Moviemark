@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Settings.module.css';
@@ -7,6 +7,7 @@ import { changeData, logoutUser} from '../../Actions';
 import Loader from '../Loader/Loader';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import CartContext from '../../Context/CartContext';
 
 const Settings = () => {
     
@@ -23,6 +24,8 @@ const Settings = () => {
     })
     const [changename,setChangeName] = useState(false);
     const [logoutsuccess,setLogoutSuccess] = useState(false);
+    const { getProductsCart, cleanCart } = useContext(CartContext);
+
 
     const dispatch = useDispatch();
     const history = useNavigate();
@@ -63,17 +66,13 @@ const Settings = () => {
         dispatch(logoutUser())
         .then(()=>{
             setLogoutSuccess(true);
-            setTimeout( function() { history('/home'); }, 2000 );
+            cleanCart()
+            setTimeout( function() { window.location.href ='http://localhost:3000/home'; }, 2000 );
         })
     }
 
     function handleChangePassword(){
-        dispatch(logoutUser());
         history('/resetpassword')
-    }
-
-    function handleCleanCart(){
-        dispatch()
     }
 
     return(

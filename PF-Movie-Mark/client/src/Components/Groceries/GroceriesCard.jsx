@@ -18,10 +18,6 @@ export default function GroceriesCard() {
 
   return (
     <div className={styles.productsContainer}>
-      {/* <h2>{name}</h2>
-      <img alt="img not found" src={img} width="100px" height="100px" />
-      <h3>${price}</h3>
-      <h4>{description}</h4> */}
       {products && products.map((product, i) => (
         <div key={i} className={styles.product}>
           <img src={product.img} alt={product.name} />

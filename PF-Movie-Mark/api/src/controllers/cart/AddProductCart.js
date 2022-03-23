@@ -1,6 +1,5 @@
 const {Cart,Product} = require("../../db.js");
 
-
 const addProductCart = async (req, res) => {
   const { name, img, price, id } = req.body;
 
@@ -31,7 +30,9 @@ Product.update(
   { where: { id: estaEnProducts.dataValues.id} }
 )
 .then((product) => {
-  Cart.create({ name, img, price, amount: 1 });
+  // const {userId} = req.body;
+  // console.log(userId)
+  Cart.create({ name, img, price, amount: 1});
   // console.log("El producto fue agregado al carrito"),
       res.json({
         product,

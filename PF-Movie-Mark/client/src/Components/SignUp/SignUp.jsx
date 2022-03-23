@@ -36,6 +36,9 @@ const SignUp = () => {
   }
 
   function validate_name(str) {
+    for(let i=0;i<str.length;++i){
+      if(str[i]===' '){return false;}
+    }
     let pattern = new RegExp("[A-Z][a-z]{1,}"); //CAMBIAR REGEXP.... NO deberia aceptar espacios en blanco porque rompe... El back rompe con Jose Maria!
     return !!pattern.test(str);
   }
@@ -126,7 +129,7 @@ const SignUp = () => {
             value={input.name}
             type="text"
             name="name"
-            placeholder="Name"
+            placeholder="First Name"
             onChange={(e) => handleChange(e)}
           ></input>
 

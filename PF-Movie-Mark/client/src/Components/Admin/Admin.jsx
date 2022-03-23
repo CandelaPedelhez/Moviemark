@@ -169,7 +169,7 @@ const Admin = () => {
         setCharging(true);
         dispatch(logoutUser())
         .then(()=>{
-            setTimeout( function() { history('/home'); }, 2000 )
+            setTimeout( function() { window.location.href ='http://localhost:3000/home'; }, 2000 )
         })
     }
 

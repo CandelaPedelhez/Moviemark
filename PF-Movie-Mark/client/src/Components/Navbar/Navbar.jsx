@@ -23,7 +23,9 @@ export default function NavBar() {
       <Link to="/groceries" style={{ textDecoration: "none" }}>
         <h3 className="btn">Groceries</h3>
       </Link>
-      <SearchBar />
+      <div>
+      <SearchBar placeholder="Search..."/>
+      </div>
       <Cart />
       {
         !aux.id?<Link to="/login">

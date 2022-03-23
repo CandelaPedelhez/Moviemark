@@ -285,9 +285,20 @@ export function postFilm(payload) {
   }
 }
 
+// export function postGrocerie(payload) {
+//   return async function (dispatch) {
+//     let json = await axios.post("http://localhost:3001/api/grocerie/", payload)
+//     return dispatch({
+//       type: "POST_GROCERIE",
+//       payload: json.data
+//     })
+//   }
+// }
+
+
 export function postGrocerie(payload) {
   return async function (dispatch) {
-    let json = await axios.post("http://localhost:3001/api/grocerie/", payload)
+    let json = await axios.post("http://localhost:3001/api/product/", payload)
     return dispatch({
       type: "POST_GROCERIE",
       payload: json.data
@@ -352,4 +363,22 @@ export function revokePass(payload){
       payload: req.data,
     })
   }
+}
+
+export const getUserCred = () => {
+  return async (dispatch) => {
+    const cred = JSON.parse(localStorage.getItem("userCredentials"));
+    dispatch({
+      type: "GET_CREDENTIALS",
+      payload: cred
+    })
+  }
+}
+
+export const loginGoogle = (userData) => async (dispatch) => {
+  const data = await axios.post('http://localhost:3001/api/user/loginGoogle', userData);
+  return dispatch({
+    type: "LOGIN_GOOGLE",
+    payload: data
+  });
 }
