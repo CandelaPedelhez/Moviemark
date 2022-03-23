@@ -24,7 +24,8 @@ export default function Details({ movies }) {
   const availables = useSelector((state) => state.availables);
   const loggedIn = useSelector((state) => state.loggedIn);
   const reviews = useSelector((state) => state.reviews);
-  const { addItemToCart } = useContext(CartContext);
+  const { addTicketToCart, tickets } = useContext(CartContext);
+
 
   let userSawMovie = true; /* ACA TENEMOS QUE TRAERNOS LOS TICKETS DEL USUARIO Y COMPARARLO CON EL TITULO DE LA PELICULA */
 
@@ -50,6 +51,7 @@ export default function Details({ movies }) {
   let funcion = [];
 
   function handleSelect(r) {
+    console.log("AAAAAAAAAS",tickets[1].name)
     r.preventDefault();
     funcion = movieFunctions.filter((e) => e.date === r.target.value);
   }
@@ -69,6 +71,8 @@ export default function Details({ movies }) {
   //   addItemToCart(movieFunction);
   //   console.log(movieFunction)
   // };
+
+
 
   useEffect(() => {
     makedispatch();
@@ -142,9 +146,14 @@ export default function Details({ movies }) {
                       </option>
                     ))}
                   </select>
-                  <button>
-                    <FontAwesomeIcon icon={faAdd} /> Buy Tickets
-                  </button>
+                  {/* PASAR FUNCIONES A HOME */}
+                  {/* {!tickets.inCart ? ( */}
+              <button onClick={() => addTicketToCart(tickets[1].name)}>
+                <FontAwesomeIcon icon={faAdd} /> Buy Tickets
+              </button>
+            {/* ) : (
+              <button>En el carrito</button>
+            )} */}
                 </div>
               ) : (
                 <p>There are not functions availables</p>

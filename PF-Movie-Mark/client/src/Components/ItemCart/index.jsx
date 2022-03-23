@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 
 export const ItemCart = ({ item }) => {
   /* Traemos del context las funciones para agregar y sacar productos del carrito */
-  const { editItemToCart, increaseAmount, decreaseAmount } = useContext(CartContext);
+  const { editItemToCart, increaseAmount, decreaseAmount, editTicketToCart, increaseAmountTicket, decreaseAmountTicket } = useContext(CartContext);
 
   /* Desestructuramos el item para sacar solo la id */
   const { amount } = item;
@@ -18,15 +18,21 @@ export const ItemCart = ({ item }) => {
         <div className={styles.left}>
           <p>{item.name}</p>
           <div className={styles.buttons}>
-            <button onClick={() => increaseAmount(item.id, amount)}>
-            <FontAwesomeIcon icon={faAdd}/>
-            </button>
-            <button onClick={() => decreaseAmount(item.id, amount)}>
+          {item.price === "1000" ? <button onClick={() => increaseAmountTicket(item.id, amount)}>
+            <FontAwesomeIcon  icon={faAdd}/>
+            </button> : <button onClick={() => increaseAmount(item.id, amount)}>
+            <FontAwesomeIcon  icon={faAdd}/>
+            </button>}
+            {item.price === "1000" ? <button onClick={() => decreaseAmountTicket(item.id, amount)}>
             <FontAwesomeIcon  icon={faMinus}/>
-            </button>
-            <button onClick={() => editItemToCart(item.id, amount)}>
+            </button> : <button onClick={() => decreaseAmount(item.id, amount)}>
+            <FontAwesomeIcon  icon={faMinus}/>
+            </button>}
+            {item.price === "1000" ? <button onClick={() => editTicketToCart(item.id, amount)}>
             <FontAwesomeIcon  icon={faX}/>
-            </button>
+            </button> : <button onClick={() => editItemToCart(item.id, amount)}>
+            <FontAwesomeIcon  icon={faX}/>
+            </button>}
           </div>
         </div>
         <div className={styles.right}>

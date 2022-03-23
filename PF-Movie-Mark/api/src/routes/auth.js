@@ -214,7 +214,7 @@ router.post('/logout', async(req, res) => {
     }
 });
 
-router.post('/loginGoogle', loginGoogle);
+// router.post('/loginGoogle', loginGoogle);
 
 
 //Newsletter

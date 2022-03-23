@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import CartContext from '../../Context/CartContext';
 import NavBar from "../Navbar/Navbar";
 import Card from "../Card/Card.jsx";
 import Slider from "../Slider/Slider.jsx";
@@ -23,8 +24,11 @@ export default function Home() {
   //const [ticket, setTicket] = useState([]);
   const upcoming = useSelector((state) => state.upcoming);
   const topRated = useSelector((state) => state.topRated);
+  const { addTicketToCart, tickets } = useContext(CartContext);
+
 
   function handleFilteredGenre(e) {
+    console.log("tickets",tickets)
     e.preventDefault();
     dispatch(filterMovieByGenre(e.target.value));
   }
@@ -87,18 +91,23 @@ export default function Home() {
       <div>
         <h2 className={styles.onStream}>On Stream</h2>
         <div className={styles.row__posters}>
-          {movies?.map((movie) => {
-            return (
+          {tickets && tickets.map((movie, i) => 
+            
+             (
+              <div key={i}>
               <Card
                 movies={"movies"}
                 id={movie.id}
-                // title={movie.title}
+                // title={movie.name}
                 //genres={movie.genres}
                 // vote_average={movie.vote_average}
                 img={movie.img}
               />
-            );
-          })}
+              <button onClick={() => addTicketToCart(movie)}>+</button>
+</div>
+
+            
+          ))}
         </div>
       </div>
       <br />

@@ -21,6 +21,7 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const { Grocerie, Movie, Ticket, Product } = require("./src/db");
 const { moviesdb } = require("./src/controllers/moviesdb.js");
+const { tickets } = require("./src/controllers/tickets.js")
 const { groceries } = require("./src/controllers/groceries.js");
 //console.log("las movies son estas:", moviesdb);
 // Syncing all the models at once.
@@ -43,10 +44,10 @@ conn.sync({ force: true }).then(() => {
       })
     );
 
-    moviesdb.forEach((m) =>
+    tickets.forEach((m) =>
       Ticket.findOrCreate({
         where: {
-          name: m.title,
+          name: m.name,
           img: m.img,
           price: m.price,
         },

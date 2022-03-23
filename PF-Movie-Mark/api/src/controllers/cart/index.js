@@ -1,10 +1,11 @@
-
 const getProducts = require("./GetProducts");
 const getProductsCart = require("./GetProductsCart");
 const addProductCart = require("./AddProductCart");
 const putProduct = require("./PutProduct");
 const deleteProduct = require("./DeleteProduct");
-// const addMovieCart = require("./AddMovieCart")
+const addTicketCart = require("./AddTicketCart");
+const deleteTicket = require("./DeleteTicket");
+const putTicket = require("./PutTicket");
 
 module.exports = {
   getProducts,
@@ -12,5 +13,7 @@ module.exports = {
   addProductCart,
   putProduct,
   deleteProduct,
-  // addMovieCart,
+  addTicketCart,
+  deleteTicket,
+  putTicket,
 };

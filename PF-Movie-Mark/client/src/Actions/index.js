@@ -322,15 +322,6 @@ export function postGrocerie(payload) {
   }
 }
 
-export function updateGroceries(payload) {
-  return async function (dispatch) {
-    let json = await axios.put("http://localhost:3001/api/groceries/update", payload)
-    return dispatch({
-      type: "UPDATE_GROCERIE",
-      payload: json.data
-    })
-  }
-}
 
 export function getReviews() {
   return async function (dispatch) {
@@ -410,6 +401,7 @@ export function updateGroceries(payload) {
     });
   };
 }
+
 
 // export function deleteAvailable(payload) {
 //   return async function (dispatch) {

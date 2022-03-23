@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
-const { Order} = require('../db.js');
-
+const { Order, Cart} = require('../db.js');
+const cleanCart = require("../controllers/cart/CleanCart.js")
 const {
     ACCESS_TOKEN,
   } = process.env;
@@ -30,11 +30,12 @@ router.get("/", async (req, res)=>{
         order.payment_status= payment_status
         order.merchant_order_id = merchant_order_id
         order.status = 'created'
+        order.done = true
         console.info('Salvando order')
         order.save()
         .then((_) => {
           console.info('redirect success')
-          
+          cleanCart();
         //   return res.redirect('http://localhost:3000')
         return res.send(order)
         }).catch((err) =>{

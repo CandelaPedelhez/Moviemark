@@ -1,8 +1,6 @@
-const {Cart, Product} = require("../../db.js");
+const {Cart, Product, Ticket} = require("../../db.js");
 
 const cleanCart = async (req, res) => {
-    const {id} = req.body;
-    console.log(id)
 
     Cart.destroy({
         truncate: true
@@ -13,6 +11,12 @@ const cleanCart = async (req, res) => {
           inCart: false
       },
         {where:{ inCart: true}})
+
+        Ticket.update(
+          {
+            inCart: false
+        },
+          {where:{ inCart: true}})
 
         .then(() => {
                 res.json({

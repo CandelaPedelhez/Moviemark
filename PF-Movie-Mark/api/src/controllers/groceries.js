@@ -3,7 +3,7 @@ let groceries = [
     id: 1,
     name: "Premium Combo",
     img: "https://i.imgur.com/9pIXGBm.png",
-    price: 1000,
+    price: 999,
     stock: 50,
     description: "1 limited edition popcorn bucket + 1 large soda",
     typeGrocerie: "combo",
