@@ -91,7 +91,7 @@ export default function Home() {
       <div>
         <h2 className={styles.onStream}>On Stream</h2>
         <div className={styles.row__posters}>
-          {tickets && tickets.map((movie, i) => 
+          {tickets.map((movie, i) => 
             
              (
               <div key={i}>

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -24,6 +24,7 @@ export default function Details({ movies }) {
   const availables = useSelector((state) => state.availables);
   const loggedIn = useSelector((state) => state.loggedIn);
   const reviews = useSelector((state) => state.reviews);
+  const[funcionCarrito, setFuncionCarrito] = useState({})
   const { addTicketToCart, tickets } = useContext(CartContext);
 
 
@@ -40,10 +41,11 @@ export default function Details({ movies }) {
   };
 
   let movieFunctions = [];
+  console.log("asdadsdas",myMovie)
 
   if (availables.length > 0 && myMovie.length > 0) {
     function myMovieFunction() {
-      movieFunctions = availables.filter((e) => e.name === myMovie[0].title);
+      movieFunctions = availables.filter((e) => e.name === myMovie[0].name);
     }
     myMovieFunction();
   }
@@ -51,9 +53,9 @@ export default function Details({ movies }) {
   let funcion = [];
 
   function handleSelect(r) {
-    console.log("AAAAAAAAAS",tickets[1].name)
     r.preventDefault();
     funcion = movieFunctions.filter((e) => e.date === r.target.value);
+    console.log(funcion)
   }
 
   // const handleAdd = () => {
@@ -71,6 +73,14 @@ export default function Details({ movies }) {
   //   addItemToCart(movieFunction);
   //   console.log(movieFunction)
   // };
+
+  function handleOption(e){
+    setFuncionCarrito({
+      ...funcionCarrito,
+      funcionCarrito: e
+    })
+    console.log("1111111111111",funcionCarrito)
+  }
 
 
 
@@ -103,7 +113,7 @@ export default function Details({ movies }) {
           </div>
         ) : (
           <div className={styles.title}>
-            <h1>{myMovie[0].title}</h1>
+            <h1>{myMovie[0].name}</h1>
             <img src={myMovie[0].img} alt="img not found" />
             <div>
               <span>+16</span>
@@ -117,23 +127,23 @@ export default function Details({ movies }) {
             <div className={styles.div2}>
               <div>
                 <h3>Description</h3>
-                <p>{myMovie[0].description}</p>
+                {/* <p>{myMovie[0].description}</p> */}
               </div>
               <div>
                 <h3>Released</h3>
-                <p>{myMovie[0].release_date}</p>
+                {/* <p>{myMovie[0].release_date}</p> */}
               </div>
               <div>
                 <h3>Languages</h3>
-                <p>{myMovie[0].languages}</p>
+                {/* <p>{myMovie[0].languages}</p> */}
               </div>
               <div>
                 <h3>Popularity</h3>
-                <p>{myMovie[0].popularity}</p>
+                {/* <p>{myMovie[0].popularity}</p> */}
               </div>
               <div>
                 <h3>Vote average</h3>
-                <p>{myMovie[0].vote_average}</p>
+                {/* <p>{myMovie[0].vote_average}</p> */}
               </div>
               {movieFunctions.length > 0 ? (
                 <div>
@@ -141,14 +151,14 @@ export default function Details({ movies }) {
                   <select onChange={(r) => handleSelect(r)}>
                     <option value="">Availables</option>
                     {movieFunctions.map((e) => (
-                      <option value={e.date}>
+                      <option value={e.date} name={e} onChange={(r) => handleOption(r)}>
                         {e.date.split("-").reverse().join("/")} at {e.hour}hs
                       </option>
                     ))}
                   </select>
                   {/* PASAR FUNCIONES A HOME */}
                   {/* {!tickets.inCart ? ( */}
-              <button onClick={() => addTicketToCart(tickets[1].name)}>
+              <button onClick={() => addTicketToCart(funcion[0])}>
                 <FontAwesomeIcon icon={faAdd} /> Buy Tickets
               </button>
             {/* ) : (
