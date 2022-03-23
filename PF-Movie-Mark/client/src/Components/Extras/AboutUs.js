@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./AboutUs.css";
+import styles from "./AboutUs.module.css";
 
 export default function AboutUs() {
   return (
     <>
-      <div className="about">
+      <div className={styles.about}>
         <h1>About Us</h1>
       </div>
 
-      <div className="text">
+      <div className={styles.text}>
         <h2>
           Hello, this project was carried out by Henry's students with the aim
           of finalizing the bootcamp by presenting this final project. Its
@@ -19,10 +19,10 @@ export default function AboutUs() {
         </h2>
         <h2>Here is our contact information</h2>
       </div>
-      <div className="about-father">
-        <div className="item">
+      <div className={styles.aboutfather}>
+        <div className={styles.item}>
           <h3>Rocio Garcia Lofrano</h3>
-          <div className="imgabout">
+          <div className={styles.imgabout}>
             <img
               src="https://i.imgur.com/bs6mAJd.png"
               alt="Img not found"
@@ -38,9 +38,9 @@ export default function AboutUs() {
             <button>GitHub</button>
           </Link>
         </div>
-        <div className="item">
+        <div className={styles.item}>
           <h3>Nacarith Sequera</h3>
-          <div className="imgabout">
+          <div className={styles.imgabout}>
             <img
               src="https://i.imgur.com/ITssu8w.jpg"
               alt="Img not found"
@@ -56,9 +56,9 @@ export default function AboutUs() {
             <button>GitHub</button>
           </Link>
         </div>
-        <div className="item">
+        <div className={styles.item}>
           <h3>Juan Manuel Vergara</h3>
-          <div className="imgabout">
+          <div className={styles.imgabout}>
             <img
               src="https://i.imgur.com/mF1nwgF.png"
               alt="Img not found"
@@ -74,9 +74,9 @@ export default function AboutUs() {
             <button>GitHub</button>
           </Link>
         </div>
-        <div className="item">
+        <div className={styles.item}>
           <h3>Candela Pedelhez</h3>
-          <div className="imgabout">
+          <div className={styles.imgabout}>
             <img
               src="https://i.imgur.com/Z1upvRn.png"
               alt="Img not found"
@@ -92,9 +92,9 @@ export default function AboutUs() {
             <button>GitHub</button>
           </Link>
         </div>
-        <div className="item">
+        <div className={styles.item}>
           <h3>Francisco Cedermaz</h3>
-          <div className="imgabout">
+          <div className={styles.imgabout}>
             <img
               src="https://i.imgur.com/vKCsoFi.png"
               alt="Img not found"
@@ -111,7 +111,7 @@ export default function AboutUs() {
           </Link>
         </div>
       </div>
-      <div className="text">
+      <div className={styles.text}>
         <h2>Thanks for the support.</h2>
       </div>
 

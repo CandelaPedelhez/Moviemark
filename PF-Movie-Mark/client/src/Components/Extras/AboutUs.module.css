@@ -1,8 +1,8 @@
-.about-father {
+.aboutfather {
 display: flex;
 align-items: center;
 justify-content: center;
-margin-top: 200px;
+margin-top: 100px;
 
 }
 
@@ -15,7 +15,7 @@ margin-top: 200px;
 .text {
     color: whitesmoke;
     text-align: center;
-    font-size: 16px;
+    font-size: 10px;
     
 }
 
@@ -25,8 +25,8 @@ margin-top: 200px;
     background-color: #b983ff;
     text-align: center;
     font-size: 23px;
-    height: 25vh;
-    width: 30vh;
+    height: 40vh;
+    width: 35vh;
     border-radius: 25px;
     margin-right: 50px;
 }

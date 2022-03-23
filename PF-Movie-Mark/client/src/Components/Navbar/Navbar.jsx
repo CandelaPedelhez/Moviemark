@@ -1,41 +1,45 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faClapperboard } from "@fortawesome/free-solid-svg-icons";
-import "./Navbar.css";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import styles from "./Navbar.module.css";
 import Cart from "../Cart/index";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 
 export default function NavBar() {
-  let aux = {name:''}
-  if(localStorage.getItem("user")){
-      aux = localStorage.getItem("user");
-      aux = JSON.parse(aux);
+  let aux = { name: "" };
+  if (localStorage.getItem("user")) {
+    aux = localStorage.getItem("user");
+    aux = JSON.parse(aux);
   }
   return (
-    <div className="nav">
+    <div className={styles.nav}>
       <Link to="/home" style={{ textDecoration: "none" }}>
-        <img src="https://i.imgur.com/INE654E.png" alt="logo in process" />
+        <img src="https://i.imgur.com/INE654E.png" alt="Logo in process" />
       </Link>
-      {/* <FontAwesomeIcon className="movieIcon" icon={faClapperboard} />*/}
+
       <Link to="/groceries" style={{ textDecoration: "none" }}>
-        <h3 className="btn">Groceries</h3>
+        <h3 className={styles.btn}>Groceries</h3>
       </Link>
       <div>
-      <SearchBar placeholder="Search..."/>
+        <SearchBar placeholder="Search..." />
       </div>
       <Cart />
-      {
-        !aux.id?<Link to="/login">
-        <FontAwesomeIcon className="user" icon={faUser} />
-        </Link>:aux.role==='admin'?<Link to="/admin">
-        <FontAwesomeIcon className="user" icon={faUser} />
-        </Link>:<Link to="/account">
-        <FontAwesomeIcon className="user" icon={faUser} />
+      {!aux.id ? (
+        <Link to="/login">
+          <FontAwesomeIcon className={styles.user} icon={faUser} />
         </Link>
-      }
+      ) : aux.role === "admin" ? (
+        <Link to="/admin">
+          <FontAwesomeIcon className={styles.user} icon={faUser} />
+        </Link>
+      ) : (
+        <Link to="/account">
+          <FontAwesomeIcon className={styles.user} icon={faUser} />
+        </Link>
+      )}
     </div>
   );
 }
