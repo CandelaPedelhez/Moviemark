@@ -115,14 +115,15 @@ Review.belongsTo(Movie);
 
 //Relación de uno a muchos:
 User.hasMany(Ticket);
-
 Ticket.belongsTo(User);
 
-User.hasOne(Cart);
-Cart.belongsTo(User);
 
-// Order.belongsTo(Cart);
-// Cart.hasOne(Order);
+User.hasMany(Order)
+Order.belongsTo(User)
+
+Order.hasMany(Cart);
+Cart.belongsTo(Order);
+
 //Seats.hasOne(Ticket, { through: "ticket_seats" });
 //Ticket.hasOne(Seats, { through: "ticket_seats" });
 

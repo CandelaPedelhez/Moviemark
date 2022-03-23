@@ -57,7 +57,12 @@ const Login = () => {
                     password:''
                 })
                 setSuccess(true);
+<<<<<<< HEAD
+                window.location.reload(false);
+                setTimeout( function() { history('/home'); }, 1600 );
+=======
                 setTimeout( function() { window.location.href ='http://localhost:3000/home'; }, 1600 );
+>>>>>>> 52845053fe3585bb76d69c7ae6c326adf3ee545f
             }
         })
     } 
