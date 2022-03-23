@@ -15,7 +15,7 @@ import { faArrowLeft, faAdd } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/index";
 import CartContext from "../../Context/CartContext";
 import CardReview from "./CardReview";
-import styles from "./Details.module.css";
+import styles from "./Details.module.scss";
 
 export default function Details({ movies }) {
   const dispatch = useDispatch();

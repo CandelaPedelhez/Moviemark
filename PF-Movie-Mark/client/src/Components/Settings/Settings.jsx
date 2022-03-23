@@ -2,7 +2,7 @@
 import { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./Settings.module.css";
+import styles from "./Settings.module.scss";
 import popcorn from "./assets/popcorn.png";
 import { changeData, logoutUser } from "../../Actions";
 import Loader from "../Loader/Loader";

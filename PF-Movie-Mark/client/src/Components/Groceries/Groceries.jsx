@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart";
 // import ShoppingCart from "./ShoppingCart";
-import groceries from "./Groceries.module.css";
+import groceries from "./Groceries.module.scss";
 import styles from "./GroceriesCard.module.scss";
 
 export default function Groceries() {
