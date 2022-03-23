@@ -1,20 +1,18 @@
 const { Router } = require("express");
 const router = Router();
 
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
-
-const genresRoute = require("./genres.js");
-const groceriesRoute = require("./groceries.js");
-const grocerieRoute = require("./grocerie.js");
-const moviesRoute = require("./movies.js");
-const movieRoute = require("./movie.js");
-const upcomingRoute = require("./upcoming.js");
-const topRatedRoute = require("./top_rated.js");
-const authRoute = require("./auth.js");
-const orderRoute = require("./order.js");
-const productRoute = require("./product.js");
-const userRoute = require("./user");
+// Import de todos los routers:
+const genresRoute      = require("./genres.js");
+const groceriesRoute   = require("./groceries.js");
+const grocerieRoute    = require("./grocerie.js");
+const moviesRoute      = require("./movies.js");
+const movieRoute       = require("./movie.js");
+const upcomingRoute    = require("./upcoming.js");
+const topRatedRoute    = require("./top_rated.js");
+const authRoute        = require("./auth.js");
+const orderRoute       = require("./order.js");
+const productRoute     = require("./product.js");
+const userRoute        = require("./user.js");
 const mercadopagoRoute = require("./mercadopago.js");
 const availablesRoute = require("./availables.js");
 const availableRoute = require("./available.js")
@@ -54,3 +52,4 @@ router.use("/cart", routeCart);
 router.use("/admin", routeAdmin);
 
 module.exports = router;
+

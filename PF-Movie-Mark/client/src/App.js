@@ -26,7 +26,7 @@ import DeleteAvailable from "./Components/Admin/DeleteAvailable";
 import AboutUs from "./Components/Extras/AboutUs";
 
 function App() {
-  let user = { name: "" };
+  let user = { id: -1 };
   if (localStorage.getItem("user")) {
     user = localStorage.getItem("user");
     user = JSON.parse(user);
@@ -52,37 +52,37 @@ function App() {
             <Route
               path="/payment"
               element={
-                !user.id ? (
+                user.id===-1 ? (
                   <Login />
-                ) : user.role === "user" ? (
+                ) : (user.role === "user" ? (
                   <OrderSummary />
                 ) : (
                   <Navigate to="/error/404" />
-                )
+                ))
               }
             />
             <Route
               path="/login"
               element={
-                !user.id ? (
+                user.id===-1 ? (
                   <Login />
-                ) : user.role === "user" ? (
+                ) : (user.role === "user" ? (
                   <Navigate to="/account" />
                 ) : (
                   <Navigate to="/admin" />
-                )
+                ))
               }
             />
             <Route
               path="/signup"
               element={
-                !user.id ? (
+                user.id===-1 ? (
                   <SignUp />
-                ) : user.role === "user" ? (
+                ) : (user.role === "user" ? (
                   <Navigate to="/account" />
                 ) : (
                   <Navigate to="/admin" />
-                )
+                ))
               }
             />
             <Route path="/resetpassword" element={<ResetPassword />} />
@@ -90,7 +90,13 @@ function App() {
             <Route
               path="/account"
               element={
-                user.role === "user" ? <Settings /> : <Navigate to="/login" />
+                user.id===-1 ? (
+                  <Navigate to="/login" />
+                ) : (user.role === "user" ? (
+                  <Settings/>
+                ) : (
+                  <Navigate to="/admin" />
+                ))
               }
             />
             <Route path="/user/:id" element={<MyReceipts />} />
@@ -101,7 +107,16 @@ function App() {
                 user.role === "admin" ? <Admin /> : <Navigate to="/error/404" />
               }
             />
-            <Route path="/available" element={<CreateAvailable />} />
+            <Route
+              path="/available"
+              element={
+                user.role === "admin" ? (
+                  <CreateAvailable />
+                ) : (
+                  <Navigate to="/error/404" />
+                )
+              }
+            />
             <Route
               path="/admin/manage/films"
               element={
@@ -133,11 +148,24 @@ function App() {
               }
             />
             <Route path="*" element={<Page404 />} />
-            <Route path="groceries/update" element={<GroceriesStock />} />
+            <Route 
+              path="/admin/groceries/update" 
+              element={
+                user.role === "admin" ? (
+                  <GroceriesStock />
+                ) : (
+                  <Navigate to="/error/404" />
+                )
+              }/>
             <Route
               path="/availables/deleteAvailable"
-              element={<DeleteAvailable />}
-            />
+              element={
+                user.role === "admin" ? (
+                  <DeleteAvailable />
+                ) : (
+                  <Navigate to="/error/404" />
+                )
+              }/>
             <Route path="/aboutUs" element={<AboutUs />} />
           </Routes>
         </BrowserRouter>
