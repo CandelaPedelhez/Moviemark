@@ -15,12 +15,10 @@ router.post("/", async (req, res, next) => {
     price
   } = req.body;
 
-  const id=Math.floor((Math.random()*1000000)+1);
 
   try {
     var creatingMovie = await Movie.findOrCreate({
       where: {
-        id:id,
         title,
         img,
         description,
@@ -28,7 +26,8 @@ router.post("/", async (req, res, next) => {
         release_date,
         languages,
         vote_average,
-        movGenres,
+        trailer:'',
+        movie_genre:movGenres,
         price
       },
     });
