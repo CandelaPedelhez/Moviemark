@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 module.exports = (sequelize) => {
   sequelize.define("available", {
     name: {
@@ -15,7 +14,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     hallTickets: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
   });
 };

@@ -1,19 +1,23 @@
 const { DataTypes } = require("sequelize");
-
+// Exportamos una funcion que define el modelo
+// Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   sequelize.define("ticket", {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+    name: {
+      type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
     },
-    /* movie_title: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    }, */
-    //posibilidad de generar un QR
+    img: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    inCart: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     price: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
+      allowNull: false,
     },
   });
 };

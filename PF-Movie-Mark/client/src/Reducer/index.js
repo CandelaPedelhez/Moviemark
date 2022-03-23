@@ -17,7 +17,10 @@ export const initialState = {
   receipt: [],
   myReceipts: [],
   availables: [],
+  reviews: [],
   loggedIn: false,
+  userGoogleData: [],
+  userCredentials: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -44,23 +47,23 @@ export default function reducer(state = initialState, action) {
       let sortedMovies =
         action.payload === "A-Z"
           ? aux.sort(function (a, b) {
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return 1;
-            }
-            if (a.title.toLowerCase() < b.title.toLowerCase()) {
-              return -1;
-            }
-            return 0;
-          })
+              if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                return 1;
+              }
+              if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return -1;
+              }
+              return 0;
+            })
           : aux.sort(function (a, b) {
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return -1;
-            }
-            if (a.title.toLowerCase() < b.title.toLowerCase()) {
-              return 1;
-            }
-            return 0;
-          });
+              if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                return -1;
+              }
+              if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return 1;
+              }
+              return 0;
+            });
       return {
         ...state,
         movies: action.payload === "default" ? state.allMovies : sortedMovies,
@@ -93,19 +96,19 @@ export default function reducer(state = initialState, action) {
           name: obj.name,
           lastName: obj.lastName,
           role: obj.role,
-        }
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        return { ...state, user: user, loggedIn: true }
-
+        };
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        return { ...state, user: user, loggedIn: true };
+      } else {
+        return { ...state, user: {}, loggedIn: false };
       }
-      else { return { ...state, user: {}, loggedIn: false } }
 
     case "LOG_OUT_USER":
-      localStorage.removeItem('token')
-      localStorage.removeItem('user');
-      localStorage.removeItem('cartProducts');
-      return { ...state, user: {}, loggedIn: false }
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("cartProducts");
+      return { ...state, user: {}, loggedIn: false };
     case "CREATE_USER":
       return { ...state };
     case "EMAIL_USER":
@@ -148,11 +151,29 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case "POST_GROCERIE":
       return { ...state };
+    case "GET_CREDENTIALS":
+      return {
+        ...state,
+        userCredentials: action.payload
+      }
+    /* case "LOGIN_GOOGLE": 
+    return {
+      ...state,
+      userGoogleData: [...state, userGoogleData, action.payload]
+    } */
+    case "NEWSLETTER":
+      return { ...state };
     case "POST_AVAILABLE":
       return { ...state };
     case "UPDATE_GROCERIE":
       return { ...state };
-      case "DELETE_AVAILABLE":
+    case "DELETE_AVAILABLE":
+    case "GET_REVIEWS":
+      return { ...state, reviews: action.payload };
+    case "POST_REVIEW":
+    case "DELETE_AVAILABLE":
+      return { ...state };
+    case "REVOKE_ACCESS":
       return { ...state };
     default:
       return state;
