@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { Movie, Genre } = require("../db");
+const { Movie, Genre, Ticket } = require("../db");
 const { getGenres } = require("../controllers/genres");
 const { moviesdb } = require("../controllers/moviesdb");
 
@@ -41,7 +41,7 @@ router.get("/filter/:genre", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  let all = await Movie.findAll();
+  let all = await Ticket.findAll();
   try {
     if (id) {
       let movieId = all.filter((founded) => founded.id.toString() === id);
