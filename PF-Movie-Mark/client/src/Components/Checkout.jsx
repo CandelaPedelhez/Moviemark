@@ -6,14 +6,23 @@ import "./Checkout.scss"
 export default function Checkout() {
   const [datos, setDatos] = useState("")
   
+  let u = localStorage.getItem("user");
+// console.log("User del localStorage: ", u);
+// console.log(typeof(u))
+let userObj = JSON.parse(u);
+// console.log("Obj de user: ",userObj)
+// console.log("ID del obj user: ", userObj.id);
+let userId = userObj.id;
+
   useEffect(()=>{
     axios
-    .get('http://localhost:3001/api/mercadopago')
+    .get(`http://localhost:3001/api/mercadopago/${userId}`)
     .then((data)=>{
       setDatos(data.data)
       console.info('Contenido de data:', data)
     }).catch(err => console.error(err)) 
   },[])
+
 
   //puedo mostrar los productos de mi carrito u orden detalle
   // const productos = [

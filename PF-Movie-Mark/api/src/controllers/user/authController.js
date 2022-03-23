@@ -1,5 +1,5 @@
 require("dotenv").config();
-const {User} = require('../../db.js');
+const { User, Order, Cart } = require('../../db.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {JWT_SECRET, 
@@ -9,10 +9,10 @@ const {JWT_SECRET,
 const signUp = async (req, res) =>{
     try {
         const user = await User.findOne({
-            where:{email:req.body.email}
+            where: { email: req.body.email }
         })
-        if(user){
-            return res.status(200).json({msg: "Email registered"})
+        if (user) {
+            return res.status(200).json({ msg: "Email registered" })
         }
         let passwordEncrypted = bcrypt.hashSync(req.body.password, Number.parseInt(JWT_ROUNDS));
                 await User.create({
@@ -28,13 +28,13 @@ const signUp = async (req, res) =>{
                         expiresIn: JWT_EXPIRES_IN
                     });
 
-                    res.json({ 
-                        user: user,
-                        token: token
-                    });
-                }).catch((err) => {
-                    res.status(500).json(err);
-                });
+            res.json({
+                user: user,
+                token: token
+            });
+        }).catch((err) => {
+            res.status(500).json(err);
+        });
     } catch (error) {
         console.log(error.message);
     }

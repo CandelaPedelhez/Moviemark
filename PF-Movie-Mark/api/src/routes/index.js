@@ -41,6 +41,8 @@ router.use("/order", orderRoute);
 router.use("/product", productRoute);
 router.use("/userTicket", userRoute);
 router.use("/mercadopago", mercadopagoRoute);
+router.use("/statusMp", statusMp);
+router.use("/allOrders", allOrders);
 router.use("/availables", availablesRoute);
 router.use("/available", availableRoute)
 router.use('/addReview', routeReview);

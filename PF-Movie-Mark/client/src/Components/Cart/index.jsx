@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import { ItemCart } from "../ItemCart";
 import CartContext from "../../Context/CartContext";
 import styles from "./styles.module.scss";
+import axios from "axios";
 
 const Cart = () => {
     let token = 0;
@@ -29,9 +30,17 @@ const Cart = () => {
     0
   );
 
-    const checkout = () => {
+    const checkout = async () => {
     if(token.length > 10) {
       // navigate("/payment");
+      let u = localStorage.getItem("user");
+// console.log("User del localStorage: ", u);
+// console.log(typeof(u))
+let userObj = JSON.parse(u);
+// console.log("Obj de user: ",userObj)
+// console.log("ID del obj user: ", userObj.id);
+let userId = userObj.id;
+      await axios.get(`http://localhost:3001/api/mercadopago/${userId}`);
       window.location.href = 'http://localhost:3000/payment'
     } else {
       navigate("/login")

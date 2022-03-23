@@ -27,10 +27,16 @@ router.get("/", async (req, res) => {
 
 router.get("/filter/:genre", async (req, res) => {
   const { genre } = req.params;
-  const getAllMoviesByGenre = moviesdb.filter((e) =>
+  if(genre!=="All"){
+    const getAllMoviesByGenre = moviesdb.filter((e) =>
     e.movie_genre.includes(genre)
   );
   res.status(200).send(getAllMoviesByGenre);
+  }
+  else{
+    const result = await Movie.findAll();
+    res.status(200).send(result);
+  }
 });
 
 router.get("/:id", async (req, res) => {
