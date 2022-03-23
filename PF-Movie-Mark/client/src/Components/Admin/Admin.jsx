@@ -10,7 +10,7 @@ import {
   makeOrQuitAdmin,
   revokePass,
 } from "../../Actions";
-import styles from "./Admin.module.css";
+import styles from "./Admin.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Loader from "../Loader/Loader";

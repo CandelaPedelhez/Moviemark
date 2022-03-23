@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "../../Actions";
-import styles from "./SignUp.module.css";
+import styles from "./SignUp.module.scss";
 import Loader from "../Loader/Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -36,17 +36,19 @@ const SignUp = () => {
   }
 
   function validate_name(str) {
-    for(let i=0;i<str.length;++i){
-      if(str[i]===' '){return false;}
+    for (let i = 0; i < str.length; ++i) {
+      if (str[i] === " ") {
+        return false;
+      }
     }
     let pattern = new RegExp("[A-Z][a-z]{1,}"); //CAMBIAR REGEXP.... NO deberia aceptar espacios en blanco porque rompe... El back rompe con Jose Maria!
     return !!pattern.test(str);
   }
 
-    function validate_password(str){
-        let pattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
-        return !!pattern.test(str);
-    }
+  function validate_password(str) {
+    let pattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
+    return !!pattern.test(str);
+  }
 
   function validate(ipname, ipvalue) {
     if (ipname === "name") {
@@ -160,36 +162,67 @@ const SignUp = () => {
             onChange={(e) => handleChange(e)}
           ></input>
 
-                <div>
-                    {input.name.trim()===''||
-                    input.lastName.trim()===''||
-                    input.email.trim()===''||
-                    input.password.trim()===''?<button className={styles.buttondis} disabled type="submit">Sign up</button>:<button className={styles.button} type="submit">Sign up</button>}
-                </div>
-                <div className={styles.doyoudiv}>
-                    <Link to={'/login'}>
-                    <p className={styles.doyou}>Do you have an account?</p>
-                    </Link>
-                </div>
-    
-                <div>
-                    {error.name===true && input.name.trim()!==''?<p className={styles.errors}>Name not valid</p>:<></>}
-                    {error.lastName===true && input.lastName.trim()!==''?<p className={styles.errors}>Last Name not valid</p>:<></>}
-                    {error.email===true && input.email.trim()!==''?<p className={styles.errors}>Email not valid</p>:<></>}
-                    {error.password===true && input.password.trim()!==''?<p className={styles.errors}>Minimum eight characters, at least one letter and one number</p>:<></>}
-                </div>
-                {emailused===true?<p className={styles.errors}>Email already used</p>:<></>}
-                {
-                    success===true?<p className={styles.success}>Register success. You can login now</p>:<></>
-                }
-            </form>
-            </div>
-            {
-                     success===true?<Loader/>:<></>
-                }
-        </div>
-    )
-}
+          <div>
+            {input.name.trim() === "" ||
+            input.lastName.trim() === "" ||
+            input.email.trim() === "" ||
+            input.password.trim() === "" ? (
+              <button className={styles.buttondis} disabled type="submit">
+                Sign up
+              </button>
+            ) : (
+              <button className={styles.button} type="submit">
+                Sign up
+              </button>
+            )}
+          </div>
+          <div className={styles.doyoudiv}>
+            <Link to={"/login"}>
+              <p className={styles.doyou}>Do you have an account?</p>
+            </Link>
+          </div>
 
-export default SignUp; 
+          <div>
+            {error.name === true && input.name.trim() !== "" ? (
+              <p className={styles.errors}>Name not valid</p>
+            ) : (
+              <></>
+            )}
+            {error.lastName === true && input.lastName.trim() !== "" ? (
+              <p className={styles.errors}>Last Name not valid</p>
+            ) : (
+              <></>
+            )}
+            {error.email === true && input.email.trim() !== "" ? (
+              <p className={styles.errors}>Email not valid</p>
+            ) : (
+              <></>
+            )}
+            {error.password === true && input.password.trim() !== "" ? (
+              <p className={styles.errors}>
+                Minimum eight characters, at least one letter and one number
+              </p>
+            ) : (
+              <></>
+            )}
+          </div>
+          {emailused === true ? (
+            <p className={styles.errors}>Email already used</p>
+          ) : (
+            <></>
+          )}
+          {success === true ? (
+            <p className={styles.success}>
+              Register success. You can login now
+            </p>
+          ) : (
+            <></>
+          )}
+        </form>
+      </div>
+      {success === true ? <Loader /> : <></>}
+    </div>
+  );
+};
 
+export default SignUp;

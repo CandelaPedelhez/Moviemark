@@ -6,7 +6,7 @@ import CartContext from '../../Context/CartContext';
 import NavBar from "../Navbar/Navbar";
 import Card from "../Card/Card.jsx";
 import Slider from "../Slider/Slider.jsx";
-import styles from "./Home.module.css";
+import styles from "./Home.module.scss";
 import {
   getMovies,
   filterMovieByGenre,
