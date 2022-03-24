@@ -29,39 +29,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
 
-<<<<<<< HEAD
-    const makedispatch = (e) => {
-        e.preventDefault();
-        dispatch(loginUser(input))
-        .then((res)=>{
-            if(res.payload.msg ==="Incorrect password :("){
-                setErrorIncorrect({
-                    password:true
-                });
-            }
-            else if(res.payload.msg === "Email not found :("){
-                setErrorIncorrect({
-                    email:true
-                });
-            }
-            else if(res.payload.msg === "Revoke"){
-                setErrorIncorrect({
-                    password:false
-                });
-                setRevoke(true);
-                setTimeout( function() { history('/resetpassword'); }, 1600 );
-            }
-            else{
-                setInput({
-                    email:'',
-                    password:''
-                })
-                setSuccess(true);
-                setTimeout( function() { window.location.href ='http://localhost:3000/home'; }, 1600 );
-            }
-        })
-    } 
-=======
   const makedispatch = (e) => {
     e.preventDefault();
     dispatch(loginUser(input)).then((res) => {
@@ -93,7 +60,6 @@ const Login = () => {
       }
     });
   };
->>>>>>> 3c8de39aed5d03785c9ac3357c3f670d9ac0b400
 
   function validate_password(str) {
     let pattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
