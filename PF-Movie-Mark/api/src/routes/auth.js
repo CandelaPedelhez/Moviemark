@@ -4,6 +4,7 @@ const router = Router();
 const {User} = require('../db');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
+const authConfig = require('../config/auth.js')
 const {signUp, signIn, loginGoogle} = require('../controllers/user/authController.js');
 const {getAdmin} = require('../controllers/admin/getAdmins.js');
 
@@ -41,10 +42,10 @@ router.get("/admins", async (req,res)=>{
 });
 
 //Eliminar usuario
-router.delete("/:id",getAdmin, async (req,res)=>{
+router.delete("/:id", async (req,res)=>{
     User.destroy({
         where: {
-            id:req.params.id,
+            id:parseInt(req.params.id),
         }
     })
     .then(function(deletedRecord) {
@@ -181,7 +182,7 @@ router.post('/forgot',(req,res)=>{
 // Reset password
 // Aca se ingresa el token y el nuevo password
 // Json{ "passwordResetToken":"tokenemail","password":"nuevopass"}
-router.use('/reset',async (req,res)=>{
+router.post('/reset',async (req,res)=>{
     try{
         const user = await User.findOne({
             where:{passwordResetToken:req.body.passwordResetToken}
@@ -189,7 +190,7 @@ router.use('/reset',async (req,res)=>{
         if(!user) res.status(200).send({error:"Token not valid"});
         else{
             const hash = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
-            const aux = user.update({
+            const aux = await user.update({
                 ...user,
                 password:hash,
                 passwordResetToken:null,
