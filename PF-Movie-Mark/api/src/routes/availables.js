@@ -13,6 +13,8 @@ router.get("/", async (req, res, next) => {
           hour: a.hour,
           hall: a.hall,
           hallTickets: a.tickets,
+          price: a.price,
+          img: a.img
         },
       })
     );

@@ -19,9 +19,7 @@ const cleanCart = async (req, res) => {
           {where:{ inCart: true}})
 
         .then(() => {
-                res.json({
-                  mensaje: 'El carrito fue vaciado',
-                });
+                console.log("done")
               })
               .catch((error) => console.error(error));
 }

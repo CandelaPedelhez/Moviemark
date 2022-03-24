@@ -10,6 +10,12 @@ module.exports = (sequelize) => {
     hour: {
       type: DataTypes.STRING,
     },
+    img: {
+      type: DataTypes.TEXT,
+    },
+    price: {
+      type: DataTypes.DECIMAL,
+    },
     hall: {
       type: DataTypes.STRING,
     },
