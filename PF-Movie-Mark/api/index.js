@@ -25,7 +25,7 @@ const { tickets } = require("./src/controllers/tickets.js")
 const { groceries } = require("./src/controllers/groceries.js");
 //console.log("las movies son estas:", moviesdb);
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   groceries.forEach((g) => {
     moviesdb.forEach((m) =>
       Movie.findOrCreate({

@@ -91,7 +91,7 @@ export default function Home() {
       <div>
         <h2 className={styles.onStream}>On Stream</h2>
         <div className={styles.row__posters}>
-          {tickets.map((movie, i) => 
+          {movies.map((movie, i) => 
             
              (
               <div key={i}>
@@ -103,7 +103,7 @@ export default function Home() {
                 // vote_average={movie.vote_average}
                 img={movie.img}
               />
-              <button onClick={() => addTicketToCart(movie)}>+</button>
+
 </div>
 
             
