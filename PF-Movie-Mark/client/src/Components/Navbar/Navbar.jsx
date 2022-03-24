@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Navbar.module.css";
+import styles from "./Navbar.module.scss";
 import Cart from "../Cart/index";
 //import { useSelector } from "react-redux";
 

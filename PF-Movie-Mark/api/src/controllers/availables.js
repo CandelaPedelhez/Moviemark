@@ -424,6 +424,7 @@ let availables = [
     price: 1000,
   },
 
+
   {
     name: "Clifford the Big Red Dog",
     date: "2022-03-25",
@@ -481,4 +482,116 @@ let availables = [
   },
 ];
 
+
 module.exports = { availables };
+
+/*{
+  name: "My Hero Academia: World Heroes' Mission",
+  date: "2022-04-01",
+  hour: "19:30",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "My Hero Academia: World Heroes' Mission",
+  date: "2022-03-29",
+  hour: "21",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "Pursuit",
+  date: "2022-04-01",
+  hour: "21",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "Pursuit",
+  date: "2022-03-28",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "The Requin",
+  date: "2022-03-27",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "The Requin",
+  date: "2022-03-31",
+  hour: "21",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "Halloween Kills",
+  date: "2022-03-26",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "Halloween Kills",
+  date: "2022-03-30",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "The Sky Is Everywhere",
+  date: "2022-03-29",
+  hour: "18:30",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "The 355",
+  date: "2022-03-26",
+  hour: "19:30",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "The 355",
+  date: "2022-03-30",
+  hour: "18:30",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},*/
+
+/*{
+  name: "The Hunting",
+  date: "2022-04-03",
+  hour: "21",
+  hall: "1",
+  tickets: 48,
+  price: 1000,
+},
+{
+  name: "The Hunting",
+  date: "2022-03-29",
+  hour: "22",
+  hall: "2",
+  tickets: 48,
+  price: 1000,
+},*/
+

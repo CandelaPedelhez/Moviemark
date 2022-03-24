@@ -1,51 +1,50 @@
 import { useContext, useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ItemCart } from "../ItemCart";
 import CartContext from "../../Context/CartContext";
 import styles from "./styles.module.scss";
 import axios from "axios";
 
 const Cart = () => {
-    let token = 0;
-  if(localStorage.getItem("token")){
-      token = localStorage.getItem("token");
+  let token = 0;
+  if (localStorage.getItem("token")) {
+    token = localStorage.getItem("token");
   }
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [cartOpen, setCartOpen] = useState(false);
   const [productsLength, setProductsLength] = useState(0);
 
   const { cartItems } = useContext(CartContext);
 
-
   useEffect(() => {
     setProductsLength(
       cartItems?.reduce((previous, current) => previous + current.amount, 0)
     );
   }, [cartItems]);
-  
+
   const total = cartItems?.reduce(
     (previous, current) => previous + current.amount * current.price,
     0
   );
 
-    const checkout = async () => {
-    if(token.length > 10) {
+  const checkout = async () => {
+    if (token.length > 10) {
       // navigate("/payment");
       let u = localStorage.getItem("user");
-// console.log("User del localStorage: ", u);
-// console.log(typeof(u))
-let userObj = JSON.parse(u);
-// console.log("Obj de user: ",userObj)
-// console.log("ID del obj user: ", userObj.id);
-let userId = userObj.id;
+      // console.log("User del localStorage: ", u);
+      // console.log(typeof(u))
+      let userObj = JSON.parse(u);
+      // console.log("Obj de user: ",userObj)
+      // console.log("ID del obj user: ", userObj.id);
+      let userId = userObj.id;
       await axios.get(`http://localhost:3001/api/mercadopago/${userId}`);
-      window.location.href = 'http://localhost:3000/payment'
+      window.location.href = "http://localhost:3000/payment";
     } else {
-      navigate("/login")
+      navigate("/login");
     }
-    }
+  };
 
   return (
     <div className={styles.cartContainer}>
@@ -111,10 +110,14 @@ let userId = userObj.id;
 
           <h2 className={styles.total}>Total: ${total}</h2>
           <div className={styles.btnCheckout}>
-               {
-               cartItems.length === 0?<button onClick={checkout} disabled>Checkout</button> 
-               : 
-               <button onClick={checkout}>Checkout</button>}</div>
+            {cartItems.length === 0 ? (
+              <button onClick={checkout} disabled>
+                Checkout
+              </button>
+            ) : (
+              <button onClick={checkout}>Checkout</button>
+            )}
+          </div>
         </div>
       )}
     </div>

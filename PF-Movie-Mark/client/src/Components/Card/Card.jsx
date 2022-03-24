@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import style from "./Card.module.css";
+import style from "./Card.module.scss";
 //import error from "./images/error.jpg";
 
 export default function Card({ movies, id, title, img, genres, vote_average }) {

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { sendToken } from "../../Actions";
 import Loader from "../Loader/Loader";
-import styles from "./EnterToken.module.css";
+import styles from "./EnterToken.module.scss";
 
 const EnterToken = () => {
   const [token, setToken] = useState({

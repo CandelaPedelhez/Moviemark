@@ -1,4 +1,4 @@
-import styles from "./Slider.module.css";
+import styles from "./Slider.module.scss";
 import left from "./images/left.png";
 import right from "./images/next.png";
 import { useState } from "react";
