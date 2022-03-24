@@ -55,6 +55,9 @@ const signIn = async (req, res) => {
         } else {
             //Comparo las password, la que recibo y la que estaba en la db
             if (bcrypt.compareSync(password, user.password)) {
+                if(user.allowed===false){
+                    return res.status(200).json({msg: "Revoke"})
+                }
                 //Creo el token:
                 let token = jwt.sign({ user: user }, authConfig.secret, {
                     expiresIn: authConfig.expires
