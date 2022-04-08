@@ -1,49 +1,50 @@
 .nav {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     background-color: rgb(24, 24, 24);
     padding: 10px;
     padding-top: 0;
 }
 
 .cart {
-    color: #b983ff;
+    //color: #b983ff;
     margin-top: 1px;
     height: 25px;
     margin-left: 3vh;
     cursor: pointer;
 }
 
-.cart:hover {
-    transform: scale(1.5);
+/*.cart:hover {
+    //transform: scale(1.5);
     color: whitesmoke;
 }
-
+*/
 
 .user {
-    color: #b983ff;
-    margin-top: 1px;
+    color: whitesmoke;
+    margin-top: 14px;
     height: 25px;
-    margin-left: 4vh;
+    margin-right: 2vh;
     cursor: pointer;
 }
 
-.user:hover {
-    transform: scale(1.5);
-    color: whitesmoke;
-}
+/*.user:hover {
+    color: #b983ff;
+    //transform: scale(1.5);
+    
+}*/
 
 .btn {
     color: #b983ff;
     font-size: 2.5vh;
     margin-left: 40vh;
-    margin-top: 18px;
+    margin-top: 28px;
 }
 
 .btn:hover {
     color: whitesmoke;
-    transform: scale(1.3)
+    //transform: scale(1.3)
 }
 
 .btnHome {
@@ -51,7 +52,11 @@
     margin-bottom: 3.5vh;
 }
 
-a {
+.s { 
+    z-index: 1;
+}
+
+/*a {
     color: #b983ff;
   }
   a:hover {

@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import CartContext from '../../Context/CartContext';
+import CartContext from "../../Context/CartContext";
 import NavBar from "../Navbar/Navbar";
 import Card from "../Card/Card.jsx";
 import Slider from "../Slider/Slider.jsx";
@@ -26,9 +26,8 @@ export default function Home() {
   const topRated = useSelector((state) => state.topRated);
   const { addTicketToCart, tickets } = useContext(CartContext);
 
-
   function handleFilteredGenre(e) {
-    console.log("tickets",tickets)
+    console.log("tickets", tickets);
     e.preventDefault();
     dispatch(filterMovieByGenre(e.target.value));
   }
@@ -59,9 +58,28 @@ export default function Home() {
     <div>
       <div>
         <NavBar />
-        <hr color="#b983ff"></hr>
+
         <Slider />
       </div>
+
+      <div>
+        <h2 className={styles.onStream}>On Stream</h2>
+        <div className={styles.row__posters}>
+          {tickets.map((movie, i) => (
+            <div key={i}>
+              <Card
+                movies={"movies"}
+                id={movie.id}
+                // title={movie.name}
+                //genres={movie.genres}
+                // vote_average={movie.vote_average}
+                img={movie.img}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <br />
       <div className={styles.filters}>
         <select
           className={styles.select1}
@@ -88,29 +106,24 @@ export default function Home() {
           <option value="Z-A">Z-A</option>
         </select>
       </div>
-      <div>
-        <h2 className={styles.onStream}>On Stream</h2>
-        <div className={styles.row__posters}>
-          {movies.map((movie, i) => 
-            
-             (
-              <div key={i}>
-              <Card
-                movies={"movies"}
-                id={movie.id}
-                // title={movie.name}
-                //genres={movie.genres}
-                // vote_average={movie.vote_average}
-                img={movie.img}
-              />
 
-</div>
+      <h2 className={styles.onStream}>Featured</h2>
+      <div className={styles.row__posters}>
+        {movies.map((movie, i) => (
+          <div key={i}>
+            <Card
+              movies={"movies"}
+              id={movie.id}
+              // title={movie.name}
+              //genres={movie.genres}
+              // vote_average={movie.vote_average}
+              img={movie.img}
+            />
+          </div>
+        ))}
 
-            
-          ))}
-        </div>
       </div>
-      <br />
+
       <div classname={styles.row}>
         <h2 className={styles.topRated}>Top Rated</h2>
         <div className={styles.row__posters}>
@@ -130,9 +143,10 @@ export default function Home() {
           })}
         </div>
       </div>
-      <div className={styles.button_about}>
+      <div className={styles.div_about}>
+        <h5 className={styles.h5about}>Todos los derechos reservados ©️</h5>
         <Link to="/aboutUs">
-          <button>About us</button>
+          <button className={styles.button_about}>About us</button>
         </Link>
       </div>
     </div>

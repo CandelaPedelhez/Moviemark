@@ -12,7 +12,6 @@ import EnterToken from "./Components/ResetPassword/EnterToken";
 import Settings from "./Components/Settings/Settings";
 import { AuthProvider } from "./Context/authContext";
 import MyReceipts from "./Components/Receipts/MyReceipts";
-import Receipt from "./Components/Receipts/Receipt";
 import OrderSummary from "./Components/OrderSummary/OrderSummary";
 import Admin from "./Components/Admin/Admin";
 import CreateAvailable from "./Components/Admin/CreateAvailable";
@@ -52,37 +51,37 @@ function App() {
             <Route
               path="/payment"
               element={
-                user.id===-1 ? (
+                user.id === -1 ? (
                   <Login />
-                ) : (user.role === "user" ? (
+                ) : user.role === "user" ? (
                   <OrderSummary />
                 ) : (
                   <Navigate to="/error/404" />
-                ))
+                )
               }
             />
             <Route
               path="/login"
               element={
-                user.id===-1 ? (
+                user.id === -1 ? (
                   <Login />
-                ) : (user.role === "user" ? (
+                ) : user.role === "user" ? (
                   <Navigate to="/account" />
                 ) : (
                   <Navigate to="/admin" />
-                ))
+                )
               }
             />
             <Route
               path="/signup"
               element={
-                user.id===-1 ? (
+                user.id === -1 ? (
                   <SignUp />
-                ) : (user.role === "user" ? (
+                ) : user.role === "user" ? (
                   <Navigate to="/account" />
                 ) : (
                   <Navigate to="/admin" />
-                ))
+                )
               }
             />
             <Route path="/resetpassword" element={<ResetPassword />} />
@@ -90,17 +89,17 @@ function App() {
             <Route
               path="/account"
               element={
-                user.id===-1 ? (
+                user.id === -1 ? (
                   <Navigate to="/login" />
-                ) : (user.role === "user" ? (
-                  <Settings/>
+                ) : user.role === "user" ? (
+                  <Settings />
                 ) : (
                   <Navigate to="/admin" />
-                ))
+                )
               }
             />
             <Route path="/user/:id" element={<MyReceipts />} />
-            <Route path="/ticket/:idTicket" element={<Receipt />} />
+
             <Route
               path="/admin"
               element={
@@ -148,15 +147,16 @@ function App() {
               }
             />
             <Route path="*" element={<Page404 />} />
-            <Route 
-              path="/admin/groceries/update" 
+            <Route
+              path="/admin/groceries/update"
               element={
                 user.role === "admin" ? (
                   <GroceriesStock />
                 ) : (
                   <Navigate to="/error/404" />
                 )
-              }/>
+              }
+            />
             <Route
               path="/availables/deleteAvailable"
               element={
@@ -165,7 +165,8 @@ function App() {
                 ) : (
                   <Navigate to="/error/404" />
                 )
-              }/>
+              }
+            />
             <Route path="/aboutUs" element={<AboutUs />} />
           </Routes>
         </BrowserRouter>

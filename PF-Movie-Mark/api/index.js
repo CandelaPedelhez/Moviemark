@@ -21,7 +21,7 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const { Grocerie, Movie, Ticket, Product } = require("./src/db");
 const { moviesdb } = require("./src/controllers/moviesdb.js");
-const { tickets } = require("./src/controllers/tickets.js")
+const { tickets } = require("./src/controllers/tickets.js");
 const { groceries } = require("./src/controllers/groceries.js");
 //console.log("las movies son estas:", moviesdb);
 // Syncing all the models at once.
@@ -50,6 +50,14 @@ conn.sync({ force: false }).then(() => {
           name: m.name,
           img: m.img,
           price: m.price,
+          description: m.description,
+          popularity: m.popularity,
+          release_date: m.release_date,
+          languages: m.languages,
+          movie_genre: m.movie_genre.map((e) => e),
+          img: m.img,
+          vote_average: m.vote_average,
+          trailer: m.trailer,
         },
       })
     );

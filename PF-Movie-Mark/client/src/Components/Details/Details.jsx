@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useState } from "react";
+
+import React, { useContext, useState, useEffect } from "react";
+
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,27 +10,88 @@ import {
   getUpcomingForId,
   getAvailables,
   getReviews,
+  postReview,
 } from "../../Actions";
-import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faAdd } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/index";
 import CartContext from "../../Context/CartContext";
 import CardReview from "./CardReview";
 import styles from "./Details.module.scss";
+import { FaStar } from "react-icons/fa";
+import ReactPlayer from "react-player";
 
 export default function Details({ movies }) {
   const dispatch = useDispatch();
   const movieId = useParams();
   const myMovie = useSelector((state) => state.details);
   const availables = useSelector((state) => state.availables);
-  const loggedIn = useSelector((state) => state.loggedIn);
-  const reviews = useSelector((state) => state.reviews);
-  const[funcionCarrito, setFuncionCarrito] = useState({})
+
+  //const loggedIn = useSelector((state) => state.loggedIn);
+  //const reviews = useSelector((state) => state.reviews);
+  const [funcionCarrito, setFuncionCarrito] = useState({});
+
   const { addTicketToCart, tickets } = useContext(CartContext);
+  const [value, setValue] = useState(0);
+  const [hoverValue, setHoverValue] = useState(undefined);
+  //const user = useSelector((state) => state.user);
 
+  /* ACA TENEMOS QUE TRAERNOS LOS TICKETS DEL USUARIO Y COMPARARLO CON EL TITULO DE LA PELICULA */
 
-  let userSawMovie = true; /* ACA TENEMOS QUE TRAERNOS LOS TICKETS DEL USUARIO Y COMPARARLO CON EL TITULO DE LA PELICULA */
+  const colors = {
+    orange: "#FFBA5A",
+    grey: "#a9a9a9",
+  };
+
+  const stars = Array(5).fill(0);
+
+  function handleClick(e) {
+    setValue(e);
+    setInput({
+      ...input,
+      score: value,
+
+      //movieId: myMovie[0].id,
+    });
+  }
+
+  function handleHover(e) {
+    setHoverValue(e);
+  }
+
+  function handleMouseLeave() {
+    setHoverValue(undefined);
+  }
+
+  const [input, setInput] = useState({
+    /* input = estado local */
+    name: "",
+    useReview: "",
+    score: "",
+  });
+
+  function handleChange(e) {
+    console.log("este es el input", input);
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("holi", input);
+    if (input.name && input.useReview && input.score) {
+      dispatch(postReview(input));
+      setInput({
+        name: "",
+        useReview: "",
+        score: "",
+      });
+    } else {
+      alert("You should check the score and review fields!");
+    }
+  }
 
   const makedispatch = () => {
     if (movies === "movies") {
@@ -41,7 +104,7 @@ export default function Details({ movies }) {
   };
 
   let movieFunctions = [];
-  console.log("asdadsdas",myMovie)
+
 
   if (availables.length > 0 && myMovie.length > 0) {
     function myMovieFunction() {
@@ -55,7 +118,7 @@ export default function Details({ movies }) {
   function handleSelect(r) {
     r.preventDefault();
     funcion = movieFunctions.filter((e) => e.date === r.target.value);
-    console.log(funcion)
+
   }
 
   // const handleAdd = () => {
@@ -74,14 +137,14 @@ export default function Details({ movies }) {
   //   console.log(movieFunction)
   // };
 
-  function handleOption(e){
+
+  function handleOption(e) {
     setFuncionCarrito({
       ...funcionCarrito,
-      funcionCarrito: e
-    })
-    console.log("1111111111111",funcionCarrito)
+      funcionCarrito: e,
+    });
+    console.log("1111111111111", funcionCarrito);
   }
-
 
 
   useEffect(() => {
@@ -112,10 +175,16 @@ export default function Details({ movies }) {
             <p>Loading ...</p>
           </div>
         ) : (
-          <div className={styles.title}>
-            <h1>{myMovie[0].name}</h1>
-            <img src={myMovie[0].img} alt="img not found" />
-            <div>
+
+          <div className={styles.detail_child}>
+            <div className={styles.dh1}>
+              <h1>{myMovie[0].name}</h1>
+            </div>
+            <div className={styles.image}>
+              <img src={myMovie[0].img} alt="img not found" />
+            </div>
+            <div className={styles.edad}>
+
               <span>+16</span>
             </div>
             <div className={styles.genre}>
@@ -124,93 +193,102 @@ export default function Details({ movies }) {
             <div className={styles.duration}>
               <h3>120min</h3>
             </div>
+            {movieFunctions.length > 0 ? (
+              <div>
+                <select
+                  className={styles.select2}
+                  onChange={(r) => handleSelect(r)}
+                >
+                  <option value="">Choose function here</option>
+                  {movieFunctions.map((e) => (
+                    <option
+                      value={e.date}
+                      name={e}
+                      onChange={(r) => handleOption(r)}
+                    >
+                      {e.date.split("-").reverse().join("/")} at {e.hour}hs
+                    </option>
+                  ))}
+                </select>
+
+                <button
+                  className={styles.buttdet}
+                  onClick={() => addTicketToCart(funcion[0])}
+                >
+                  <FontAwesomeIcon icon={faAdd} /> Buy Tickets
+                </button>
+                {/* ) : (
+            <button>En el carrito</button>
+          )} */}
+              </div>
+            ) : (
+              <p>There are not functions availables</p>
+            )}
+
             <div className={styles.div2}>
-              <div>
-                <h3>Description</h3>
-                {/* <p>{myMovie[0].description}</p> */}
+              <h3>Description</h3>
+              <p>{myMovie[0].description}</p>
+              <div className={styles.video}>
+                <h3>Trailer</h3>
+                <ReactPlayer
+                  url={myMovie[0].trailer}
+                  muted={false}
+                  playing={true}
+                />
               </div>
-              <div>
-                <h3>Released</h3>
-                {/* <p>{myMovie[0].release_date}</p> */}
-              </div>
-              <div>
-                <h3>Languages</h3>
-                {/* <p>{myMovie[0].languages}</p> */}
-              </div>
-              <div>
-                <h3>Popularity</h3>
-                {/* <p>{myMovie[0].popularity}</p> */}
-              </div>
-              <div>
-                <h3>Vote average</h3>
-                {/* <p>{myMovie[0].vote_average}</p> */}
-              </div>
-              {movieFunctions.length > 0 ? (
-                <div>
-                  <h3>Functions availables:</h3>
-                  <select onChange={(r) => handleSelect(r)}>
-                    <option value="">Availables</option>
-                    {movieFunctions.map((e) => (
-                      <option value={e.date} name={e} onChange={(r) => handleOption(r)}>
-                        {e.date.split("-").reverse().join("/")} at {e.hour}hs
-                      </option>
-                    ))}
-                  </select>
-                  {/* PASAR FUNCIONES A HOME */}
-                  {/* {!tickets.inCart ? ( */}
-              <button onClick={() => addTicketToCart(funcion[0])}>
-                <FontAwesomeIcon icon={faAdd} /> Buy Tickets
-              </button>
-            {/* ) : (
-              <button>En el carrito</button>
-            )} */}
-                </div>
-              ) : (
-                <p>There are not functions availables</p>
-              )}
+
+              <h3>Released</h3>
+              <p>{myMovie[0].release_date}</p>
+
+              <h3>Languages</h3>
+              <p>{myMovie[0].languages}</p>
+
+              <h3>Popularity</h3>
+              <p>{myMovie[0].popularity}</p>
+
+              <h3>Vote average</h3>
+              <p>{myMovie[0].vote_average}</p>
             </div>
             <div>
-              {loggedIn === true && userSawMovie === true ? (
-                <div>
-                  <form>
-                    <label>Did you enjoy the movie? Let us know!</label>
-                    <input placeholder="Your name" />
-                    <input placeholder="The movie was..." />
-                    <button type="submit">Submit review</button>
-                  </form>
+              {/*<div>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                  <label>Did you enjoy the movie? Let us know!</label>
                   <div>
-                    {reviews ? (
-                      reviews.map((e) => (
-                        <div>
-                          <CardReview
-                            username={e.username}
-                            description={e.description}
-                            score={e.score}
-                          />
-                        </div>
-                      ))
-                    ) : (
-                      <div></div>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  {reviews ? (
-                    reviews.map((e) => (
-                      <div>
-                        <CardReview
-                          username={e.username}
-                          description={e.description}
-                          score={e.score}
+                    {stars.map((e, index) => {
+                      return (
+                        <FaStar
+                          key={index}
+                          size={24}
+                          style={{
+                            marginRight: 10,
+                            cursor: "pointer",
+                          }}
+                          color={
+                            (hoverValue || value) > index
+                              ? colors.orange
+                              : colors.grey
+                          }
+                          onClick={(e) => handleClick(index + 1)}
+                          onMouseOver={(e) => handleHover(index + 1)}
+                          onMouseLeave={() => handleMouseLeave()}
                         />
-                      </div>
-                    ))
-                  ) : (
-                    <div></div>
-                  )}
-                </div>
-              )}
+                      );
+                    })}
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    onChange={(e) => handleChange(e)}
+                  ></input>
+                  <textarea
+                    placeholder="The movie was..."
+                    name="useReview"
+                    onChange={(e) => handleChange(e)}
+                  />
+
+                  <button type="submit">Submit review</button>
+                </form>
+                  </div>*/}
             </div>
           </div>
         )}

@@ -1,0 +1,21 @@
+.receipt {
+    width: 100%;
+    
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.h33 {
+ font-size: 30px;
+ color: #533E85 ;
+}
+
+.container_receipt {
+    background-color: #393E46;
+    width: 60vh;
+    border-radius: 5px;
+    color: #cecece;
+    align-items: center;
+}

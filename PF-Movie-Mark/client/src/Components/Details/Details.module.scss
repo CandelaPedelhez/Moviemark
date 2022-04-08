@@ -1,21 +1,22 @@
 .detail {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.detail h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.dh1 {
+    
     color: whitesmoke;
     font-size: 4vh;
-    margin-right: -30vh;
+    margin-left: 4vh;
 }
 
 .detail span {
     color: #b983ff;
     border: solid 1px #fff;;
     line-height: 55px;
-    font-size: 22px;
+    font-size: 30;
     margin-left: 6vh;
     margin-top: 50vh;
 }
@@ -34,6 +35,10 @@
 
 }
 
+.availables {
+    color: #b983ff;
+}
+
 .detail img {
     margin-left: 4vh;
     width: 340px;
@@ -41,18 +46,22 @@
 }
 
 .div2 {
+    
+    font-size: 17px;
     margin-left: 65vh;
     margin-top: -75vh;
 }
 
+
+
 .duration {
-    margin-left: 7vh;
-    margin-top: -9vh;
+    margin-right: 38vh;
+    margin-top: -8.2vh;
 }
 
 .genre {
-    margin-right: 25vh;
-    margin-top: -11vh;
+    margin-right: 70vh;
+    margin-top: -10vh;
 }
 
 .btnBack {
@@ -76,4 +85,29 @@
 .btnBack:hover {
     color: #b983ff;
     background-color: whitesmoke;
+}
+
+.select2 {
+    
+    background-color: #b983ff;
+    border-color:#b983ff;
+    color: black;
+    //border-radius: 20px;
+    border-radius: 2px;
+    font-size: 1rem;
+    width: 185px;
+    outline: none;
+    margin-left: 6vh;
+}
+
+.buttdet {
+    background-color: #b983ff;
+    border-color:#b983ff;
+    color: black;
+    //border-radius: 20px;
+    border-radius: 2px;
+    font-size: 1rem;
+    width: 185px;
+    outline: none;
+    margin-left: 2vh;
 }

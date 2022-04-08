@@ -196,16 +196,15 @@ export function getReceipt(payload) {
   };
 }
 
-export function getMyReceipts(payload) {
+export function getMyReceipts() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/user/" + payload);
+    var json = await axios.get("http://localhost:3001/api/statusMp/1");
     return dispatch({
       type: "GET_MY_RECEIPTS",
       payload: json.data,
     });
   };
 }
-
 export function getAvailables() {
   return async function (dispatch) {
     var json = await axios.get("http://localhost:3001/api/availables");
@@ -314,11 +313,10 @@ export function postGrocerie(payload) {
     let json = await axios.post("http://localhost:3001/api/product/", payload);
     return dispatch({
       type: "POST_GROCERIE",
-      payload: json.data
-    })
-  }
+      payload: json.data,
+    });
+  };
 }
-
 
 export function getReviews() {
   return async function (dispatch) {
@@ -343,7 +341,10 @@ export function deleteAvailable(payload) {
 
 export function postReview(payload) {
   return async function (dispatch) {
-    let json = await axios.post("http://localhost:3001/api/addReview", payload);
+    let json = await axios.post(
+      "http://localhost:3001/api/addReview/",
+      payload
+    );
     return dispatch({
       type: "POST_REVIEW",
       payload: json.data,
@@ -398,7 +399,6 @@ export function updateGroceries(payload) {
     });
   };
 }
-
 
 // export function deleteAvailable(payload) {
 //   return async function (dispatch) {

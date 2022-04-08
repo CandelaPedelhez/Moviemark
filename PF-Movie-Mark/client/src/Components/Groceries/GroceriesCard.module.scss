@@ -14,8 +14,8 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        background-color: #b983ff;
-        border-style: dashed;
+        background-color: #393E46;
+        //border-style: dashed;
         border-color: #533E85;
         border-radius: 10px;
 
@@ -41,6 +41,7 @@
 
         button:hover {
             background-color: #cecece;
+            color: #533E85;
         }
     }
 }

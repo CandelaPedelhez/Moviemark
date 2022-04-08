@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const router = Router();
-const { Movie } = require("../db");
+const { Ticket } = require("../db");
 
 router.post("/", async (req, res, next) => {
   const {
-    title,
+    name,
     img,
     description,
     popularity,
@@ -12,23 +12,23 @@ router.post("/", async (req, res, next) => {
     languages,
     vote_average,
     movGenres,
-    price
+    trailer,
+    price,
   } = req.body;
 
-
   try {
-    var creatingMovie = await Movie.findOrCreate({
+    var creatingMovie = await Ticket.findOrCreate({
       where: {
-        title,
+        name,
         img,
         description,
         popularity,
         release_date,
         languages,
         vote_average,
-        trailer:'',
-        movie_genre:movGenres,
-        price
+        trailer,
+        movie_genre: movGenres,
+        price,
       },
     });
 

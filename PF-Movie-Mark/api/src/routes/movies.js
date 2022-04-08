@@ -3,6 +3,7 @@ const router = Router();
 const { Movie, Genre, Ticket } = require("../db");
 const { getGenres } = require("../controllers/genres");
 const { moviesdb } = require("../controllers/moviesdb");
+const { tickets } = require("../controllers/tickets");
 
 router.get("/", async (req, res) => {
   const { title } = req.query;
@@ -27,13 +28,12 @@ router.get("/", async (req, res) => {
 
 router.get("/filter/:genre", async (req, res) => {
   const { genre } = req.params;
-  if(genre!=="All"){
+  if (genre !== "All") {
     const getAllMoviesByGenre = moviesdb.filter((e) =>
-    e.movie_genre.includes(genre)
-  );
-  res.status(200).send(getAllMoviesByGenre);
-  }
-  else{
+      e.movie_genre.includes(genre)
+    );
+    res.status(200).send(getAllMoviesByGenre);
+  } else {
     const result = await Movie.findAll();
     res.status(200).send(result);
   }

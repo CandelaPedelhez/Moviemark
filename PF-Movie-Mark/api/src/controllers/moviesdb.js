@@ -1,18 +1,5 @@
 const moviesdb = [
   {
-    title: "Turning Red",
-    img: "https://image.tmdb.org/t/p/w500/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg",
-    description:
-      "Thirteen-year-old Mei is experiencing the awkwardness of being a teenager with a twist – when she gets too excited, she transforms into a giant red panda.",
-    popularity: 7663.359,
-    release_date: "2022-03-10",
-    languages: "en",
-    vote_average: 7.4,
-    trailer: "https://youtu.be/5IdjR-8MNSE",
-    price: "1000",
-    movie_genre: ["Animation", "Family", "Comedy", "Fantasy"],
-  },
-  {
     title: "Kimi",
     img: "https://image.tmdb.org/t/p/w500/okNgwtxIWzGsNlR3GsOS0i0Qgbn.jpg",
     description:
@@ -24,6 +11,19 @@ const moviesdb = [
     trailer: "https://youtu.be/t5Pm2NBeoKM",
     price: "1000",
     movie_genre: ["Thriller"],
+  },
+  {
+    title: "Turning Red",
+    img: "https://image.tmdb.org/t/p/w500/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg",
+    description:
+      "Thirteen-year-old Mei is experiencing the awkwardness of being a teenager with a twist – when she gets too excited, she transforms into a giant red panda.",
+    popularity: 7663.359,
+    release_date: "2022-03-10",
+    languages: "en",
+    vote_average: 7.4,
+    trailer: "https://youtu.be/5IdjR-8MNSE",
+    price: "1000",
+    movie_genre: ["Animation", "Family", "Comedy", "Fantasy"],
   },
   {
     title: "Sing 2",

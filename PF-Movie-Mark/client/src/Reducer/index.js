@@ -14,8 +14,8 @@ export const initialState = {
   user: {}, //current user
   normalusers: [], //only users
   admins: [], //admins
-  receipt: [],
-  myReceipts: [],
+  receipts: [],
+
   availables: [],
   reviews: [],
   loggedIn: false,
@@ -107,7 +107,7 @@ export default function reducer(state = initialState, action) {
     case "LOG_OUT_USER":
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      localStorage.removeItem("cartProducts");
+      //localStorage.removeItem("cartProducts");
       return { ...state, user: {}, loggedIn: false };
     case "CREATE_USER":
       return { ...state };
@@ -127,10 +127,7 @@ export default function reducer(state = initialState, action) {
         receipt: action.payload,
       };
     case "GET_MY_RECEIPTS":
-      return {
-        ...state,
-        myReceipts: action.payload,
-      };
+      return { ...state, receipts: action.payload };
     case "GET_AVAILABLES":
       return {
         ...state,
@@ -154,8 +151,8 @@ export default function reducer(state = initialState, action) {
     case "GET_CREDENTIALS":
       return {
         ...state,
-        userCredentials: action.payload
-      }
+        userCredentials: action.payload,
+      };
     /* case "LOGIN_GOOGLE": 
     return {
       ...state,
