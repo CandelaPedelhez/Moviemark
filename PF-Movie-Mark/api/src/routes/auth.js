@@ -1,6 +1,7 @@
 require("dotenv").config();
 const { Router } = require("express");
 const router = Router();
+
 const { User } = require("../db");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
@@ -11,6 +12,7 @@ const {
   loginGoogle,
 } = require("../controllers/user/authController.js");
 const { getAdmin } = require("../controllers/admin/getAdmins.js");
+
 
 router.post("/signUp", signUp);
 router.post("/signIn", signIn);
@@ -51,7 +53,7 @@ router.get("/admins", async (req, res) => {
     });
 });
 
-//Eliminar usuario
+
 router.delete("/:id", async (req, res) => {
   User.destroy({
     where: {
@@ -65,6 +67,7 @@ router.delete("/:id", async (req, res) => {
       } else {
         res.status(404).json({ message: "Not found" });
       }
+
     })
     .catch(function (error) {
       res.status(500).json(error);
@@ -211,6 +214,7 @@ router.post("/forgot", (req, res) => {
 // Reset password
 // Aca se ingresa el token y el nuevo password
 // Json{ "passwordResetToken":"tokenemail","password":"nuevopass"}
+
 router.post("/reset", async (req, res) => {
   try {
     const user = await User.findOne({
@@ -229,6 +233,7 @@ router.post("/reset", async (req, res) => {
         allowed: true,
       });
       res.status(200).send({ success: "Password reset done" });
+
     }
   } catch (e) {
     res.status(200).send({ error: "ERROR" });

@@ -106,6 +106,7 @@ export default function Home() {
           <option value="Z-A">Z-A</option>
         </select>
       </div>
+
       <h2 className={styles.onStream}>Featured</h2>
       <div className={styles.row__posters}>
         {movies.map((movie, i) => (
@@ -120,6 +121,7 @@ export default function Home() {
             />
           </div>
         ))}
+
       </div>
 
       <div classname={styles.row}>

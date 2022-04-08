@@ -154,10 +154,7 @@ export function createUser(payload) {
 
 export function sendMail(payload) {
   return async function (dispatch) {
-    let req = await axios.post(
-      "http://localhost:3001/api/user/forgot",
-      payload
-    );
+    let req = await axios.post("http://localhost:3001/api/user/forgot", payload);
     return dispatch({
       type: "EMAIL_USER",
       payload: req.data,

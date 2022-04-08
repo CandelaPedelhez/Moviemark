@@ -47,12 +47,15 @@ const EnterToken = () => {
 
   function handleSubmitToken(e) {
     e.preventDefault();
-    dispatch(
-      sendToken({
-        passwordResetToken: token.id,
-        password: token.password,
-      })
-    ).then((res) => {
+    console.log({
+      passwordResetToken: token.id,
+      password: token.password,
+    })
+    dispatch(sendToken({
+      passwordResetToken: token.id,
+      password: token.password,
+    }))
+    .then((res) => {
       if (res.payload.success === "Password reset done") {
         setDone(true);
         setInvalidToken({

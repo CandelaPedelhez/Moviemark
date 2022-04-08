@@ -67,6 +67,7 @@ const signIn = async (req, res) => {
           expiresIn: authConfig.expires,
         });
 
+
         res.json({
           token: token,
         });

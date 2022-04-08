@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useContext, useState, useEffect } from "react";
+
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -24,9 +26,11 @@ export default function Details({ movies }) {
   const movieId = useParams();
   const myMovie = useSelector((state) => state.details);
   const availables = useSelector((state) => state.availables);
+
   //const loggedIn = useSelector((state) => state.loggedIn);
   //const reviews = useSelector((state) => state.reviews);
   const [funcionCarrito, setFuncionCarrito] = useState({});
+
   const { addTicketToCart, tickets } = useContext(CartContext);
   const [value, setValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
@@ -100,7 +104,7 @@ export default function Details({ movies }) {
   };
 
   let movieFunctions = [];
-  console.log("asdadsdas", myMovie);
+
 
   if (availables.length > 0 && myMovie.length > 0) {
     function myMovieFunction() {
@@ -114,7 +118,7 @@ export default function Details({ movies }) {
   function handleSelect(r) {
     r.preventDefault();
     funcion = movieFunctions.filter((e) => e.date === r.target.value);
-    console.log(funcion);
+
   }
 
   // const handleAdd = () => {
@@ -133,6 +137,7 @@ export default function Details({ movies }) {
   //   console.log(movieFunction)
   // };
 
+
   function handleOption(e) {
     setFuncionCarrito({
       ...funcionCarrito,
@@ -140,6 +145,7 @@ export default function Details({ movies }) {
     });
     console.log("1111111111111", funcionCarrito);
   }
+
 
   useEffect(() => {
     makedispatch();
@@ -169,6 +175,7 @@ export default function Details({ movies }) {
             <p>Loading ...</p>
           </div>
         ) : (
+
           <div className={styles.detail_child}>
             <div className={styles.dh1}>
               <h1>{myMovie[0].name}</h1>
@@ -177,6 +184,7 @@ export default function Details({ movies }) {
               <img src={myMovie[0].img} alt="img not found" />
             </div>
             <div className={styles.edad}>
+
               <span>+16</span>
             </div>
             <div className={styles.genre}>
