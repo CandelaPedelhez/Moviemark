@@ -56,22 +56,22 @@ const Admin = () => {
   const history = useNavigate();
 
   function SubmitFilm() {
-    history('/admin/manage/films')
+    history("/admin/manage/films");
   }
   function DeleteAvailable() {
-    history('/availables/deleteAvailable')
+    history("/availables/deleteAvailable");
   }
   function AddAvailable() {
-    history('/available')
+    history("/available");
   }
   function StockGroceries() {
-    history('groceries/update')
+    history("groceries/update");
   }
   function SubmitGroceries() {
-    history('/admin/manage/groceries')
+    history("/admin/manage/groceries");
   }
   function Newsletter() {
-    history('/admin/newsletter')
+    history("/admin/newsletter");
   }
 
   // Give admin
@@ -199,12 +199,16 @@ const Admin = () => {
         <div className={styles.account}>
           <h1 className={styles.title}>Admin</h1>
           <h2 className={styles.hi}>Hi {currentuser.name}</h2>
-          <button onClick={() => SubmitFilm()}>Add films</button>
-          <button onClick={() => DeleteAvailable()}>Delete function</button>
-          <button onClick={() => AddAvailable()}>Add function</button>
-          <button onClick={() => SubmitGroceries()}>Add groceries</button>
-          <button onClick={() => StockGroceries()}>Manage stock groceries</button>
-          <button onClick={() => Newsletter()}>Newsletter</button>
+          <div className={styles.buttonns}>
+            <button onClick={() => SubmitFilm()}>Add films</button>
+            <button onClick={() => DeleteAvailable()}>Delete function</button>
+            <button onClick={() => AddAvailable()}>Add function</button>
+            <button onClick={() => SubmitGroceries()}>Add groceries</button>
+            <button onClick={() => StockGroceries()}>
+              Manage stock groceries
+            </button>
+            <button onClick={() => Newsletter()}>Newsletter</button>
+          </div>
           <div>
             <p className={styles.subtitle}>Make Admins</p>
             <select

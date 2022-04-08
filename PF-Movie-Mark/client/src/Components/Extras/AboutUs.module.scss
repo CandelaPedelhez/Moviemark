@@ -24,10 +24,10 @@ margin-top: 100px;
 .item {
     background-color: #b983ff;
     text-align: center;
-    font-size: 23px;
-    height: 40vh;
-    width: 35vh;
-    border-radius: 25px;
+    font-size: 18px;
+    height: 30vh;
+    width: 30vh;
+    border-radius: 5px;
     margin-right: 50px;
 }
 
@@ -35,4 +35,33 @@ margin-top: 100px;
     
       color: #b983ff;
        
+}
+
+.buttonabout {
+   
+        margin-left: 4vh;
+        margin-top: 10vh;
+        padding: 8px 12px;
+        font-family: 'Shippori Antique B1', sans-serif;
+        border-radius: 3px;
+        font-size: 20px;
+        color: whitesmoke;
+        text-decoration: none;
+        background-color: #b983ff;
+        border: none;
+        border-bottom: 5px solid #230602;
+        text-shadow: 0px -2px #230602;
+        -webkit-transition: all 0.1s;
+        transition: all 0.1s;
+        cursor: pointer;
+    
+    
+    
+}
+
+
+
+.buttonabout:hover {
+    color: #b983ff;
+    background-color: whitesmoke;
 }

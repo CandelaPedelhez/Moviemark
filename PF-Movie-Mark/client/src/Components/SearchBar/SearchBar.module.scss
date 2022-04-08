@@ -3,24 +3,31 @@
 .searchInputs {
   border-radius: 25px;
   display: flex;
+  margin-left: 20vh;
+  align-items: flex-end;
 }
 
 .search input {
-  background-color: white;
+  margin-left: 47vh;
+  margin-top: 14px;
+  background-color: #b983ff;
+  color: whitesmoke;
   border: 0;
   border-radius: 2px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   font-size: 18px;
   padding: 15px;
-  height: 20px;
+  height: 5px;
   width: 300px;
+  z-index: 1;
 }
 
 .searchIcon {
-  height: 50px;
+  height: 35px;
   width: 50px;
-  background-color: white;
+  background-color: #b983ff;
+  color: whitesmoke;
   display: grid;
   place-items: center;
 }
@@ -28,18 +35,21 @@
 input:focus {
   outline: none;
 }
+
 .searchIcon svg {
   font-size: 35px;
 }
 
 .dataResult {
+  margin-left: 67vh;
   margin-top: 5px;
   width: 300px;
   height: 200px;
-  background-color: white;
+  background-color: #b983ff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;
-  
+  z-index: 2;
+  position: absolute;
 }
 
 .dataResult::-webkit-scrollbar {
@@ -76,7 +86,7 @@ a {
   background-color: rgb(0, 0, 0);
   padding-left: 14px;
   outline: none;
-  border-color:#b983ff;
+  border-color:#b983ff
   border-radius: 20px;
   height: 31px;
   color: whitesmoke;

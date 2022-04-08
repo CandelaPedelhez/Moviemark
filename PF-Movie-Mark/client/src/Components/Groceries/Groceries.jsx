@@ -38,12 +38,10 @@ export default function Groceries() {
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>
         </Link>
-      </div>
-      <div>
         <Cart />
       </div>
+      <h2 className={groceries.featured}>Deal of the day</h2>
       <div className={styles.productsContainer}>
-        <h2 className={groceries.featured}>Deal of the day</h2>
         {products &&
           products.map((e) =>
             e.typeGrocerie === "offer" ? (
@@ -54,6 +52,7 @@ export default function Groceries() {
                     {e.name} - ${e.price}
                   </p>
                 </div>
+
                 {!e.inCart ? (
                   <button onClick={() => addItemToCart(e)}>Add to Cart</button>
                 ) : (

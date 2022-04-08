@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
       },
       img: { 
         type: DataTypes.STRING, 
-        allowNull: false, 
+        // allowNull: false, 
       },
       amount: {
         type: DataTypes.INTEGER, 
@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       },
       price: { 
         type: DataTypes.DECIMAL, 
-        allowNull: false, 
+        // allowNull: false, 
       },
     });
   }

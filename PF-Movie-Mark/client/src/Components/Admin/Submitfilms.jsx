@@ -9,13 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 const SubmitFilm = () => {
   const genres = useSelector((state) => state.genres);
   const [input, setInput] = useState({
-    title: "",
+    name: "",
     img: "",
     description: "",
     popularity: "",
     release_date: "",
     languages: "",
     vote_average: "",
+    trailer: "",
     price: "",
     movGenres: [],
   });
@@ -59,7 +60,7 @@ const SubmitFilm = () => {
       if (input.img === "") {
         dispatch(
           postFilm({
-            title: input.title,
+            name: input.name,
             img: "https://www.2queue.com/wp-content/uploads/tdomf/4299/movie-poster-coming-soon.png",
             description: input.description,
             popularity: parseInt(input.popularity),
@@ -67,6 +68,7 @@ const SubmitFilm = () => {
             languages: input.languages,
             vote_average: parseInt(input.vote_average),
             price: input.price,
+            trailer: input.trailer,
             movGenres: input.movGenres,
           })
         ).then(() => {
@@ -76,7 +78,7 @@ const SubmitFilm = () => {
         if (errorImg === false) {
           dispatch(
             postFilm({
-              title: input.title,
+              name: input.name,
               img: input.img,
               description: input.description,
               popularity: parseInt(input.popularity),
@@ -84,6 +86,7 @@ const SubmitFilm = () => {
               languages: input.languages,
               vote_average: parseInt(input.vote_average),
               price: input.price,
+              trailer: input.trailer,
               movGenres: input.movGenres,
             })
           ).then(() => {
@@ -96,7 +99,7 @@ const SubmitFilm = () => {
 
   function emptyinput() {
     setInput({
-      title: "",
+      name: "",
       img: "",
       description: "",
       popularity: "",
@@ -104,6 +107,7 @@ const SubmitFilm = () => {
       languages: "",
       vote_average: "",
       price: "",
+      trailer: "",
       movGenres: [],
     });
   }
@@ -147,10 +151,10 @@ const SubmitFilm = () => {
             <h1 className={styles.title}>Submit films</h1>
             <input
               className={styles.input}
-              value={input.title}
+              value={input.name}
               type="text"
-              name="title"
-              placeholder="Title"
+              name="name"
+              placeholder="Name"
               onChange={(e) => handleChange(e)}
               required
             ></input>
@@ -168,6 +172,15 @@ const SubmitFilm = () => {
               type="text"
               name="description"
               placeholder="Description"
+              onChange={(e) => handleChange(e)}
+              required
+            ></input>
+            <input
+              className={styles.input}
+              value={input.trailer}
+              type="text"
+              name="trailer"
+              placeholder="Trailer"
               onChange={(e) => handleChange(e)}
               required
             ></input>

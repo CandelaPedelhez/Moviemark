@@ -23,7 +23,7 @@ export default function NavBar() {
       <Link to="/groceries" style={{ textDecoration: "none" }}>
         <h3 className={styles.btn}>Groceries</h3>
       </Link>
-      <div>
+      <div className={styles.s}>
         <SearchBar placeholder="Search..." />
       </div>
       <Cart />

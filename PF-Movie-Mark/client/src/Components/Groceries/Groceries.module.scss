@@ -15,14 +15,26 @@
     margin: auto auto
 }
 
-.combos {
-    color: whitesmoke;
+
+.featured {
+    color: #533E85;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 12vh;
-    font-size: 9vh;
+    font-size: 6vh;
 }
+
+.combos {
+    color: #533E85;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12vh;
+    font-size: 5vh;
+}
+
+
 
 
 
@@ -47,4 +59,48 @@
 .buttonBack:hover {
     color: #b983ff;
     background-color: whitesmoke;
+}
+
+.productsContainer {
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+
+    .product {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color: #393E46;
+        //border-style: dashed;
+        border-color: #533E85;
+        border-radius: 10px;
+
+        img {
+            width: 100%;
+        }
+
+        p {
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #533E85;
+            color: #cecece;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            margin-bottom: 9px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #cecece;
+            color: #533E85;
+        }
+    }
 }

@@ -130,4 +130,16 @@ server.get('/', (req, res, next) => {
     })
 });
 
+server.get('/detail/:id', (req, res, next) => { 
+    Order.findAll({
+        where: {
+            userId:req.params.id,
+        }
+    })
+    .then(data=>{
+        res.status(200).json(data)
+    })
+    .catch(e=>res.status(500).send({error:'Error'}))
+})
+
 module.exports = server;
